@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryTypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -20,3 +22,11 @@ Route::get('/login',[AuthController::class, 'showLoginForm'])->name('login.showL
 
 // Dashboard Routes
 Route::get('/admin',[DashboardController::class, 'index'])->name('admin.dashboard');
+
+// category type
+Route::get('/category-type/index',[CategoryTypeController::class, 'index'])->name('category.type.index');
+
+// category type
+Route::get('/category/index',[CategoryController::class, 'index'])->name('category.index');
+Route::get('/category/create',[CategoryController::class, 'create'])->name('category.create');
+Route::post('/category/store',[CategoryController::class, 'store'])->name('category.store');
