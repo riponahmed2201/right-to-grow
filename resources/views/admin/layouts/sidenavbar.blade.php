@@ -36,10 +36,9 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+
+                <li class="nav-item">
+                    <a href="{{route('admin.dashboard')}}" class="nav-link {{ request()->is('dashboard') ? 'active' :''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -48,7 +47,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('category.type.index') }}" class="nav-link">
+                    <a href="{{ route('category.type.index') }}" class="nav-link {{ request()->is('category-type/index') ? 'active' :''}}">
                         <i class="nav-icon fas fa-list text-warning"></i>
                         <p>
                             Category Type
@@ -57,7 +56,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('category.index') }}" class="nav-link">
+                    <a href="{{ route('category.index') }}" class="nav-link {{ request()->is('category/index') ? 'active' :''}}">
                         <i class="nav-icon fas fa-list text-green"></i>
                         <p>
                             Category
@@ -66,7 +65,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('category.head.index') }}" class="nav-link {{ request()->is('category-head/index') ? 'active' :''}}">
                         <i class="nav-icon fas fa-table text-blue"></i>
                         <p>
                             Category Head
