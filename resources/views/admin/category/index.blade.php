@@ -27,7 +27,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>S/L</th>
+                                    <th style="width: 80px">S/L</th>
                                     <th>Type</th>
                                     <th>Name</th>
                                 </tr>
@@ -36,7 +36,7 @@
 
                                 @foreach($categories as $category)
                                     <tr>
-                                        <td>{{$loop->iteration}}</td>
+                                        <td style="width: 80px">{{$loop->iteration}}</td>
                                         <td> {{$category->type}}</td>
                                         <td>{{$category->name}}</td>
                                     </tr>

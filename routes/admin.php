@@ -3,6 +3,10 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryHeadController;
 use App\Http\Controllers\CategoryTypeController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\UnionController;
+use App\Http\Controllers\UpazilaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -36,3 +40,24 @@ Route::post('category/store',[CategoryController::class, 'store'])->name('catego
 Route::get('category-head/index',[CategoryHeadController::class, 'index'])->name('category.head.index');
 Route::get('category-head/create',[CategoryHeadController::class, 'create'])->name('category.head.create');
 Route::post('category-head/store',[CategoryHeadController::class, 'store'])->name('category.head.store');
+
+// master data
+// division
+Route::get('division/index',[DivisionController::class, 'index'])->name('division.index');
+Route::get('division/create',[DivisionController::class, 'create'])->name('division.create');
+Route::post('division/store',[DivisionController::class, 'store'])->name('division.store');
+
+// district
+Route::get('district/index',[DistrictController::class, 'index'])->name('district.index');
+Route::get('district/create',[DistrictController::class, 'create'])->name('district.create');
+Route::post('district/store',[DistrictController::class, 'store'])->name('district.store');
+
+// upazila
+Route::get('upazila/index',[UpazilaController::class, 'index'])->name('upazila.index');
+Route::get('upazila/create',[UpazilaController::class, 'create'])->name('upazila.create');
+Route::post('upazila/store',[UpazilaController::class, 'store'])->name('upazila.store');
+
+// union
+Route::get('union/index',[UnionController::class, 'index'])->name('union.index');
+Route::get('union/create',[UnionController::class, 'create'])->name('union.create');
+Route::post('union/store',[UnionController::class, 'store'])->name('union.store');

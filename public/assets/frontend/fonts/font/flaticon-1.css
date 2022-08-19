@@ -1,0 +1,173 @@
+﻿@charset "UTF-8";
+@font-face {
+  font-family: "flaticon";
+  src: url("flaticon-1.ttf") format("truetype"), url("flaticon-1.woff") format("woff"), url("flaticon-1.woff2") format("woff2"), url("flaticon-1.eot") format("embedded-opentype"), url("flaticon-1.svg") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+  font-family: flaticon !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-people:before {
+  content: "";
+}
+
+.flaticon-login:before {
+  content: "";
+}
+
+.flaticon-log-out:before {
+  content: "";
+}
+
+.flaticon-open-book:before {
+  content: "";
+}
+
+.flaticon-polo-shirt:before {
+  content: "";
+}
+
+.flaticon-down-arrow:before {
+  content: "";
+}
+
+.flaticon-camera:before {
+  content: "";
+}
+
+.flaticon-bar-chart:before {
+  content: "";
+}
+
+.flaticon-ice-cream:before {
+  content: "";
+}
+
+.flaticon-pin:before {
+  content: "";
+}
+
+.flaticon-gift-card:before {
+  content: "";
+}
+
+.flaticon-star:before {
+  content: "";
+}
+
+.flaticon-send:before {
+  content: "";
+}
+
+.flaticon-book:before {
+  content: "";
+}
+
+.flaticon-paint-palette:before {
+  content: "";
+}
+
+.flaticon-team:before {
+  content: "";
+}
+
+.flaticon-quote:before {
+  content: "";
+}
+
+.flaticon-seen:before {
+  content: "";
+}
+
+.flaticon-alarm-clock:before {
+  content: "";
+}
+
+.flaticon-logout:before {
+  content: "";
+}
+
+.flaticon-left-arrow:before {
+  content: "";
+}
+
+.flaticon-quotation:before {
+  content: "";
+}
+
+.flaticon-tick:before {
+  content: "";
+}
+
+.flaticon-like:before {
+  content: "";
+}
+
+.flaticon-shopping-cart:before {
+  content: "";
+}
+
+.flaticon-crown:before {
+  content: "";
+}
+
+.flaticon-next:before {
+  content: "";
+}
+
+.flaticon-plus:before {
+  content: "";
+}
+
+.flaticon-paint-brushes:before {
+  content: "";
+}
+
+.flaticon-schedule:before {
+  content: "";
+}
+
+.flaticon-magnifying-glass:before {
+  content: "";
+}
+
+.flaticon-confetti:before {
+  content: "";
+}
+
+.flaticon-employee:before {
+  content: "";
+}
+
+.flaticon-creativity:before {
+  content: "";
+}
+
+.flaticon-phone:before {
+  content: "";
+}
+
+.flaticon-eye:before {
+  content: "";
+}
+
+.flaticon-grow-plant:before {
+  content: "";
+}
+
+.flaticon-internet:before {
+  content: "";
+}
+
+.flaticon-email:before {
+  content: "";
+}
+/*# sourceMappingURL=flaticon.css.map */
