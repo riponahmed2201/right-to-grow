@@ -47,35 +47,36 @@
                     </a>
                 </li>
 
-                <li class="nav-header">Master Data</li>
+                <li class="nav-header">Master Data Management</li>
                 <li class="nav-item">
                     <a href="{{ route('division.index') }}" class="nav-link {{ request()->is('division/index') ? 'active' :''}}">
-                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <i class="nav-icon fas fa-building text-blue"></i>
                         <p>Division</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('district.index') }}" class="nav-link {{ request()->is('district/index') ? 'active' :''}}">
-                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <i class="nav-icon fa fa-assistive-listening-systems text-green"></i>
                         <p>District</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('upazila.index') }}" class="nav-link {{ request()->is('upazila/index') ? 'active' :''}}">
-                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <i class="nav-icon fas fa-table text-red"></i>
                         <p>Upazila</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('union.index') }}" class="nav-link {{ request()->is('union/index') ? 'active' :''}}">
-                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <i class="nav-icon fas fa-list text-gray-dark"></i>
                         <p>Union</p>
                     </a>
                 </li>
 
+                <li class="nav-header">Category Management</li>
                 <li class="nav-item">
                     <a href="{{ route('category.type.index') }}"
                        class="nav-link {{ request()->is('category-type/index') ? 'active' :''}}">

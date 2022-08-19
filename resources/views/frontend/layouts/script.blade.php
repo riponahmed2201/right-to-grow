@@ -1,0 +1,19 @@
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/jquery-ui.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/slick.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/meanmenu.js')}}"></script>
+<script src="{{asset('assets/frontend/js/owl.carousel2.thumbs.js')}}"></script>
+<script src="{{asset('assets/frontend/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/magnific-popup.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/TweenMax.js')}}"></script>
+<script src="{{asset('assets/frontend/js/nice-select.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/form-validator.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/contact-form-script.js')}}"></script>
+<script src="{{asset('assets/frontend/js/ajaxchimp.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/appear.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/countdown.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/tilt.js')}}"></script>
+<script src="{{asset('assets/frontend/js/odometer.min.js')}}"></script>
+<script src="{{asset('assets/frontend/js/custom.js')}}"></script>

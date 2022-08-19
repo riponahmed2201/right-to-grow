@@ -33,6 +33,6 @@ class CategoryController extends Controller
         $categories->name = $request->name;
         $categories->save();
 
-        return back();
+        return back()->with('error', 'Category create successfully!');
     }
 }
