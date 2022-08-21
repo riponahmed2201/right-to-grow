@@ -27,11 +27,19 @@ class DistrictController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'division_name' => 'required',
+            'name' => 'required|unique:districts'
+        ]);
+
         $districts = new District();
         $districts->division_id = $request->division_name;
         $districts->name = $request->name;
-        $districts->save();
 
-        return back();
+        if ($districts->save()) {
+            return redirect()->route('district.index')->with('success', 'District create successfully!');
+        } else {
+            return back()->with('error', 'Something Error Found! Please try again.');
+        }
     }
 }

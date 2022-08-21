@@ -30,11 +30,19 @@ class UpazilaController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'district_name' => 'required',
+            'name' => 'required|unique:upazilas'
+        ]);
+
         $upazilas = new Upazila();
         $upazilas->district_id = $request->district_name;
         $upazilas->name = $request->name;
-        $upazilas->save();
 
-        return back();
+        if ($upazilas->save()) {
+            return redirect()->route('district.index')->with('success', 'Upazila create successfully!');
+        } else {
+            return back()->with('error', 'Something Error Found! Please try again.');
+        }
     }
 }

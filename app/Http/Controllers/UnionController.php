@@ -29,11 +29,19 @@ class UnionController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'upazila_name' => 'required',
+            'name' => 'required|unique:unions'
+        ]);
+
         $unions = new Union();
         $unions->upazila_id = $request->upazila_name;
         $unions->name = $request->name;
-        $unions->save();
 
-        return back();
+        if ($unions->save()) {
+            return redirect()->route('district.index')->with('success', 'Union create successfully!');
+        } else {
+            return back()->with('error', 'Something Error Found! Please try again.');
+        }
     }
 }

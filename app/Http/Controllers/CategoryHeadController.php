@@ -27,10 +27,19 @@ class CategoryHeadController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'category_name' => 'required',
+            'name' => 'required|unique:category_heads'
+        ]);
+
         $categoryHeads = new CategoryHead();
         $categoryHeads->category_id = $request->category_name;
         $categoryHeads->name = $request->name;
-        $categoryHeads->save();
-        return back();
+
+        if ($categoryHeads->save()) {
+            return redirect()->route('category.head.index')->with('success', 'Category head create successfully!');
+        } else {
+            return back()->with('error', 'Something Error Found! Please try again.');
+        }
     }
 }

@@ -22,10 +22,17 @@ class DivisionController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:divisions'
+        ]);
+
         $divisions = new Division();
         $divisions->name = $request->name;
-        $divisions->save();
 
-        return back();
+        if ($divisions->save()) {
+            return redirect()->route('district.index')->with('success', 'Division create successfully!');
+        } else {
+            return back()->with('error', 'Something Error Found! Please try again.');
+        }
     }
 }
