@@ -25,12 +25,18 @@
                                             <option value="{{$upazila->id}}">{{$upazila->name}}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('upazila_name'))
+                                        <strong class="text-danger">{{ $errors->first('upazila_name') }}</strong>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter union name">
+                                    @if ($errors->has('name'))
+                                        <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                                    @endif
                                 </div>
                             </div>
                         </div>

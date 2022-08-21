@@ -28,11 +28,19 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
 
+        $this->validate($request, [
+            'type' => 'required',
+            'name' => 'required|unique:categories'
+        ]);
+
         $categories = new Category();
         $categories->category_type_id = $request->type;
         $categories->name = $request->name;
-        $categories->save();
 
-        return back()->with('error', 'Category create successfully!');
+        if ($categories->save()) {
+            return redirect()->route('category.index')->with('success', 'Category create successfully!');
+        } else {
+            return back()->with('error', 'Something Error Found! Please try again.');
+        }
     }
 }

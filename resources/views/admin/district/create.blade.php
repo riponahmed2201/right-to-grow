@@ -25,12 +25,18 @@
                                             <option value="{{$disision->id}}">{{$disision->name}}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('division_name'))
+                                        <strong class="text-danger">{{ $errors->first('division_name') }}</strong>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter head name">
+                                    @if ($errors->has('name'))
+                                        <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                                    @endif
                                 </div>
                             </div>
                         </div>
