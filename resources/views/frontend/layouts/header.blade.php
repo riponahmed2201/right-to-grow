@@ -26,7 +26,7 @@
                             <a href="{{url('/')}}" class="nav-link active">Home</a>
                         </li>
                         <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Form-Kha</a></li>
+                        <li class="nav-item"><a href="{{route('show.form.kha')}}" class="nav-link">Form-Kha</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Form-Kha-Data</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
                     </ul>

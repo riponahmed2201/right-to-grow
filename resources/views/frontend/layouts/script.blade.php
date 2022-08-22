@@ -1,19 +1,46 @@
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script src="{{asset('assets/frontend/js/jquery.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/jquery-ui.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/slick.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/meanmenu.js')}}"></script>
-<script src="{{asset('assets/frontend/js/owl.carousel2.thumbs.js')}}"></script>
-<script src="{{asset('assets/frontend/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/magnific-popup.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/TweenMax.js')}}"></script>
-<script src="{{asset('assets/frontend/js/nice-select.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/form-validator.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/contact-form-script.js')}}"></script>
-<script src="{{asset('assets/frontend/js/ajaxchimp.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/appear.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/countdown.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/tilt.js')}}"></script>
-<script src="{{asset('assets/frontend/js/odometer.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/custom.js')}}"></script>
+<script>
+    $('#bn').addClass('btn-warning');
+    $('#bn').addClass('active');
+
+    $('#bn').click(function() {
+        $('.bn').show();
+        $('.en').hide();
+        $('#en').removeClass('btn-warning');
+        $('#en').removeClass('active');
+        $(this).addClass('btn-warning');
+        $(this).addClass('active');
+        $('#en').addClass('btn-default');
+    });
+    $('#en').click(function() {
+        $('.bn').hide();
+        $('.en').show();
+        $('#bn').removeClass('btn-warning');
+        $('#bn').removeClass('active');
+        $(this).addClass('btn-warning');
+        $(this).addClass('active');
+        $('#bn').addClass('btn-default');
+    });
+
+    $(document).ready(function() {
+        $('.customer-logos').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+</script>

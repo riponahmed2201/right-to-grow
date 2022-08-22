@@ -1,81 +1,110 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-
-   @include('frontend.layouts.stylesheet')
-
+    @include('frontend.layouts.stylesheet')
 </head>
+
 <body>
-{{--<div id="pre-loader">--}}
-{{--    <img class="preloader-img" src="/assets/frontend/images/preloader1.gif" alt="gif">--}}
-{{--</div>--}}
-
-<!-- Navigation area start -->
-
-    @include('frontend.layouts.header')
-
-<!-- Navigation area end -->
-
-<!-- Banner Area Start -->
-
-    @include('frontend.layouts.banner')
-
-<!-- Banner Area End -->
-
-<!-- Sponsors Area Start -->
-<div class="sponsors pt-5 pb-5 bg-f9f9f9">
-    <div class="container">
-{{--        <div class="default-section-title default-section-title-middle">--}}
-{{--            <span>Our Sponsors</span>--}}
-{{--            <h3>Event Sponsorship</h3>--}}
-{{--        </div>--}}
-        <div class="section-content">
-            <div class="sponsor-card-slider-area owl-carousel">
-                <div class="sponsor-card sponsor-card-3">
-                    <img src="{{asset('assets/frontend/images/brand/br1.png')}}" alt="image">
-                    <h4>Noso</h4>
+<div class="container contant">
+    <div class="row">
+        <div class="col-md-12">
+            <header>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <a href="#">
+                                    <img src="{{asset('assets/frontend/assets/images/right2grow.png')}}" class="img-responsive" width="200px" alt="right2grow.org">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#">
+                                    <img src="{{asset('assets/frontend/assets/images/kingdom-of-the-netherlands.svg')}}" class="img-responsive text-center" width="200px" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="{{url('/')}}">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{{route('show.form.kha')}}">Form - Kha</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{{route('show_form_kha_data')}}">Kha Data</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-                <div class="sponsor-card sponsor-card-3">
-                    <img src="{{asset('assets/frontend/images/brand/br2.png')}}" alt="image">
-                    <h4>Barxa</h4>
+{{--                <div class='row g-0'>--}}
+{{--                    <div class="btn-group w-auto ms-auto pt-20" role="group">--}}
+{{--                        <a href="javascript:void(0)" type="button" id="bn" class="btn">বাংলা</a>--}}
+{{--                        <a href="javascript:void(0)" type="button" id="en" class="btn btn-default">English</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+            </header>
+            <div class="main-containt">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <h2 class="page-title text-center mb-25">Right 2 Grow Project Consortium, Bangladesh</h2>
+                    </div>
                 </div>
-                <div class="sponsor-card sponsor-card-3">
-                    <img src="{{asset('assets/frontend/images/brand/br3.png')}}" alt="image">
-                    <h4>Bimu</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="ict_survey_div">
+                                <div class="col-md-4 offset-md-4 mt-3">
+                                    <div class="d-grid gap-2">
+                                        <a href="#" class="btn btn-primary">Form - Kha</a>
+                                        <a href="#" class="btn btn-primary">Form - Kha
+                                            Data</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="sponsor-card sponsor-card-3">
-                    <img src="{{asset('assets/frontend/images/brand/br4.png')}}" alt="image">
-                    <h4>Oxva</h4>
-                </div>
-                <div class="sponsor-card sponsor-card-3">
-                    <img src="{{asset('assets/frontend/images/brand/br5.png')}}" alt="image">
-                    <h4>Raxa</h4>
-                </div>
-                <div class="sponsor-card sponsor-card-3">
-                    <img src="{{asset('assets/frontend/images/brand/br6.png')}}" alt="image">
-                    <h4>Edot</h4>
-                </div>
+
+                <script type="text/javascript">
+                    jQuery("#lform").validate({
+                        rules: {
+                            surveyType: {
+                                required: true
+                            }
+                        },
+                        errorPlacement: function(error, element) {
+                            if (element.is(":radio")) {
+                                error.prependTo($(".emag"));
+                            } else {
+                                error.insertAfter(element);
+                            }
+                        }
+                    });
+                </script>
             </div>
+
+            @include('frontend.layouts.sponsor')
+
         </div>
     </div>
 </div>
-<!-- Sponsors Area End -->
 
-<!-- Footer Area Start -->
-    @include('frontend.layouts.footer')
-<!-- Footer Area End -->
+@include('frontend.layouts.footer')
 
-<!-- Copyright Area Start -->
-<div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-    </svg>
-</div>
-<!-- Copyright Area End -->
-
-<!-- Link of JS files -->
-
-    @include('frontend.layouts.script')
+@include('frontend.layouts.script')
 
 </body>
+
 </html>
