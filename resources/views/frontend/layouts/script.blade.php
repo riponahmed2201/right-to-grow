@@ -1,3 +1,12 @@
+<script type="text/javascript" src="{{asset('assets/frontend/assets/js/jquery-3.5.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/frontend/assets/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/frontend/assets/plugins/datepicker/bootstrap-datepicker.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/frontend/assets/plugins/validation/dist/jquery.validate.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/frontend/assets/plugins/validation/dist/additional-methods.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/frontend/assets/js/jquery.dataTables.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/frontend/ajax/libs/slick-carousel/1.6.0/slick.js')}}"></script>
+
+
 <script>
     $('#bn').addClass('btn-warning');
     $('#bn').addClass('active');

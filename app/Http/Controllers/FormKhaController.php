@@ -10,4 +10,9 @@ class FormKhaController extends Controller
    {
        return view('frontend.form_kha.show_kha_form');
    }
+
+   public function showKhaFormData()
+   {
+       return view('frontend.form_kha.show_kha_form_data');
+   }
 }

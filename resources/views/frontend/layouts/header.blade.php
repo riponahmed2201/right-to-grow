@@ -1,45 +1,20 @@
-<div class="navbar-area navbar-area-3">
-    <!-- Menu For Mobile Device -->
-    <div class="main-responsive-nav">
-        <div class="container-fluid container-large">
-            <div class="mobile-nav">
-                <a href="{{url('/')}}" class="logo"><img style="width: 109px; height: 30px" src="{{asset('assets/admin/logo/right2grow.png')}}" alt="logo"></a>
-                <ul class="menu-sidebar menu-small-device">
-                    <li>
-                        <button class="popup-button"><i class="flaticon-magnifying-glass"></i></button>
-                    </li>
-                    <li><a class="default-button" href="#"><span>Login</span></a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{url('/')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{route('show.form.kha')}}">Form - Kha</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{route('show_form_kha_data')}}">Kha Data</a>
+                </li>
+            </ul>
         </div>
     </div>
-    <!-- Menu For Desktop Device -->
-    <div class="main-nav">
-        <div class="container-fluid container-large">
-            <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="{{url('/')}}">
-                    <img style="width: 109px; height: 30px" src="{{asset('assets/admin/logo/right2grow.png')}}" alt="logo">
-                </a>
-                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item ">
-                            <a href="{{url('/')}}" class="nav-link active">Home</a>
-                        </li>
-                        <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
-                        <li class="nav-item"><a href="{{route('show.form.kha')}}" class="nav-link">Form-Kha</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Form-Kha-Data</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
-                    </ul>
-                    <div class="menu-sidebar">
-                        <ul>
-                            <li>
-                                <button class="popup-button"><i class="flaticon-magnifying-glass"></i></button>
-                            </li>
-                            <li><a class="default-button" href="#"><span>Login Now</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+</nav>

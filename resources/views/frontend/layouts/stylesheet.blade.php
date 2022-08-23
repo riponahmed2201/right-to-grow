@@ -1,28 +1,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="shortcut icon" href="{{asset('assets/frontend/assets/images/fav.png')}}">
-<title>Right 2 Grow project consortium, Bangladesh </title>
 <meta name="robots" content="no-cache">
 <meta name="description" content="Right 2 Grow Project Consortium, Bangladesh">
 <meta name="keywords" content="Right 2 Grow project consortium, Bangladesh ">
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="shortcut icon" href="{{asset('assets/frontend/assets/images/fav.png')}}">
 <link href="{{asset('assets/frontend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets/frontend/assets/css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets/frontend/assets/plugins/datepicker/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets/frontend/assets/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets/frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="{{asset('assets/frontend/assets/js/jquery-3.5.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/frontend/assets/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/frontend/assets/plugins/datepicker/bootstrap-datepicker.min.js')}}">
-</script>
-<script type="text/javascript" src="{{asset('assets/frontend/assets/plugins/validation/dist/jquery.validate.min.js')}}">
-</script>
-<script type="text/javascript" src="{{asset('assets/frontend/assets/plugins/validation/dist/additional-methods.js')}}">
-</script>
-<script type="text/javascript" src="{{asset('assets/frontend/assets/js/jquery.dataTables.min.js')}}"></script>
+<title>Right 2 Grow project consortium, Bangladesh </title>
 
-<script src="{{asset('assets/frontend/ajax/libs/slick-carousel/1.6.0/slick.js')}}"></script>
 <style>
     /* Slider */
 
@@ -138,3 +129,5 @@
     }
 
 </style>
+
+@yield('custom_css')

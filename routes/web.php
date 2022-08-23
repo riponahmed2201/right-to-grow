@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FormKhaController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('master');
-});
+
+// FRONTEND HOME ROUTES
+Route::get('/',[FrontendController::class,'index'])->name('front.home');
 
 
 // FORM KHA ROUTES
 Route::get('/form-kha',[FormKhaController::class,'showFormKha'])->name('show.form.kha');
-Route::get('/view-form-kha',[FormKhaController::class,'viewFormKhaData'])->name('show_form_kha_data');
+Route::get('/show-form-kha',[FormKhaController::class,'showKhaFormData'])->name('show_form_kha_data');
