@@ -39,7 +39,7 @@ class UnionController extends Controller
         $unions->name = $request->name;
 
         if ($unions->save()) {
-            return redirect()->route('district.index')->with('success', 'Union create successfully!');
+            return redirect()->route('union.index')->with('success', 'Union created successfully!');
         } else {
             return back()->with('error', 'Something Error Found! Please try again.');
         }

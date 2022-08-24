@@ -40,7 +40,7 @@ class UpazilaController extends Controller
         $upazilas->name = $request->name;
 
         if ($upazilas->save()) {
-            return redirect()->route('district.index')->with('success', 'Upazila create successfully!');
+            return redirect()->route('upazila.index')->with('success', 'Upazila created successfully!');
         } else {
             return back()->with('error', 'Something Error Found! Please try again.');
         }

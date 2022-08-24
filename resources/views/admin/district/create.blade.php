@@ -21,8 +21,8 @@
                                     <label>Select division Name</label>
                                     <select class="form-control select2" name="division_name" >
                                         <option selected="selected">----Please select----</option>
-                                        @foreach($disisions as $disision)
-                                            <option value="{{$disision->id}}">{{$disision->name}}</option>
+                                        @foreach($divisions as $division)
+                                            <option value="{{$division->id}}">{{$division->name}}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('division_name'))
@@ -33,7 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter head name">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter name">
                                     @if ($errors->has('name'))
                                         <strong class="text-danger">{{ $errors->first('name') }}</strong>
                                     @endif

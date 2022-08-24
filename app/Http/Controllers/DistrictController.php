@@ -37,7 +37,7 @@ class DistrictController extends Controller
         $districts->name = $request->name;
 
         if ($districts->save()) {
-            return redirect()->route('district.index')->with('success', 'District create successfully!');
+            return redirect()->route('district.index')->with('success', 'District created successfully!');
         } else {
             return back()->with('error', 'Something Error Found! Please try again.');
         }

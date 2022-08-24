@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,7 @@ class CategoryController extends Controller
     {
         $categories = DB::table('categories')
             ->join('category_types', 'categories.category_type_id', '=', 'category_types.id')
-            ->select('categories.name', 'category_types.name as type')
+            ->select('categories.name', 'categories.slug', 'category_types.name as type')
             ->get();
 
         return view('admin.category.index', compact('categories'));
@@ -27,7 +28,6 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'type' => 'required',
             'name' => 'required|unique:categories'
@@ -36,9 +36,10 @@ class CategoryController extends Controller
         $categories = new Category();
         $categories->category_type_id = $request->type;
         $categories->name = $request->name;
+        $categories->slug = Str::slug($request->name);
 
         if ($categories->save()) {
-            return redirect()->route('category.index')->with('success', 'Category create successfully!');
+            return redirect()->route('category.index')->with('success', 'Category created successfully!');
         } else {
             return back()->with('error', 'Something Error Found! Please try again.');
         }

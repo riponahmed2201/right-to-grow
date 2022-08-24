@@ -37,7 +37,9 @@
                     <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                <a href="#" class="dropdown-item dropdown-footer">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a href="{{route('logout')}}" class="dropdown-item dropdown-footer">Logout</a>
             </div>
         </li>
     </ul>

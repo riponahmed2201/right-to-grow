@@ -21,47 +21,6 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6 offset-3" style=" border: 1px solid black; padding: 20px">
-                        <div class="mb-3">
-                            <label class="form-label" style="font-weight: bold">Division:</label>
-                            <select name="division_code" id="division" class="form-select">
-                                <option value="">----Select Division----</option>
-                                <option value="10">Barisal</option>
-                                <option value="40">Khulna</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" style="font-weight: bold">District:</label>
-                            <select name="district_code" id="district" class="form-select">
-                                <option value="">----Select District----</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" style="font-weight: bold">Upazila:</label>
-                            <select name="upazila_code" id="upazila" class="form-select">
-                                <option value="">----Select Upazila----</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" style="font-weight: bold">Union:</label>
-                            <select name="union_code" id="union" class="form-select">
-                                <option value="">----Select Union----</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" style="font-weight: bold">Financial Year:</label>
-                            <select name="financial_year_id" id="financial_year_id" class="form-select">
-                                <option value="">----Select Financial Year----</option>
-                                <option value="1">2020-2021</option>
-                                <option value="2">2021-2022</option>
-                                <option value="2">2022-2023</option>
-                                <option value="2">2023-2023</option>
-                                <option value="2">2022-2023</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
 
                 <style>
                     table, thead, tbody, th, td {
@@ -234,34 +193,6 @@
                     </table>
                 </div>
 
-                <br> <br>
-                <div class="row">
-                    <div class="col-md-6 offset-md-3">
-                        <div class="mb-3">
-                            <label for="submited_by" class="form-label">Name of the person filled-up this form:</label>
-                            <input type="text" name="submited_by" class="form-control" id="submited_by"
-                                   placeholder="Name of the person filled-up this form">
-                        </div>
-                        <div class="mb-3">
-                            <label for="designation" class="form-label">Designation:</label>
-                            <input type="text" name="designation" class="form-control" id="designation"
-                                   placeholder="Designation">
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Mobile Number:</label>
-                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Mobile Number">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-mail address:</label>
-                            <input type="text" name="email" class="form-control" id="email"
-                                   placeholder="E-mail-address">
-                        </div>
-                        <div class="mb-3">
-                            <label for="img" class="form-label">Photo Upload</label>
-                            <input type="file" name="img" id="img" class="form-control" value="">
-                        </div>
-                    </div>
-                </div>
                 <div class="text-center">
                     <button type="submit" id="submit" class="btn btn-primary">Save as draft</button>
                 </div>

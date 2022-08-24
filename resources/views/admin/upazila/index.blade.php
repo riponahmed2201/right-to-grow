@@ -22,6 +22,10 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!-- show message -->
+                        @include('message')
+
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">
@@ -40,7 +44,7 @@
                                         <td style="width: 80px">{{$loop->iteration}}</td>
                                         <td> {{$upazila->division_name}}</td>
                                         <td> {{$upazila->district_name}}</td>
-                                        <td>{{$upazila->name}}</td>
+                                        <td>{{$upazila->upazila_name}}</td>
                                     </tr>
                                 @endforeach
 

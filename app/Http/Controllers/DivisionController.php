@@ -30,7 +30,7 @@ class DivisionController extends Controller
         $divisions->name = $request->name;
 
         if ($divisions->save()) {
-            return redirect()->route('district.index')->with('success', 'Division create successfully!');
+            return redirect()->route('division.index')->with('success', 'Division created successfully!');
         } else {
             return back()->with('error', 'Something Error Found! Please try again.');
         }

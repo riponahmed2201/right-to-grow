@@ -31,9 +31,10 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th style="width: 80px">S/L</th>
+                                    <th>S/L</th>
                                     <th>Type</th>
                                     <th>Name</th>
+                                    <th>Slug</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +44,7 @@
                                         <td style="width: 80px">{{$loop->iteration}}</td>
                                         <td> {{$category->type}}</td>
                                         <td>{{$category->name}}</td>
+                                        <td>{{$category->slug}}</td>
                                     </tr>
                                 @endforeach
 
@@ -87,10 +89,10 @@
             $('#example2').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
                 "info": true,
-                "autoWidth": false,
+                "autoWidth": true,
                 "responsive": true,
             });
         });

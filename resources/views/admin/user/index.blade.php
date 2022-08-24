@@ -4,7 +4,8 @@
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet"
+          href="{{asset('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 @endsection
 
@@ -15,10 +16,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Category head list</h3>
+                            <h3 class="card-title">User list</h3>
                             <div class="card-tools">
-                                <a href="{{route('category.head.create')}}" class="btn btn-primary">
-                                    Category head create
+                                <a href="{{route('user.create')}}" class="btn btn-primary">
+                                    User create
                                 </a>
                             </div>
                         </div>
@@ -31,22 +32,49 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th style="width: 80px">S/L</th>
-                                    <th>Category name</th>
-                                    <th>Slug</th>
-                                    <th>Head Name</th>
+                                    <th>S/L</th>
+                                    <th>Photo</th>
+                                    <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Contact Info</th> <!-- phone and email --->
+                                    <th>Division name</th>
+                                    <th>District name</th>
+                                    <th>Upazila Name</th>
+                                    <th>Union Name</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                @foreach($category_heads as $head)
+                                @foreach($users as $user)
                                     <tr>
-                                        <td style="width: 80px">{{$loop->iteration}}</td>
-                                        <td> {{$head->category_name}}</td>
-                                        <td> {{$head->slug}}</td>
-                                        <td>{{$head->name}}</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>
+                                            <img style="width: 60px; height: 60px"
+                                                 src="{{ asset('assets/admin/dist/img/avatar5.png') }}"
+                                                 class="img-circle elevation-2"
+                                                 alt="User Image">
+                                        </td>
+                                        <td>{{$user->user_name}}</td>
+                                        <td>{{$user->designation}}</td>
+                                        <td>
+                                            <strong>Email:</strong> {{$user->email}} <br>
+                                            <strong>Phone:</strong> {{$user->phone}} <br>
+                                        </td>
+                                        <td> {{$user->division_name}}</td>
+                                        <td> {{$user->district_name}}</td>
+                                        <td> {{$user->upazila_name}}</td>
+                                        <td> {{$user->union_name}}</td>
+                                        <td> <span class="badge badge-success">Active</span> </td>
                                     </tr>
                                 @endforeach
+                                {{--                                @foreach($users as $user)--}}
+                                {{--                                    <tr>--}}
+                                {{--                                        <td style="width: 80px">{{$loop->iteration}}</td>--}}
+                                {{--                                        <td> {{$user->division_name}}</td>--}}
+                                {{--                                        <td> {{$user->district_name}}</td>--}}
+                                {{--                                        <td>{{$user->name}}</td>--}}
+                                {{--                                    </tr>--}}
+                                {{--                                @endforeach--}}
 
                                 </tbody>
                             </table>
@@ -88,7 +116,7 @@
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": true,
                 "ordering": true,
                 "info": true,

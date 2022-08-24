@@ -22,7 +22,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th style="width: 80px">S/L</th>
+                                    <th style="width: 50px">S/L</th>
                                     <th>Name</th>
                                 </tr>
                                 </thead>
@@ -76,10 +76,10 @@
             $('#example2').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
                 "info": true,
-                "autoWidth": false,
+                "autoWidth": true,
                 "responsive": true,
             });
         });
