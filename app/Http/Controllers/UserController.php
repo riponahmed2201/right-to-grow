@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -22,7 +21,6 @@ class UserController extends Controller
 
     public function index()
     {
-//        $users = DB::table('users')->get();
         $users = DB::select('SELECT a.name AS user_name, a.email, a.designation, a.phone, a.photo,
                                     b.name AS division_name, c.name AS district_name, d.name AS upazila_name, e.name AS union_name FROM users AS a
                                     LEFT JOIN divisions AS b ON a.division_id = b.id
@@ -59,11 +57,47 @@ class UserController extends Controller
         $users->photo = $request->name;
         $users->role = 'user';
         $users->role_id = 1;
-//dd($users);
+
         if ($users->save()) {
             return redirect()->route('user.index')->with('success', 'User created successfully!');
         } else {
             return back()->with('error', 'Something Error Found! Please try again.');
+        }
+    }
+
+    public function userDistrictSelectData(Request $request)
+    {
+        $districtLists = DB::table('districts')->where('division_id', $request->division_id)->select('id', 'name')->get();
+
+        if (sizeof($districtLists) > 0){
+            return response()->json($districtLists);
+        }
+        else{
+            return response()->json('empty');
+        }
+    }
+
+    public function userUpazilaSelectData(Request $request)
+    {
+        $upazilaLists = DB::table('upazilas')->where('district_id', $request->district_id)->select('id', 'name')->get();
+
+        if (sizeof($upazilaLists) > 0){
+            return response()->json($upazilaLists);
+        }
+        else{
+            return response()->json('empty');
+        }
+    }
+
+    public function userUnionSelectData(Request $request)
+    {
+        $unionLists = DB::table('unions')->where('upazila_id', $request->upazila_id)->select('id', 'name')->get();
+
+        if (sizeof($unionLists) > 0){
+            return response()->json($unionLists);
+        }
+        else{
+            return response()->json('empty');
         }
     }
 }

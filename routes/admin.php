@@ -71,4 +71,9 @@ Route::middleware('admin')->group(function () {
     Route::get('user/index', [UserController::class, 'index'])->name('user.index');
     Route::get('user/create', [UserController::class, 'create'])->name('user.create');
     Route::post('user/store', [UserController::class, 'store'])->name('user.store');
+
+    // when created the user then call to the js onchange function and return selected data
+    Route::get('user_district_select_data', [UserController::class, 'userDistrictSelectData'])->name('user_district_select_data');
+    Route::get('user_upazila_select_data', [UserController::class, 'userUpazilaSelectData'])->name('user_upazila_select_data');
+    Route::get('user_union_select_data', [UserController::class, 'userUnionSelectData'])->name('user_union_select_data');
 });
