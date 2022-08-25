@@ -19,7 +19,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Select Category Name</label>
-                                    <select class="form-control select2" name="category_name" >
+                                    <select class="form-control select2bs4" name="category_name" >
                                         <option selected="selected">----Please select----</option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -48,4 +48,13 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('custom_js')
+    <script>
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    </script>
 @endsection

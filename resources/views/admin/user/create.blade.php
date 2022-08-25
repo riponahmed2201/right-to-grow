@@ -55,7 +55,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Division Name</label>
-                                    <select class="form-control select2" name="division_name" >
+                                    <select class="form-control select2bs4" name="division_name" >
                                         <option selected="selected">----Please select----</option>
                                         @foreach($districts as $district)
                                             <option value="{{$district->id}}">{{$district->name}}</option>
@@ -69,7 +69,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>District Name</label>
-                                    <select class="form-control select2" name="district_name" >
+                                    <select class="form-control select2bs4" name="district_name" >
                                         <option selected="selected">----Please select----</option>
                                         @foreach($districts as $district)
                                             <option value="{{$district->id}}">{{$district->name}}</option>
@@ -83,7 +83,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Upazila Name</label>
-                                    <select class="form-control select2" name="upazila_name" >
+                                    <select class="form-control select2bs4" name="upazila_name" >
                                         <option selected="selected">----Please select----</option>
                                         @foreach($districts as $district)
                                             <option value="{{$district->id}}">{{$district->name}}</option>
@@ -98,7 +98,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Union Name</label>
-                                    <select class="form-control select2" name="union_name" >
+                                    <select class="form-control select2bs4" name="union_name" >
                                         <option selected="selected">----Please select----</option>
                                         @foreach($districts as $district)
                                             <option value="{{$district->id}}">{{$district->name}}</option>
@@ -137,4 +137,13 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('custom_js')
+    <script>
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    </script>
 @endsection

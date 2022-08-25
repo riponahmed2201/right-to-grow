@@ -32,4 +32,25 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/admin/dist/js/pages/dashboard.js') }}"></script>
 
+<!-- Select2 -->
+<script src="{{asset('assets/admin/plugins/select2/js/select2.full.min.js')}}"></script>
+
 @yield('custom_js')
+
+<script>
+
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+        $("#success-alert").slideUp(500);
+    });
+
+    // error alert dismiss
+    $("#error-alert").fadeTo(2000, 500).slideUp(500, function() {
+        $("#success-alert").slideUp(500);
+    });
+
+    // danger alert dismiss
+    $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+        $("#success-alert").slideUp(500);
+    });
+
+</script>

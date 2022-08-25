@@ -36,7 +36,7 @@ class AuthController extends Controller
             return redirect('dashboard');
 
         } else {
-            return redirect('login')->back()->with('error', 'Email or password does not match.');
+            return back()->with('error', 'Email or password does not match.');
         }
     }
 
