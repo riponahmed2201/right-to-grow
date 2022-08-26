@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryTitleController;
 use App\Http\Controllers\ChildCategoryController;
+use App\Http\Controllers\FinancialYearController;
+use App\Http\Controllers\FormKhaController;
 use App\Http\Controllers\ParentCategoryController;
 use App\Http\Controllers\CategoryTypeController;
 use App\Http\Controllers\DistrictController;
@@ -33,6 +35,15 @@ Route::middleware('admin')->group(function () {
 
     // Dashboard Routes
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Financial Routes
+    Route::group(['prefix' => 'financial-year'], function () {
+        Route::get('/index', [FinancialYearController::class, 'index'])->name('financialYear.index');
+        Route::get('/create', [FinancialYearController::class, 'create'])->name('financialYear.create');
+        Route::get('/edit/{financial_year_id}', [FinancialYearController::class, 'create'])->name('financialYear.edit');
+        Route::post('/store', [FinancialYearController::class, 'store'])->name('financialYear.store');
+        Route::put('/update/{financial_year_id}', [FinancialYearController::class, 'update'])->name('financialYear.update');
+    });
 
     // Category Type Routes
     Route::group(['prefix' => 'category-type'], function () {
@@ -101,4 +112,10 @@ Route::middleware('admin')->group(function () {
     Route::get('user_district_select_data', [UserController::class, 'userDistrictSelectData'])->name('user_district_select_data');
     Route::get('user_upazila_select_data', [UserController::class, 'userUpazilaSelectData'])->name('user_upazila_select_data');
     Route::get('user_union_select_data', [UserController::class, 'userUnionSelectData'])->name('user_union_select_data');
+
+});
+
+// From Kha Data Store Routes
+Route::group(['prefix' => 'form-kha'], function () {
+    Route::post('/part-one-revenue-income-account/store', [FormKhaController::class, 'partOneRevenueIncomeAccountStore'])->name('partOneRevenueIncomeAccount.store');
 });

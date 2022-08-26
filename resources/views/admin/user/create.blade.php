@@ -7,8 +7,9 @@
                 <div class="card-header">
                     <h3 class="card-title">User create</h3>
                     <div class="card-tools">
-                        <a href="{{route('user.index')}}" class="btn btn-primary">
-                            User list
+                        <a href="{{route('user.index')}}" class="btn btn-success">
+                            <i class="fas fa-list-alt"></i>
+                            View List
                         </a>
                     </div>
                 </div>
@@ -22,7 +23,7 @@
                                     <input type="text" name="name" class="form-control" placeholder="Enter name"
                                            value="{{old('name')}}">
                                     @if ($errors->has('name'))
-                                        <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('name') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -32,7 +33,7 @@
                                     <input type="email" name="email" class="form-control" placeholder="Enter email"
                                            value="{{old('email')}}">
                                     @if ($errors->has('email'))
-                                        <strong class="text-danger">{{ $errors->first('email') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('email') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -42,7 +43,7 @@
                                     <input type="text" name="phone" class="form-control" placeholder="Enter phone"
                                            value="{{old('phone')}}">
                                     @if ($errors->has('phone'))
-                                        <strong class="text-danger">{{ $errors->first('phone') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('phone') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -52,7 +53,7 @@
                                     <input type="text" name="designation" class="form-control"
                                            placeholder="Enter designation" value="{{old('designation')}}">
                                     @if ($errors->has('designation'))
-                                        <strong class="text-danger">{{ $errors->first('designation') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('designation') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -67,7 +68,7 @@
                                         @endforeach
                                     </select>
                                     @if ($errors->has('division_name'))
-                                        <strong class="text-danger">{{ $errors->first('division_name') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('division_name') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -78,7 +79,7 @@
 
                                     </select>
                                     @if ($errors->has('district_name'))
-                                        <strong class="text-danger">{{ $errors->first('district_name') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('district_name') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -89,7 +90,7 @@
 
                                     </select>
                                     @if ($errors->has('upazila_name'))
-                                        <strong class="text-danger">{{ $errors->first('upazila_name') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('upazila_name') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -101,7 +102,7 @@
 
                                     </select>
                                     @if ($errors->has('union_name'))
-                                        <strong class="text-danger">{{ $errors->first('union_name') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('union_name') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -111,7 +112,7 @@
                                     <input type="text" name="password" class="form-control"
                                            placeholder="Enter password">
                                     @if ($errors->has('password'))
-                                        <strong class="text-danger">{{ $errors->first('password') }}</strong>
+                                        <p class="text-danger mt-1">{{ $errors->first('password') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -128,16 +129,16 @@
                                     </div>
                                 </div>
                                 @if ($errors->has('photo'))
-                                    <strong class="text-danger">{{ $errors->first('photo') }}</strong>
+                                    <p class="text-danger mt-1">{{ $errors->first('photo') }}</p>
                                 @endif
                             </div>
                             <div class="col-md-2">
-                                <img id="image_preview" src="" style="width: 100px; height: 100px; border-radius: 50%; display:block;" class="text-right">
+                                <img id="image_preview" src="" style="width: 100px; height: 100px; border-radius: 50%; display:none;" class="text-right">
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
             </div>

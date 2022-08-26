@@ -18,8 +18,9 @@
                         <div class="card-header">
                             <h3 class="card-title">User list</h3>
                             <div class="card-tools">
-                                <a href="{{route('user.create')}}" class="btn btn-primary">
-                                    User create
+                                <a href="{{route('user.create')}}" class="btn btn-success">
+                                    <i class="fas fa-plus-circle"></i>
+                                    create
                                 </a>
                             </div>
                         </div>
@@ -65,7 +66,8 @@
                                         <td> {{$user->upazila_name}}</td>
                                         <td> {{$user->union_name}}</td>
                                         <td class="text-center">
-                                            <a href="#" title="Edit Category Title" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="#" title="Edit Category Title"
+                                               class="btn btn-sm btn-warning">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach

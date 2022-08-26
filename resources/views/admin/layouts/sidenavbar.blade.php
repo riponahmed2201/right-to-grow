@@ -79,6 +79,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('financialYear.index') }}"
+                       class="nav-link {{ request()->is('financialYear/*') ? 'active' :''}}">
+                        <i class="nav-icon fas fa-list text-green"></i>
+                        <p>Financial Year List</p>
+                    </a>
+                </li>
+
                 <li class="nav-header" style="font-size: 15px; color: black">Category Management</li>
                 <li class="nav-item">
                     <a href="{{ route('categoryType.index') }}"
