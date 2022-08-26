@@ -35,6 +35,7 @@
                                     <th>Division name</th>
                                     <th>District name</th>
                                     <th>Upazila Name</th>
+                                    <th style="width: 50px" class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +46,9 @@
                                         <td> {{$upazila->division_name}}</td>
                                         <td> {{$upazila->district_name}}</td>
                                         <td>{{$upazila->upazila_name}}</td>
+                                        <td class="text-center">
+                                            <a href="#" title="Edit Category Title" class="btn btn-sm btn-warning">Edit</a>
+                                        </td>
                                     </tr>
                                 @endforeach
 

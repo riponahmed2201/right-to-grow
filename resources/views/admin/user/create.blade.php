@@ -12,7 +12,7 @@
                         </a>
                     </div>
                 </div>
-                <form action="{{route('user.store')}}" method="post">
+                <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -115,16 +115,25 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Photo</label>
-                                    <input type="file" name="photo" class="form-control-file">
-                                    @if ($errors->has('photo'))
-                                        <strong class="text-danger">{{ $errors->first('photo') }}</strong>
-                                    @endif
-                                </div>
-                            </div>
 
+                            <div class="col-md-4">
+                                <label>Photo</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" id="photo" name="photo" class="custom-file-input">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>
+                                @if ($errors->has('photo'))
+                                    <strong class="text-danger">{{ $errors->first('photo') }}</strong>
+                                @endif
+                            </div>
+                            <div class="col-md-2">
+                                <img id="image_preview" src="" style="width: 100px; height: 100px; border-radius: 50%; display:block;" class="text-right">
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -257,7 +266,7 @@
             }
         }
 
-        $("#image").change(function () {
+        $("#photo").change(function () {
             readURL(this);
         });
 

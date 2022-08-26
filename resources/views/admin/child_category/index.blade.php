@@ -4,8 +4,9 @@
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+    <link rel="stylesheet"
+          href="{{asset('assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+
 @endsection
 
 @section('main-content')
@@ -15,10 +16,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Category List</h3>
+                            <h3 class="card-title">Child Category List</h3>
                             <div class="card-tools">
-                                <a href="{{route('category.create')}}" class="btn btn-primary">
-                                    Category Create
+                                <a href="{{route('childCategory.create')}}" class="btn btn-success">
+                                    <i class="fas fa-plus-circle"></i>
+                                    Create
                                 </a>
                             </div>
                         </div>
@@ -28,23 +30,27 @@
 
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table id="childCategoryTableId" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>S/L</th>
-                                    <th>Type</th>
-                                    <th>Name</th>
+                                    <th>Parent Category</th>
+                                    <th>Child Category</th>
                                     <th>Slug</th>
+                                    <th style="width: 50px" class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($categories as $category)
+                                @foreach($childCategoryList as $childCategory)
                                     <tr>
                                         <td style="width: 80px">{{$loop->iteration}}</td>
-                                        <td> {{$category->type}}</td>
-                                        <td>{{$category->name}}</td>
-                                        <td>{{$category->slug}}</td>
+                                        <td> {{$childCategory->parent_category_name}}</td>
+                                        <td> {{$childCategory->child_category_name}}</td>
+                                        <td>{{$childCategory->slug}}</td>
+                                        <td class="text-center">
+                                            <a href="{{ route('childCategory.edit',$childCategory->child_category_id)}}" title="Edit Child Category" class="btn btn-sm btn-warning">Edit</a>
+                                        </td>
                                     </tr>
                                 @endforeach
 
@@ -70,25 +76,14 @@
     <script src="{{asset('assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/jszip/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/pdfmake/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/pdfmake/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 
     <!-- Page specific script -->
     <script>
         $(function () {
-            $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
+
+            $('#childCategoryTableId').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": true,
                 "ordering": true,
                 "info": true,

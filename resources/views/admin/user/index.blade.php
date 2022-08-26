@@ -41,7 +41,7 @@
                                     <th>District name</th>
                                     <th>Upazila Name</th>
                                     <th>Union Name</th>
-                                    <th>Action</th>
+                                    <th style="width: 50px" class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,7 +50,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>
                                             <img style="width: 60px; height: 60px"
-                                                 src="{{ asset('assets/admin/dist/img/avatar5.png') }}"
+                                                 src="{{ $user->photo ? asset('uploads/userPhoto/'.$user->photo)  : asset('assets/admin/dist/img/avatar5.png') }}"
                                                  class="img-circle elevation-2"
                                                  alt="User Image">
                                         </td>
@@ -64,17 +64,12 @@
                                         <td> {{$user->district_name}}</td>
                                         <td> {{$user->upazila_name}}</td>
                                         <td> {{$user->union_name}}</td>
-                                        <td> <span class="badge badge-success">Active</span> </td>
+                                        <td class="text-center">
+                                            <a href="#" title="Edit Category Title" class="btn btn-sm btn-warning">Edit</a>
+                                        </td>
                                     </tr>
                                 @endforeach
-                                {{--                                @foreach($users as $user)--}}
-                                {{--                                    <tr>--}}
-                                {{--                                        <td style="width: 80px">{{$loop->iteration}}</td>--}}
-                                {{--                                        <td> {{$user->division_name}}</td>--}}
-                                {{--                                        <td> {{$user->district_name}}</td>--}}
-                                {{--                                        <td>{{$user->name}}</td>--}}
-                                {{--                                    </tr>--}}
-                                {{--                                @endforeach--}}
+
 
                                 </tbody>
                             </table>

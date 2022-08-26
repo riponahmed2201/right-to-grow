@@ -34,6 +34,7 @@
                                     <th style="width: 80px">S/L</th>
                                     <th>Division name</th>
                                     <th>District Name</th>
+                                    <th style="width: 50px" class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +44,9 @@
                                         <td style="width: 80px">{{$loop->iteration}}</td>
                                         <td> {{$district->division_name}}</td>
                                         <td>{{$district->name}}</td>
+                                        <td class="text-center">
+                                            <a href="#" title="Edit Category Title" class="btn btn-sm btn-warning">Edit</a>
+                                        </td>
                                     </tr>
                                 @endforeach
 

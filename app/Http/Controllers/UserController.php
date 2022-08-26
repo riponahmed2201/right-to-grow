@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -44,6 +45,15 @@ class UserController extends Controller
             'union_name' => 'required',
         ]);
 
+        $photo = $request->file('photo');
+        $userPhoto = null;
+
+        if ($photo) {
+            $imgName = md5(Str::random(30) . time() . '_' . $request->file('photo')) . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move('uploads/userPhoto/', $imgName);
+            $userPhoto = $imgName;
+        }
+
         $users = new User();
         $users->name = $request->name;
         $users->email = $request->email;
@@ -54,7 +64,7 @@ class UserController extends Controller
         $users->district_id = $request->district_name;
         $users->upazila_id = $request->upazila_name;
         $users->union_id = $request->union_name;
-        $users->photo = $request->name;
+        $users->photo = $userPhoto;
         $users->role = 'user';
         $users->role_id = 1;
 

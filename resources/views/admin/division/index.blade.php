@@ -33,6 +33,7 @@
                                 <tr>
                                     <th style="width: 80px">S/L</th>
                                     <th>Name</th>
+                                    <th style="width: 50px" class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -41,6 +42,9 @@
                                     <tr>
                                         <td style="width: 80px">{{$loop->iteration}}</td>
                                         <td>{{$division->name}}</td>
+                                        <td class="text-center">
+                                            <a href="#" title="Edit Category Title" class="btn btn-sm btn-warning">Edit</a>
+                                        </td>
                                     </tr>
                                 @endforeach
 

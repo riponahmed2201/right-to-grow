@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CategoryHeadController;
+use App\Http\Controllers\CategoryTitleController;
+use App\Http\Controllers\ChildCategoryController;
+use App\Http\Controllers\ParentCategoryController;
 use App\Http\Controllers\CategoryTypeController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DivisionController;
@@ -33,18 +34,42 @@ Route::middleware('admin')->group(function () {
     // Dashboard Routes
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    // category type
-    Route::get('category-type/index', [CategoryTypeController::class, 'index'])->name('category.type.index');
+    // Category Type Routes
+    Route::group(['prefix' => 'category-type'], function () {
+        Route::get('/index', [CategoryTypeController::class, 'index'])->name('categoryType.index');
+        Route::get('/create', [CategoryTypeController::class, 'create'])->name('categoryType.create');
+        Route::post('/store', [CategoryTypeController::class, 'store'])->name('categoryType.store');
+    });
 
-    // category
-    Route::get('category/index', [CategoryController::class, 'index'])->name('category.index');
-    Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
-    Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
+    // Category Title Routes
+    Route::group(['prefix' => 'category-title'], function () {
+        Route::get('/index', [CategoryTitleController::class, 'index'])->name('categoryTitle.index');
+        Route::get('/create', [CategoryTitleController::class, 'create'])->name('categoryTitle.create');
+        Route::post('/store', [CategoryTitleController::class, 'store'])->name('categoryTitle.store');
+    });
 
-    // category head
-    Route::get('category-head/index', [CategoryHeadController::class, 'index'])->name('category.head.index');
-    Route::get('category-head/create', [CategoryHeadController::class, 'create'])->name('category.head.create');
-    Route::post('category-head/store', [CategoryHeadController::class, 'store'])->name('category.head.store');
+    // Parent Category Routes
+    Route::group(['prefix' => 'parent-category'], function () {
+        Route::get('/index', [ParentCategoryController::class, 'index'])->name('parentCategory.index');
+        Route::get('/create', [ParentCategoryController::class, 'create'])->name('parentCategory.create');
+        Route::post('/store', [ParentCategoryController::class, 'store'])->name('parentCategory.store');
+    });
+
+    // Child Category Routes
+    Route::group(['prefix' => 'child-category'], function () {
+        Route::get('/index', [ChildCategoryController::class, 'index'])->name('childCategory.index');
+        Route::get('/create', [ChildCategoryController::class, 'create'])->name('childCategory.create');
+        Route::post('/store', [ChildCategoryController::class, 'store'])->name('childCategory.store');
+        Route::get('/edit/{child_category_id}', [ChildCategoryController::class, 'edit'])->name('childCategory.edit');
+        Route::put('/update/{child_category_id}', [ChildCategoryController::class, 'update'])->name('childCategory.update');
+    });
+
+    // Child Category Routes
+    Route::group(['prefix' => 'category_title-subhead'], function () {
+        Route::get('/index', [ParentCategoryController::class, 'index'])->name('category_title.subhead.index');
+        Route::get('/create', [ParentCategoryController::class, 'create'])->name('category_title.subhead.create');
+        Route::post('/store', [ParentCategoryController::class, 'store'])->name('category_title.subhead.store');
+    });
 
     // master data
     // division
