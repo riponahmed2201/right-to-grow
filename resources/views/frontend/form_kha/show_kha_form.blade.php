@@ -45,25 +45,46 @@
                             <tr>
                                 <th colspan="4" style="background-color: #e7e6e6">revenue income</th>
                             </tr>
-                            <tr>
-                                <th colspan="4" style="background-color: #e7e6e6">Own Source</th>
-                            </tr>
                             </thead>
 
-                            <tbody>
-                            <tr>
-                                <td> Balance (in hand(tk 500)</td>
-                                <td>
-                                    <input type="number" name="previous_budget[]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="number" name="current_budget[]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="number" name="next_budget[]" class="form-control">
-                                </td>
-                            </tr>
+                            <!--Start Part One Revenue Income Account Category Title and Parent Category -->
+                            @foreach($partOneRevenueIncomeAccountCategoryTitleList as $partOneRevenueIncomeAccountCategoryTitle)
+                                <thead>
+                                <tr>
+                                    <th colspan="4"
+                                        style="background-color: #e7e6e6">{{ $partOneRevenueIncomeAccountCategoryTitle->category_title }}</th>
+                                    <input type="hidden" value="{{ $partOneRevenueIncomeAccountCategoryTitle->id }}"
+                                           name="part_one_revenue_income_account_category_title_id[]">
+                                    <input type="hidden"
+                                           value="{{ $partOneRevenueIncomeAccountCategoryTitle->category_type_id }}"
+                                           name="part_one_revenue_income_account_category_type_id[]">
+                                </tr>
+                                </thead>
 
+                                @php
+                                    $partOneRevenueIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::table('parent_categories')->where('category_title_id', '=', $partOneRevenueIncomeAccountCategoryTitle->id)->get();
+                                @endphp
+
+                                @foreach($partOneRevenueIncomeAccountParentCategoryList as $partOneRevenueIncomeAccountParentCategory)
+                                    <tbody>
+                                    <tr>
+                                        <td> {{ $partOneRevenueIncomeAccountParentCategory->parent_category_name }} </td>
+                                        <td>
+                                            <input type="number" name="previous_budget[]" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="current_budget[]" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="next_budget[]" class="form-control">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                @endforeach
+                            @endforeach
+                            <!--End Part One Revenue Income Account Category Title and Parent Category -->
+
+                            <tbody>
                             <tr>
                                 <td><strong>Total revenue income</strong></td>
                                 <td class="text-center"> 353534</td>
@@ -91,25 +112,46 @@
                                 <th class="text-center">Current year budget or amended budget (2021-22)</th>
                                 <th class="text-center">Next year budget budget (2023-23)</th>
                             </tr>
-                            <tr>
-                                <th colspan="4" style="background-color: #e7e6e6">1. General establishment/Institutional
-                                </th>
-                            </tr>
                             </thead>
 
+                            <!--Start Part One Expenditure Income Account Category Title and Parent Category -->
+                            @foreach($partOneRevenueExpenditureAccountCategoryTitleList as $partOneRevenueExpenditureAccountCategoryTitle)
+                                <thead>
+                                <tr>
+                                    <th colspan="4"
+                                        style="background-color: #e7e6e6">{{ $partOneRevenueExpenditureAccountCategoryTitle->category_title }}</th>
+                                    <input type="hidden"
+                                           value="{{ $partOneRevenueExpenditureAccountCategoryTitle->id }}"
+                                           name="part_one_revenue_expenditure_account_category_title_id[]">
+                                    <input type="hidden"
+                                           value="{{ $partOneRevenueExpenditureAccountCategoryTitle->category_type_id }}"
+                                           name="part_one_revenue_expenditure_account_category_type_id[]">
+                                </tr>
+                                </thead>
+
+                                @php
+                                    $partOneExpenditureIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::table('parent_categories')->where('category_title_id', '=', $partOneRevenueExpenditureAccountCategoryTitle->id)->get();
+                                @endphp
+
+                                @foreach($partOneExpenditureIncomeAccountParentCategoryList as $partOneExpenditureIncomeAccountParentCategory)
+                                    <tbody>
+                                    <tr>
+                                        <td> {{ $partOneExpenditureIncomeAccountParentCategory->parent_category_name }} </td>
+                                        <td>
+                                            <input type="number" name="previous_budget[]" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="current_budget[]" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="next_budget[]" class="form-control">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                @endforeach
+                            @endforeach
+                            <!--End Part One Expenditure Income Account Category Title and Parent Category -->
                             <tbody>
-                            <tr>
-                                <td> Ka. Allowance of Chairmen (Government part)</td>
-                                <td>
-                                    <input type="number" name="previous_budget[]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="number" name="current_budget[]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="number" name="next_budget[]" class="form-control">
-                                </td>
-                            </tr>
                             <tr>
                                 <td><strong>Total expenditure (revenue account) </strong></td>
                                 <td class="text-center"> 353534</td>
@@ -137,13 +179,13 @@
                                 <th class="text-center">Next year budget budget (2023-23)</th>
                             </tr>
                             <tr>
-                                <th colspan="4" style="background-color: #e7e6e6"> Grants (Development) </th>
+                                <th colspan="4" style="background-color: #e7e6e6"> Grants (Development)</th>
                             </tr>
                             </thead>
 
                             <tbody>
                             <tr>
-                                <td> Upazila Parishad </td>
+                                <td> Upazila Parishad</td>
                                 <td>
                                     <input type="number" name="previous_budget[]" class="form-control">
                                 </td>
@@ -180,13 +222,17 @@
                                 <th class="text-center">Next year budget budget (2023-23)</th>
                             </tr>
                             <tr>
-                                <th colspan="4" style="background-color: #e7e6e6"> 1. Agriculture and Small Irrigation: </th>
+                                <th colspan="4" style="background-color: #e7e6e6"> 1. Agriculture and Small
+                                    Irrigation:
+                                </th>
                             </tr>
                             </thead>
 
                             <tbody>
                             <tr>
-                                <td> Ka. Agriculture and Irrigation:(Tree plantation with Social forestration, Drainage and Irrigation, Small flood protection embankment, Build small Irrigation structure) </td>
+                                <td> Ka. Agriculture and Irrigation:(Tree plantation with Social forestration, Drainage
+                                    and Irrigation, Small flood protection embankment, Build small Irrigation structure)
+                                </td>
                                 <td>
                                     <input type="number" name="previous_budget[]" class="form-control">
                                 </td>
@@ -209,9 +255,9 @@
                     <button class="btn btn-success text-center">Submit</button>
                 </form>
 
-{{--                <div class="text-center">--}}
-{{--                    <button type="submit" id="submit" class="btn btn-primary">Save as draft</button>--}}
-{{--                </div>--}}
+                {{--                <div class="text-center">--}}
+                {{--                    <button type="submit" id="submit" class="btn btn-primary">Save as draft</button>--}}
+                {{--                </div>--}}
             </div>
         </div>
 @endsection

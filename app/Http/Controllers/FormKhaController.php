@@ -9,9 +9,12 @@ class FormKhaController extends Controller
 {
    public function showFormKha()
    {
-       $parentList = DB::table('test_category')->where('type_id', 1)->get();
-       dd($testData);
-       return view('frontend.form_kha.show_kha_form');
+       $data['partOneRevenueIncomeAccountCategoryTitleList'] = DB::table('category_titles')->where('category_type_id', '=','1')->get();
+       $data['partOneRevenueExpenditureAccountCategoryTitleList'] = DB::table('category_titles')->where('category_type_id', '=','2')->get();
+
+//       dd($data['partOneRevenueIncomeAccountCategoryTitleList']);
+
+       return view('frontend.form_kha.show_kha_form', $data);
    }
 
    public function showKhaFormData()
