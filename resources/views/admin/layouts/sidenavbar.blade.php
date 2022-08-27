@@ -81,7 +81,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('financialYear.index') }}"
-                       class="nav-link {{ request()->is('financialYear/*') ? 'active' :''}}">
+                       class="nav-link {{ request()->is('financial-year/*') ? 'active' :''}}">
                         <i class="nav-icon fas fa-list text-green"></i>
                         <p>Financial Year List</p>
                     </a>

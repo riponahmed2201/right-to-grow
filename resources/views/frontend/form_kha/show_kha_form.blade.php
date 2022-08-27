@@ -56,7 +56,7 @@
                                                 <th class="text-center">Current year budget or amended budget
                                                     (2021-22)
                                                 </th>
-                                                <th class="text-center">Next year budget budget (2023-23)</th>
+                                                <th class="text-center">Next year budget (2023-23)</th>
                                             </tr>
                                             <tr>
                                                 <th colspan="4" style="background-color: #e7e6e6">revenue income</th>
@@ -156,7 +156,7 @@
                                                 <th class="text-center">Current year budget or amended budget
                                                     (2021-22)
                                                 </th>
-                                                <th class="text-center">Next year budget budget (2023-23)</th>
+                                                <th class="text-center">Next year budget (2023-23)</th>
                                             </tr>
                                             </thead>
 
@@ -241,7 +241,7 @@
                                                 <th class="text-center">Current year budget or amended budget
                                                     (2021-22)
                                                 </th>
-                                                <th class="text-center">Next year budget budget (2023-23)</th>
+                                                <th class="text-center">Next year budget (2023-23)</th>
                                             </tr>
                                             <tr>
                                                 <th colspan="4" style="background-color: #e7e6e6"> Grants
@@ -302,7 +302,7 @@
                                                 <th class="text-center">Current year budget or amended budget
                                                     (2021-22)
                                                 </th>
-                                                <th class="text-center">Next year budget budget (2023-23)</th>
+                                                <th class="text-center">Next year budget (2023-23)</th>
                                             </tr>
                                             <tr>
                                                 <th colspan="4" style="background-color: #e7e6e6"> 1. Agriculture and

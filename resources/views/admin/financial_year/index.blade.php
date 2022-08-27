@@ -35,6 +35,7 @@
                                 <tr>
                                     <th>S/L</th>
                                     <th>Financial Year</th>
+                                    <th>Slug</th>
                                     <th style="width: 50px" class="text-center">Action</th>
                                 </tr>
                                 </thead>
@@ -44,6 +45,7 @@
                                     <tr>
                                         <td style="width: 80px">{{$loop->iteration}}</td>
                                         <td> {{$financialYear->year_name}}</td>
+                                        <td> {{$financialYear->slug}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('financialYear.edit',$financialYear->id)}}"
                                                title="Edit Financial Year" class="btn btn-sm btn-warning">Edit</a>

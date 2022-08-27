@@ -21,7 +21,11 @@ class FormKhaController extends Controller
 
     public function showKhaFormData()
     {
-        return view('frontend.form_kha.show_kha_form_data');
+        $data['partOneRevenueIncomeAccountList'] = DB::select('SELECT DISTINCT b.id AS category_title_id, b.category_title FROM
+                                                    `part_one_revenue_income_accounts` AS a
+                                                    LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 1');
+
+        return view('frontend.form_kha.show_kha_form_data', $data);
     }
 
     // Part One Revenue Income Account Store to Database
@@ -31,7 +35,7 @@ class FormKhaController extends Controller
             $data_count = sizeof($request->part_one_revenue_income_account_parent_category_id);
 
             if (isset($data_count) > 0) {
-                for ($i = 0; $i <$data_count; $i++){
+                for ($i = 0; $i < $data_count; $i++) {
 
                     $partOneRevenueIncomes = new PartOneRevenueIncomeAccount();
                     $partOneRevenueIncomes->category_type_id = $request->part_one_revenue_income_account_category_type_id[$i];
@@ -44,10 +48,10 @@ class FormKhaController extends Controller
                     $partOneRevenueIncomes->save();
                 }
 
-               // return back()->with('success', 'Submit');
+                // return back()->with('success', 'Submit');
             }
             return back()->with('success', 'Submit');
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             dd($exception);
         }
     }
