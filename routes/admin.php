@@ -27,7 +27,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 // Auth Routes
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('login.showLoginForm');
+Route::get('admin-login', [AuthController::class, 'showLoginForm'])->name('login.showLoginForm');
 Route::post('loginCheck', [AuthController::class, 'loginCheck'])->name('loginCheck');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -118,4 +118,7 @@ Route::middleware('admin')->group(function () {
 // From Kha Data Store Routes
 Route::group(['prefix' => 'form-kha'], function () {
     Route::post('/part-one-revenue-income-account/store', [FormKhaController::class, 'partOneRevenueIncomeAccountStore'])->name('partOneRevenueIncomeAccount.store');
+    Route::post('/part-one-revenue-expenditure-account/store', [FormKhaController::class, 'partOneRevenueExpenditureAccountStore'])->name('partOneRevenueExpenditureAccount.store');
+    Route::post('/part-two-development-income-account/store', [FormKhaController::class, 'partTwoDevelopmentIncomeAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
+    Route::post('/part-one-development-expenditure-account/store', [FormKhaController::class, 'partOneDevelopmentExpenditureAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
 });

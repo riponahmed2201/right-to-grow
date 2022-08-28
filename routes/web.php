@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormKhaController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +22,9 @@ Route::get('/',[FrontendController::class,'index'])->name('front.home');
 
 
 // FORM KHA ROUTES
-Route::get('/form-kha',[FormKhaController::class,'showFormKha'])->name('show.form.kha');
-Route::get('/show-form-kha',[FormKhaController::class,'showKhaFormData'])->name('show_form_kha_data');
+Route::get('form-kha',[FormKhaController::class,'showFormKha'])->name('show.form.kha');
+Route::get('show-form-kha',[FormKhaController::class,'showKhaFormData'])->name('show_form_kha_data');
+
+// User Authentication Process
+Route::get('user-login',[AuthController::class,'userShowLoginForm'])->name('user.showLoginForm');
+Route::post('user-login-check',[AuthController::class,'userLoginCheck'])->name('user.userLoginCheck');
