@@ -18,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 
 // FRONTEND HOME ROUTES
-Route::get('/',[FrontendController::class,'index'])->name('front.home');
+Route::get('/', [FrontendController::class, 'index'])->name('front.home');
 
 
-// FORM KHA ROUTES
-Route::get('form-kha',[FormKhaController::class,'showFormKha'])->name('show.form.kha');
-Route::get('show-form-kha',[FormKhaController::class,'showKhaFormData'])->name('show_form_kha_data');
+Route::middleware('user')->group(function () {
+
+    // FORM KHA ROUTES
+    Route::get('form-kha', [FormKhaController::class, 'showFormKha'])->name('show.form.kha');
+    Route::get('show-form-kha', [FormKhaController::class, 'showKhaFormData'])->name('show_form_kha_data');
+});
 
 // User Authentication Process
-Route::get('user-login',[AuthController::class,'userShowLoginForm'])->name('user.showLoginForm');
-Route::post('user-login-check',[AuthController::class,'userLoginCheck'])->name('user.userLoginCheck');
+Route::get('user-login', [AuthController::class, 'userShowLoginForm'])->name('user.showLoginForm');
+Route::post('user-login-check', [AuthController::class, 'userLoginCheck'])->name('user.userLoginCheck');

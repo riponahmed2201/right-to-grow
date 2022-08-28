@@ -26,13 +26,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>2021-2022</td>
-                                    <td>Khulna</td>
-                                    <td>Khulna</td>
-                                    <td>Dumuria</td>
-                                    <td>Gutudia</td>
-                                </tr>
+                                @if(isset($userInfo))
+                                    <tr>
+                                        <td>{{$userInfo[0]->financial_year}}</td>
+                                        <td>{{$userInfo[0]->division_name}}</td>
+                                        <td>{{$userInfo[0]->district_name}}</td>
+                                        <td>{{$userInfo[0]->upazila_name}}</td>
+                                        <td>{{$userInfo[0]->union_name}}</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td style="text-align: center; color: red" colspan="5">No Data Found!</td>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                             <br>
@@ -48,17 +54,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <img style="width: 60px; height: 60px; border-radius: 50%"
-                                             src="{{ asset('assets/admin/dist/img/avatar5.png') }}"
-                                             alt="User Image">
-                                    </td>
-                                    <td>Siful Islam Tuhin</td>
-                                    <td>Software Engineer</td>
-                                    <td>01700000000</td>
-                                    <td>situhin2007@gmail.com</td>
-                                </tr>
+                                @if(isset($userInfo))
+                                    <tr>
+                                        <td>
+                                            <img style="width: 60px; height: 60px; border-radius: 50%"
+                                                 src="{{ $userInfo[0]->photo ? asset('uploads/userPhoto/'.$userInfo[0]->photo)  : asset('assets/admin/dist/img/avatar5.png') }}"
+                                                 alt="User Image">
+                                        </td>
+                                        <td>{{$userInfo[0]->name}}</td>
+                                        <td>{{$userInfo[0]->designation}}</td>
+                                        <td>{{$userInfo[0]->phone}}</td>
+                                        <td>{{$userInfo[0]->email}}</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td style="text-align: center; color: red" colspan="5">No Data Found!</td>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                             <br>
@@ -78,6 +90,13 @@
                                     <th colspan="4" style="background-color: #e7e6e6">revenue income</th>
                                 </tr>
                                 </thead>
+
+                                @php
+                                    $last_year_total_amount = 0;
+                                    $current_year_total_amount = 0;
+                                    $next_year_total_amount = 0;
+                                @endphp
+
                                 @foreach($partOneRevenueIncomeAccountList as $partOneRevenueIncomeAccount)
                                     <thead>
                                     <tr>
@@ -94,17 +113,45 @@
                                                 WHERE a.category_type_id = 1 AND a.category_title_id='.$partOneRevenueIncomeAccount->category_title_id);
                                     @endphp
 
-                                    <tbody>
+
                                     @foreach($partOneRevenueIncomeAccountParentCategoryList as $partOneRevenueIncomeAccountParentCategory)
+                                        <tbody>
                                         <tr>
+
+                                            @php
+                                                $last_year_total_amount += $partOneRevenueIncomeAccountParentCategory->last_year_budget;
+                                                $current_year_total_amount += $partOneRevenueIncomeAccountParentCategory->current_year_budget;
+                                                $next_year_total_amount += $partOneRevenueIncomeAccountParentCategory->next_year_budget;
+                                            @endphp
+
                                             <td>{{ $partOneRevenueIncomeAccountParentCategory->parent_category_name }}</td>
                                             <td style="text-align: end">{{ $partOneRevenueIncomeAccountParentCategory->last_year_budget }}</td>
                                             <td style="text-align: end">{{ $partOneRevenueIncomeAccountParentCategory->current_year_budget }}</td>
                                             <td style="text-align: end">{{ $partOneRevenueIncomeAccountParentCategory->next_year_budget }}</td>
                                         </tr>
-                                    </tbody>
+                                        </tbody>
+                                    @endforeach
                                 @endforeach
-                                @endforeach
+                                <tbody>
+                                <tr>
+                                    <td>Initial Balance (1st July)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="font-weight: bold">
+                                    <td>Total revenue income</td>
+                                    <td style="text-align: end">@isset($last_year_total_amount)
+                                            {{$last_year_total_amount}}
+                                        @endisset</td>
+                                    <td style="text-align: end">@isset($current_year_total_amount)
+                                            {{$current_year_total_amount}}
+                                        @endisset</td>
+                                    <td style="text-align: end">@isset($next_year_total_amount)
+                                            {{$next_year_total_amount}}
+                                        @endisset</td>
+                                </tr>
+                                </tbody>
                             </table>
                             <br>
 

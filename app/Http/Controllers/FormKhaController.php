@@ -28,9 +28,18 @@ class FormKhaController extends Controller
 
     public function showKhaFormData()
     {
+        $user_id = session('user_id');
+
         $data['partOneRevenueIncomeAccountList'] = DB::select('SELECT DISTINCT b.id AS category_title_id, b.category_title FROM
                                                     `part_one_revenue_income_accounts` AS a
-                                                    LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 1');
+                                                    LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 1 AND a.user_id=' . $user_id);
+
+        $data['userInfo'] = DB::select('SELECT b.*, a.financial_year, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
+                                            LEFT JOIN `users` AS b ON a.user_id = b.id
+                                            LEFT JOIN `divisions` AS c ON b.division_id = c.id
+                                            LEFT JOIN `districts` AS d ON b.district_id = d.id
+                                            LEFT JOIN `upazilas` AS e ON b.upazila_id = e.id
+                                            LEFT JOIN `unions` AS f ON b.union_id = f.id WHERE a.user_id='.$user_id);
 
         return view('frontend.form_kha.show_kha_form_data', $data);
     }
@@ -43,9 +52,11 @@ class FormKhaController extends Controller
 
             if (isset($data_count) > 0) {
 
+                $user_id = session('user_id');
+
                 // store the form_kha_data_users_info table info
                 DB::table('form_kha_data_users_info')->insert([
-                    'user_id' => 1,
+                    'user_id' => $user_id,
                     'financial_year' => $request->part_one_revenue_income_financial_year,
                     'is_part_one_revenue_income_store' => 1,
                 ]);
@@ -53,6 +64,7 @@ class FormKhaController extends Controller
                 for ($i = 0; $i < $data_count; $i++) {
 
                     $partOneRevenueIncomes = new PartOneRevenueIncomeAccount();
+                    $partOneRevenueIncomes->user_id = $user_id;
                     $partOneRevenueIncomes->category_type_id = $request->part_one_revenue_income_account_category_type_id[$i];
                     $partOneRevenueIncomes->category_title_id = $request->part_one_revenue_income_account_category_title_id[$i];
                     $partOneRevenueIncomes->parent_category_id = $request->part_one_revenue_income_account_parent_category_id[$i];
@@ -79,9 +91,11 @@ class FormKhaController extends Controller
 
             if (isset($data_count) > 0) {
 
+                $user_id = session('user_id');
+
                 // store the form_kha_data_users_info table info
                 DB::table('form_kha_data_users_info')->insert([
-                    'user_id' => 1,
+                    'user_id' => $user_id,
                     'financial_year' => $request->part_one_revenue_expenditure_financial_year,
                     'is_part_one_revenue_expenditure_store' => 1,
                 ]);
@@ -115,9 +129,11 @@ class FormKhaController extends Controller
 
             if (isset($data_count) > 0) {
 
+                $user_id = session('user_id');
+
                 // store the form_kha_data_users_info table info
                 DB::table('form_kha_data_users_info')->insert([
-                    'user_id' => 1,
+                    'user_id' => $user_id,
                     'is_part_two_development_income_store' => 1,
                 ]);
 
@@ -150,9 +166,11 @@ class FormKhaController extends Controller
 
             if (isset($data_count) > 0) {
 
+                $user_id = session('user_id');
+
                 // store the form_kha_data_users_info table info
                 DB::table('form_kha_data_users_info')->insert([
-                    'user_id' => 1,
+                    'user_id' => $user_id,
                     'is_part_two_development_expenditure_store' => 1,
                 ]);
 
