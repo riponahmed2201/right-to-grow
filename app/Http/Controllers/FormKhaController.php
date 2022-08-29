@@ -34,7 +34,6 @@ class FormKhaController extends Controller
                                                     `part_one_revenue_income_accounts` AS a
                                                     LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 1 AND a.user_id=' . $user_id);
 
-
         $data['partOneRevenueExpenditureAccountList'] = DB::select('SELECT DISTINCT b.id AS category_title_id, b.category_title FROM
                                                     `part_one_revenue_expenditure_accounts` AS a
                                                     LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 2 AND a.user_id=' . $user_id);

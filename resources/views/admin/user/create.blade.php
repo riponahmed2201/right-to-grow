@@ -62,9 +62,9 @@
                                     <label>Division Name</label>
                                     <select class="form-control select2bs4" id="division_name" name="division_name">
                                         <option selected="selected">----Please select----</option>
-                                        @foreach($districts as $district)
+                                        @foreach($divisions as $division)
                                             <option
-                                                @selected(old('division_name') == $district->id) value="{{$district->id}}">{{$district->name}}</option>
+                                                @selected(old('division_name') == $division->id) value="{{$division->id}}">{{$division->name}}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('division_name'))

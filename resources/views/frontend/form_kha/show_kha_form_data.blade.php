@@ -110,11 +110,14 @@
                                     </thead>
 
                                     @php
-                                        $partOneRevenueIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::select('SELECT b.id AS parent_category_id, b.parent_category_name,
-                                                a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
-                                                `part_one_revenue_income_accounts` AS a
-                                                LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                WHERE a.category_type_id = 1 AND a.category_title_id='.$partOneRevenueIncomeAccount->category_title_id);
+                                        $query_one = 'SELECT b.id AS parent_category_id, b.parent_category_name,
+                                                    a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
+                                                    `part_one_revenue_income_accounts` AS a
+                                                    LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
+                                                    WHERE a.category_type_id = 1 AND a.category_title_id = '.$partOneRevenueIncomeAccount->category_title_id.' '.'AND a.user_id = '.$userInfo[0]->id;
+
+                                            $partOneRevenueIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_one);
+
                                     @endphp
 
 
@@ -187,13 +190,14 @@
                                     </thead>
 
                                     @php
-                                        $partOneRevenueExpenditureAccountParentCategoryList = \Illuminate\Support\Facades\DB::select('SELECT b.id AS parent_category_id, b.parent_category_name,
+                                    $query_two = 'SELECT b.id AS parent_category_id, b.parent_category_name,
                                                 a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
                                                 `part_one_revenue_expenditure_accounts` AS a
                                                 LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                WHERE a.category_type_id = 2 AND a.category_title_id='.$partOneRevenueExpenditureAccount->category_title_id);
-                                    @endphp
+                                                WHERE a.category_type_id = 2 AND a.category_title_id='.$partOneRevenueExpenditureAccount->category_title_id.' '.' AND a.user_id ='.$userInfo[0]->id;
 
+                                        $partOneRevenueExpenditureAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_two);
+                                    @endphp
 
                                     @foreach($partOneRevenueExpenditureAccountParentCategoryList as $partOneRevenueExpenditureAccountParentCategory)
                                         <tbody>
@@ -258,11 +262,13 @@
                                     </thead>
 
                                     @php
-                                        $partTwoDevIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::select('SELECT b.id AS parent_category_id, b.parent_category_name,
+                                    $query_five = 'SELECT b.id AS parent_category_id, b.parent_category_name,
                                                 a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
                                                 `part_two_development_income_accounts` AS a
                                                 LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                WHERE a.category_type_id = 3 AND a.category_title_id='.$partTwoDevRevenueIncomeAccount->category_title_id);
+                                                WHERE a.category_type_id = 3 AND a.category_title_id='.$partTwoDevRevenueIncomeAccount->category_title_id.' '. 'AND a.user_id='.$userInfo[0]->id;
+
+                                        $partTwoDevIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_five);
                                     @endphp
 
                                     @foreach($partTwoDevIncomeAccountParentCategoryList as $partTwoDevIncomeAccountParentCategory)
@@ -328,10 +334,12 @@
 
                                     @php
 
-                                        $partTwoDevExpAccountParentCategoryList = \Illuminate\Support\Facades\DB::select('SELECT DISTINCT b.id AS parent_category_id, b.parent_category_name FROM
+                                        $query_three = 'SELECT DISTINCT b.id AS parent_category_id, b.parent_category_name FROM
                                                                                 `part_two_development_expenditure_accounts` AS a
                                                                                 LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                                                WHERE a.category_type_id = 4 AND a.category_title_id = '.$partTwoDevRevenueExpenditureAccount->category_title_id);
+                                                                                WHERE a.category_type_id = 4 AND a.category_title_id = '.$partTwoDevRevenueExpenditureAccount->category_title_id. ' '. 'AND a.user_id='.$userInfo[0]->id;
+
+                                        $partTwoDevExpAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_three);
                                     @endphp
 
                                     @foreach($partTwoDevExpAccountParentCategoryList as $partTwoDevExpAccountParentCategory)
@@ -343,12 +351,15 @@
                                             <th></th>
                                         </tr>
                                         </thead>
+
                                         @php
 
-                                            $partTwoDevExpAccountChildCategoryList = \Illuminate\Support\Facades\DB::select('SELECT DISTINCT b.id AS child_category_id, b.child_category_name, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
+                                        $query_four = 'SELECT DISTINCT b.id AS child_category_id, b.child_category_name, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
                                                                                         `part_two_development_expenditure_accounts` AS a
                                                                                         LEFT JOIN `child_categories` AS b ON a.child_category_id = b.id
-                                                                                        WHERE a.category_type_id = 4 AND a.parent_category_id='.$partTwoDevExpAccountParentCategory->parent_category_id);
+                                                                                        WHERE a.category_type_id = 4 AND a.parent_category_id='.$partTwoDevExpAccountParentCategory->parent_category_id.' '. 'AND a.user_id='.$userInfo[0]->id;
+
+                                            $partTwoDevExpAccountChildCategoryList = \Illuminate\Support\Facades\DB::select($query_four);
 
 
                                         @endphp
