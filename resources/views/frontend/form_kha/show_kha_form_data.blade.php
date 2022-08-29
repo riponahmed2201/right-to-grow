@@ -18,11 +18,11 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Financial Year</th>
-                                    <th>Division</th>
-                                    <th>District</th>
-                                    <th>Upazila</th>
-                                    <th>Union</th>
+                                    <th style="width: 20%">Financial Year</th>
+                                    <th style="width: 20%">Division</th>
+                                    <th style="width: 20%">District</th>
+                                    <th style="width: 20%">Upazila</th>
+                                    <th style="width: 20%">Union</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -46,11 +46,11 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Photo</th>
-                                    <th>Name</th>
-                                    <th>Designation</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
+                                    <th style="width: 20%">Photo</th>
+                                    <th style="width: 20%">Name</th>
+                                    <th style="width: 20%">Designation</th>
+                                    <th style="width: 20%">Phone</th>
+                                    <th style="width: 20%">Email</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -85,10 +85,11 @@
                                     <th colspan="4">Part-1: revenue income account:</th>
                                 </tr>
                                 <tr>
-                                    <th class="text-center">Income source statement</th>
-                                    <th class="text-center">Actual income of last year</th>
-                                    <th class="text-center">Current year budget or amended budget</th>
-                                    <th class="text-center">Next year budget</th>
+                                    <th class="text-center" style="width: 40%">Income source statement</th>
+                                    <th class="text-center" style="width: 20%">Actual income of last year</th>
+                                    <th class="text-center" style="width: 20%">Current year budget or amended budget
+                                    </th>
+                                    <th class="text-center" style="width: 20%">Next year budget</th>
                                 </tr>
                                 <tr>
                                     <th colspan="4" style="background-color: #e7e6e6">revenue income</th>
@@ -168,10 +169,11 @@
                                     <th colspan="4">Part-1: revenue expenditure account:</th>
                                 </tr>
                                 <tr>
-                                    <th class="text-center">Income source statement</th>
-                                    <th class="text-center">Actual income of last year</th>
-                                    <th class="text-center">Current year budget or amended budget</th>
-                                    <th class="text-center">Next year budget</th>
+                                    <th class="text-center" style="width: 40%">Income source statement</th>
+                                    <th class="text-center" style="width: 20%">Actual income of last year</th>
+                                    <th class="text-center" style="width: 20%">Current year budget or amended budget
+                                    </th>
+                                    <th class="text-center" style="width: 20%">Next year budget</th>
                                 </tr>
                                 </thead>
 
@@ -190,13 +192,13 @@
                                     </thead>
 
                                     @php
-                                    $query_two = 'SELECT b.id AS parent_category_id, b.parent_category_name,
-                                                a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
-                                                `part_one_revenue_expenditure_accounts` AS a
-                                                LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                WHERE a.category_type_id = 2 AND a.category_title_id='.$partOneRevenueExpenditureAccount->category_title_id.' '.' AND a.user_id ='.$userInfo[0]->id;
+                                        $query_two = 'SELECT b.id AS parent_category_id, b.parent_category_name,
+                                                    a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
+                                                    `part_one_revenue_expenditure_accounts` AS a
+                                                    LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
+                                                    WHERE a.category_type_id = 2 AND a.category_title_id='.$partOneRevenueExpenditureAccount->category_title_id.' '.' AND a.user_id ='.$userInfo[0]->id;
 
-                                        $partOneRevenueExpenditureAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_two);
+                                            $partOneRevenueExpenditureAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_two);
                                     @endphp
 
                                     @foreach($partOneRevenueExpenditureAccountParentCategoryList as $partOneRevenueExpenditureAccountParentCategory)
@@ -240,10 +242,11 @@
                                     <th colspan="4">Part-2: Development income account:</th>
                                 </tr>
                                 <tr>
-                                    <th class="text-center">Income source statement</th>
-                                    <th class="text-center">Actual income of last year</th>
-                                    <th class="text-center">Current year budget or amended budget</th>
-                                    <th class="text-center">Next year budget</th>
+                                    <th class="text-center" style="width: 40%">Income source statement</th>
+                                    <th class="text-center" style="width: 20%">Actual income of last year</th>
+                                    <th class="text-center" style="width: 20%">Current year budget or amended budget
+                                    </th>
+                                    <th class="text-center" style="width: 20%">Next year budget</th>
                                 </tr>
                                 </thead>
 
@@ -262,13 +265,13 @@
                                     </thead>
 
                                     @php
-                                    $query_five = 'SELECT b.id AS parent_category_id, b.parent_category_name,
-                                                a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
-                                                `part_two_development_income_accounts` AS a
-                                                LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                WHERE a.category_type_id = 3 AND a.category_title_id='.$partTwoDevRevenueIncomeAccount->category_title_id.' '. 'AND a.user_id='.$userInfo[0]->id;
+                                        $query_five = 'SELECT b.id AS parent_category_id, b.parent_category_name,
+                                                    a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
+                                                    `part_two_development_income_accounts` AS a
+                                                    LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
+                                                    WHERE a.category_type_id = 3 AND a.category_title_id='.$partTwoDevRevenueIncomeAccount->category_title_id.' '. 'AND a.user_id='.$userInfo[0]->id;
 
-                                        $partTwoDevIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_five);
+                                            $partTwoDevIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_five);
                                     @endphp
 
                                     @foreach($partTwoDevIncomeAccountParentCategoryList as $partTwoDevIncomeAccountParentCategory)
@@ -311,10 +314,11 @@
                                     <th colspan="4">Part-2: Development Expenditure account:</th>
                                 </tr>
                                 <tr>
-                                    <th class="text-center">Income source statement</th>
-                                    <th class="text-center">Actual income of last year</th>
-                                    <th class="text-center">Current year budget or amended budget</th>
-                                    <th class="text-center">Next year budget</th>
+                                    <th class="text-center" style="width: 40%">Income source statement</th>
+                                    <th class="text-center" style="width: 20%">Actual income of last year</th>
+                                    <th class="text-center" style="width: 20%">Current year budget or amended budget
+                                    </th>
+                                    <th class="text-center" style="width: 20%">Next year budget</th>
                                 </tr>
                                 </thead>
 
@@ -354,12 +358,12 @@
 
                                         @php
 
-                                        $query_four = 'SELECT DISTINCT b.id AS child_category_id, b.child_category_name, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
-                                                                                        `part_two_development_expenditure_accounts` AS a
-                                                                                        LEFT JOIN `child_categories` AS b ON a.child_category_id = b.id
-                                                                                        WHERE a.category_type_id = 4 AND a.parent_category_id='.$partTwoDevExpAccountParentCategory->parent_category_id.' '. 'AND a.user_id='.$userInfo[0]->id;
+                                            $query_four = 'SELECT DISTINCT b.id AS child_category_id, b.child_category_name, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
+                                                                                            `part_two_development_expenditure_accounts` AS a
+                                                                                            LEFT JOIN `child_categories` AS b ON a.child_category_id = b.id
+                                                                                            WHERE a.category_type_id = 4 AND a.parent_category_id='.$partTwoDevExpAccountParentCategory->parent_category_id.' '. 'AND a.user_id='.$userInfo[0]->id;
 
-                                            $partTwoDevExpAccountChildCategoryList = \Illuminate\Support\Facades\DB::select($query_four);
+                                                $partTwoDevExpAccountChildCategoryList = \Illuminate\Support\Facades\DB::select($query_four);
 
 
                                         @endphp
