@@ -119,6 +119,6 @@ Route::middleware('admin')->group(function () {
 Route::group(['prefix' => 'form-kha'], function () {
     Route::post('/part-one-revenue-income-account/store', [FormKhaController::class, 'partOneRevenueIncomeAccountStore'])->name('partOneRevenueIncomeAccount.store');
     Route::post('/part-one-revenue-expenditure-account/store', [FormKhaController::class, 'partOneRevenueExpenditureAccountStore'])->name('partOneRevenueExpenditureAccount.store');
-    Route::post('/part-two-development-income-account/store', [FormKhaController::class, 'partTwoDevelopmentIncomeAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
-    Route::post('/part-one-development-expenditure-account/store', [FormKhaController::class, 'partOneDevelopmentExpenditureAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
+    Route::post('/part-two-development-income-account/store', [FormKhaController::class, 'partTwoDevelopmentIncomeAccountStore'])->name('partTwoDevelopmentIncomeAccount.store');
+    Route::post('/part-two-development-expenditure-account/store', [FormKhaController::class, 'partTwoDevelopmentExpenditureAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
 });

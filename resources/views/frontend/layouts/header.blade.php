@@ -14,8 +14,8 @@
                         - Kha</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('show-form-kha') ? 'active' :''}}"
-                       href="{{route('show_form_kha_data')}}">Kha Data</a>
+                    <a class="nav-link {{ request()->is('list-form-kha') ? 'active' :''}}"
+                       href="{{route('user.getKhaFormList')}}">Kha Form Data</a>
                 </li>
 
                 <li class="nav-item">

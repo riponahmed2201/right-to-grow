@@ -26,6 +26,7 @@ Route::middleware('user')->group(function () {
     // FORM KHA ROUTES
     Route::get('form-kha', [FormKhaController::class, 'showFormKha'])->name('show.form.kha');
     Route::get('show-form-kha', [FormKhaController::class, 'showKhaFormData'])->name('show_form_kha_data');
+    Route::get('list-form-kha', [FormKhaController::class, 'getKhaFormList'])->name('user.getKhaFormList');
 });
 
 // User Authentication Process

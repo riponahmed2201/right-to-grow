@@ -19,6 +19,10 @@
 
         <br> <br>
 
+        <div class="col-md-12">
+            @include('message')
+        </div>
+
         <div class="card">
             <div class="card-body">
                 <div class="accordion" id="accordionFlushExample">
@@ -40,7 +44,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Financial Year: </label>
-                                            <select name="part_one_revenue_income_financial_year"
+                                            <select name="part_one_revenue_income_financial_year" required
                                                     class="form-control mt-2"
                                                     id="part_one_revenue_income_financial_year">
                                                 <option value="">----Please Select----</option>
@@ -120,16 +124,6 @@
                                                 @endforeach
                                             @endforeach
                                             <!--End Part One Revenue Income Account Category Title and Parent Category -->
-
-                                            <tbody>
-                                            <tr>
-                                                <td><strong>Total revenue income</strong></td>
-                                                <td class="text-center"> 353534</td>
-                                                <td class="text-center"> 43647547</td>
-                                                <td class="text-center"> 4363473</td>
-                                            </tr>
-
-                                            </tbody>
                                         </table>
                                     </div>
                                     <button class="btn btn-success text-center">Submit</button>
@@ -155,7 +149,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Financial Year: </label>
-                                            <select name="part_one_revenue_expenditure_financial_year"
+                                            <select name="part_one_revenue_expenditure_financial_year" required
                                                     class="form-control mt-2">
                                                 <option value="">----Please Select----</option>
                                                 @foreach($financialYearList as $financialYear)
@@ -249,12 +243,12 @@
                              aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <!-- Part-2: Development income account -->
-                                <form action="{{ route('partTwoDevelopmentExpenditureAccount.store') }}" method="post">
+                                <form action="{{ route('partTwoDevelopmentIncomeAccount.store') }}" method="post">
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Financial Year: </label>
-                                            <select name="part_two_development_income_financial_year"
+                                            <select name="part_two_development_income_financial_year" required
                                                     class="form-control mt-2"
                                                     id="part_one_revenue_income_financial_year">
                                                 <option value="">----Please Select----</option>
@@ -353,7 +347,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Financial Year: </label>
-                                            <select name="part_two_development_expenditure_financial_year"
+                                            <select name="part_two_development_expenditure_financial_year" required
                                                     class="form-control mt-2">
                                                 <option value="">----Please Select----</option>
                                                 @foreach($financialYearList as $financialYear)
@@ -396,7 +390,9 @@
 
                                                     <thead>
                                                     <tr>
-                                                        <td> {{ $partTwoDevelopmentExpenditureAccountParentCategory->parent_category_name }} </td>
+                                                        <td>
+                                                            {{ $partTwoDevelopmentExpenditureAccountParentCategory->parent_category_name }}
+                                                        </td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
@@ -411,7 +407,6 @@
                                                     @foreach($partTwoDevExpendChildCategoryList as $partTwoDevExpendChildCategory)
                                                         <tr>
                                                             <td>
-
                                                                 <input type="hidden"
                                                                        value="{{ $partTwoDevelopmentExpenditureAccountCategoryTitle->id }}"
                                                                        name="part_two_development_expenditure_account_category_title_id[]">
@@ -421,12 +416,14 @@
                                                                        value="{{ $partTwoDevelopmentExpenditureAccountParentCategory->id }}">
 
                                                                 <input type="hidden"
-                                                                       name="part_two_development_expenditure_account_parent_category_id[]"
-                                                                       value="{{ $partTwoDevExpendChildCategory->id }}">
-
-                                                                <input type="hidden"
                                                                        value="{{ $partTwoDevelopmentExpenditureAccountCategoryTitle->category_type_id }}"
                                                                        name="part_two_development_expenditure_account_category_type_id[]">
+
+
+                                                                <input type="hidden"
+                                                                       name="part_two_development_expenditure_account_child_category_id[]"
+                                                                       value="{{ $partTwoDevExpendChildCategory->id }}">
+
 
                                                                 {{ $partTwoDevExpendChildCategory->child_category_name }}
 

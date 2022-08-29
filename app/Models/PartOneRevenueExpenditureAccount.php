@@ -9,5 +9,5 @@ class PartOneRevenueExpenditureAccount extends Model
 {
     use HasFactory;
 
-    protected $table = 'part_one_revenue_income_accounts';
+    protected $table = 'part_one_revenue_expenditure_accounts';
 }
