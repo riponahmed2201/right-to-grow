@@ -1,19 +1,21 @@
 @extends('admin.master')
 
-@section('custom_css')
-
-@endsection
-
 @section('main-content')
     <section class="content">
         <div class="container-fluid">
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Category Type Create</h3>
+
+                    @if (isset($typeInfo))
+                        <h3 class="card-title">Type Edit</h3>
+                    @else
+                        <h3 class="card-title">Type Create</h3>
+                    @endif
+
                     <div class="card-tools">
-                        <a href="{{route('categoryType.index')}}" class="btn btn-success">
+                        <a href="{{ route('type.index') }}" class="btn btn-success">
                             <i class="fas fa-list-alt"></i>
-                          View List
+                            View List
                         </a>
                     </div>
                 </div>
@@ -21,14 +23,22 @@
                 <!-- show message -->
                 @include('message')
 
-                <form action="{{route('categoryType.store')}}" method="post">
+                <form action="{{ isset($typeInfo) ? route('type.update', $typeInfo->id) : route('type.store') }}"
+                    method="post">
+
                     @csrf
+
+                    @isset($typeInfo)
+                        @method('PUT')
+                    @endisset
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Category Type:</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category type">
+                                    <label>Type:</label>
+                                    <input type="text" name="name" value="{{ $typeInfo->name ?? old('name') }}"
+                                        class="form-control @error('name') is-invalid @enderror" placeholder="Enter type">
                                     @if ($errors->has('name'))
                                         <p class="text-danger mt-1">{{ $errors->first('name') }}</p>
                                     @endif

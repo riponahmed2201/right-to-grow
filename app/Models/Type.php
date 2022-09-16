@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoryType extends Model
+class Type extends Model
 {
     use HasFactory;
+
+    protected $table = 'types';
+    protected $fillable = ['name', 'slug', 'created_by', 'updated_by'];
 }
