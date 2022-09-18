@@ -101,7 +101,6 @@ Route::middleware('admin')->group(function () {
     Route::get('user_district_select_data', [UserController::class, 'userDistrictSelectData'])->name('user_district_select_data');
     Route::get('user_upazila_select_data', [UserController::class, 'userUpazilaSelectData'])->name('user_upazila_select_data');
     Route::get('user_union_select_data', [UserController::class, 'userUnionSelectData'])->name('user_union_select_data');
-
 });
 
 // From Kha Data Store Routes

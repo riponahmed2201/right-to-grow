@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 // FRONTEND HOME ROUTES
 Route::get('/', [FrontendController::class, 'index'])->name('front.home');
 
-
 Route::middleware('user')->group(function () {
 
     // FORM KHA ROUTES
