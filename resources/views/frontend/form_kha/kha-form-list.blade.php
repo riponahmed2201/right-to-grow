@@ -16,36 +16,37 @@
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
-                                <tr>
-                                    <th>S/L</th>
-                                    <th>Financial Year</th>
-                                    <th>Division</th>
-                                    <th>District</th>
-                                    <th>Upazila</th>
-                                    <th>Union</th>
-                                    <th style="width: 60px">Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>ক্রমিক নং</th>
+                                        <th>অর্থ বছর</th>
+                                        <th>বিভাগ</th>
+                                        <th>জেলা</th>
+                                        <th>উপজেলা</th>
+                                        <th>ইউনিয়ন</th>
+                                        <th style="width: 60px">Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @if($userInfo && $userInfo > 0)
-                                    @foreach($userInfo as $user)
+                                    @if ($userInfo && $userInfo > 0)
+                                        @foreach ($userInfo as $user)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $user->financial_year }}</td>
+                                                <td>{{ $user->division_name }}</td>
+                                                <td>{{ $user->district_name }}</td>
+                                                <td>{{ $user->upazila_name }}</td>
+                                                <td>{{ $user->union_name }}</td>
+                                                <td style="width: 60px">
+                                                    <a href="{{ route('show_form_kha_data') }}"
+                                                        class="btn btn-info">View</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
                                         <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$user->financial_year}}</td>
-                                            <td>{{$user->division_name}}</td>
-                                            <td>{{$user->district_name}}</td>
-                                            <td>{{$user->upazila_name}}</td>
-                                            <td>{{$user->union_name}}</td>
-                                            <td style="width: 60px">
-                                                <a href="{{route('show_form_kha_data')}}" class="btn btn-info">View</a>
-                                            </td>
+                                            <td style="text-align: center; color: red" colspan="7">No Data Found!</td>
                                         </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td style="text-align: center; color: red" colspan="7">No Data Found!</td>
-                                    </tr>
-                                @endif
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

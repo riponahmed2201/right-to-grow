@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\PartOneRevenueExpenditureAccount;
 use App\Models\PartOneRevenueIncomeAccount;
 use App\Models\PartTwoDevelopmentExpenditureAccount;
-use App\Models\PartTwoDevelopmentExpenditureChildCategoryAccount;
 use App\Models\PartTwoDevelopmentIncomeAccount;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,19 +33,18 @@ class FormKhaController extends Controller
                                                     `part_one_revenue_income_accounts` AS a
                                                     LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 1 AND a.user_id=' . $user_id);
 
-        // $data['partOneRevenueExpenditureAccountList'] = DB::select('SELECT DISTINCT b.id AS category_title_id, b.category_title FROM
-        //                                             `part_one_revenue_expenditure_accounts` AS a
-        //                                             LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 2 AND a.user_id=' . $user_id);
+        $data['partOneRevenueExpenditureAccountList'] = DB::select('SELECT DISTINCT b.id AS category_id, b.name as category_name FROM
+                                                    `part_one_revenue_expenditure_accounts` AS a
+                                                    LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 2 AND a.user_id=' . $user_id);
+
+        $data['partTwoDevRevenueIncomeAccountList'] = DB::select('SELECT DISTINCT b.id AS category_id, b.name as category_name FROM
+                                                    `part_two_development_income_accounts` AS a
+                                                    LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 3 AND a.user_id=' . $user_id);
 
 
-        // $data['partTwoDevRevenueIncomeAccountList'] = DB::select('SELECT DISTINCT b.id AS category_title_id, b.category_title FROM
-        //                                             `part_two_development_income_accounts` AS a
-        //                                             LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 3 AND a.user_id=' . $user_id);
-
-
-        // $data['partTwoDevRevenueExpenditureAccountList'] = DB::select('SELECT DISTINCT b.id AS category_title_id, b.category_title FROM
-        //                                             `part_two_development_expenditure_accounts` AS a
-        //                                             LEFT JOIN `category_titles` AS b ON a.category_title_id = b.id WHERE a.category_type_id = 4 AND a.user_id=' . $user_id);
+        $data['partTwoDevRevenueExpenditureAccountList'] = DB::select('SELECT DISTINCT b.id AS category_id, b.name as category_name FROM
+                                                    `part_two_development_expenditure_accounts` AS a
+                                                    LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 4 AND a.user_id=' . $user_id);
 
         $data['userInfo'] = DB::select('SELECT b.*, a.financial_year, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
                                             LEFT JOIN `users` AS b ON a.user_id = b.id
@@ -77,6 +75,7 @@ class FormKhaController extends Controller
     public function partOneRevenueIncomeAccountStore(Request $request)
     {
         DB::beginTransaction();
+
         try {
 
             $data_count = sizeof($request->part_one_revenue_income_account_subcategory_id);
@@ -124,8 +123,10 @@ class FormKhaController extends Controller
     // Part One Revenue Expenditure Account Store to Database
     public function partOneRevenueExpenditureAccountStore(Request $request)
     {
+        DB::beginTransaction();
+
         try {
-            $data_count = sizeof($request->part_one_revenue_expenditure_account_parent_category_id);
+            $data_count = sizeof($request->part_one_revenue_expenditure_account_subcategory_id);
 
             if (isset($data_count) > 0) {
 
@@ -142,9 +143,9 @@ class FormKhaController extends Controller
 
                     $partOneRevenueExpenditures = new PartOneRevenueExpenditureAccount();
                     $partOneRevenueExpenditures->user_id = $user_id;
-                    $partOneRevenueExpenditures->category_type_id = $request->part_one_revenue_expenditure_account_category_type_id[$i];
-                    $partOneRevenueExpenditures->category_title_id = $request->part_one_revenue_expenditure_account_category_title_id[$i];
-                    $partOneRevenueExpenditures->parent_category_id = $request->part_one_revenue_expenditure_account_parent_category_id[$i];
+                    $partOneRevenueExpenditures->type_id = $request->part_one_revenue_expenditure_account_type_id[$i];
+                    $partOneRevenueExpenditures->category_id = $request->part_one_revenue_expenditure_account_category_id[$i];
+                    $partOneRevenueExpenditures->subcategory_id = $request->part_one_revenue_expenditure_account_subcategory_id[$i];
                     $partOneRevenueExpenditures->last_year_budget = $request->previous_budget[$i];
                     $partOneRevenueExpenditures->current_year_budget = $request->current_budget[$i];
                     $partOneRevenueExpenditures->next_year_budget = $request->next_budget[$i];
@@ -152,11 +153,18 @@ class FormKhaController extends Controller
                     $partOneRevenueExpenditures->save();
                 }
 
+                DB::commit();
+
                 return back()->with('success', 'Part one revenue expenditure account information saved successfully!');
             } else {
+
+                DB::rollBack();
+
                 return back()->with('error', 'Something Error Found, Please try again!');
             }
         } catch (\Exception $exception) {
+            dd($exception);
+            DB::rollBack();
             return back()->with('error', 'Something Error Found, Please try again!');
         }
     }
@@ -164,8 +172,10 @@ class FormKhaController extends Controller
     // Part Two Development Income Account Store to Database
     public function partTwoDevelopmentIncomeAccountStore(Request $request)
     {
+        DB::beginTransaction();
+
         try {
-            $data_count = sizeof($request->part_two_development_income_account_parent_category_id);
+            $data_count = sizeof($request->part_two_development_income_account_subcategory_id);
 
             if (isset($data_count) > 0) {
 
@@ -182,9 +192,9 @@ class FormKhaController extends Controller
 
                     $partTwoDevRevenueIncomes = new PartTwoDevelopmentIncomeAccount();
                     $partTwoDevRevenueIncomes->user_id = $user_id;
-                    $partTwoDevRevenueIncomes->category_type_id = $request->part_two_development_income_account_category_type_id[$i];
-                    $partTwoDevRevenueIncomes->category_title_id = $request->part_two_development_income_account_category_title_id[$i];
-                    $partTwoDevRevenueIncomes->parent_category_id = $request->part_two_development_income_account_parent_category_id[$i];
+                    $partTwoDevRevenueIncomes->type_id = $request->part_two_development_income_account_type_id[$i];
+                    $partTwoDevRevenueIncomes->category_id = $request->part_two_development_income_account_category_id[$i];
+                    $partTwoDevRevenueIncomes->subcategory_id = $request->part_two_development_income_account_subcategory_id[$i];
                     $partTwoDevRevenueIncomes->last_year_budget = $request->previous_budget[$i];
                     $partTwoDevRevenueIncomes->current_year_budget = $request->current_budget[$i];
                     $partTwoDevRevenueIncomes->next_year_budget = $request->next_budget[$i];
@@ -192,9 +202,16 @@ class FormKhaController extends Controller
                     $partTwoDevRevenueIncomes->save();
                 }
 
+                DB::commit();
+
                 return back()->with('success', 'Part two development income account information saved successfully!');
+            } else {
+                DB::rollBack();
+
+                return back()->with('error', 'Something Error Found, Please try again!');
             }
         } catch (\Exception $exception) {
+            DB::rollBack();
             return back()->with('error', 'Something Error Found, Please try again!');
         }
     }
@@ -202,8 +219,10 @@ class FormKhaController extends Controller
     // Part Two Development Expenditure Account Store to Database
     public function partTwoDevelopmentExpenditureAccountStore(Request $request)
     {
+        DB::beginTransaction();
+
         try {
-            $data_count = sizeof($request->part_two_development_expenditure_account_parent_category_id);
+            $data_count = sizeof($request->part_two_development_expenditure_account_subcategory_id);
 
             if (isset($data_count) > 0) {
 
@@ -220,37 +239,26 @@ class FormKhaController extends Controller
 
                     $partTowDevRevenueExps = new PartTwoDevelopmentExpenditureAccount();
                     $partTowDevRevenueExps->user_id = $user_id;
-                    $partTowDevRevenueExps->category_type_id = $request->part_two_development_expenditure_account_category_type_id[$i];
-                    $partTowDevRevenueExps->category_title_id = $request->part_two_development_expenditure_account_category_title_id[$i];
-                    $partTowDevRevenueExps->parent_category_id = $request->part_two_development_expenditure_account_parent_category_id[$i];
-                    $partTowDevRevenueExps->child_category_id = $request->part_two_development_expenditure_account_child_category_id[$i];
+                    $partTowDevRevenueExps->type_id = $request->part_two_development_expenditure_account_type_id[$i];
+                    $partTowDevRevenueExps->category_id = $request->part_two_development_expenditure_account_category_id[$i];
+                    $partTowDevRevenueExps->subcategory_id = $request->part_two_development_expenditure_account_subcategory_id[$i];
                     $partTowDevRevenueExps->last_year_budget = $request->previous_budget[$i];
                     $partTowDevRevenueExps->current_year_budget = $request->current_budget[$i];
                     $partTowDevRevenueExps->next_year_budget = $request->next_budget[$i];
                     $partTowDevRevenueExps->submit_date = Carbon::now();
                     $partTowDevRevenueExps->save();
-
-                    //                    $child_data_count = sizeof($request->part_two_development_expenditure_account_child_category_id);
-                    //
-                    //                    for ($j = $i; $j < $child_data_count; $j++) {
-                    //
-                    //                        $partTwoDevChildExpenditures = new PartTwoDevelopmentExpenditureChildCategoryAccount();
-                    //                        $partTwoDevChildExpenditures->category_type_id = $request->part_two_development_expenditure_account_category_type_id[$j];
-                    //                        $partTwoDevChildExpenditures->parent_category_id = $request->part_two_development_expenditure_account_parent_category_id[$j];
-                    //                        $partTwoDevChildExpenditures->child_category_id = $request->part_two_development_expenditure_account_child_category_id[$j];
-                    //                        $partTwoDevChildExpenditures->last_year_budget = $request->previous_budget[$j];
-                    //                        $partTwoDevChildExpenditures->current_year_budget = $request->current_budget[$j];
-                    //                        $partTwoDevChildExpenditures->next_year_budget = $request->next_budget[$i];
-                    //                        $partTwoDevChildExpenditures->submit_date = Carbon::now();
-                    //                        $partTwoDevChildExpenditures->save();
-                    //                    }
                 }
+
+                DB::commit();
 
                 return back()->with('success', 'Part two development expenditure account information saved successfully!');
             } else {
+                DB::rollBack();
+
                 return back()->with('error', 'Something Error Found, Please try again!');
             }
         } catch (\Exception $exception) {
+            DB::rollBack();
             return back()->with('error', 'Something Error Found, Please try again!');
         }
     }

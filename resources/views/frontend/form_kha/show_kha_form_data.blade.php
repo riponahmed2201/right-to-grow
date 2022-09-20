@@ -14,15 +14,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <h5><u>Division Information:</u></h5>
+                            <h5><u>বিভাগ তথ্য:</u></h5>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th style="width: 20%">Financial Year</th>
-                                        <th style="width: 20%">Division</th>
-                                        <th style="width: 20%">District</th>
-                                        <th style="width: 20%">Upazila</th>
-                                        <th style="width: 20%">Union</th>
+                                        <th style="width: 20%">অর্থ বছর</th>
+                                        <th style="width: 20%">বিভাগ</th>
+                                        <th style="width: 20%">জেলা</th>
+                                        <th style="width: 20%">উপজেলা</th>
+                                        <th style="width: 20%">ইউনিয়ন</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,15 +42,15 @@
                                 </tbody>
                             </table>
                             <br>
-                            <h5><u>User Information:</u></h5>
+                            <h5><u>ব্যবহারকারী তথ্য:</u></h5>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th style="width: 20%">Photo</th>
-                                        <th style="width: 20%">Name</th>
-                                        <th style="width: 20%">Designation</th>
-                                        <th style="width: 20%">Phone</th>
-                                        <th style="width: 20%">Email</th>
+                                        <th style="width: 20%">ছবি</th>
+                                        <th style="width: 20%">নাম</th>
+                                        <th style="width: 20%">উপাধি</th>
+                                        <th style="width: 20%">ফোন</th>
+                                        <th style="width: 20%">ইমেইল</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -86,13 +86,13 @@
                                         <th colspan="4">অংশ-১- রাজস্ব হিসাব আয়ঃ</th>
                                     </tr>
                                     <tr>
-                                        <th class="text-center" style="width: 40%">প্রাপ্তির বিবরণ</th>
-                                        <th class="text-center" style="width: 20%">পূর্ববর্তী বৎসরের প্রকৃত আয় (২০২০-২০২১
+                                        <th class="text-center" style="width: 55%">প্রাপ্তির বিবরণ</th>
+                                        <th class="text-center" style="width: 15%">পূর্ববর্তী বৎসরের প্রকৃত আয় (২০২০-২০২১
                                         </th>
-                                        <th class="text-center" style="width: 20%">চলতি বৎসরের বাজেট বা সংশোধিত বাজেট
+                                        <th class="text-center" style="width: 15%">চলতি বৎসরের বাজেট বা সংশোধিত বাজেট
                                             (২০২১-২০২২)
                                         </th>
-                                        <th class="text-center" style="width: 20%">পরবর্তী বৎসরের বাজেট (২০২২-২০২৩)</th>
+                                        <th class="text-center" style="width: 15%">পরবর্তী বৎসরের বাজেট (২০২২-২০২৩)</th>
                                     </tr>
                                     <tr>
                                         <th colspan="4" style="background-color: #e7e6e6">রাজস্ব আয়</th>
@@ -129,9 +129,8 @@
                                         
                                     @endphp
 
-
-                                    @foreach ($partOneRevenueIncomeAccountSubcategories as $partOneRevenueIncomeAccountSubcategory)
-                                        <tbody>
+                                    <tbody>
+                                        @foreach ($partOneRevenueIncomeAccountSubcategories as $partOneRevenueIncomeAccountSubcategory)
                                             <tr>
 
                                                 @php
@@ -150,8 +149,8 @@
                                                 <td style="text-align: end">
                                                     {{ $partOneRevenueIncomeAccountSubcategory->next_year_budget }}</td>
                                             </tr>
-                                        </tbody>
-                                    @endforeach
+                                        @endforeach
+                                    </tbody>
                                 @endforeach
                                 <tbody>
                                     <tr>
@@ -180,19 +179,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br>
 
-                            {{-- <table class="table table-bordered">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th colspan="4">Part-1: revenue expenditure account:</th>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-center" style="width: 40%">Income source statement</th>
-                                        <th class="text-center" style="width: 20%">Actual income of last year</th>
-                                        <th class="text-center" style="width: 20%">Current year budget or amended budget
-                                        </th>
-                                        <th class="text-center" style="width: 20%">Next year budget</th>
+                                        <th colspan="4">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ </th>
                                     </tr>
                                 </thead>
 
@@ -206,53 +197,51 @@
                                     <thead>
                                         <tr>
                                             <th colspan="4" style="background-color: #ebebeb">
-                                                {{ $partOneRevenueExpenditureAccount->category_title }}</th>
+                                                {{ $partOneRevenueExpenditureAccount->category_name }}</th>
                                         </tr>
                                     </thead>
 
                                     @php
+                                        
                                         $query_two =
-                                            'SELECT b.id AS parent_category_id, b.parent_category_name,
-                                                    a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
+                                            'SELECT b.id AS subcategory_id, b.name as subcategory_name,
+                                                    a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
                                                     `part_one_revenue_expenditure_accounts` AS a
-                                                    LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                    WHERE a.category_type_id = 2 AND a.category_title_id=' .
-                                            $partOneRevenueExpenditureAccount->category_title_id .
+                                                    LEFT JOIN `subcategories` AS b ON a.subcategory_id = b.id
+                                                    WHERE a.type_id = 2 AND a.category_id = ' .
+                                            $partOneRevenueExpenditureAccount->category_id .
                                             ' ' .
-                                            ' AND a.user_id =' .
+                                            'AND a.user_id = ' .
                                             $userInfo[0]->id;
                                         
-                                        $partOneRevenueExpenditureAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_two);
+                                        $partOneIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_two);
+                                    
                                     @endphp
 
-                                    @foreach ($partOneRevenueExpenditureAccountParentCategoryList as $partOneRevenueExpenditureAccountParentCategory)
+                                    @foreach ($partOneIncomeAccountSubcategoryList as $partOneIncomeAccountSubcategory)
                                         <tbody>
                                             <tr>
-
                                                 @php
-                                                    $p_one_exp_last_year_total_amount += $partOneRevenueExpenditureAccountParentCategory->last_year_budget;
-                                                    $p_one_exp_current_year_total_amount += $partOneRevenueExpenditureAccountParentCategory->current_year_budget;
-                                                    $p_one_exp_next_year_total_amount += $partOneRevenueExpenditureAccountParentCategory->next_year_budget;
+                                                    $p_one_exp_last_year_total_amount += $partOneIncomeAccountSubcategory->last_year_budget;
+                                                    $p_one_exp_current_year_total_amount += $partOneIncomeAccountSubcategory->current_year_budget;
+                                                    $p_one_exp_next_year_total_amount += $partOneIncomeAccountSubcategory->next_year_budget;
                                                 @endphp
 
-                                                <td>{{ $partOneRevenueExpenditureAccountParentCategory->parent_category_name }}
-                                                </td>
-                                                <td style="text-align: end">
-                                                    {{ $partOneRevenueExpenditureAccountParentCategory->last_year_budget }}
-                                                </td>
-                                                <td style="text-align: end">
-                                                    {{ $partOneRevenueExpenditureAccountParentCategory->current_year_budget }}
-                                                </td>
-                                                <td style="text-align: end">
-                                                    {{ $partOneRevenueExpenditureAccountParentCategory->next_year_budget }}
-                                                </td>
+                                                <td style="width: 55%">
+                                                    {{ $partOneIncomeAccountSubcategory->subcategory_name }}</td>
+                                                <td style="text-align: end; width: 15%">
+                                                    {{ $partOneIncomeAccountSubcategory->last_year_budget }}</td>
+                                                <td style="text-align: end; width: 15%">
+                                                    {{ $partOneIncomeAccountSubcategory->current_year_budget }}</td>
+                                                <td style="text-align: end; width: 15%">
+                                                    {{ $partOneIncomeAccountSubcategory->next_year_budget }}</td>
                                             </tr>
                                         </tbody>
                                     @endforeach
                                 @endforeach
                                 <tbody>
                                     <tr style="font-weight: bold">
-                                        <td>Total expenditure (revenue account)</td>
+                                        <td>মোট ব্যয় (রাজস্ব হিসাব)</td>
                                         <td style="text-align: end">
                                             @isset($p_one_exp_last_year_total_amount)
                                                 {{ $p_one_exp_last_year_total_amount }}
@@ -271,19 +260,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br>
 
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th colspan="4">Part-2: Development income account:</th>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-center" style="width: 40%">Income source statement</th>
-                                        <th class="text-center" style="width: 20%">Actual income of last year</th>
-                                        <th class="text-center" style="width: 20%">Current year budget or amended budget
-                                        </th>
-                                        <th class="text-center" style="width: 20%">Next year budget</th>
+                                        <th colspan="4">অংশ-২- উন্নয়ন হিসাব আয়ঃ </th>
                                     </tr>
                                 </thead>
 
@@ -297,48 +278,51 @@
                                     <thead>
                                         <tr>
                                             <th colspan="4" style="background-color: #ebebeb">
-                                                {{ $partTwoDevRevenueIncomeAccount->category_title }}</th>
+                                                {{ $partOneRevenueExpenditureAccount->category_name }}</th>
                                         </tr>
                                     </thead>
 
                                     @php
+                                        
                                         $query_five =
-                                            'SELECT b.id AS parent_category_id, b.parent_category_name,
-                                                    a.id, a.category_title_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
+                                            'SELECT b.id AS subcategory_id, b.name as subcategory_name,
+                                                    a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
                                                     `part_two_development_income_accounts` AS a
-                                                    LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                    WHERE a.category_type_id = 3 AND a.category_title_id=' .
-                                            $partTwoDevRevenueIncomeAccount->category_title_id .
+                                                    LEFT JOIN `subcategories` AS b ON a.subcategory_id = b.id
+                                                    WHERE a.type_id = 3 AND a.category_id=' .
+                                            $partTwoDevRevenueIncomeAccount->category_id .
                                             ' ' .
                                             'AND a.user_id=' .
                                             $userInfo[0]->id;
                                         
-                                        $partTwoDevIncomeAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_five);
+                                        $partTwoDevIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_five);
+                                        
                                     @endphp
 
-                                    @foreach ($partTwoDevIncomeAccountParentCategoryList as $partTwoDevIncomeAccountParentCategory)
+                                    @foreach ($partTwoDevIncomeAccountSubcategoryList as $partTwoDevIncomeAccountSubcategory)
                                         <tbody>
                                             <tr>
                                                 @php
-                                                    $p_two_exp_last_year_total_amount += $partTwoDevIncomeAccountParentCategory->last_year_budget;
-                                                    $p_two_exp_current_year_total_amount += $partTwoDevIncomeAccountParentCategory->current_year_budget;
-                                                    $p_two_exp_next_year_total_amount += $partTwoDevIncomeAccountParentCategory->next_year_budget;
+                                                    $p_two_exp_last_year_total_amount += $partTwoDevIncomeAccountSubcategory->last_year_budget;
+                                                    $p_two_exp_current_year_total_amount += $partTwoDevIncomeAccountSubcategory->current_year_budget;
+                                                    $p_two_exp_next_year_total_amount += $partTwoDevIncomeAccountSubcategory->next_year_budget;
                                                 @endphp
 
-                                                <td>{{ $partTwoDevIncomeAccountParentCategory->parent_category_name }}</td>
-                                                <td style="text-align: end">
-                                                    {{ $partTwoDevIncomeAccountParentCategory->last_year_budget }}</td>
-                                                <td style="text-align: end">
-                                                    {{ $partTwoDevIncomeAccountParentCategory->current_year_budget }}</td>
-                                                <td style="text-align: end">
-                                                    {{ $partTwoDevIncomeAccountParentCategory->next_year_budget }}</td>
+                                                <td style="width: 55%">
+                                                    {{ $partTwoDevIncomeAccountSubcategory->subcategory_name }}</td>
+                                                <td style="text-align: end" style="width: 15%">
+                                                    {{ $partTwoDevIncomeAccountSubcategory->last_year_budget }}</td>
+                                                <td style="text-align: end" style="width: 15%">
+                                                    {{ $partTwoDevIncomeAccountSubcategory->current_year_budget }}</td>
+                                                <td style="text-align: end" style="width: 15%">
+                                                    {{ $partTwoDevIncomeAccountSubcategory->next_year_budget }}</td>
                                             </tr>
                                         </tbody>
                                     @endforeach
                                 @endforeach
                                 <tbody>
                                     <tr style="font-weight: bold">
-                                        <td>Total Development Income</td>
+                                        <td>মোট প্রাপ্তি (উন্নয়ন হিসাব ) </td>
                                         <td style="text-align: end">
                                             @isset($p_two_exp_last_year_total_amount)
                                                 {{ $p_two_exp_last_year_total_amount }}
@@ -357,19 +341,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br>
 
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th colspan="4">Part-2: Development Expenditure account:</th>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-center" style="width: 40%">Income source statement</th>
-                                        <th class="text-center" style="width: 20%">Actual income of last year</th>
-                                        <th class="text-center" style="width: 20%">Current year budget or amended budget
-                                        </th>
-                                        <th class="text-center" style="width: 20%">Next year budget</th>
+                                        <th colspan="4">অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ </th>
                                     </tr>
                                 </thead>
 
@@ -383,74 +359,49 @@
                                     <thead>
                                         <tr>
                                             <th colspan="4" style="background-color: #ebebeb">
-                                                {{ $partTwoDevRevenueExpenditureAccount->category_title }}</th>
+                                                {{ $partTwoDevRevenueExpenditureAccount->category_name }}</th>
                                         </tr>
                                     </thead>
 
                                     @php
                                         
                                         $query_three =
-                                            'SELECT DISTINCT b.id AS parent_category_id, b.parent_category_name FROM
+                                            'SELECT DISTINCT b.id AS subcategory_id, b.name as subcategory_name,
+                                                    a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
                                                                                 `part_two_development_expenditure_accounts` AS a
-                                                                                LEFT JOIN `parent_categories` AS b ON a.parent_category_id = b.id
-                                                                                WHERE a.category_type_id = 4 AND a.category_title_id = ' .
-                                            $partTwoDevRevenueExpenditureAccount->category_title_id .
+                                                                                LEFT JOIN `subcategories` AS b ON a.subcategory_id = b.id
+                                                                                WHERE a.type_id = 4 AND a.category_id = ' .
+                                            $partTwoDevRevenueExpenditureAccount->category_id .
                                             ' ' .
                                             'AND a.user_id=' .
                                             $userInfo[0]->id;
                                         
-                                        $partTwoDevExpAccountParentCategoryList = \Illuminate\Support\Facades\DB::select($query_three);
+                                        $partTwoDevExpAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_three);
                                     @endphp
 
-                                    @foreach ($partTwoDevExpAccountParentCategoryList as $partTwoDevExpAccountParentCategory)
-                                        <thead>
+                                    <tbody>
+                                        @foreach ($partTwoDevExpAccountSubcategoryList as $partTwoDevExpAccountSubcategory)
                                             <tr>
-                                                <th>{{ $partTwoDevExpAccountParentCategory->parent_category_name }}</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
+                                                @php
+                                                    $p_two_dev_exp_last_year_total_amount += $partTwoDevExpAccountSubcategory->last_year_budget;
+                                                    $p_two_dev_exp_current_year_total_amount += $partTwoDevExpAccountSubcategory->current_year_budget;
+                                                    $p_two_dev_exp_next_year_total_amount += $partTwoDevExpAccountSubcategory->next_year_budget;
+                                                @endphp
+                                                <td style="width: 55%">
+                                                    {{ $partTwoDevExpAccountSubcategory->subcategory_name }}</td>
+                                                <td style="text-align: end; width: 15%">
+                                                    {{ $partTwoDevExpAccountSubcategory->last_year_budget }}</td>
+                                                <td style="text-align: end; width: 15%">
+                                                    {{ $partTwoDevExpAccountSubcategory->current_year_budget }}</td>
+                                                <td style="text-align: end; width: 15%">
+                                                    {{ $partTwoDevExpAccountSubcategory->next_year_budget }}</td>
                                             </tr>
-                                        </thead>
-
-                                        @php
-                                            
-                                            $query_four =
-                                                'SELECT DISTINCT b.id AS child_category_id, b.child_category_name, a.last_year_budget, a.current_year_budget, a.next_year_budget FROM
-                                                                                            `part_two_development_expenditure_accounts` AS a
-                                                                                            LEFT JOIN `child_categories` AS b ON a.child_category_id = b.id
-                                                                                            WHERE a.category_type_id = 4 AND a.parent_category_id=' .
-                                                $partTwoDevExpAccountParentCategory->parent_category_id .
-                                                ' ' .
-                                                'AND a.user_id=' .
-                                                $userInfo[0]->id;
-                                            
-                                            $partTwoDevExpAccountChildCategoryList = \Illuminate\Support\Facades\DB::select($query_four);
-                                            
-                                        @endphp
-                                        @foreach ($partTwoDevExpAccountChildCategoryList as $partTwoDevExpAccountChildCategory)
-                                            <tbody>
-                                                <tr>
-                                                    @php
-                                                        $p_two_dev_exp_last_year_total_amount += $partTwoDevExpAccountChildCategory->last_year_budget;
-                                                        $p_two_dev_exp_current_year_total_amount += $partTwoDevExpAccountChildCategory->current_year_budget;
-                                                        $p_two_dev_exp_next_year_total_amount += $partTwoDevExpAccountChildCategory->next_year_budget;
-                                                    @endphp
-
-                                                    <td>{{ $partTwoDevExpAccountChildCategory->child_category_name }}</td>
-                                                    <td style="text-align: end">
-                                                        {{ $partTwoDevExpAccountChildCategory->last_year_budget }}</td>
-                                                    <td style="text-align: end">
-                                                        {{ $partTwoDevExpAccountChildCategory->current_year_budget }}</td>
-                                                    <td style="text-align: end">
-                                                        {{ $partTwoDevExpAccountChildCategory->next_year_budget }}</td>
-                                                </tr>
-                                            </tbody>
                                         @endforeach
-                                    @endforeach
+                                    </tbody>
                                 @endforeach
                                 <tbody>
                                     <tr style="font-weight: bold">
-                                        <td>Total Expenditure (Development account)</td>
+                                        <td>মোট উন্নয়ন ব্যয় </td>
                                         <td style="text-align: end">
                                             @isset($p_two_dev_exp_last_year_total_amount)
                                                 {{ $p_two_dev_exp_last_year_total_amount }}
@@ -468,7 +419,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table> --}}
+                            </table>
                         </div>
 
                     </div>
