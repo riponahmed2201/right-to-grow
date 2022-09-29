@@ -118,6 +118,28 @@
                     </a>
                 </li>
 
+                <li class="nav-header">Form Kha Management</li>
+                <li class="nav-item">
+                    <a href="#"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-list text-warning"></i>
+                        <p>
+                           Form Kha List
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-header">Report Management</li>
+                <li class="nav-item">
+                    <a href="#"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-book text-danger"></i>
+                        <p>
+                          Report 1
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-header">User Management</li>
                 <li class="nav-item">
                     <a href="{{ route('user.index') }}"
