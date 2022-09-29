@@ -101,6 +101,9 @@ class FormKhaController extends Controller
                     $partOneRevenueIncomes->last_year_budget = $request->previous_budget[$i];
                     $partOneRevenueIncomes->current_year_budget = $request->current_budget[$i];
                     $partOneRevenueIncomes->next_year_budget = $request->next_budget[$i];
+                    $partOneRevenueIncomes->current_year_actual_income = $request->current_year_actual_income[$i];
+                    $partOneRevenueIncomes->next_year_actual_income = $request->next_year_actual_income[$i];
+                    $partOneRevenueIncomes->financial_year = $request->part_one_revenue_income_financial_year;
                     $partOneRevenueIncomes->submit_date = Carbon::now();
                     $partOneRevenueIncomes->save();
                 }
@@ -149,6 +152,9 @@ class FormKhaController extends Controller
                     $partOneRevenueExpenditures->last_year_budget = $request->previous_budget[$i];
                     $partOneRevenueExpenditures->current_year_budget = $request->current_budget[$i];
                     $partOneRevenueExpenditures->next_year_budget = $request->next_budget[$i];
+                    $partOneRevenueExpenditures->current_year_actual_income = $request->current_year_actual_income[$i];
+                    $partOneRevenueExpenditures->next_year_actual_income = $request->next_year_actual_income[$i];
+                    $partOneRevenueExpenditures->financial_year = $request->part_one_revenue_expenditure_financial_year;
                     $partOneRevenueExpenditures->submit_date = Carbon::now();
                     $partOneRevenueExpenditures->save();
                 }
@@ -198,6 +204,9 @@ class FormKhaController extends Controller
                     $partTwoDevRevenueIncomes->last_year_budget = $request->previous_budget[$i];
                     $partTwoDevRevenueIncomes->current_year_budget = $request->current_budget[$i];
                     $partTwoDevRevenueIncomes->next_year_budget = $request->next_budget[$i];
+                    $partTwoDevRevenueIncomes->current_year_actual_income = $request->current_year_actual_income[$i];
+                    $partTwoDevRevenueIncomes->next_year_actual_income = $request->next_year_actual_income[$i];
+                    $partTwoDevRevenueIncomes->financial_year = $request->part_two_development_income_financial_year;
                     $partTwoDevRevenueIncomes->submit_date = Carbon::now();
                     $partTwoDevRevenueIncomes->save();
                 }
@@ -211,6 +220,8 @@ class FormKhaController extends Controller
                 return back()->with('error', 'Something Error Found, Please try again!');
             }
         } catch (\Exception $exception) {
+            dd($exception);
+
             DB::rollBack();
             return back()->with('error', 'Something Error Found, Please try again!');
         }
@@ -245,6 +256,9 @@ class FormKhaController extends Controller
                     $partTowDevRevenueExps->last_year_budget = $request->previous_budget[$i];
                     $partTowDevRevenueExps->current_year_budget = $request->current_budget[$i];
                     $partTowDevRevenueExps->next_year_budget = $request->next_budget[$i];
+                    $partTowDevRevenueExps->current_year_actual_income = $request->current_year_actual_income[$i];
+                    $partTowDevRevenueExps->next_year_actual_income = $request->next_year_actual_income[$i];
+                    $partTowDevRevenueExps->financial_year = $request->part_two_development_expenditure_financial_year;
                     $partTowDevRevenueExps->submit_date = Carbon::now();
                     $partTowDevRevenueExps->save();
                 }
@@ -258,6 +272,7 @@ class FormKhaController extends Controller
                 return back()->with('error', 'Something Error Found, Please try again!');
             }
         } catch (\Exception $exception) {
+            dd($exception);
             DB::rollBack();
             return back()->with('error', 'Something Error Found, Please try again!');
         }

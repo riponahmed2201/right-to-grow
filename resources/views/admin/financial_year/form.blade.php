@@ -6,16 +6,15 @@
             <div class="card card-default">
                 <div class="card-header">
 
-                    @if(isset($financialYear))
+                    @if (isset($financialYear))
                         <h3 class="card-title">Edit Financial Year</h3>
                     @else
                         <h3 class="card-title">Create Financial Year</h3>
                     @endif
 
                     <div class="card-tools">
-                        <a href="{{route('financialYear.index')}}" class="btn btn-success">
-                            <i class="fas fa-plus-circle"></i>
-                            View List
+                        <a href="{{ route('financialYear.index') }}" class="btn btn-success">
+                            <i class="fa fa-list mr-1"></i> View List
                         </a>
                     </div>
                 </div>
@@ -24,7 +23,7 @@
                 @include('message')
 
                 <form
-                    action="{{isset($financialYear) ? route('financialYear.update',$financialYear->id) : route('financialYear.store')}}"
+                    action="{{ isset($financialYear) ? route('financialYear.update', $financialYear->id) : route('financialYear.store') }}"
                     method="post">
                     @csrf
                     @isset($financialYear)
@@ -36,9 +35,9 @@
                                 <div class="form-group">
                                     <label>Financial Year Name</label>
                                     <input type="text" name="financial_year_name"
-                                           class="form-control @error('financial_year_name') is-invalid @enderror"
-                                           value="{{ $financialYear->year_name ?? old('financial_year_name') }}"
-                                           placeholder="Enter financial year">
+                                        class="form-control @error('financial_year_name') is-invalid @enderror"
+                                        value="{{ $financialYear->year_name ?? old('financial_year_name') }}"
+                                        placeholder="Enter financial year">
                                     @if ($errors->has('financial_year_name'))
                                         <p class="text-danger mt-1">{{ $errors->first('financial_year_name') }}</p>
                                     @endif

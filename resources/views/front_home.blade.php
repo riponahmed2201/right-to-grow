@@ -13,9 +13,11 @@
                     <div class="ict_survey_div">
                         <div class="col-md-4 offset-md-4 mt-3">
                             <div class="d-grid gap-2">
-                                <a href="{{ route('show.form.kha') }}" class="btn btn-primary">Form - Kha</a>
-                                <a href="{{ route('show_form_kha_data') }}" class="btn btn-primary">Form - Kha
-                                    Data</a>
+                                <a href="{{ route('show.form.kha') }}" class="btn"
+                                    style="background-color: #154273; color:white">ফরম "খ"</a>
+                                <a href="{{ route('show_form_kha_data') }}" class="btn"
+                                    style="background-color: #154273; color:white">ফরম "খ"
+                                    ডাটা</a>
                             </div>
                         </div>
                     </div>

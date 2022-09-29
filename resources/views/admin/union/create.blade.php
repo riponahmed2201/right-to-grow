@@ -7,22 +7,22 @@
                 <div class="card-header">
                     <h3 class="card-title">Union create</h3>
                     <div class="card-tools">
-                        <a href="{{route('union.index')}}" class="btn btn-primary">
-                            Union list
+                        <a href="{{ route('union.index') }}" class="btn btn-primary">
+                            <i class="fa fa-list mr-1"></i> Union list
                         </a>
                     </div>
                 </div>
-                <form action="{{route('union.store')}}" method="post">
+                <form action="{{ route('union.store') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Select Upazila Name</label>
-                                    <select class="form-control select2bs4" name="upazila_name" >
+                                    <select class="form-control select2bs4" name="upazila_name">
                                         <option selected="selected">----Please select----</option>
-                                        @foreach($upazilas as $upazila)
-                                            <option value="{{$upazila->id}}">{{$upazila->name}}</option>
+                                        @foreach ($upazilas as $upazila)
+                                            <option value="{{ $upazila->id }}">{{ $upazila->name }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('upazila_name'))
@@ -33,7 +33,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter union name">
+                                    <input type="text" name="name" class="form-control"
+                                        placeholder="Enter union name">
                                     @if ($errors->has('name'))
                                         <strong class="text-danger">{{ $errors->first('name') }}</strong>
                                     @endif

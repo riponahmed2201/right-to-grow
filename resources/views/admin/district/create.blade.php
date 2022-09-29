@@ -7,22 +7,22 @@
                 <div class="card-header">
                     <h3 class="card-title">District create</h3>
                     <div class="card-tools">
-                        <a href="{{route('district.index')}}" class="btn btn-primary">
-                            District list
+                        <a href="{{ route('district.index') }}" class="btn btn-primary">
+                            <i class="fa fa-list mr-1"></i> District list
                         </a>
                     </div>
                 </div>
-                <form action="{{route('district.store')}}" method="post">
+                <form action="{{ route('district.store') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Select division Name</label>
-                                    <select class="form-control select2bs4" name="division_name" >
+                                    <select class="form-control select2bs4" name="division_name">
                                         <option selected="selected">----Please select----</option>
-                                        @foreach($divisions as $division)
-                                            <option value="{{$division->id}}">{{$division->name}}</option>
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('division_name'))
