@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class SubcategoryController extends Controller
 {
     public function index()
@@ -37,8 +38,14 @@ class SubcategoryController extends Controller
         // validate the sub category request input
         $this->validate($request, [
             'category_name' => 'required',
-            'name' => 'required|unique:subcategories'
+            'name' => 'required'
         ]);
+
+        $subcategoryAlreadyIsNotExists = Subcategory::where('category_id', '=', $request->category_name)->where('name', '=', $request->name)->first();
+
+        if ($subcategoryAlreadyIsNotExists) {
+            return back()->with('error', 'Subcategory already exists.');
+        }
 
         try {
 
@@ -62,7 +69,7 @@ class SubcategoryController extends Controller
         // validate the sub category request input
         $this->validate($request, [
             'category_name' => 'required',
-            'name' => 'required|unique:subcategories'
+            'name' => 'required'
         ]);
 
         try {

@@ -38,8 +38,14 @@ class CategoryController extends Controller
         // validate the request input
         $this->validate($request, [
             'type' => 'required',
-            'name' => 'required|unique:categories'
+            'name' => 'required'
         ]);
+
+        $categoryAlreadyIsNotExists = Category::where('type_id', '=', $request->type)->where('name', '=', $request->name)->first();
+
+        if ($categoryAlreadyIsNotExists) {
+            return back()->with('error', 'Category already exists.');
+        }
 
         try {
 
@@ -63,7 +69,7 @@ class CategoryController extends Controller
         // validate the request input
         $this->validate($request, [
             'type' => 'required',
-            'name' => 'required|unique:categories'
+            'name' => 'required'
         ]);
 
         try {

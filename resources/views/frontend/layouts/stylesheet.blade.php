@@ -5,12 +5,13 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="shortcut icon" href="{{asset('assets/frontend/assets/images/fav.png')}}">
-<link href="{{asset('assets/frontend/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/frontend/assets/css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/frontend/assets/plugins/datepicker/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/frontend/assets/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets/frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="{{ asset('assets/frontend/assets/images/fav.png') }}">
+<link href="{{ asset('assets/frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/frontend/assets/css/bootstrap-theme.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/frontend/assets/plugins/datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"
+    type="text/css">
+<link href="{{ asset('assets/frontend/assets/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/frontend/assets/css/style.css') }}" rel="stylesheet" type="text/css">
 
 <title>Right 2 Grow project consortium, Bangladesh </title>
 
@@ -127,7 +128,6 @@
     .slick-arrow.slick-hidden {
         display: none;
     }
-
 </style>
 
 @yield('custom_css')

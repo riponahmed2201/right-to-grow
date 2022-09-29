@@ -58,20 +58,23 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="4">অংশ-১- রাজস্ব হিসাব আয়ঃ</th>
+                                                    <th colspan="6">অংশ-১- রাজস্ব হিসাব আয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 55%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 15%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         (২০২০-২০২১)</th>
-                                                    <th style="width: 15%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
                                                         বাজেট (২০২১-২০২২)
                                                     </th>
-                                                    <th style="width: 15%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         (২০২২-২০২৩)</th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="4" style="background-color: #e7e6e6">রাজস্ব আয়</th>
+                                                    <th colspan="6" style="background-color: #e7e6e6">রাজস্ব আয়</th>
                                                 </tr>
                                             </thead>
 
@@ -79,7 +82,7 @@
                                             @foreach ($partOneRevenueIncomeAccountCategories as $partOneRevenueIncomeAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="4" style="background-color: #e7e6e6">
+                                                        <th colspan="6" style="background-color: #e7e6e6">
                                                             {{ $partOneRevenueIncomeAccountCategory->name }}</th>
                                                     </tr>
                                                 </thead>
@@ -119,7 +122,15 @@
                                                                     class="form-control">
                                                             </td>
                                                             <td>
+                                                                <input type="number" name="current_year_actual_income[]"
+                                                                    class="form-control">
+                                                            </td>
+                                                            <td>
                                                                 <input type="number" name="next_budget[]"
+                                                                    class="form-control">
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" name="next_year_actual_income[]"
                                                                     class="form-control">
                                                             </td>
                                                         </tr>
@@ -129,7 +140,8 @@
                                             <!--End Part One Revenue Income Account Category and Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn btn-success text-center">Submit</button>
+                                    <button class="btn text-center"
+                                        style="background-color: #5314b1; color:white">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -165,17 +177,21 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="4">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ</th>
+                                                    <th colspan="6">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 55%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 15%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         (২০২০-২০২১)</th>
-                                                    <th style="width: 15%" class="text-center">চলতি বৎসরের বাজেট বা
-                                                        সংশোধিত বাজেট (২০২১-২০২২)
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                        সংশোধিত
+                                                        বাজেট (২০২১-২০২২)
                                                     </th>
-                                                    <th style="width: 15%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         (২০২২-২০২৩)</th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
                                                 </tr>
                                             </thead>
 
@@ -183,7 +199,7 @@
                                             @foreach ($partOneRevenueExpenditureAccountCategories as $partOneRevenueExpenditureAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="4" style="background-color: #e7e6e6">
+                                                        <th colspan="6" style="background-color: #e7e6e6">
                                                             {{ $partOneRevenueExpenditureAccountCategory->name }}</th>
                                                     </tr>
                                                 </thead>
@@ -221,7 +237,15 @@
                                                                     class="form-control">
                                                             </td>
                                                             <td>
+                                                                <input type="number" name="current_year_actual_income[]"
+                                                                    class="form-control">
+                                                            </td>
+                                                            <td>
                                                                 <input type="number" name="next_budget[]"
+                                                                    class="form-control">
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" name="next_year_actual_income[]"
                                                                     class="form-control">
                                                             </td>
                                                         </tr>
@@ -231,7 +255,8 @@
                                             <!--End Part One Expenditure Income Account Category and Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn btn-success text-center">Submit</button>
+                                    <button class="btn text-center"
+                                        style="background-color: #5314b1; color:white">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -268,17 +293,21 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="4">অংশ-২- উন্নয়ন হিসাব আয়ঃ</th>
+                                                    <th colspan="6">অংশ-২- উন্নয়ন হিসাব আয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 55%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 15%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         (২০২০-২০২১)</th>
-                                                    <th style="width: 15%" class="text-center">চলতি বৎসরের বাজেট বা
-                                                        সংশোধিত বাজেট (২০২১-২০২২)
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                        সংশোধিত
+                                                        বাজেট (২০২১-২০২২)
                                                     </th>
-                                                    <th style="width: 15%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         (২০২২-২০২৩)</th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
                                                 </tr>
                                             </thead>
 
@@ -286,7 +315,7 @@
                                             @foreach ($partTwoDevelopmentIncomeAccountCategories as $partTwoDevelopmentIncomeAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="4" style="background-color: #e7e6e6">
+                                                        <th colspan="6" style="background-color: #e7e6e6">
                                                             {{ $partTwoDevelopmentIncomeAccountCategory->name }}</th>
                                                     </tr>
                                                 </thead>
@@ -323,7 +352,15 @@
                                                                     class="form-control">
                                                             </td>
                                                             <td>
+                                                                <input type="number" name="current_year_actual_income[]"
+                                                                    class="form-control">
+                                                            </td>
+                                                            <td>
                                                                 <input type="number" name="next_budget[]"
+                                                                    class="form-control">
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" name="next_year_actual_income[]"
                                                                     class="form-control">
                                                             </td>
                                                         </tr>
@@ -333,7 +370,8 @@
                                             <!--End Part Two Development Income Account Category and Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn btn-success text-center">Submit</button>
+                                    <button class="btn text-center"
+                                        style="background-color: #5314b1; color:white">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -369,17 +407,21 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="4"> অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ</th>
+                                                    <th colspan="6"> অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 55%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 15%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         (২০২০-২০২১)</th>
-                                                    <th style="width: 15%" class="text-center">চলতি বৎসরের বাজেট বা
-                                                        সংশোধিত বাজেট (২০২১-২০২২)
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                        সংশোধিত
+                                                        বাজেট (২০২১-২০২২)
                                                     </th>
-                                                    <th style="width: 15%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         (২০২২-২০২৩)</th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
                                                 </tr>
                                             </thead>
 
@@ -387,7 +429,7 @@
                                             @foreach ($partTwoDevelopmentExpenditureAccountCategories as $partTwoDevelopmentExpenditureAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="4" style="background-color: #e7e6e6">
+                                                        <th colspan="6" style="background-color: #e7e6e6">
                                                             {{ $partTwoDevelopmentExpenditureAccountCategory->name }}
                                                         </th>
                                                     </tr>
@@ -425,7 +467,15 @@
                                                                 class="form-control">
                                                         </td>
                                                         <td>
+                                                            <input type="number" name="current_year_actual_income[]"
+                                                                class="form-control">
+                                                        </td>
+                                                        <td>
                                                             <input type="number" name="next_budget[]"
+                                                                class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="next_year_actual_income[]"
                                                                 class="form-control">
                                                         </td>
                                                     </tr>
@@ -434,7 +484,8 @@
                                             <!--End Part Two Development Expenditure Account Category and  Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn btn-success text-center">Submit</button>
+                                    <button class="btn text-center"
+                                        style="background-color: #5314b1; color:white">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -443,19 +494,19 @@
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <style>
-                    table,
-                    thead,
-                    tbody,
-                    th,
-                    td {
-                        border: 1px solid black;
-                    }
-                </style>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <style>
+                table,
+                thead,
+                tbody,
+                th,
+                td {
+                    border: 1px solid #5314b1;
+                }
+            </style>
         </div>
-    @endsection
+    </div>
+@endsection
