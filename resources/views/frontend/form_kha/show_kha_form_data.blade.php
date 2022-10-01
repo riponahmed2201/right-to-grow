@@ -83,6 +83,14 @@
                                 </u>
                             </h5>
 
+                            @php
+                                $last_year_total_amount = 0;
+                                $current_year_total_amount = 0;
+                                $next_year_total_amount = 0;
+                                $current_year_actual_income_total_amount = 0;
+                                $next_year_actual_income_total_amount = 0;
+                            @endphp
+
                             @if (!empty($partOneRevenueIncomeAccountList))
                                 <table class="table table-bordered">
                                     <thead>
@@ -108,14 +116,6 @@
                                         </tr>
                                     </thead>
 
-                                    @php
-                                        $last_year_total_amount = 0;
-                                        $current_year_total_amount = 0;
-                                        $next_year_total_amount = 0;
-                                        $current_year_actual_income_total_amount = 0;
-                                        $next_year_actual_income_total_amount = 0;
-                                    @endphp
-
                                     @foreach ($partOneRevenueIncomeAccountList as $partOneRevenueIncomeAccount)
                                         <thead>
                                             <tr>
@@ -125,9 +125,7 @@
                                         </thead>
 
                                         @php
-
-                                        // dd($partOneRevenueIncomeAccount);
-
+                                            
                                             $query_one =
                                                 'SELECT b.id AS subcategory_id, b.name as subcategory_name,
                                                         a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -209,6 +207,14 @@
                                 </table>
                             @endif
 
+                            @php
+                                $p_one_exp_last_year_total_amount = 0;
+                                $p_one_exp_current_year_total_amount = 0;
+                                $p_one_exp_next_year_total_amount = 0;
+                                $p_one_exp_current_year_actual_income_total_amount = 0;
+                                $p_one_exp_next_year_actual_income_total_amount = 0;
+                            @endphp
+
                             @if (!empty($partOneRevenueExpenditureAccountList))
                                 <table class="table table-bordered">
                                     <thead>
@@ -216,14 +222,6 @@
                                             <th colspan="6">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ </th>
                                         </tr>
                                     </thead>
-
-                                    @php
-                                        $p_one_exp_last_year_total_amount = 0;
-                                        $p_one_exp_current_year_total_amount = 0;
-                                        $p_one_exp_next_year_total_amount = 0;
-                                        $p_one_exp_current_year_actual_income_total_amount = 0;
-                                        $p_one_exp_next_year_actual_income_total_amount = 0;
-                                    @endphp
 
                                     @foreach ($partOneRevenueExpenditureAccountList as $partOneRevenueExpenditureAccount)
                                         <thead>
@@ -281,7 +279,7 @@
                                     @endforeach
                                     <tbody>
                                         <tr style="font-weight: bold">
-                                            <td>মোট ব্যয় (রাজস্ব হিসাব)</td>
+                                            <td>উপমোট</td>
                                             <td style="text-align: end">
                                                 @isset($p_one_exp_last_year_total_amount)
                                                     {{ $p_one_exp_last_year_total_amount }}
@@ -308,9 +306,75 @@
                                                 @endisset
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>১০। রাজস্ব উদ্বৃত্ত উন্নয়ন হিসাবে স্থানান্তর</td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_last_year_total_amount)
+                                                    {{ $last_year_total_amount - $p_one_exp_last_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_current_year_total_amount)
+                                                    {{ $current_year_total_amount - $p_one_exp_current_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_current_year_actual_income_total_amount)
+                                                    {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_next_year_total_amount)
+                                                    {{ $next_year_total_amount - $p_one_exp_next_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_next_year_actual_income_total_amount)
+                                                    {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                        </tr>
+                                        <tr style="font-weight: bold">
+                                            <td>মোট ব্যয় (রাজস্ব হিসাব)</td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_last_year_total_amount)
+                                                    {{ $last_year_total_amount - $p_one_exp_last_year_total_amount + $p_one_exp_last_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_current_year_total_amount)
+                                                    {{ $current_year_total_amount - $p_one_exp_current_year_total_amount + $p_one_exp_current_year_total_amount }}
+                                                @endisset
+                                            </td>
+
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_current_year_actual_income_total_amount)
+                                                    {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount + $p_one_exp_current_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_next_year_total_amount)
+                                                    {{ $next_year_total_amount - $p_one_exp_next_year_total_amount + $p_one_exp_next_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_next_year_actual_income_total_amount)
+                                                    {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount + $p_one_exp_next_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             @endif
+
+                            @php
+                                $p_two_exp_last_year_total_amount = 0;
+                                $p_two_exp_current_year_total_amount = 0;
+                                $p_two_exp_next_year_total_amount = 0;
+                                $p_two_exp_current_year_actual_income_total_amount = 0;
+                                $p_two_exp_next_year_actual_income_total_amount = 0;
+                            @endphp
+
 
                             @if (!empty($partTwoDevRevenueIncomeAccountList))
                                 <table class="table table-bordered">
@@ -319,14 +383,6 @@
                                             <th colspan="6">অংশ-২- উন্নয়ন হিসাব আয়ঃ </th>
                                         </tr>
                                     </thead>
-
-                                    @php
-                                        $p_two_exp_last_year_total_amount = 0;
-                                        $p_two_exp_current_year_total_amount = 0;
-                                        $p_two_exp_next_year_total_amount = 0;
-                                        $p_two_exp_current_year_actual_income_total_amount = 0;
-                                        $p_two_exp_next_year_actual_income_total_amount = 0;
-                                    @endphp
 
                                     @foreach ($partTwoDevRevenueIncomeAccountList as $partTwoDevRevenueIncomeAccount)
                                         <thead>
@@ -384,7 +440,7 @@
                                     @endforeach
                                     <tbody>
                                         <tr style="font-weight: bold">
-                                            <td>মোট প্রাপ্তি (উন্নয়ন হিসাব ) </td>
+                                            <td>উপমোট</td>
                                             <td style="text-align: end">
                                                 @isset($p_two_exp_last_year_total_amount)
                                                     {{ $p_two_exp_last_year_total_amount }}
@@ -411,9 +467,73 @@
                                                 @endisset
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>রাজস্ব উদ্বৃত্ত উন্নয়ন হিসাবে স্থানান্তর</td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_last_year_total_amount)
+                                                    {{ $last_year_total_amount - $p_one_exp_last_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_current_year_total_amount)
+                                                    {{ $current_year_total_amount - $p_one_exp_current_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_current_year_actual_income_total_amount)
+                                                    {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_next_year_total_amount)
+                                                    {{ $next_year_total_amount - $p_one_exp_next_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_one_exp_next_year_actual_income_total_amount)
+                                                    {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                        </tr>
+                                        <tr style="font-weight: bold">
+                                            <td>মোট প্রাপ্তি (উন্নয়ন হিসাব ) </td>
+                                            <td style="text-align: end">
+                                                @isset($p_two_exp_last_year_total_amount)
+                                                    {{ $last_year_total_amount - $p_one_exp_last_year_total_amount + $p_two_exp_last_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_two_exp_current_year_total_amount)
+                                                    {{ $current_year_total_amount - $p_one_exp_current_year_total_amount + $p_two_exp_current_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_two_exp_current_year_actual_income_total_amount)
+                                                    {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount + $p_two_exp_current_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_two_exp_next_year_total_amount)
+                                                    {{ $next_year_total_amount - $p_one_exp_next_year_total_amount + $p_two_exp_next_year_total_amount }}
+                                                @endisset
+                                            </td>
+                                            <td style="text-align: end">
+                                                @isset($p_two_exp_next_year_actual_income_total_amount)
+                                                    {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount + $p_two_exp_next_year_actual_income_total_amount }}
+                                                @endisset
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             @endif
+
+                            @php
+                                $p_two_dev_exp_last_year_total_amount = 0;
+                                $p_two_dev_exp_current_year_total_amount = 0;
+                                $p_two_dev_exp_next_year_total_amount = 0;
+                                $p_two_dev_exp_current_year_actual_income_total_amount = 0;
+                                $p_two_dev_exp_next_year_actual_income_total_amount = 0;
+                            @endphp
 
                             @if (!empty($partTwoDevRevenueExpenditureAccountList))
                                 <table class="table table-bordered">
@@ -423,19 +543,16 @@
                                         </tr>
                                     </thead>
 
-                                    @php
-                                        $p_two_dev_exp_last_year_total_amount = 0;
-                                        $p_two_dev_exp_current_year_total_amount = 0;
-                                        $p_two_dev_exp_next_year_total_amount = 0;
-                                        $p_two_dev_exp_current_year_actual_income_total_amount = 0;
-                                        $p_two_dev_exp_next_year_actual_income_total_amount = 0;
-                                    @endphp
-
                                     @foreach ($partTwoDevRevenueExpenditureAccountList as $partTwoDevRevenueExpenditureAccount)
                                         <thead>
                                             <tr>
-                                                <th colspan="6" style="background-color: #ebebeb">
+                                                <th style="background-color: #ebebeb; width: 30%">
                                                     {{ $partTwoDevRevenueExpenditureAccount->category_name }}</th>
+                                                <th style="background-color: #ebebeb; width: 14%"></th>
+                                                <th style="background-color: #ebebeb; width: 14%"></th>
+                                                <th style="background-color: #ebebeb; width: 14%"></th>
+                                                <th style="background-color: #ebebeb; width: 14%"></th>
+                                                <th style="background-color: #ebebeb; width: 14%"></th>
                                             </tr>
                                         </thead>
 

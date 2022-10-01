@@ -27,7 +27,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($userInfo && $userInfo > 0)
+                                    @if (!empty($userInfo))
                                         @foreach ($userInfo as $user)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
@@ -37,7 +37,7 @@
                                                 <td>{{ $user->upazila_name }}</td>
                                                 <td>{{ $user->union_name }}</td>
                                                 <td style="width: 60px">
-                                                    <a href="{{ route('show_form_kha_data') }}"
+                                                    <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
                                                         class="btn btn-info">View</a>
                                                 </td>
                                             </tr>

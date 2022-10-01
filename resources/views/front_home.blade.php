@@ -15,7 +15,7 @@
                             <div class="d-grid gap-2">
                                 <a href="{{ route('show.form.kha') }}" class="btn"
                                     style="background-color: #154273; color:white">ফরম "খ"</a>
-                                <a href="{{ route('show_form_kha_data') }}" class="btn"
+                                <a href="{{ route('user.getKhaFormList') }}" class="btn"
                                     style="background-color: #154273; color:white">ফরম "খ"
                                     ডাটা</a>
                             </div>
