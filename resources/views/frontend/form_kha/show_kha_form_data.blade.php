@@ -125,7 +125,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $query_one =
                                                 'SELECT b.id AS subcategory_id, b.name as subcategory_name,
                                                         a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -136,9 +136,9 @@
                                                 ' ' .
                                                 'AND a.user_id = ' .
                                                 $userInfo[0]->id;
-                                            
+
                                             $partOneRevenueIncomeAccountSubcategories = \Illuminate\Support\Facades\DB::select($query_one);
-                                            
+
                                         @endphp
 
                                         <tbody>
@@ -232,7 +232,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $query_two =
                                                 'SELECT b.id AS subcategory_id, b.name as subcategory_name,
                                                         a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -243,9 +243,9 @@
                                                 ' ' .
                                                 'AND a.user_id = ' .
                                                 $userInfo[0]->id;
-                                            
+
                                             $partOneIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_two);
-                                            
+
                                         @endphp
 
                                         @foreach ($partOneIncomeAccountSubcategoryList as $partOneIncomeAccountSubcategory)
@@ -393,7 +393,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $query_five =
                                                 'SELECT b.id AS subcategory_id, b.name as subcategory_name,
                                                 a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -404,9 +404,9 @@
                                                 ' ' .
                                                 'AND a.user_id=' .
                                                 $userInfo[0]->id;
-                                            
+
                                             $partTwoDevIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_five);
-                                            
+
                                         @endphp
 
                                         @foreach ($partTwoDevIncomeAccountSubcategoryList as $partTwoDevIncomeAccountSubcategory)
@@ -557,7 +557,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $query_three =
                                                 'SELECT DISTINCT b.id AS subcategory_id, b.name as subcategory_name,
                                                         a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -568,7 +568,7 @@
                                                 ' ' .
                                                 'AND a.user_id=' .
                                                 $userInfo[0]->id;
-                                            
+
                                             $partTwoDevExpAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_three);
                                         @endphp
 
@@ -629,9 +629,145 @@
                                                 @endisset
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="6" style="background-color: #44546a"></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             @endif
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td style="background-color: #c6e0b4; width: 30%">রাজস্ব আয়</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $last_year_total_amount }}</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $current_year_total_amount }}</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $current_year_actual_income_total_amount}}</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $next_year_total_amount }}</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $next_year_actual_income_total_amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%">উপমোট রাজস্ব ব্যয়</td>
+                                        <td style="width: 14%; text-align: end">{{ $p_one_exp_last_year_total_amount }}
+                                        </td>
+                                        <td style="width: 14%; text-align: end">{{ $p_one_exp_current_year_total_amount }}
+                                        </td>
+                                        <td style="width: 14%; text-align: end">
+                                            {{ $p_one_exp_current_year_actual_income_total_amount }}
+                                        </td>
+                                        <td style="width: 14%; text-align: end">
+                                            {{ $p_one_exp_next_year_total_amount }}</td>
+                                        <td style="width: 14%; text-align: end">
+                                            {{ $p_one_exp_next_year_actual_income_total_amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%">রাজস্ব উদ্বৃত্ত</td>
+                                        <td style="background-color: #ffc000; width: 14%; text-align: end">
+                                            {{ $last_year_total_amount - $p_one_exp_last_year_total_amount }}</td>
+                                        <td style="background-color: #ffc000; width: 14%; text-align: end">
+                                            {{ $current_year_total_amount - $p_one_exp_current_year_total_amount }}</td>
+                                        <td style="background-color: #ffc000; width: 14%; text-align: end">
+                                            {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}</td>
+                                        <td style="background-color: #ffc000; width: 14%; text-align: end">
+                                            {{ $next_year_total_amount - $p_one_exp_next_year_total_amount}}
+                                        </td>
+                                        <td style="background-color: #ffc000; width: 14%; text-align: end">
+                                            {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: #c6e0b4; width: 30%">মোট রাজস্ব ব্যয়</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $p_one_exp_last_year_total_amount + $last_year_total_amount - $p_one_exp_last_year_total_amount }}
+                                        </td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $p_one_exp_current_year_total_amount + $current_year_total_amount - $p_one_exp_current_year_total_amount }}
+                                        </td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $p_one_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount}}</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">{{$p_one_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount}}</td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">{{ $p_one_exp_next_year_actual_income_total_amount + $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%">উপমোট উন্নয়ন আয়</td>
+                                        <td style="width: 14%; text-align: end">
+                                                {{ $p_two_exp_last_year_total_amount }}
+                                        </td>
+                                        <td style="width: 14%; text-align: end">
+                                                {{ $p_two_exp_current_year_total_amount }}
+                                        </td>
+                                        <td style="width: 14%; text-align: end">
+                                                {{ $p_two_exp_current_year_actual_income_total_amount }}
+                                        </td>
+                                        <td style="width: 14%; text-align: end">
+                                                {{ $p_two_exp_next_year_total_amount }}
+                                        </td>
+                                        <td style="width: 14%; text-align: end">
+                                                {{ $p_two_exp_next_year_actual_income_total_amount }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: #f4b084; width: 30%">মোট উন্নয়ন আয়= উপমোট উন্নয়ন আয়+
+                                            রাজস্ব উদ্বৃত্ত</td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_last_year_total_amount + $last_year_total_amount - $p_one_exp_last_year_total_amount}}</td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_current_year_total_amount + $current_year_total_amount - $p_one_exp_current_year_total_amount}}</td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount}}</td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount}}</td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_next_year_actual_income_total_amount + $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: #acb9ca; width: 30%">মোট আয় (রাজস্ব আয়+উপমোট উন্নয়ন
+                                            আয়)</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">
+                                            {{ $last_year_total_amount +  $p_two_exp_last_year_total_amount}}</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">
+                                            {{ $current_year_total_amount + $p_two_exp_current_year_total_amount}}</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">
+                                            {{ $current_year_actual_income_total_amount + $p_two_exp_current_year_actual_income_total_amount}}</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">
+                                            {{ $next_year_total_amount + $p_two_exp_next_year_total_amount }}</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">
+                                            {{ $next_year_actual_income_total_amount + $p_two_exp_next_year_actual_income_total_amount}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%">উপমোট উন্নয়ন ব্যয় </td>
+                                        <td style="width: 14%; text-align: end">34634</td>
+                                        <td style="width: 14%; text-align: end">346347</td>
+                                        <td style="width: 14%; text-align: end">36347</td>
+                                        <td style="width: 14%; text-align: end">33467</td>
+                                        <td style="width: 14%; text-align: end">36347</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%">সমাপ্তি জের = (মোট উন্নয়ন আয়-উপমোট উন্নয়ন ব্যয়)</td>
+                                        <td style="width: 14%; text-align: end">0</td>
+                                        <td style="width: 14%; text-align: end">0</td>
+                                        <td style="width: 14%; text-align: end">0</td>
+                                        <td style="width: 14%; text-align: end">0</td>
+                                        <td style="width: 14%; text-align: end">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: #acb9ca; width: 30%">মোট উন্নয়ন ব্যয় : (সমাপ্তি জের
+                                            সহ)</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: #acb9ca; width: 30%">মোট ব্যয় (সমাপ্তি জের সহ)</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                        <td style="background-color: #acb9ca; width: 14%; text-align: end">0</td>
+                                    </tr>
+                                    </thead>
+                            </table>
                         </div>
 
                     </div>
