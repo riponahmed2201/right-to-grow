@@ -125,7 +125,7 @@
                                         </thead>
 
                                         @php
-
+                                            
                                             $query_one =
                                                 'SELECT b.id AS subcategory_id, b.name as subcategory_name,
                                                         a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -136,41 +136,47 @@
                                                 ' ' .
                                                 'AND a.user_id = ' .
                                                 $userInfo[0]->id;
-
+                                            
                                             $partOneRevenueIncomeAccountSubcategories = \Illuminate\Support\Facades\DB::select($query_one);
-
+                                            
                                         @endphp
 
                                         <tbody>
                                             @foreach ($partOneRevenueIncomeAccountSubcategories as $partOneRevenueIncomeAccountSubcategory)
-                                                <tr>
+                                                @if ($partOneRevenueIncomeAccountSubcategory->last_year_budget ||
+                                                    $partOneRevenueIncomeAccountSubcategory->current_year_budget ||
+                                                    $partOneRevenueIncomeAccountSubcategory->next_year_budget ||
+                                                    $partOneRevenueIncomeAccountSubcategory->current_year_actual_income ||
+                                                    $partOneRevenueIncomeAccountSubcategory->next_year_actual_income)
+                                                    <tr>
 
-                                                    @php
-                                                        $last_year_total_amount += $partOneRevenueIncomeAccountSubcategory->last_year_budget;
-                                                        $current_year_total_amount += $partOneRevenueIncomeAccountSubcategory->current_year_budget;
-                                                        $next_year_total_amount += $partOneRevenueIncomeAccountSubcategory->next_year_budget;
-                                                        $current_year_actual_income_total_amount += $partOneRevenueIncomeAccountSubcategory->current_year_actual_income;
-                                                        $next_year_actual_income_total_amount += $partOneRevenueIncomeAccountSubcategory->next_year_actual_income;
-                                                    @endphp
+                                                        @php
+                                                            $last_year_total_amount += $partOneRevenueIncomeAccountSubcategory->last_year_budget;
+                                                            $current_year_total_amount += $partOneRevenueIncomeAccountSubcategory->current_year_budget;
+                                                            $next_year_total_amount += $partOneRevenueIncomeAccountSubcategory->next_year_budget;
+                                                            $current_year_actual_income_total_amount += $partOneRevenueIncomeAccountSubcategory->current_year_actual_income;
+                                                            $next_year_actual_income_total_amount += $partOneRevenueIncomeAccountSubcategory->next_year_actual_income;
+                                                        @endphp
 
-                                                    <td>{{ $partOneRevenueIncomeAccountSubcategory->subcategory_name }}
-                                                    </td>
-                                                    <td style="text-align: end">
-                                                        {{ $partOneRevenueIncomeAccountSubcategory->last_year_budget }}
-                                                    </td>
-                                                    <td style="text-align: end">
-                                                        {{ $partOneRevenueIncomeAccountSubcategory->current_year_budget }}
-                                                    </td>
-                                                    <td style="text-align: end">
-                                                        {{ $partOneRevenueIncomeAccountSubcategory->current_year_actual_income }}
-                                                    </td>
-                                                    <td style="text-align: end">
-                                                        {{ $partOneRevenueIncomeAccountSubcategory->current_year_budget }}
-                                                    </td>
-                                                    <td style="text-align: end">
-                                                        {{ $partOneRevenueIncomeAccountSubcategory->next_year_actual_income }}
-                                                    </td>
-                                                </tr>
+                                                        <td>{{ $partOneRevenueIncomeAccountSubcategory->subcategory_name }}
+                                                        </td>
+                                                        <td style="text-align: end">
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->last_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end">
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->current_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end">
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->current_year_actual_income }}
+                                                        </td>
+                                                        <td style="text-align: end">
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->current_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end">
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->next_year_actual_income }}
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     @endforeach
@@ -232,7 +238,7 @@
                                         </thead>
 
                                         @php
-
+                                            
                                             $query_two =
                                                 'SELECT b.id AS subcategory_id, b.name as subcategory_name,
                                                         a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -243,37 +249,45 @@
                                                 ' ' .
                                                 'AND a.user_id = ' .
                                                 $userInfo[0]->id;
-
+                                            
                                             $partOneIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_two);
-
+                                            
                                         @endphp
 
                                         @foreach ($partOneIncomeAccountSubcategoryList as $partOneIncomeAccountSubcategory)
                                             <tbody>
-                                                <tr>
-                                                    @php
-                                                        $p_one_exp_last_year_total_amount += $partOneIncomeAccountSubcategory->last_year_budget;
-                                                        $p_one_exp_current_year_total_amount += $partOneIncomeAccountSubcategory->current_year_budget;
-                                                        $p_one_exp_next_year_total_amount += $partOneIncomeAccountSubcategory->next_year_budget;
-                                                        $p_one_exp_current_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->current_year_actual_income;
-                                                        $p_one_exp_next_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->next_year_actual_income;
-                                                    @endphp
 
-                                                    <td style="width: 30%">
-                                                        {{ $partOneIncomeAccountSubcategory->subcategory_name }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partOneIncomeAccountSubcategory->last_year_budget }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partOneIncomeAccountSubcategory->current_year_budget }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partOneIncomeAccountSubcategory->current_year_actual_income }}
-                                                    </td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partOneIncomeAccountSubcategory->next_year_budget }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partOneIncomeAccountSubcategory->next_year_actual_income }}
-                                                    </td>
-                                                </tr>
+                                                @if ($partOneIncomeAccountSubcategory->last_year_budget ||
+                                                    $partOneIncomeAccountSubcategory->current_year_budget ||
+                                                    $partOneIncomeAccountSubcategory->next_year_budget ||
+                                                    $partOneIncomeAccountSubcategory->current_year_actual_income ||
+                                                    $partOneIncomeAccountSubcategory->next_year_actual_income)
+                                                    <tr>
+                                                        @php
+                                                            $p_one_exp_last_year_total_amount += $partOneIncomeAccountSubcategory->last_year_budget;
+                                                            $p_one_exp_current_year_total_amount += $partOneIncomeAccountSubcategory->current_year_budget;
+                                                            $p_one_exp_next_year_total_amount += $partOneIncomeAccountSubcategory->next_year_budget;
+                                                            $p_one_exp_current_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->current_year_actual_income;
+                                                            $p_one_exp_next_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->next_year_actual_income;
+                                                        @endphp
+
+                                                        <td style="width: 30%">
+                                                            {{ $partOneIncomeAccountSubcategory->subcategory_name }}</td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partOneIncomeAccountSubcategory->last_year_budget }}</td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partOneIncomeAccountSubcategory->current_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partOneIncomeAccountSubcategory->current_year_actual_income }}
+                                                        </td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partOneIncomeAccountSubcategory->next_year_budget }}</td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partOneIncomeAccountSubcategory->next_year_actual_income }}
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             </tbody>
                                         @endforeach
                                     @endforeach
@@ -393,7 +407,7 @@
                                         </thead>
 
                                         @php
-
+                                            
                                             $query_five =
                                                 'SELECT b.id AS subcategory_id, b.name as subcategory_name,
                                                 a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -404,37 +418,47 @@
                                                 ' ' .
                                                 'AND a.user_id=' .
                                                 $userInfo[0]->id;
-
+                                            
                                             $partTwoDevIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_five);
-
+                                            
                                         @endphp
 
                                         @foreach ($partTwoDevIncomeAccountSubcategoryList as $partTwoDevIncomeAccountSubcategory)
                                             <tbody>
-                                                <tr>
-                                                    @php
-                                                        $p_two_exp_last_year_total_amount += $partTwoDevIncomeAccountSubcategory->last_year_budget;
-                                                        $p_two_exp_current_year_total_amount += $partTwoDevIncomeAccountSubcategory->current_year_budget;
-                                                        $p_two_exp_next_year_total_amount += $partTwoDevIncomeAccountSubcategory->next_year_budget;
-                                                        $p_two_exp_current_year_actual_income_total_amount += $partTwoDevIncomeAccountSubcategory->current_year_actual_income;
-                                                        $p_two_exp_next_year_actual_income_total_amount += $partTwoDevIncomeAccountSubcategory->next_year_actual_income;
-                                                    @endphp
+                                                @if ($partTwoDevIncomeAccountSubcategory->last_year_budget ||
+                                                    $partTwoDevIncomeAccountSubcategory->current_year_budget ||
+                                                    $partTwoDevIncomeAccountSubcategory->next_year_budget ||
+                                                    $partTwoDevIncomeAccountSubcategory->current_year_actual_income ||
+                                                    $partTwoDevIncomeAccountSubcategory->next_year_actual_income)
+                                                    <tr>
+                                                        @php
+                                                            $p_two_exp_last_year_total_amount += $partTwoDevIncomeAccountSubcategory->last_year_budget;
+                                                            $p_two_exp_current_year_total_amount += $partTwoDevIncomeAccountSubcategory->current_year_budget;
+                                                            $p_two_exp_next_year_total_amount += $partTwoDevIncomeAccountSubcategory->next_year_budget;
+                                                            $p_two_exp_current_year_actual_income_total_amount += $partTwoDevIncomeAccountSubcategory->current_year_actual_income;
+                                                            $p_two_exp_next_year_actual_income_total_amount += $partTwoDevIncomeAccountSubcategory->next_year_actual_income;
+                                                        @endphp
 
-                                                    <td style="width: 30%">
-                                                        {{ $partTwoDevIncomeAccountSubcategory->subcategory_name }}</td>
-                                                    <td style="text-align: end" style="width: 14%">
-                                                        {{ $partTwoDevIncomeAccountSubcategory->last_year_budget }}</td>
-                                                    <td style="text-align: end" style="width: 14%">
-                                                        {{ $partTwoDevIncomeAccountSubcategory->current_year_budget }}</td>
-                                                    <td style="text-align: end" style="width: 14%">
-                                                        {{ $partTwoDevIncomeAccountSubcategory->current_year_actual_income }}
-                                                    </td>
-                                                    <td style="text-align: end" style="width: 14%">
-                                                        {{ $partTwoDevIncomeAccountSubcategory->next_year_budget }}</td>
-                                                    <td style="text-align: end" style="width: 14%">
-                                                        {{ $partTwoDevIncomeAccountSubcategory->next_year_actual_income }}
-                                                    </td>
-                                                </tr>
+                                                        <td style="width: 30%">
+                                                            {{ $partTwoDevIncomeAccountSubcategory->subcategory_name }}
+                                                        </td>
+                                                        <td style="text-align: end" style="width: 14%">
+                                                            {{ $partTwoDevIncomeAccountSubcategory->last_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end" style="width: 14%">
+                                                            {{ $partTwoDevIncomeAccountSubcategory->current_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end" style="width: 14%">
+                                                            {{ $partTwoDevIncomeAccountSubcategory->current_year_actual_income }}
+                                                        </td>
+                                                        <td style="text-align: end" style="width: 14%">
+                                                            {{ $partTwoDevIncomeAccountSubcategory->next_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end" style="width: 14%">
+                                                            {{ $partTwoDevIncomeAccountSubcategory->next_year_actual_income }}
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             </tbody>
                                         @endforeach
                                     @endforeach
@@ -557,7 +581,7 @@
                                         </thead>
 
                                         @php
-
+                                            
                                             $query_three =
                                                 'SELECT DISTINCT b.id AS subcategory_id, b.name as subcategory_name,
                                                         a.id, a.category_id, a.last_year_budget, a.current_year_budget, a.next_year_budget, a.current_year_actual_income, a.next_year_actual_income FROM
@@ -568,35 +592,42 @@
                                                 ' ' .
                                                 'AND a.user_id=' .
                                                 $userInfo[0]->id;
-
+                                            
                                             $partTwoDevExpAccountSubcategoryList = \Illuminate\Support\Facades\DB::select($query_three);
                                         @endphp
 
                                         <tbody>
                                             @foreach ($partTwoDevExpAccountSubcategoryList as $partTwoDevExpAccountSubcategory)
-                                                <tr>
-                                                    @php
-                                                        $p_two_dev_exp_last_year_total_amount += $partTwoDevExpAccountSubcategory->last_year_budget;
-                                                        $p_two_dev_exp_current_year_total_amount += $partTwoDevExpAccountSubcategory->current_year_budget;
-                                                        $p_two_dev_exp_next_year_total_amount += $partTwoDevExpAccountSubcategory->next_year_budget;
-                                                        $p_two_dev_exp_current_year_actual_income_total_amount += $partTwoDevExpAccountSubcategory->current_year_actual_income;
-                                                        $p_two_dev_exp_next_year_actual_income_total_amount += $partTwoDevExpAccountSubcategory->next_year_actual_income;
-                                                    @endphp
-                                                    <td style="width: 30%">
-                                                        {{ $partTwoDevExpAccountSubcategory->subcategory_name }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partTwoDevExpAccountSubcategory->last_year_budget }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partTwoDevExpAccountSubcategory->current_year_budget }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partTwoDevExpAccountSubcategory->current_year_actual_income }}
-                                                    </td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partTwoDevExpAccountSubcategory->next_year_budget }}</td>
-                                                    <td style="text-align: end; width: 14%">
-                                                        {{ $partTwoDevExpAccountSubcategory->next_year_actual_income }}
-                                                    </td>
-                                                </tr>
+                                                @if ($partTwoDevExpAccountSubcategory->last_year_budget ||
+                                                    $partTwoDevExpAccountSubcategory->current_year_budget ||
+                                                    $partTwoDevExpAccountSubcategory->next_year_budget ||
+                                                    $partTwoDevExpAccountSubcategory->current_year_actual_income ||
+                                                    $partTwoDevExpAccountSubcategory->next_year_actual_income)
+                                                    <tr>
+                                                        @php
+                                                            $p_two_dev_exp_last_year_total_amount += $partTwoDevExpAccountSubcategory->last_year_budget;
+                                                            $p_two_dev_exp_current_year_total_amount += $partTwoDevExpAccountSubcategory->current_year_budget;
+                                                            $p_two_dev_exp_next_year_total_amount += $partTwoDevExpAccountSubcategory->next_year_budget;
+                                                            $p_two_dev_exp_current_year_actual_income_total_amount += $partTwoDevExpAccountSubcategory->current_year_actual_income;
+                                                            $p_two_dev_exp_next_year_actual_income_total_amount += $partTwoDevExpAccountSubcategory->next_year_actual_income;
+                                                        @endphp
+                                                        <td style="width: 30%">
+                                                            {{ $partTwoDevExpAccountSubcategory->subcategory_name }}</td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partTwoDevExpAccountSubcategory->last_year_budget }}</td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partTwoDevExpAccountSubcategory->current_year_budget }}
+                                                        </td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partTwoDevExpAccountSubcategory->current_year_actual_income }}
+                                                        </td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partTwoDevExpAccountSubcategory->next_year_budget }}</td>
+                                                        <td style="text-align: end; width: 14%">
+                                                            {{ $partTwoDevExpAccountSubcategory->next_year_actual_income }}
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     @endforeach
@@ -644,7 +675,7 @@
                                         <td style="background-color: #c6e0b4; width: 14%; text-align: end">
                                             {{ $current_year_total_amount }}</td>
                                         <td style="background-color: #c6e0b4; width: 14%; text-align: end">
-                                            {{ $current_year_actual_income_total_amount}}</td>
+                                            {{ $current_year_actual_income_total_amount }}</td>
                                         <td style="background-color: #c6e0b4; width: 14%; text-align: end">
                                             {{ $next_year_total_amount }}</td>
                                         <td style="background-color: #c6e0b4; width: 14%; text-align: end">
@@ -671,9 +702,10 @@
                                         <td style="background-color: #ffc000; width: 14%; text-align: end">
                                             {{ $current_year_total_amount - $p_one_exp_current_year_total_amount }}</td>
                                         <td style="background-color: #ffc000; width: 14%; text-align: end">
-                                            {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}</td>
+                                            {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}
+                                        </td>
                                         <td style="background-color: #ffc000; width: 14%; text-align: end">
-                                            {{ $next_year_total_amount - $p_one_exp_next_year_total_amount}}
+                                            {{ $next_year_total_amount - $p_one_exp_next_year_total_amount }}
                                         </td>
                                         <td style="background-color: #ffc000; width: 14%; text-align: end">
                                             {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
@@ -688,50 +720,67 @@
                                             {{ $p_one_exp_current_year_total_amount + $current_year_total_amount - $p_one_exp_current_year_total_amount }}
                                         </td>
                                         <td style="background-color: #c6e0b4; width: 14%; text-align: end">
-                                            {{ $p_one_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount}}</td>
-                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">{{$p_one_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount}}</td>
-                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">{{ $p_one_exp_next_year_actual_income_total_amount + $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}</td>
+                                            {{ $p_one_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}
+                                        </td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $p_one_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount }}
+                                        </td>
+                                        <td style="background-color: #c6e0b4; width: 14%; text-align: end">
+                                            {{ $p_one_exp_next_year_actual_income_total_amount + $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 30%">উপমোট উন্নয়ন আয়</td>
                                         <td style="width: 14%; text-align: end">
-                                                {{ $p_two_exp_last_year_total_amount }}
+                                            {{ $p_two_exp_last_year_total_amount }}
                                         </td>
                                         <td style="width: 14%; text-align: end">
-                                                {{ $p_two_exp_current_year_total_amount }}
+                                            {{ $p_two_exp_current_year_total_amount }}
                                         </td>
                                         <td style="width: 14%; text-align: end">
-                                                {{ $p_two_exp_current_year_actual_income_total_amount }}
+                                            {{ $p_two_exp_current_year_actual_income_total_amount }}
                                         </td>
                                         <td style="width: 14%; text-align: end">
-                                                {{ $p_two_exp_next_year_total_amount }}
+                                            {{ $p_two_exp_next_year_total_amount }}
                                         </td>
                                         <td style="width: 14%; text-align: end">
-                                                {{ $p_two_exp_next_year_actual_income_total_amount }}
+                                            {{ $p_two_exp_next_year_actual_income_total_amount }}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="background-color: #f4b084; width: 30%">মোট উন্নয়ন আয়= উপমোট উন্নয়ন আয়+
                                             রাজস্ব উদ্বৃত্ত</td>
-                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_last_year_total_amount + $last_year_total_amount - $p_one_exp_last_year_total_amount}}</td>
-                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_current_year_total_amount + $current_year_total_amount - $p_one_exp_current_year_total_amount}}</td>
-                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount}}</td>
-                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount}}</td>
-                                        <td style="background-color: #f4b084; width: 14%; text-align: end">{{ $p_two_exp_next_year_actual_income_total_amount + $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}</td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">
+                                            {{ $p_two_exp_last_year_total_amount + $last_year_total_amount - $p_one_exp_last_year_total_amount }}
+                                        </td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">
+                                            {{ $p_two_exp_current_year_total_amount + $current_year_total_amount - $p_one_exp_current_year_total_amount }}
+                                        </td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">
+                                            {{ $p_two_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}
+                                        </td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">
+                                            {{ $p_two_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount }}
+                                        </td>
+                                        <td style="background-color: #f4b084; width: 14%; text-align: end">
+                                            {{ $p_two_exp_next_year_actual_income_total_amount + $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="background-color: #acb9ca; width: 30%">মোট আয় (রাজস্ব আয়+উপমোট উন্নয়ন
                                             আয়)</td>
                                         <td style="background-color: #acb9ca; width: 14%; text-align: end">
-                                            {{ $last_year_total_amount +  $p_two_exp_last_year_total_amount}}</td>
+                                            {{ $last_year_total_amount + $p_two_exp_last_year_total_amount }}</td>
                                         <td style="background-color: #acb9ca; width: 14%; text-align: end">
-                                            {{ $current_year_total_amount + $p_two_exp_current_year_total_amount}}</td>
+                                            {{ $current_year_total_amount + $p_two_exp_current_year_total_amount }}</td>
                                         <td style="background-color: #acb9ca; width: 14%; text-align: end">
-                                            {{ $current_year_actual_income_total_amount + $p_two_exp_current_year_actual_income_total_amount}}</td>
+                                            {{ $current_year_actual_income_total_amount + $p_two_exp_current_year_actual_income_total_amount }}
+                                        </td>
                                         <td style="background-color: #acb9ca; width: 14%; text-align: end">
                                             {{ $next_year_total_amount + $p_two_exp_next_year_total_amount }}</td>
                                         <td style="background-color: #acb9ca; width: 14%; text-align: end">
-                                            {{ $next_year_actual_income_total_amount + $p_two_exp_next_year_actual_income_total_amount}}</td>
+                                            {{ $next_year_actual_income_total_amount + $p_two_exp_next_year_actual_income_total_amount }}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 30%">উপমোট উন্নয়ন ব্যয় </td>
