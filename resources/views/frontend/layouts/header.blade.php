@@ -18,7 +18,10 @@
                     <a style="color: white" class="nav-link {{ request()->is('list-form-kha') ? 'active' : '' }}"
                         href="{{ route('user.getKhaFormList') }}">ফরম "খ" ডাটা</a>
                 </li>
-
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link {{ request()->is('all-form-kha-data') ? 'active' : '' }}"
+                        href="{{ route('user.getAllKhaFormData') }}">অল ফরম "খ" ডাটা</a>
+                </li>
                 <li class="nav-item">
 
                     @if (session('user_role') !== null)
