@@ -53,3 +53,5 @@
         });
     });
 </script>
+
+@yield('custom_js')

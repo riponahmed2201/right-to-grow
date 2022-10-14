@@ -75,7 +75,7 @@
                             </table>
                             <br>
                             <h5>
-                                <u>R2G ফরমেটের অর্থ বছর @if (isset($userInfo[0]->financial_year))
+                                <u>অর্থ বছর @if (isset($userInfo[0]->financial_year))
                                         {{ $userInfo[0]->financial_year }}:
                                     @else
                                         2021-2022:

@@ -43,8 +43,9 @@
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>R2G ফরমেটের অর্থ বছর:</label>
-                                            <select name="part_one_revenue_income_financial_year" required
+                                            <label>অর্থ বছর:</label>
+                                            <select onchange="partOneRevenueIncomeFinancialYearFunc(this.value)"
+                                                name="part_one_revenue_income_financial_year" required
                                                 class="form-control mt-2" id="part_one_revenue_income_financial_year">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
@@ -63,15 +64,22 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        (২০২০-২০২১)</th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
-                                                        বাজেট (২০২১-২০২২)
+                                                        <p id="part_one_revenue_pre_year_budget_id">(২০২০-২০২১)</p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                        বাজেট <p id="part_one_revenue_current_year_budget_id">(২০২০-২০২১)
+                                                        </p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_one_revenue_actual_income_year_budget_id">(২০২০-২০২১)
+                                                        </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        (২০২২-২০২৩)</th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
+                                                        <p id="part_one_revenue_next_year_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_one_revenue_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
                                                 </tr>
                                                 <tr>
                                                     <th colspan="6" style="background-color: #e7e6e6">রাজস্ব আয়</th>
@@ -162,8 +170,8 @@
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>R2G ফরমেটের অর্থ বছর ২০২১-২২:</label>
-                                            <select name="part_one_revenue_expenditure_financial_year" required
+                                            <label>অর্থ বছর ২০২১-২২:</label>
+                                            <select name="part_one_revenue_expenditure_financial_year" onchange="partOneExpenditureIncomeFinancialYearFunc(this.value)" required
                                                 class="form-control mt-2">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
@@ -182,16 +190,22 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        (২০২০-২০২১)</th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা
-                                                        সংশোধিত
-                                                        বাজেট (২০২১-২০২২)
+                                                        <p id="part_one_expenditure_pre_year_budget_id">(২০২০-২০২১)</p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                        বাজেট <p id="part_one_expenditure_current_year_budget_id">(২০২০-২০২১)
+                                                        </p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_one_expenditure_actual_income_year_budget_id">(২০২০-২০২১)
+                                                        </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        (২০২২-২০২৩)</th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
+                                                        <p id="part_one_expenditure_next_year_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_one_expenditure_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -278,8 +292,8 @@
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>R2G ফরমেটের অর্থ বছর:</label>
-                                            <select name="part_two_development_income_financial_year" required
+                                            <label>অর্থ বছর:</label>
+                                            <select name="part_two_development_income_financial_year" onchange="partTwoDevelopmentRevenueFinancialYearFunc(this.value)" required
                                                 class="form-control mt-2" id="part_one_revenue_income_financial_year">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
@@ -298,16 +312,22 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        (২০২০-২০২১)</th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা
-                                                        সংশোধিত
-                                                        বাজেট (২০২১-২০২২)
+                                                        <p id="part_two_development_revenue_pre_year_budget_id">(২০২০-২০২১)</p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                        বাজেট <p id="part_two_development_revenue_current_year_budget_id">(২০২০-২০২১)
+                                                        </p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_two_development_revenue_actual_income_year_budget_id">(২০২০-২০২১)
+                                                        </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        (২০২২-২০২৩)</th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
+                                                        <p id="part_two_development_revenue_next_year_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_two_development_revenue_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -392,8 +412,8 @@
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>R2G ফরমেটের অর্থ বছর:</label>
-                                            <select name="part_two_development_expenditure_financial_year" required
+                                            <label>অর্থ বছর:</label>
+                                            <select name="part_two_development_expenditure_financial_year" onchange="partTwoDevelopmentExpenditureFinancialYearFunc(this.value)" required
                                                 class="form-control mt-2">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
@@ -412,16 +432,22 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        (২০২০-২০২১)</th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা
-                                                        সংশোধিত
-                                                        বাজেট (২০২১-২০২২)
+                                                        <p id="part_two_development_expenditure_pre_year_budget_id">(২০২০-২০২১)</p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                        বাজেট <p id="part_two_development_expenditure_current_year_budget_id">(২০২০-২০২১)
+                                                        </p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_two_development_expenditure_actual_income_year_budget_id">(২০২০-২০২১)
+                                                        </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        (২০২২-২০২৩)</th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
+                                                        <p id="part_two_development_expenditure_next_year_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
+                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_two_development_expenditure_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -509,4 +535,143 @@
             </style>
         </div>
     </div>
+@endsection
+
+@section('custom_js')
+    <script>
+        //Part One Revenue Income Financial Year Onchane Function
+        function partOneRevenueIncomeFinancialYearFunc(current_financial_year) {
+
+            if (current_financial_year) {
+
+                const financial_year_array = current_financial_year.split("-").slice(0, 3);
+
+                if (financial_year_array.length === 2) {
+
+                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
+                            1]) -
+                        1);
+
+                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
+                        1);
+
+                    //Current Financial Year 
+                    document.getElementById("part_one_revenue_current_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+                    document.getElementById("part_one_revenue_actual_income_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+
+                    //Previous Financial Year
+                    document.getElementById("part_one_revenue_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
+
+                    //Next Financial Year
+                    document.getElementById("part_one_revenue_next_year_budget_id").innerHTML = '(' + next_year + ')';
+                    document.getElementById("part_one_revenue_next_year_actual_budget_id").innerHTML = '(' + next_year +
+                    ')';
+                }
+            }
+
+        }
+
+        //Part One Expenditure Income Financial Year Onchane Function
+        function partOneExpenditureIncomeFinancialYearFunc(current_financial_year) {
+
+            if (current_financial_year) {
+
+                const financial_year_array = current_financial_year.split("-").slice(0, 3);
+
+                if (financial_year_array.length === 2) {
+
+                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
+                            1]) -
+                        1);
+
+                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
+                        1);
+
+                    //Current Financial Year 
+                    document.getElementById("part_one_expenditure_current_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+                    document.getElementById("part_one_expenditure_actual_income_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+
+                    //Previous Financial Year
+                    document.getElementById("part_one_expenditure_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
+
+                    //Next Financial Year
+                    document.getElementById("part_one_expenditure_next_year_budget_id").innerHTML = '(' + next_year + ')';
+                    document.getElementById("part_one_expenditure_next_year_actual_budget_id").innerHTML = '(' + next_year +
+                    ')';
+                }
+            }
+        }
+
+        //Part Two Revenue Income Financial Year Onchane Function
+        function partTwoDevelopmentRevenueFinancialYearFunc(current_financial_year) {
+
+            if (current_financial_year) {
+
+                const financial_year_array = current_financial_year.split("-").slice(0, 3);
+
+                if (financial_year_array.length === 2) {
+
+                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
+                            1]) -
+                        1);
+
+                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
+                        1);
+
+                    //Current Financial Year 
+                    document.getElementById("part_two_development_revenue_current_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+                    document.getElementById("part_two_development_revenue_actual_income_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+
+                    //Previous Financial Year
+                    document.getElementById("part_two_development_revenue_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
+
+                    //Next Financial Year
+                    document.getElementById("part_two_development_revenue_next_year_budget_id").innerHTML = '(' + next_year + ')';
+                    document.getElementById("part_two_development_revenue_next_year_actual_budget_id").innerHTML = '(' + next_year +
+                    ')';
+                }
+            }
+
+        }
+
+        //Part Two Development Expenditure Financial Year Onchane Function
+        function partTwoDevelopmentExpenditureFinancialYearFunc(current_financial_year) {
+
+            if (current_financial_year) {
+
+                const financial_year_array = current_financial_year.split("-").slice(0, 3);
+
+                if (financial_year_array.length === 2) {
+
+                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
+                            1]) -
+                        1);
+
+                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
+                        1);
+
+                    //Current Financial Year 
+                    document.getElementById("part_two_development_expenditure_current_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+                    document.getElementById("part_two_development_expenditure_actual_income_year_budget_id").innerHTML = '(' +
+                        current_financial_year + ')';
+
+                    //Previous Financial Year
+                    document.getElementById("part_two_development_expenditure_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
+
+                    //Next Financial Year
+                    document.getElementById("part_two_development_expenditure_next_year_budget_id").innerHTML = '(' + next_year + ')';
+                    document.getElementById("part_two_development_expenditure_next_year_actual_budget_id").innerHTML = '(' + next_year +
+                    ')';
+                }
+            }
+
+        }
+    </script>
 @endsection

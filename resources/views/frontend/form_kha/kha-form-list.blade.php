@@ -17,7 +17,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ক্রমিক নং</th>
+                                        <th style="width: 80px">ক্রমিক নং</th>
                                         <th>অর্থ বছর</th>
                                         <th>বিভাগ</th>
                                         <th>জেলা</th>
@@ -38,7 +38,7 @@
                                                 <td>{{ $user->union_name }}</td>
                                                 <td style="width: 60px">
                                                     <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
-                                                        class="btn btn-info">View</a>
+                                                        class="btn" style="background-color: #5314b1; color: white">View</a>
                                                 </td>
                                             </tr>
                                         @endforeach
