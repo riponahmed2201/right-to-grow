@@ -64,21 +64,21 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        <p id="part_one_revenue_pre_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_one_revenue_pre_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
-                                                        বাজেট <p id="part_one_revenue_current_year_budget_id">(২০২০-২০২১)
+                                                        বাজেট <p id="part_one_revenue_current_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_one_revenue_actual_income_year_budget_id">(২০২০-২০২১)
+                                                            id="part_one_revenue_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        <p id="part_one_revenue_next_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_one_revenue_next_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_one_revenue_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                            id="part_one_revenue_next_year_actual_budget_id"></p>
                                                     </th>
                                                 </tr>
                                                 <tr>
@@ -170,7 +170,7 @@
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>অর্থ বছর ২০২১-২২:</label>
+                                            <label>অর্থ বছর:</label>
                                             <select name="part_one_revenue_expenditure_financial_year" onchange="partOneExpenditureIncomeFinancialYearFunc(this.value)" required
                                                 class="form-control mt-2">
                                                 <option value="">--নির্বাচন করুন--</option>
@@ -190,21 +190,21 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        <p id="part_one_expenditure_pre_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_one_expenditure_pre_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
-                                                        বাজেট <p id="part_one_expenditure_current_year_budget_id">(২০২০-২০২১)
+                                                        বাজেট <p id="part_one_expenditure_current_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_one_expenditure_actual_income_year_budget_id">(২০২০-২০২১)
+                                                            id="part_one_expenditure_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        <p id="part_one_expenditure_next_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_one_expenditure_next_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_one_expenditure_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                            id="part_one_expenditure_next_year_actual_budget_id"></p>
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -312,21 +312,21 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        <p id="part_two_development_revenue_pre_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_two_development_revenue_pre_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
-                                                        বাজেট <p id="part_two_development_revenue_current_year_budget_id">(২০২০-২০২১)
+                                                        বাজেট <p id="part_two_development_revenue_current_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_two_development_revenue_actual_income_year_budget_id">(২০২০-২০২১)
+                                                            id="part_two_development_revenue_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        <p id="part_two_development_revenue_next_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_two_development_revenue_next_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_two_development_revenue_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                            id="part_two_development_revenue_next_year_actual_budget_id"></p>
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -432,21 +432,21 @@
                                                 <tr>
                                                     <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
                                                     <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                        <p id="part_two_development_expenditure_pre_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_two_development_expenditure_pre_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
-                                                        বাজেট <p id="part_two_development_expenditure_current_year_budget_id">(২০২০-২০২১)
+                                                        বাজেট <p id="part_two_development_expenditure_current_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_two_development_expenditure_actual_income_year_budget_id">(২০২০-২০২১)
+                                                            id="part_two_development_expenditure_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                        <p id="part_two_development_expenditure_next_year_budget_id">(২০২০-২০২১)</p>
+                                                        <p id="part_two_development_expenditure_next_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_two_development_expenditure_next_year_actual_budget_id">(২০২০-২০২১)</p>
+                                                            id="part_two_development_expenditure_next_year_actual_budget_id"></p>
                                                     </th>
                                                 </tr>
                                             </thead>
