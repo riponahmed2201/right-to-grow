@@ -2,13 +2,6 @@
 
 @section('main-content')
     <div class="main-containt">
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <h2 class="page-title text-center en" style="display: none;">Budget Monitoring &amp; Expenditure
-                    Tracking (BMET)</h2>
-            </div>
-        </div>
-
         <div class="col-md-12">
             <div class="page-header">
                 <div class="col-md-12 text-center">

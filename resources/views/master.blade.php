@@ -6,11 +6,10 @@
     @include('frontend.layouts.stylesheet')
 </head>
 
-<body>
+<body style="background-color: #ebebeb">
     <div class="container-fluid contant">
         <div class="row">
             <div class="col-md-12">
-
                 <header style="color: white">
                     <div class="row">
                         <div class="col-md-12">
@@ -33,13 +32,18 @@
                         @include('frontend.layouts.header')
 
                     </div>
-                    {{--                <div class='row g-0'> --}}
-                    {{--                    <div class="btn-group w-auto ms-auto pt-20" role="group"> --}}
-                    {{--                        <a href="javascript:void(0)" type="button" id="bn" class="btn">বাংলা</a> --}}
-                    {{--                        <a href="javascript:void(0)" type="button" id="en" class="btn btn-default">English</a> --}}
-                    {{--                    </div> --}}
-                    {{--                </div> --}}
+
+                    {{-- <div class='row g-0'>
+                        <div class="btn-group w-auto ms-auto pt-20" role="group">
+                            <a href="javascript:void(0)" type="button" id="bn" class="btn">বাংলা</a>
+                            <a href="javascript:void(0)" type="button" id="en"
+                                class="btn btn-default">English</a>
+                        </div>
+                    </div> --}}
+
                 </header>
+
+                <br> <br>
 
                 @yield('main-content')
 
@@ -47,7 +51,10 @@
         </div>
     </div>
 
-    @include('frontend.layouts.footer')
+    <div>
+        @include('frontend.layouts.footer')
+
+    </div>
 
     @include('frontend.layouts.script')
 

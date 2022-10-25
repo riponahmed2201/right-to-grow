@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-hover" id="fronendDatatable">
                                 <thead>
                                     <tr>
                                         <th style="width: 80px">ক্রমিক নং</th>
@@ -23,7 +23,7 @@
                                         <th>জেলা</th>
                                         <th>উপজেলা</th>
                                         <th>ইউনিয়ন</th>
-                                        <th style="width: 60px">Action</th>
+                                        <th style="width: 250px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,9 +36,22 @@
                                                 <td>{{ $user->district_name }}</td>
                                                 <td>{{ $user->upazila_name }}</td>
                                                 <td>{{ $user->union_name }}</td>
-                                                <td style="width: 60px">
-                                                    <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
-                                                        class="btn" style="background-color: #5314b1; color: white">View</a>
+                                                <td class="text-center">
+
+                                                    <div class="btn-group">
+                                                        <a href="{{ route('user.editFormKha', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+                                                            class="btn"
+                                                            style="background-color: #f76300; color: white">Edit</a>
+
+                                                        <a href="{{ route('user.summary_report', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+                                                            class="btn"
+                                                            style="background-color: gray; color: white">Summary Report</a>
+
+                                                        <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+                                                            class="btn"
+                                                            style="background-color: #5314b1; color: white">View</a>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -56,4 +69,5 @@
             </div>
         </div>
     </div>
+    <br><br><br><br>
 @endsection

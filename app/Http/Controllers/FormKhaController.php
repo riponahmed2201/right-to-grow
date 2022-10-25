@@ -55,6 +55,43 @@ class FormKhaController extends Controller
         return view('frontend.form_kha.show_kha_form_data', $data);
     }
 
+    public function editFormKha($user_id, $financial_year)
+    {
+        $data['financialYearList'] = DB::table('financial_years')->get();
+        $data['partOneRevenueIncomeAccountCategories'] = DB::table('categories')->where('type_id', '=', '1')->get();
+        $data['partOneRevenueExpenditureAccountCategories'] = DB::table('categories')->where('type_id', '=', '2')->get();
+
+        $data['partTwoDevelopmentIncomeAccountCategories'] = DB::table('categories')->where('type_id', '=', '3')->get();
+        $data['partTwoDevelopmentExpenditureAccountCategories'] = DB::table('categories')->where('type_id', '=', '4')->get();
+
+        $data['userInfo'] = DB::select("SELECT b.*, a.financial_year, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
+        LEFT JOIN `users` AS b ON a.user_id = b.id
+        LEFT JOIN `divisions` AS c ON b.division_id = c.id
+        LEFT JOIN `districts` AS d ON b.district_id = d.id
+        LEFT JOIN `upazilas` AS e ON b.upazila_id = e.id
+        LEFT JOIN `unions` AS f ON b.union_id = f.id WHERE a.user_id = '" . $user_id . "' AND a.financial_year = '" . $financial_year . "' ");
+
+        $data['partOneRevenueIncomeAccountList'] = DB::select("SELECT DISTINCT b.id AS category_id, b.name as category_name  FROM
+                                                    `part_one_revenue_income_accounts` AS a
+                                                    LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 1 AND a.user_id='" . $user_id . "' AND a.financial_year = '" . $financial_year . "' ");
+
+        $data['partOneRevenueExpenditureAccountList'] = DB::select("SELECT DISTINCT b.id AS category_id, b.name as category_name FROM
+                                                    `part_one_revenue_expenditure_accounts` AS a
+                                                    LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 2 AND a.user_id='" . $user_id . "' AND a.financial_year = '" . $financial_year . "' ");
+
+        $data['partTwoDevRevenueIncomeAccountList'] = DB::select("SELECT DISTINCT b.id AS category_id, b.name as category_name FROM
+                                                    `part_two_development_income_accounts` AS a
+                                                    LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 3 AND a.user_id='" . $user_id . "' AND a.financial_year = '" . $financial_year . "' ");
+
+
+        $data['partTwoDevRevenueExpenditureAccountList'] = DB::select("SELECT DISTINCT b.id AS category_id, b.name as category_name FROM
+                                                    `part_two_development_expenditure_accounts` AS a
+                                                    LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 4 AND a.user_id='" . $user_id . "' AND a.financial_year = '" . $financial_year . "' ");
+
+
+        return view('frontend.form_kha.edit.edit_kha_form', $data);
+    }
+
     public function getKhaFormList()
     {
         $user_id = session('user_id');
@@ -327,5 +364,10 @@ class FormKhaController extends Controller
             DB::rollBack();
             return back()->with('error', 'Something Error Found, Please try again!');
         }
+    }
+
+    public function showSummaryReport($user_id, $financial_year)
+    {
+        return view('frontend.form_kha.report.summary_report');
     }
 }

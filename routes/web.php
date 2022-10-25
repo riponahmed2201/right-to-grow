@@ -26,6 +26,11 @@ Route::middleware('user')->group(function () {
     Route::get('form-kha', [FormKhaController::class, 'showFormKha'])->name('show.form.kha');
     Route::get('show-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'showKhaFormData'])->name('show_form_kha_data');
     Route::get('list-form-kha', [FormKhaController::class, 'getKhaFormList'])->name('user.getKhaFormList');
+    Route::get('edit-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'editFormKha'])->name('user.editFormKha');
+    Route::post('update-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'updateFormKha'])->name('user.updateFormKha');
+
+    //Summary Report
+    Route::get('show-summary-report/{user_id}/{financial_year}', [FormKhaController::class, 'showSummaryReport'])->name('user.summary_report');
 });
 
 //Public Kha Form Data show

@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-hover" id="fronendDatatable">
                                 <thead>
                                     <tr>
                                         <th style="width: 80px">ক্রমিক নং</th>
@@ -56,4 +56,5 @@
             </div>
         </div>
     </div>
+    <br><br><br><br>
 @endsection
