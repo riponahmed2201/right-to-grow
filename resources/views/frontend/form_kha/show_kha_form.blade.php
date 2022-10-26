@@ -2,13 +2,6 @@
 
 @section('main-content')
     <div class="main-containt">
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <h2 class="page-title text-center en" style="display: none;">Budget Monitoring &amp; Expenditure
-                    Tracking (BMET)</h2>
-            </div>
-        </div>
-
         <div class="col-md-12">
             <div class="page-header">
                 <div class="col-md-12 text-center">
@@ -62,27 +55,29 @@
                                                     <th colspan="6">অংশ-১- রাজস্ব হিসাব আয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 15%; background-color: #f4b084" class="text-center">
+                                                        নোট</th>
+                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         <p id="part_one_revenue_pre_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                    <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
                                                         বাজেট <p id="part_one_revenue_current_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
                                                             id="part_one_revenue_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         <p id="part_one_revenue_next_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
                                                             id="part_one_revenue_next_year_actual_budget_id"></p>
                                                     </th>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="6" style="background-color: #e7e6e6">রাজস্ব আয়</th>
+                                                    <th colspan="7" style="background-color: #e7e6e6">রাজস্ব আয়</th>
                                                 </tr>
                                             </thead>
 
@@ -90,7 +85,7 @@
                                             @foreach ($partOneRevenueIncomeAccountCategories as $partOneRevenueIncomeAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="6" style="background-color: #e7e6e6">
+                                                        <th colspan="7" style="background-color: #e7e6e6">
                                                             {{ $partOneRevenueIncomeAccountCategory->name }}</th>
                                                     </tr>
                                                 </thead>
@@ -121,6 +116,9 @@
 
                                                                 {{ $partOneRevenueIncomeAccountSubcategory->name }}
                                                             </td>
+                                                            <td style="background-color: #f4b084">
+                                                                <input type="text" name="notes[]" class="form-control">
+                                                            </td>
                                                             <td>
                                                                 <input type="number" name="previous_budget[]"
                                                                     class="form-control">
@@ -148,8 +146,8 @@
                                             <!--End Part One Revenue Income Account Category and Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn text-center"
-                                        style="background-color: #5314b1; color:white">Save & Draft</button>
+                                    <button class="btn text-center" style="background-color: #5312b1; color:white">Save &
+                                        Draft</button>
                                 </form>
                             </div>
                         </div>
@@ -171,7 +169,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>অর্থ বছর:</label>
-                                            <select name="part_one_revenue_expenditure_financial_year" onchange="partOneExpenditureIncomeFinancialYearFunc(this.value)" required
+                                            <select name="part_one_revenue_expenditure_financial_year"
+                                                onchange="partOneExpenditureIncomeFinancialYearFunc(this.value)" required
                                                 class="form-control mt-2">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
@@ -185,25 +184,28 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="6">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ</th>
+                                                    <th colspan="7">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 15%; background-color: #f4b084" class="text-center">
+                                                        নোট</th>
+                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         <p id="part_one_expenditure_pre_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                    <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                        সংশোধিত
                                                         বাজেট <p id="part_one_expenditure_current_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
                                                             id="part_one_expenditure_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         <p id="part_one_expenditure_next_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
                                                             id="part_one_expenditure_next_year_actual_budget_id"></p>
                                                     </th>
                                                 </tr>
@@ -213,7 +215,7 @@
                                             @foreach ($partOneRevenueExpenditureAccountCategories as $partOneRevenueExpenditureAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="6" style="background-color: #e7e6e6">
+                                                        <th colspan="7" style="background-color: #e7e6e6">
                                                             {{ $partOneRevenueExpenditureAccountCategory->name }}</th>
                                                     </tr>
                                                 </thead>
@@ -242,6 +244,10 @@
 
                                                                 {{ $partOneExpenditureIncomeAccountSubategory->name }}
                                                             </td>
+                                                            <td style="background-color: #f4b084">
+                                                                <input type="text" name="notes[]"
+                                                                    class="form-control">
+                                                            </td>
                                                             <td>
                                                                 <input type="number" name="previous_budget[]"
                                                                     class="form-control">
@@ -269,8 +275,8 @@
                                             <!--End Part One Expenditure Income Account Category and Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn text-center"
-                                        style="background-color: #5314b1; color:white">Save & Draft</button>
+                                    <button class="btn text-center" style="background-color: #5312b1; color:white">Save &
+                                        Draft</button>
                                 </form>
                             </div>
                         </div>
@@ -293,7 +299,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>অর্থ বছর:</label>
-                                            <select name="part_two_development_income_financial_year" onchange="partTwoDevelopmentRevenueFinancialYearFunc(this.value)" required
+                                            <select name="part_two_development_income_financial_year"
+                                                onchange="partTwoDevelopmentRevenueFinancialYearFunc(this.value)" required
                                                 class="form-control mt-2" id="part_one_revenue_income_financial_year">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
@@ -307,26 +314,30 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="6">অংশ-২- উন্নয়ন হিসাব আয়ঃ</th>
+                                                    <th colspan="7">অংশ-২- উন্নয়ন হিসাব আয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 15%; background-color: #f4b084" class="text-center">
+                                                        নোট</th>
+                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         <p id="part_two_development_revenue_pre_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
+                                                    <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                        সংশোধিত
                                                         বাজেট <p id="part_two_development_revenue_current_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
                                                             id="part_two_development_revenue_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         <p id="part_two_development_revenue_next_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_two_development_revenue_next_year_actual_budget_id"></p>
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_two_development_revenue_next_year_actual_budget_id">
+                                                        </p>
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -335,7 +346,7 @@
                                             @foreach ($partTwoDevelopmentIncomeAccountCategories as $partTwoDevelopmentIncomeAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="6" style="background-color: #e7e6e6">
+                                                        <th colspan="7" style="background-color: #e7e6e6">
                                                             {{ $partTwoDevelopmentIncomeAccountCategory->name }}</th>
                                                     </tr>
                                                 </thead>
@@ -362,6 +373,10 @@
                                                                     name="part_two_development_income_account_type_id[]">
 
                                                                 {{ $partTwoDevelopmentIncomeAccountSubcategory->name }}
+                                                            </td>
+                                                            <td style="background-color: #f4b084">
+                                                                <input type="text" name="notes[]"
+                                                                    class="form-control">
                                                             </td>
                                                             <td>
                                                                 <input type="number" name="previous_budget[]"
@@ -390,8 +405,8 @@
                                             <!--End Part Two Development Income Account Category and Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn text-center"
-                                        style="background-color: #5314b1; color:white">Save & Draft</button>
+                                    <button class="btn text-center" style="background-color: #5312b1; color:white">Save &
+                                        Draft</button>
                                 </form>
                             </div>
                         </div>
@@ -413,8 +428,9 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>অর্থ বছর:</label>
-                                            <select name="part_two_development_expenditure_financial_year" onchange="partTwoDevelopmentExpenditureFinancialYearFunc(this.value)" required
-                                                class="form-control mt-2">
+                                            <select name="part_two_development_expenditure_financial_year"
+                                                onchange="partTwoDevelopmentExpenditureFinancialYearFunc(this.value)"
+                                                required class="form-control mt-2">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
                                                     <option value="{{ $financialYear->slug }}">
@@ -427,26 +443,31 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="6"> অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ</th>
+                                                    <th colspan="7"> অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 30%" class="text-center">প্রাপ্তির বিবরণ</th>
-                                                    <th style="width: 14%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 15%; background-color: #f4b084" class="text-center">
+                                                        নোট</th>
+                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
                                                         <p id="part_two_development_expenditure_pre_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">চলতি বৎসরের বাজেট বা সংশোধিত
-                                                        বাজেট <p id="part_two_development_expenditure_current_year_budget_id">
+                                                    <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                        সংশোধিত
+                                                        বাজেট <p
+                                                            id="part_two_development_expenditure_current_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
                                                             id="part_two_development_expenditure_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                    <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         <p id="part_two_development_expenditure_next_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 14%" class="text-center">প্রকৃত আয় <p
-                                                            id="part_two_development_expenditure_next_year_actual_budget_id"></p>
+                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
+                                                            id="part_two_development_expenditure_next_year_actual_budget_id">
+                                                        </p>
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -455,7 +476,7 @@
                                             @foreach ($partTwoDevelopmentExpenditureAccountCategories as $partTwoDevelopmentExpenditureAccountCategory)
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="6" style="background-color: #e7e6e6">
+                                                        <th colspan="7" style="background-color: #e7e6e6">
                                                             {{ $partTwoDevelopmentExpenditureAccountCategory->name }}
                                                         </th>
                                                     </tr>
@@ -484,6 +505,12 @@
 
                                                             {{ $partTwoDevelopmentExpenditureAccountSubcategory->name }}
                                                         </td>
+                                                        <td style="background-color: #f4b084">
+                                                            <input type="text" name="notes[]" class="form-control"
+                                                                onkeydown="return /[a-z, ]/i.test(event.key)"
+                                                                onblur="if (this.value == '') {this.value = '';}"
+                                                                onfocus="if (this.value == '') {this.value = '';}">
+                                                        </td>
                                                         <td>
                                                             <input type="number" name="previous_budget[]"
                                                                 class="form-control">
@@ -510,8 +537,8 @@
                                             <!--End Part Two Development Expenditure Account Category and  Subcategory -->
                                         </table>
                                     </div>
-                                    <button class="btn text-center"
-                                        style="background-color: #5314b1; color:white">Save & Draft</button>
+                                    <button class="btn text-center" style="background-color: #5312b1; color:white">Save &
+                                        Draft</button>
                                 </form>
                             </div>
                         </div>
@@ -530,7 +557,7 @@
                 tbody,
                 th,
                 td {
-                    border: 1px solid #5314b1;
+                    border: 1px solid #5312b1;
                 }
             </style>
         </div>
@@ -568,7 +595,7 @@
                     //Next Financial Year
                     document.getElementById("part_one_revenue_next_year_budget_id").innerHTML = '(' + next_year + ')';
                     document.getElementById("part_one_revenue_next_year_actual_budget_id").innerHTML = '(' + next_year +
-                    ')';
+                        ')';
                 }
             }
 
@@ -597,12 +624,13 @@
                         current_financial_year + ')';
 
                     //Previous Financial Year
-                    document.getElementById("part_one_expenditure_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
+                    document.getElementById("part_one_expenditure_pre_year_budget_id").innerHTML = '(' + previous_year +
+                        ')';
 
                     //Next Financial Year
                     document.getElementById("part_one_expenditure_next_year_budget_id").innerHTML = '(' + next_year + ')';
                     document.getElementById("part_one_expenditure_next_year_actual_budget_id").innerHTML = '(' + next_year +
-                    ')';
+                        ')';
                 }
             }
         }
@@ -630,12 +658,15 @@
                         current_financial_year + ')';
 
                     //Previous Financial Year
-                    document.getElementById("part_two_development_revenue_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
+                    document.getElementById("part_two_development_revenue_pre_year_budget_id").innerHTML = '(' +
+                        previous_year + ')';
 
                     //Next Financial Year
-                    document.getElementById("part_two_development_revenue_next_year_budget_id").innerHTML = '(' + next_year + ')';
-                    document.getElementById("part_two_development_revenue_next_year_actual_budget_id").innerHTML = '(' + next_year +
-                    ')';
+                    document.getElementById("part_two_development_revenue_next_year_budget_id").innerHTML = '(' +
+                        next_year + ')';
+                    document.getElementById("part_two_development_revenue_next_year_actual_budget_id").innerHTML = '(' +
+                        next_year +
+                        ')';
                 }
             }
 
@@ -660,16 +691,20 @@
                     //Current Financial Year 
                     document.getElementById("part_two_development_expenditure_current_year_budget_id").innerHTML = '(' +
                         current_financial_year + ')';
-                    document.getElementById("part_two_development_expenditure_actual_income_year_budget_id").innerHTML = '(' +
+                    document.getElementById("part_two_development_expenditure_actual_income_year_budget_id").innerHTML =
+                        '(' +
                         current_financial_year + ')';
 
                     //Previous Financial Year
-                    document.getElementById("part_two_development_expenditure_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
+                    document.getElementById("part_two_development_expenditure_pre_year_budget_id").innerHTML = '(' +
+                        previous_year + ')';
 
                     //Next Financial Year
-                    document.getElementById("part_two_development_expenditure_next_year_budget_id").innerHTML = '(' + next_year + ')';
-                    document.getElementById("part_two_development_expenditure_next_year_actual_budget_id").innerHTML = '(' + next_year +
-                    ')';
+                    document.getElementById("part_two_development_expenditure_next_year_budget_id").innerHTML = '(' +
+                        next_year + ')';
+                    document.getElementById("part_two_development_expenditure_next_year_actual_budget_id").innerHTML = '(' +
+                        next_year +
+                        ')';
                 }
             }
 

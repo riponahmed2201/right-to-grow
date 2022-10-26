@@ -192,6 +192,7 @@ class FormKhaController extends Controller
                     $partOneRevenueIncomes->current_year_actual_income = $request->current_year_actual_income[$i];
                     $partOneRevenueIncomes->next_year_actual_income = $request->next_year_actual_income[$i];
                     $partOneRevenueIncomes->financial_year = $request->part_one_revenue_income_financial_year;
+                    $partOneRevenueIncomes->notes = $request->notes[$i];
                     $partOneRevenueIncomes->submit_date = Carbon::now();
                     $partOneRevenueIncomes->save();
                 }
@@ -206,6 +207,7 @@ class FormKhaController extends Controller
                 return back()->with('error', 'Something Error Found, Please try again!');
             }
         } catch (\Exception $exception) {
+            dd($exception);
             DB::rollBack();
             return back()->with('error', 'Something Error Found, Please try again!');
         }
@@ -243,6 +245,7 @@ class FormKhaController extends Controller
                     $partOneRevenueExpenditures->current_year_actual_income = $request->current_year_actual_income[$i];
                     $partOneRevenueExpenditures->next_year_actual_income = $request->next_year_actual_income[$i];
                     $partOneRevenueExpenditures->financial_year = $request->part_one_revenue_expenditure_financial_year;
+                    $partOneRevenueExpenditures->notes = $request->notes[$i];
                     $partOneRevenueExpenditures->submit_date = Carbon::now();
                     $partOneRevenueExpenditures->save();
                 }
@@ -295,6 +298,7 @@ class FormKhaController extends Controller
                     $partTwoDevRevenueIncomes->current_year_actual_income = $request->current_year_actual_income[$i];
                     $partTwoDevRevenueIncomes->next_year_actual_income = $request->next_year_actual_income[$i];
                     $partTwoDevRevenueIncomes->financial_year = $request->part_two_development_income_financial_year;
+                    $partTwoDevRevenueIncomes->notes = $request->notes[$i];
                     $partTwoDevRevenueIncomes->submit_date = Carbon::now();
                     $partTwoDevRevenueIncomes->save();
                 }
@@ -347,6 +351,7 @@ class FormKhaController extends Controller
                     $partTowDevRevenueExps->current_year_actual_income = $request->current_year_actual_income[$i];
                     $partTowDevRevenueExps->next_year_actual_income = $request->next_year_actual_income[$i];
                     $partTowDevRevenueExps->financial_year = $request->part_two_development_expenditure_financial_year;
+                    $partTowDevRevenueExps->notes = $request->notes[$i];
                     $partTowDevRevenueExps->submit_date = Carbon::now();
                     $partTowDevRevenueExps->save();
                 }
