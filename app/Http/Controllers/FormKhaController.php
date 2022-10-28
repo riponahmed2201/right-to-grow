@@ -370,9 +370,4 @@ class FormKhaController extends Controller
             return back()->with('error', 'Something Error Found, Please try again!');
         }
     }
-
-    public function showSummaryReport($user_id, $financial_year)
-    {
-        return view('frontend.form_kha.report.summary_report');
-    }
 }

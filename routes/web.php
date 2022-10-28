@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormKhaController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SummaryReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,7 @@ Route::middleware('user')->group(function () {
     Route::post('update-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'updateFormKha'])->name('user.updateFormKha');
 
     //Summary Report
-    Route::get('show-summary-report/{user_id}/{financial_year}', [FormKhaController::class, 'showSummaryReport'])->name('user.summary_report');
+    Route::get('show-summary-report/{user_id}/{financial_year}', [SummaryReportController::class, 'showSummaryReport'])->name('user.summary_report');
 });
 
 //Public Kha Form Data show

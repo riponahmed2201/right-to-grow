@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FinancialYearController;
 use App\Http\Controllers\FormKhaController;
@@ -101,6 +102,11 @@ Route::middleware('admin')->group(function () {
     Route::get('user_district_select_data', [UserController::class, 'userDistrictSelectData'])->name('user_district_select_data');
     Route::get('user_upazila_select_data', [UserController::class, 'userUpazilaSelectData'])->name('user_upazila_select_data');
     Route::get('user_union_select_data', [UserController::class, 'userUnionSelectData'])->name('user_union_select_data');
+
+
+    //Report Section
+    //Comparison Report
+    Route::get('union-comparison-report', [ReportController::class, 'unionComparisonReport'])->name('admin.unionComparisonReport');
 });
 
 // From Kha Data Store Routes

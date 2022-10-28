@@ -117,7 +117,10 @@
                                                                 {{ $partOneRevenueIncomeAccountSubcategory->name }}
                                                             </td>
                                                             <td style="background-color: #f4b084">
-                                                                <input type="text" name="notes[]" class="form-control">
+                                                                <input type="text" name="notes[]" class="form-control"
+                                                                    onkeydown="return /[a-z, ]/i.test(event.key)"
+                                                                    onblur="if (this.value == '') {this.value = '';}"
+                                                                    onfocus="if (this.value == '') {this.value = '';}">
                                                             </td>
                                                             <td>
                                                                 <input type="number" name="previous_budget[]"
@@ -156,12 +159,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
                                 অংশ-১- রাজস্ব হিসাব ব্যয়ঃ
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                            data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <!-- Part-1: revenue Expenditure -->
                                 <form action="{{ route('partOneRevenueExpenditureAccount.store') }}" method="post">
@@ -246,7 +250,10 @@
                                                             </td>
                                                             <td style="background-color: #f4b084">
                                                                 <input type="text" name="notes[]"
-                                                                    class="form-control">
+                                                                    class="form-control" 
+                                                                    onkeydown="return /[a-z, ]/i.test(event.key)"
+                                                                onblur="if (this.value == '') {this.value = '';}"
+                                                                onfocus="if (this.value == '') {this.value = '';}">
                                                             </td>
                                                             <td>
                                                                 <input type="number" name="previous_budget[]"
@@ -375,8 +382,10 @@
                                                                 {{ $partTwoDevelopmentIncomeAccountSubcategory->name }}
                                                             </td>
                                                             <td style="background-color: #f4b084">
-                                                                <input type="text" name="notes[]"
-                                                                    class="form-control">
+                                                                <input type="text" name="notes[]" class="form-control"
+                                                                    onkeydown="return /[a-z, ]/i.test(event.key)"
+                                                                    onblur="if (this.value == '') {this.value = '';}"
+                                                                    onfocus="if (this.value == '') {this.value = '';}">
                                                             </td>
                                                             <td>
                                                                 <input type="number" name="previous_budget[]"

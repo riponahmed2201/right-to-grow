@@ -130,10 +130,11 @@
 
                 <li class="nav-header">Report Management</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.unionComparisonReport') }}"
+                        class="nav-link {{ request()->is('union-comparison-report') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book text-danger"></i>
                         <p>
-                            Report 1
+                            Union Comaparison
                         </p>
                     </a>
                 </li>

@@ -1,7 +1,38 @@
 @extends('master')
 
 @section('main-content')
-    <div class="main-containt">
+
+    <style>
+        @media print {
+            #myPrint {
+                display: none;
+            }
+        }
+
+        @media print {
+            #view_project {
+                display: none;
+            }
+        }
+
+        @media print {
+            @page {
+                margin: 0;
+            }
+
+            body {
+                margin: 1.6cm;
+            }
+        }
+
+        @media print {
+            @page {
+                size: landscape
+            }
+        }
+    </style>
+
+    <div class="main-containt" id="printFormKhaDetails">
         <div class="row">
             <div class="col-xs-12 col-md-12">
                 <h2 class="page-title text-center">ইউনিয়ন পরিষদ বাজেট ফরম "খ"</h2>
@@ -14,7 +45,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <h5><u>বিভাগ তথ্য:</u></h5>
+                            <div style="display: flex; justify-content: space-between;">
+                                <h5><u>বিভাগ তথ্য:</u></h5>
+                                <button style="margin-bottom: 5px" type="button" id="myPrint"
+                                    onclick="printDiv('printFormKhaDetails')" class="btn btn-primary">Print
+                                </button>
+                            </div>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -95,7 +131,8 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th colspan="7">অংশ-১- রাজস্ব হিসাব আয়ঃ</th>
+                                            <th colspan="7" style="background-color: #222222; color: white;">অংশ-১-
+                                                রাজস্ব হিসাব আয়ঃ</th>
                                         </tr>
                                         <tr>
                                             <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
@@ -227,7 +264,8 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th colspan="7">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ </th>
+                                            <th colspan="7" style="background-color: #222222; color: white;">অংশ-১-
+                                                রাজস্ব হিসাব ব্যয়ঃ </th>
                                         </tr>
                                     </thead>
 
@@ -398,7 +436,8 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th colspan="7">অংশ-২- উন্নয়ন হিসাব আয়ঃ </th>
+                                            <th colspan="7" style="background-color: #222222; color: white;">অংশ-২-
+                                                উন্নয়ন হিসাব আয়ঃ </th>
                                         </tr>
                                     </thead>
 
@@ -578,7 +617,8 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th colspan="7">অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ </th>
+                                            <th colspan="7" style="background-color: #222222; color: white;">অংশ-২-
+                                                উন্নয়ন হিসাব ব্যয়ঃ </th>
                                         </tr>
                                     </thead>
 
@@ -943,4 +983,18 @@
         </div>
     </div>
     <br><br><br><br>
+
+    <script>
+        // print to the project view details
+        function printDiv(divName) {
+            const printContents = document.getElementById(divName).innerHTML;
+            const originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 @endsection
