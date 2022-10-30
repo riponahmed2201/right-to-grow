@@ -11,16 +11,21 @@
                         href="{{ url('/') }}">হোম</a>
                 </li>
                 <li class="nav-item">
+                    <a style="color: white" class="nav-link {{ request()->is('form-ka-list') ? 'active-color' : '' }}"
+                        href="{{ route('show.getKaFormList') }}">ফরম "ক" ডাটা</a>
+                </li>
+                <li class="nav-item">
                     <a style="color: white" class="nav-link {{ request()->is('form-kha') ? 'active-color' : '' }}"
                         href="{{ route('show.form.kha') }}">ফরম "খ"</a>
                 </li>
+
                 <li class="nav-item">
                     <a style="color: white" class="nav-link {{ request()->is('list-form-kha') ? 'active-color' : '' }}"
                         href="{{ route('user.getKhaFormList') }}">ফরম "খ" ডাটা</a>
                 </li>
                 <li class="nav-item">
                     <a style="color: white" class="nav-link {{ request()->is('all-form-kha-data') ? 'active-color' : '' }}"
-                        href="{{ route('user.getAllKhaFormData') }}">অল ফরম "খ" ডাটা</a>
+                        href="{{ route('user.getAllKhaFormData') }}">ইউনিয়ন ভিত্তিক ডাটা</a>
                 </li>
                 <li class="nav-item">
 

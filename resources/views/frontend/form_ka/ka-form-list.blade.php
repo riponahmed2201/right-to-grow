@@ -4,7 +4,7 @@
     <div class="main-containt">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <h2 class="page-title text-center">ইউনিয়ন পরিষদ বাজেট ফরম "খ"</h2>
+                <h2 class="page-title text-center">ইউনিয়ন পরিষদ বাজেট ফরম "ক"</h2>
             </div>
         </div>
 
@@ -37,17 +37,11 @@
                                                 <td>{{ $user->upazila_name }}</td>
                                                 <td>{{ $user->union_name }}</td>
                                                 <td class="text-center">
-
                                                     <div class="btn-group">
-                                                        <a href="{{ route('user.editFormKha', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+                                                        <a href="{{ route('user.summary_report', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
                                                             class="btn"
-                                                            style="background-color: #f76300; color: white">Edit</a>
-
-                                                        <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
-                                                            class="btn"
-                                                            style="background-color: #5314b1; color: white">View</a>
+                                                            style="background-color: #5314b1; color: white">Summary Report</a>
                                                     </div>
-
                                                 </td>
                                             </tr>
                                         @endforeach

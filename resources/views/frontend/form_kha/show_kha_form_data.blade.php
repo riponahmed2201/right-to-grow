@@ -924,30 +924,30 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="background-color: #acb9ca; width: 25%">মোট উন্নয়ন ব্যয় : (সমাপ্তি জের
+                                        <td style="background-color: #f4b084; width: 25%">মোট উন্নয়ন ব্যয় : (সমাপ্তি জের
                                             সহ)</td>
-                                        <td style="background-color: #acb9ca; width: 15%"></td>
-                                        <td style="background-color: #acb9ca; width: 12%; text-align: end">
+                                        <td style="background-color: #f4b084; width: 15%"></td>
+                                        <td style="background-color: #f4b084; width: 12%; text-align: end">
                                             @isset($p_two_dev_exp_last_year_total_amount)
                                                 {{ $p_two_dev_exp_last_year_total_amount }}
                                             @endisset
                                         </td>
-                                        <td style="background-color: #acb9ca; width: 12%; text-align: end">
+                                        <td style="background-color: #f4b084; width: 12%; text-align: end">
                                             @isset($p_two_dev_exp_current_year_total_amount)
                                                 {{ $p_two_dev_exp_current_year_total_amount }}
                                             @endisset
                                         </td>
-                                        <td style="background-color: #acb9ca; width: 12%; text-align: end">
+                                        <td style="background-color: #f4b084; width: 12%; text-align: end">
                                             @isset($p_two_dev_exp_current_year_actual_income_total_amount)
                                                 {{ $p_two_dev_exp_current_year_actual_income_total_amount }}
                                             @endisset
                                         </td>
-                                        <td style="background-color: #acb9ca; width: 12%; text-align: end">
+                                        <td style="background-color: #f4b084; width: 12%; text-align: end">
                                             @isset($p_two_dev_exp_next_year_total_amount)
                                                 {{ $p_two_dev_exp_next_year_total_amount }}
                                             @endisset
                                         </td>
-                                        <td style="background-color: #acb9ca; width: 12%; text-align: end">
+                                        <td style="background-color: #f4b084; width: 12%; text-align: end">
                                             @isset($p_two_dev_exp_next_year_actual_income_total_amount)
                                                 {{ $p_two_dev_exp_next_year_actual_income_total_amount }}
                                             @endisset
