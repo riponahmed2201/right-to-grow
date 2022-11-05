@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditFormKhaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,4 +116,12 @@ Route::group(['prefix' => 'form-kha'], function () {
     Route::post('/part-one-revenue-expenditure-account/store', [FormKhaController::class, 'partOneRevenueExpenditureAccountStore'])->name('partOneRevenueExpenditureAccount.store');
     Route::post('/part-two-development-income-account/store', [FormKhaController::class, 'partTwoDevelopmentIncomeAccountStore'])->name('partTwoDevelopmentIncomeAccount.store');
     Route::post('/part-two-development-expenditure-account/store', [FormKhaController::class, 'partTwoDevelopmentExpenditureAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
+});
+
+// From Kha Data Update Routes
+Route::group(['prefix' => 'form-kha'], function () {
+    Route::post('/part-one-revenue-income-account/update/{user_id}/{financial_year}/{union_id}', [EditFormKhaController::class, 'partOneRevenueIncomeAccountUpdate'])->name('partOneRevenueIncomeAccount.update');
+    Route::post('/part-one-revenue-expenditure-account/update/{user_id}/{financial_year}', [EditFormKhaController::class, 'partOneRevenueExpenditureAccountUpdate'])->name('partOneRevenueExpenditureAccount.update');
+    Route::post('/part-two-development-income-account/update/{user_id}/{financial_year}', [EditFormKhaController::class, 'partTwoDevelopmentIncomeAccountUpdate'])->name('partTwoDevelopmentIncomeAccount.update');
+    Route::post('/part-two-development-expenditure-account/update/{user_id}/{financial_year}', [EditFormKhaController::class, 'partTwoDevelopmentExpenditureAccountUpdate'])->name('partTwoDevelopmentExpenditureAccount.update');
 });
