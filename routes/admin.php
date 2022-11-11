@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FinancialYearController;
 use App\Http\Controllers\FormKhaController;
+use App\Http\Controllers\FormKhaStoreController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\DistrictController;
@@ -112,16 +113,16 @@ Route::middleware('admin')->group(function () {
 
 // From Kha Data Store Routes
 Route::group(['prefix' => 'form-kha'], function () {
-    Route::post('/part-one-revenue-income-account/store', [FormKhaController::class, 'partOneRevenueIncomeAccountStore'])->name('partOneRevenueIncomeAccount.store');
-    Route::post('/part-one-revenue-expenditure-account/store', [FormKhaController::class, 'partOneRevenueExpenditureAccountStore'])->name('partOneRevenueExpenditureAccount.store');
-    Route::post('/part-two-development-income-account/store', [FormKhaController::class, 'partTwoDevelopmentIncomeAccountStore'])->name('partTwoDevelopmentIncomeAccount.store');
-    Route::post('/part-two-development-expenditure-account/store', [FormKhaController::class, 'partTwoDevelopmentExpenditureAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
+    Route::post('/part-one-revenue-income-account/store', [FormKhaStoreController::class, 'partOneRevenueIncomeAccountStore'])->name('partOneRevenueIncomeAccount.store');
+    Route::post('/part-one-revenue-expenditure-account/store', [FormKhaStoreController::class, 'partOneRevenueExpenditureAccountStore'])->name('partOneRevenueExpenditureAccount.store');
+    Route::post('/part-two-development-income-account/store', [FormKhaStoreController::class, 'partTwoDevelopmentIncomeAccountStore'])->name('partTwoDevelopmentIncomeAccount.store');
+    Route::post('/part-two-development-expenditure-account/store', [FormKhaStoreController::class, 'partTwoDevelopmentExpenditureAccountStore'])->name('partTwoDevelopmentExpenditureAccount.store');
 });
 
 // From Kha Data Update Routes
 Route::group(['prefix' => 'form-kha'], function () {
-    Route::post('/part-one-revenue-income-account/update/{user_id}/{financial_year}/{union_id}', [EditFormKhaController::class, 'partOneRevenueIncomeAccountUpdate'])->name('partOneRevenueIncomeAccount.update');
-    Route::post('/part-one-revenue-expenditure-account/update/{user_id}/{financial_year}', [EditFormKhaController::class, 'partOneRevenueExpenditureAccountUpdate'])->name('partOneRevenueExpenditureAccount.update');
-    Route::post('/part-two-development-income-account/update/{user_id}/{financial_year}', [EditFormKhaController::class, 'partTwoDevelopmentIncomeAccountUpdate'])->name('partTwoDevelopmentIncomeAccount.update');
-    Route::post('/part-two-development-expenditure-account/update/{user_id}/{financial_year}', [EditFormKhaController::class, 'partTwoDevelopmentExpenditureAccountUpdate'])->name('partTwoDevelopmentExpenditureAccount.update');
+    Route::post('/part-one/update/{user_id}/{financial_year}/{union_id}', [EditFormKhaController::class, 'partOneUpdate'])->name('partOneRevenueIncomeAccount.update');
+    Route::post('/part-two/update/{user_id}/{financial_year}/{union_id}', [EditFormKhaController::class, 'partTwoUpdate'])->name('partOneRevenueExpenditureAccount.update');
+    Route::post('/part-three/update/{user_id}/{financial_year}/{union_id}', [EditFormKhaController::class, 'partThreeUpdate'])->name('partTwoDevelopmentIncomeAccount.update');
+    Route::post('/part-four/update/{user_id}/{financial_year}/{union_id}', [EditFormKhaController::class, 'partFourUpdate'])->name('partTwoDevelopmentExpenditureAccount.update');
 });

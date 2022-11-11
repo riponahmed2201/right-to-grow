@@ -81,72 +81,65 @@
                                                 </tr>
                                             </thead>
 
-                                            <!--Start Part One Revenue Income Account Category and Subcategory -->
-                                            @foreach ($partOneRevenueIncomeAccountCategories as $partOneRevenueIncomeAccountCategory)
+                                            <!-- START PART ONE CATEGORY AND SUBCATEGORY -->
+                                            @foreach ($partOneDataFormat as $part_one_key => $part_one_data_value)
                                                 <thead>
                                                     <tr>
                                                         <th colspan="7" style="background-color: #e7e6e6">
-                                                            {{ $partOneRevenueIncomeAccountCategory->name }}</th>
+                                                            {{ $part_one_key }}</th>
                                                     </tr>
                                                 </thead>
 
-                                                @php
-                                                    $partOneRevenueIncomeAccountSubcategories = \Illuminate\Support\Facades\DB::table('subcategories')
-                                                        ->where('category_id', '=', $partOneRevenueIncomeAccountCategory->id)
-                                                        ->get();
-                                                @endphp
+                                                @foreach ($part_one_data_value as $part_one_sub_key => $part_one_subcategory_value)
+                                                    @if ($part_one_sub_key != 0)
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_one_subcategory_value['category_id'] }}"
+                                                                        name="part_one_revenue_category_id[]">
 
-                                                @foreach ($partOneRevenueIncomeAccountSubcategories as $partOneRevenueIncomeAccountSubcategory)
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
+                                                                    <input type="hidden"
+                                                                        name="part_one_revenue_subcategory_id[]"
+                                                                        value="{{ $part_one_subcategory_value['subcategory_id'] }}">
 
-                                                                <input type="hidden"
-                                                                    value="{{ $partOneRevenueIncomeAccountCategory->id }}"
-                                                                    name="part_one_revenue_income_account_category_id[]">
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_one_subcategory_value['type_id'] }}"
+                                                                        name="part_one_revenue_type_id[]">
 
-                                                                <input type="hidden"
-                                                                    name="part_one_revenue_income_account_subcategory_id[]"
-                                                                    value="{{ $partOneRevenueIncomeAccountSubcategory->id }}">
-
-                                                                <input type="hidden"
-                                                                    value="{{ $partOneRevenueIncomeAccountCategory->type_id }}"
-                                                                    name="part_one_revenue_income_account_type_id[]">
-
-
-                                                                {{ $partOneRevenueIncomeAccountSubcategory->name }}
-                                                            </td>
-                                                            <td style="background-color: #f4b084">
-                                                                <input type="text" name="notes[]" class="form-control"
-                                                                    onkeydown="return /[a-z, ]/i.test(event.key)"
-                                                                    onblur="if (this.value == '') {this.value = '';}"
-                                                                    onfocus="if (this.value == '') {this.value = '';}">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="previous_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="current_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="current_year_actual_income[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="next_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="next_year_actual_income[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                                    {{ $part_one_subcategory_value['subcategory_name'] }}
+                                                                </td>
+                                                                <td style="background-color: #f4b084">
+                                                                    <input type="text" name="notes[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="previous_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="current_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                        name="current_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    @endif
                                                 @endforeach
                                             @endforeach
-                                            <!--End Part One Revenue Income Account Category and Subcategory -->
+                                            <!-- START PART ONE CATEGORY AND SUBCATEGORY -->
                                         </table>
                                     </div>
                                     <button class="btn text-center" style="background-color: #5312b1; color:white">Save &
@@ -159,13 +152,12 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                aria-controls="flush-collapseTwo">
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                 অংশ-১- রাজস্ব হিসাব ব্যয়ঃ
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                            data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <!-- Part-1: revenue Expenditure -->
                                 <form action="{{ route('partOneRevenueExpenditureAccount.store') }}" method="post">
@@ -173,7 +165,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>অর্থ বছর:</label>
-                                            <select name="part_one_revenue_expenditure_financial_year"
+                                            <select name="part_two_financial_year"
                                                 onchange="partOneExpenditureIncomeFinancialYearFunc(this.value)" required
                                                 class="form-control mt-2">
                                                 <option value="">--নির্বাচন করুন--</option>
@@ -215,71 +207,68 @@
                                                 </tr>
                                             </thead>
 
-                                            <!--Start Part One Expenditure Income Account Category and  subcategory -->
-                                            @foreach ($partOneRevenueExpenditureAccountCategories as $partOneRevenueExpenditureAccountCategory)
+                                            <!-- START PART TWO CATEGORY AND SUBCATEGORY -->
+                                            @foreach ($partTwoDataFormat as $part_two_key => $part_two_data_value)
                                                 <thead>
                                                     <tr>
                                                         <th colspan="7" style="background-color: #e7e6e6">
-                                                            {{ $partOneRevenueExpenditureAccountCategory->name }}</th>
+                                                            {{ $part_two_key }}</th>
                                                     </tr>
                                                 </thead>
+                                                @foreach ($part_two_data_value as $part_two_sub_key => $part_two_subcategory_value)
+                                                    @if ($part_one_sub_key != 0)
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_two_subcategory_value['category_id'] }}"
+                                                                        name="part_two_expenditure_category_id[]">
 
-                                                @php
-                                                    $partOneExpenditureIncomeAccountSubategories = \Illuminate\Support\Facades\DB::table('subcategories')
-                                                        ->where('category_id', '=', $partOneRevenueExpenditureAccountCategory->id)
-                                                        ->get();
-                                                @endphp
+                                                                    <input type="hidden"
+                                                                        name="part_two_expenditure_subcategory_id[]"
+                                                                        value="{{ $part_two_subcategory_value['subcategory_id'] }}">
 
-                                                @foreach ($partOneExpenditureIncomeAccountSubategories as $partOneExpenditureIncomeAccountSubategory)
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="hidden"
-                                                                    value="{{ $partOneRevenueExpenditureAccountCategory->id }}"
-                                                                    name="part_one_revenue_expenditure_account_category_id[]">
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_two_subcategory_value['type_id'] }}"
+                                                                        name="part_two_expenditure_type_id[]">
 
-                                                                <input type="hidden"
-                                                                    name="part_one_revenue_expenditure_account_subcategory_id[]"
-                                                                    value="{{ $partOneExpenditureIncomeAccountSubategory->id }}">
-
-                                                                <input type="hidden"
-                                                                    value="{{ $partOneRevenueExpenditureAccountCategory->type_id }}"
-                                                                    name="part_one_revenue_expenditure_account_type_id[]">
-
-                                                                {{ $partOneExpenditureIncomeAccountSubategory->name }}
-                                                            </td>
-                                                            <td style="background-color: #f4b084">
-                                                                <input type="text" name="notes[]"
-                                                                    class="form-control" 
-                                                                    onkeydown="return /[a-z, ]/i.test(event.key)"
-                                                                onblur="if (this.value == '') {this.value = '';}"
-                                                                onfocus="if (this.value == '') {this.value = '';}">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="previous_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="current_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="current_year_actual_income[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="next_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="next_year_actual_income[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                                    {{ $part_two_subcategory_value['subcategory_name'] }}
+                                                                </td>
+                                                                <td style="background-color: #f4b084">
+                                                                    <input type="text" name="notes[]"
+                                                                        class="form-control"
+                                                                        onkeydown="return /[a-z, ]/i.test(event.key)"
+                                                                        onblur="if (this.value == '') {this.value = '';}"
+                                                                        onfocus="if (this.value == '') {this.value = '';}">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="previous_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="current_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                        name="current_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    @endif
                                                 @endforeach
                                             @endforeach
-                                            <!--End Part One Expenditure Income Account Category and Subcategory -->
+
+                                            <!--  END PART TWO CATEGORY AND SUBCATEGORY -->
                                         </table>
                                     </div>
                                     <button class="btn text-center" style="background-color: #5312b1; color:white">Save &
@@ -300,15 +289,15 @@
                         <div id="flush-collapseThree" class="accordion-collapse collapse"
                             aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
-                                <!--অংশ-২- উন্নয়ন হিসাব আয়ঃ -->
+                                <!-- অংশ-২- উন্নয়ন হিসাব আয়ঃ -->
                                 <form action="{{ route('partTwoDevelopmentIncomeAccount.store') }}" method="post">
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>অর্থ বছর:</label>
-                                            <select name="part_two_development_income_financial_year"
+                                            <select name="part_three_financial_year"
                                                 onchange="partTwoDevelopmentRevenueFinancialYearFunc(this.value)" required
-                                                class="form-control mt-2" id="part_one_revenue_income_financial_year">
+                                                class="form-control mt-2" id="part_three_financial_year">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
                                                     <option value="{{ $financialYear->slug }}">
@@ -349,69 +338,64 @@
                                                 </tr>
                                             </thead>
 
-                                            <!--Start Part Two Development Income Account Category and Subcategory -->
-                                            @foreach ($partTwoDevelopmentIncomeAccountCategories as $partTwoDevelopmentIncomeAccountCategory)
+                                            <!-- START PART THREE CATEGORY AND SUBCATEGORY -->
+                                            @foreach ($partThreeDataFormat as $part_three_key => $part_three_data_value)
                                                 <thead>
                                                     <tr>
                                                         <th colspan="7" style="background-color: #e7e6e6">
-                                                            {{ $partTwoDevelopmentIncomeAccountCategory->name }}</th>
+                                                            {{ $part_three_key }}</th>
                                                     </tr>
                                                 </thead>
+                                                @foreach ($part_three_data_value as $part_three_sub_key => $part_three_subcategory_value)
+                                                    @if ($part_three_sub_key != 0)
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_three_subcategory_value['category_id'] }}"
+                                                                        name="part_three_category_id[]">
 
-                                                @php
-                                                    $partTwoDevelopmentIncomeAccountSubcategories = \Illuminate\Support\Facades\DB::table('subcategories')
-                                                        ->where('category_id', '=', $partTwoDevelopmentIncomeAccountCategory->id)
-                                                        ->get();
-                                                @endphp
-                                                <tbody>
-                                                    @foreach ($partTwoDevelopmentIncomeAccountSubcategories as $partTwoDevelopmentIncomeAccountSubcategory)
-                                                        <tr>
-                                                            <td>
-                                                                <input type="hidden"
-                                                                    value="{{ $partTwoDevelopmentIncomeAccountCategory->id }}"
-                                                                    name="part_two_development_income_account_category_id[]">
+                                                                    <input type="hidden"
+                                                                        name="part_three_subcategory_id[]"
+                                                                        value="{{ $part_three_subcategory_value['subcategory_id'] }}">
 
-                                                                <input type="hidden"
-                                                                    name="part_two_development_income_account_subcategory_id[]"
-                                                                    value="{{ $partTwoDevelopmentIncomeAccountSubcategory->id }}">
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_three_subcategory_value['type_id'] }}"
+                                                                        name="part_three_type_id[]">
 
-                                                                <input type="hidden"
-                                                                    value="{{ $partTwoDevelopmentIncomeAccountCategory->type_id }}"
-                                                                    name="part_two_development_income_account_type_id[]">
-
-                                                                {{ $partTwoDevelopmentIncomeAccountSubcategory->name }}
-                                                            </td>
-                                                            <td style="background-color: #f4b084">
-                                                                <input type="text" name="notes[]" class="form-control"
-                                                                    onkeydown="return /[a-z, ]/i.test(event.key)"
-                                                                    onblur="if (this.value == '') {this.value = '';}"
-                                                                    onfocus="if (this.value == '') {this.value = '';}">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="previous_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="current_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="current_year_actual_income[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="next_budget[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                            <td>
-                                                                <input type="number" name="next_year_actual_income[]"
-                                                                    class="form-control">
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
+                                                                    {{ $part_three_subcategory_value['subcategory_name'] }}
+                                                                </td>
+                                                                <td style="background-color: #f4b084">
+                                                                    <input type="text" name="notes[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="previous_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="current_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                        name="current_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    @endif
+                                                @endforeach
                                             @endforeach
-                                            <!--End Part Two Development Income Account Category and Subcategory -->
+                                            <!-- END PART THREE CATEGORY AND SUBCATEGORY -->
                                         </table>
                                     </div>
                                     <button class="btn text-center" style="background-color: #5312b1; color:white">Save &
@@ -437,9 +421,9 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>অর্থ বছর:</label>
-                                            <select name="part_two_development_expenditure_financial_year"
+                                            <select name="part_four_financial_year"
                                                 onchange="partTwoDevelopmentExpenditureFinancialYearFunc(this.value)"
-                                                required class="form-control mt-2">
+                                                required class="form-control mt-2" id="part_four_financial_year">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
                                                     <option value="{{ $financialYear->slug }}">
@@ -481,69 +465,69 @@
                                                 </tr>
                                             </thead>
 
-                                            <!--Start Part Two Development Expenditure Account Category and Subategory -->
-                                            @foreach ($partTwoDevelopmentExpenditureAccountCategories as $partTwoDevelopmentExpenditureAccountCategory)
+                                            <!-- START PART FOUR CATEGORY AND SUBCATEGORY -->
+                                            @foreach ($partFourDataFormat as $part_four_key => $part_four_data_value)
                                                 <thead>
                                                     <tr>
                                                         <th colspan="7" style="background-color: #e7e6e6">
-                                                            {{ $partTwoDevelopmentExpenditureAccountCategory->name }}
+                                                            {{ $part_four_key }}
                                                         </th>
                                                     </tr>
                                                 </thead>
 
-                                                @php
-                                                    $partTwoDevelopmentExpenditureAccountSubcategories = \Illuminate\Support\Facades\DB::table('subcategories')
-                                                        ->where('category_id', '=', $partTwoDevelopmentExpenditureAccountCategory->id)
-                                                        ->get();
-                                                @endphp
+                                                @foreach ($part_four_data_value as $part_four_sub_key => $part_four_subcategory_value)
+                                                    @if ($part_four_sub_key != 0)
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_four_subcategory_value['category_id'] }}"
+                                                                        name="part_four_category_id[]">
 
-                                                @foreach ($partTwoDevelopmentExpenditureAccountSubcategories as $partTwoDevelopmentExpenditureAccountSubcategory)
-                                                    <tr>
-                                                        <td>
-                                                            <input type="hidden"
-                                                                value="{{ $partTwoDevelopmentExpenditureAccountCategory->id }}"
-                                                                name="part_two_development_expenditure_account_category_id[]">
+                                                                    <input type="hidden"
+                                                                        name="part_four_subcategory_id[]"
+                                                                        value="{{ $part_four_subcategory_value['subcategory_id'] }}">
 
-                                                            <input type="hidden"
-                                                                name="part_two_development_expenditure_account_subcategory_id[]"
-                                                                value="{{ $partTwoDevelopmentExpenditureAccountSubcategory->id }}">
+                                                                    <input type="hidden"
+                                                                        value="{{ $part_four_subcategory_value['type_id'] }}"
+                                                                        name="part_four_type_id[]">
 
-                                                            <input type="hidden"
-                                                                value="{{ $partTwoDevelopmentExpenditureAccountCategory->type_id }}"
-                                                                name="part_two_development_expenditure_account_type_id[]">
-
-                                                            {{ $partTwoDevelopmentExpenditureAccountSubcategory->name }}
-                                                        </td>
-                                                        <td style="background-color: #f4b084">
-                                                            <input type="text" name="notes[]" class="form-control"
-                                                                onkeydown="return /[a-z, ]/i.test(event.key)"
-                                                                onblur="if (this.value == '') {this.value = '';}"
-                                                                onfocus="if (this.value == '') {this.value = '';}">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="previous_budget[]"
-                                                                class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="current_budget[]"
-                                                                class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="current_year_actual_income[]"
-                                                                class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="next_budget[]"
-                                                                class="form-control">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="next_year_actual_income[]"
-                                                                class="form-control">
-                                                        </td>
-                                                    </tr>
+                                                                    {{ $part_four_subcategory_value['subcategory_name'] }}
+                                                                </td>
+                                                                <td style="background-color: #f4b084">
+                                                                    <input type="text" name="notes[]"
+                                                                        class="form-control"
+                                                                        onkeydown="return /[a-z, ]/i.test(event.key)"
+                                                                        onblur="if (this.value == '') {this.value = '';}"
+                                                                        onfocus="if (this.value == '') {this.value = '';}">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="previous_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="current_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                        name="current_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_budget[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" name="next_year_actual_income[]"
+                                                                        class="form-control">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    @endif
                                                 @endforeach
                                             @endforeach
-                                            <!--End Part Two Development Expenditure Account Category and  Subcategory -->
+                                            <!-- END PART FOUR CATEGORY AND SUBCATEGORY -->
                                         </table>
                                     </div>
                                     <button class="btn text-center" style="background-color: #5312b1; color:white">Save &

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormKaController;
 use App\Http\Controllers\FormKhaController;
+use App\Http\Controllers\EditFormKhaController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SummaryReportController;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,9 @@ Route::middleware('user')->group(function () {
     Route::get('form-kha', [FormKhaController::class, 'showFormKha'])->name('show.form.kha');
     Route::get('show-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'showKhaFormData'])->name('show_form_kha_data');
     Route::get('list-form-kha', [FormKhaController::class, 'getKhaFormList'])->name('user.getKhaFormList');
-    Route::get('edit-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'editFormKha'])->name('user.editFormKha');
-    Route::post('update-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'updateFormKha'])->name('user.updateFormKha');
+
+    // FORM KHA EDIT DATA SHOW
+    Route::get('edit-form-kha/{user_id}/{financial_year}', [EditFormKhaController::class, 'editFormKha'])->name('user.editFormKha');
 
     //Form Ka
     Route::get('form-ka-list', [FormKaController::class, 'getKaFormList'])->name('show.getKaFormList');
