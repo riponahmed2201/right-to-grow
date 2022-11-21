@@ -23,6 +23,7 @@
                                         <th>জেলা</th>
                                         <th>উপজেলা</th>
                                         <th>ইউনিয়ন</th>
+                                        <th>Status</th>
                                         <th style="width: 250px;" class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -36,6 +37,9 @@
                                                 <td>{{ $user->district_name }}</td>
                                                 <td>{{ $user->upazila_name }}</td>
                                                 <td>{{ $user->union_name }}</td>
+                                                <td>
+                                                    <span class="text-warning">Pending</span>
+                                                </td>
                                                 <td class="text-center">
 
                                                     <div class="btn-group">
@@ -52,7 +56,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td style="text-align: center; color: red" colspan="7">No Data Found!</td>
+                                            <td style="text-align: center; color: red" colspan="8">No Data Found!</td>
                                         </tr>
                                     @endif
                                 </tbody>

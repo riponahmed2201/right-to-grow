@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditFormKhaController;
+use App\Http\Controllers\FormStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,6 +110,10 @@ Route::middleware('admin')->group(function () {
     //Report Section
     //Comparison Report
     Route::get('union-comparison-report', [ReportController::class, 'unionComparisonReport'])->name('admin.unionComparisonReport');
+
+    //Get all form kha list
+    Route::get('admin/form-kha/list', [FormStatusController::class, 'getAllFormKhaData'])->name('admin.getAllFormKhaData');
+    Route::post('admin/form-kha/approved/{user_id}/{financial_year}/{union_id}', [FormStatusController::class, 'approvedFormKhaData'])->name('admin.approvedFormKhaData');
 });
 
 // From Kha Data Store Routes

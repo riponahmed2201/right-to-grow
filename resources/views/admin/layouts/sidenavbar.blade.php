@@ -120,7 +120,7 @@
 
                 <li class="nav-header">Form Kha Management</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.getAllFormKhaData') }}" class="nav-link">
                         <i class="nav-icon fas fa-list text-warning"></i>
                         <p>
                             Form Kha List
