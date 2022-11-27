@@ -5,6 +5,7 @@ use App\Http\Controllers\FormKaController;
 use App\Http\Controllers\FormKhaController;
 use App\Http\Controllers\EditFormKhaController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\MapTrackingController;
 use App\Http\Controllers\SummaryReportController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +48,7 @@ Route::get('form-kha/details/{user_id}/{financial_year}', [FormKhaController::cl
 // User Authentication Process
 Route::get('user-login', [AuthController::class, 'userShowLoginForm'])->name('user.showLoginForm');
 Route::post('user-login-check', [AuthController::class, 'userLoginCheck'])->name('user.userLoginCheck');
+
+
+// show_map_tracking
+Route::get('show-map-tracking', [MapTrackingController::class, 'showMapTracking'])->name('user.showMapTracking');

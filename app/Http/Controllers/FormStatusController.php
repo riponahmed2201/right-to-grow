@@ -39,7 +39,7 @@ class FormStatusController extends Controller
 
             return back()->with('success', 'Form Kha data approved successfully!');
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 }
