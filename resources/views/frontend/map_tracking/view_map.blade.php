@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -12,37 +11,32 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="https://hlptracker.com/assets/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"
-        media="screen,print" />
-    <link href="https://hlptracker.com/assets/admin/bootstrap/css/bootstrap-theme.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/map/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="screen,print" />
+    <link href="{{ asset('assets/map/bootstrap-theme.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="https://hlptracker.com/assets/admin/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/map/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="https://hlptracker.com/assets/admin/dist/css/skins/_all-skins.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="https://hlptracker.com/assets/admin/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
-    <link href="https://hlptracker.com/assets/admin/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/map/skins/_all-skins.min.css') }}" rel="stylesheet" type="text/css') }}" />
+    <link href="{{ asset('assets/map/blue.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/map/morris.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="https://hlptracker.com/assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/map/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="https://hlptracker.com/assets/admin/plugins/daterangepicker/daterangepicker.css" rel="stylesheet"
+    <link href="{{ asset('assets/backend/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="https://hlptracker.com/assets/admin/plugins/datepicker/datepicker3.css" rel="stylesheet"
+    <link href="{{ asset('assets/backend/plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/backend/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="https://hlptracker.com/assets/admin/plugins/daterangepicker/daterangepicker.css" rel="stylesheet"
-        type="text/css" />
-    <link href="https://hlptracker.com/assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
+    <link href="{{ asset('assets/backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}"
         rel="stylesheet" type="text/css" />
-    <link href="https://hlptracker.com/assets/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet"
+    <link href="{{ asset('assets/backend/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet"
         type="text/css" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <script type="text/javascript" src="https://hlptracker.com/assets/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/map/jquery-2.2.3.min.js') }}"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -50,50 +44,73 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
     <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://hlptracker.com/assets/js/validation/jquery.validate.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/map/js/jquery.validate.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body>
     <div class="wrapper">
         <header class="main-header">
-            <nav class="navbar navbar-static-top">
-
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle mx-auto" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
-                <div class="navbar-custom-menu ">
-                    <ul class="nav navbar-nav">
-                        <!-- User Account: style can be found in dropdown.less -->
-                        <li>
-                            <a href="https://hlptracker.com/">Home</a>
-                        </li>
-                        <li>
-                            <a href="https://hlptracker.com/admin/login">Sign In</a>
-                        </li>
-                        <li>
-                        </li>
-                        <li style="margin-right: 10px"></li>
-                    </ul>
+            <nav class="navbar navbar-default" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
                 </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
             </nav>
         </header>
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                <ul class="sidebar-menu">
-                    <li class="active"> <a href="https://hlptracker.com/admin"> <i class="fa fa-dashboard"></i>
-                            <span>Dashboard</span> </a> </li>
-                    <li> <a href="https://hlptracker.com/admin/partner_location"> <i class="fa fa-map"
-                                aria-hidden="true"></i> <span>Partner Locations</span> </a> </li>
-                </ul>
-            </section>
-        </aside>
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>Map for District Wise Data</h1>
                 <ol class="breadcrumb">
-                    <li><a href="https://hlptracker.com/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li class="active">Dashboard</li>
                 </ol>
             </section>
@@ -598,109 +615,55 @@
                 </script>
             </section>
         </div>
-        <div class="content-wrapper">
-            <section class="content">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12 agency">
-                        <h3>Supporting Agencies</h3>
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/PNGO-01-WaterAid-Logo.png"
-                            alt="WaterAid" height="80px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/PNGO-02-Helvetas-Logo.png"
-                            alt="Helvetas" height="80px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/PNGO-04-BTS.png"
-                            alt="BTS" height="80px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/PNGO-03-PripTrust-Logo.jpg"
-                            alt="PripTrust" height="80px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/PNGO-05-Shushilan-Logo.jpg"
-                            alt="Shushilan" height="80px" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12 partner">
-                        <h3>WaterAid Consortium Partners</h3>
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-01-DASCOH-Logo.jpg"
-                            alt="DASCOH" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-04-DAM-Logo_new.png"
-                            alt="DAM" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-05-ESDO-Logo.jpg"
-                            alt="ESDO" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-12-Nabolok-Logo_New.jpg"
-                            alt="Nabolok" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-06-Green-Hill-Logo.jpg"
-                            alt="Green Hill" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-02-BASA-Logo_png.png"
-                            alt="BASA" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-11-SKS-Logo.png"
-                            alt="SKS" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-14-AAN-logo-1.gif"
-                            alt="AAN" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-10-Verc-Logo.jpg"
-                            alt="Verc" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-09-MJSKS-Logo.jpg"
-                            alt="MJSKS" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-08-IDEA-Logo.jpg"
-                            alt="IDEA" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-07-SF-Logo_English.jpg"
-                            alt="SF" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-13-Rupantar-Logo.jpg"
-                            alt="Rupantar" height="50px" />
-                        <img src="https://hlptracker.com/assets/images/consortium_partners/Consortium-03-CDD_logo.jpg"
-                            alt="CDD" height="50px" />
-                    </div>
-                </div>
-            </section>
-        </div>
 
         <footer class="main-footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pull-right">
-                            <p style="font-size: 12px;">DEVELOPED BY : <a href="#">Md. Ripon Mia</a></p>
+                            <p style="font-size: 12px;"><a href="#">&copy; All Right Reserved.</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
-
     </div>
     <!-- ./wrapper -->
 
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <script type="text/javascript" src="https://hlptracker.com/assets/admin/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <!-- Sparkline -->
-    <script src="https://hlptracker.com/assets/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
     <!-- jvectormap -->
-    <script src="https://hlptracker.com/assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="https://hlptracker.com/assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
     <!-- jQuery Knob Chart -->
-    <script src="https://hlptracker.com/assets/admin/plugins/knob/jquery.knob.js"></script>
+    <script src="{{ asset('js/jquery.knob.js') }}"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-    <script src="https://hlptracker.com/assets/admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/daterangepicker.js') }}"></script>
     <!-- datepicker -->
-    <script src="https://hlptracker.com/assets/admin/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
     <!-- Bootstrap WYSIHTML5 -->
-    <script src="https://hlptracker.com/assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
     <!-- Slimscroll -->
-    <script src="https://hlptracker.com/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="https://hlptracker.com/assets/admin/plugins/fastclick/fastclick.js"></script>
+    <script src="{{ asset('js/fastclick.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="https://hlptracker.com/assets/admin/dist/js/app.min.js"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
     <!-- DataTables -->
-    <script src="https://hlptracker.com/assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="https://hlptracker.com/assets/admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="https://hlptracker.com/assets/admin/dist/js/pages/dashboard.js"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="https://hlptracker.com/assets/admin/dist/js/demo.js"></script>
+    <script src="{{ asset('js/demo.js') }}"></script>
 
 
     <script>
