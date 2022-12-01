@@ -10,4 +10,9 @@ class MapTrackingController extends Controller
     {
         return view('frontend.map_tracking.view_map');
     }
+
+    public function showUpazilaMapTracking()
+    {
+        return view('frontend.map_tracking.upazila_map');
+    }
 }

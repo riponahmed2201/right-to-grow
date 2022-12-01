@@ -52,3 +52,4 @@ Route::post('user-login-check', [AuthController::class, 'userLoginCheck'])->name
 
 // show_map_tracking
 Route::get('show-map-tracking', [MapTrackingController::class, 'showMapTracking'])->name('user.showMapTracking');
+Route::get('upazila-map-tracking', [MapTrackingController::class, 'showUpazilaMapTracking'])->name('user.showUpazilaMapTracking');

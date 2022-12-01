@@ -2,123 +2,27 @@
 <html>
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href="{{ asset('assets/frontend/assets/images/fav.png') }}">
-    <title>Right 2 Grow Project Consortium Tracker</title>
-    <meta name="robots" content="no-cache" />
-    <meta name="description" content="HLP Tracker" />
-    <meta name="keywords" content="HLP Tracker" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="{{ asset('assets/map/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="screen,print" />
-    <link href="{{ asset('assets/map/bootstrap-theme.css') }}" rel="stylesheet" type="text/css" />
+    @include('frontend.layouts.map_css')
 
-    <link href="{{ asset('assets/map/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('assets/map/skins/_all-skins.min.css') }}" rel="stylesheet" type="text/css') }}" />
-    <link href="{{ asset('assets/map/blue.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/map/morris.css') }}" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('assets/map/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('assets/backend/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/backend/plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/backend/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}"
-        rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/backend/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet"
-        type="text/css" />
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <script type="text/javascript" src="{{ asset('assets/map/jquery-2.2.3.min.js') }}"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="{{ asset('assets/map/js/jquery.validate.js') }}"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
     <div class="wrapper">
-        <header class="main-header">
-            <nav class="navbar navbar-default" role="navigation">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Brand</a>
-                </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
-        </header>
-        <div class="content-wrapper">
+        @include('frontend.layouts.map_header')
+
+        <div class="container-fluid">
             <section class="content-header">
                 <h1>Map for District Wise Data</h1>
-                <ol class="breadcrumb">
-                    <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">Dashboard</li>
-                </ol>
             </section>
             <section class="content">
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-green">
-                            <span class="info-box-icon"><i class="fa fa-institution" aria-hidden="true"></i></span>
+                        <div class="info-box bg-red">
+                            <span class="info-box-icon">
+                                <i class="fa fa-institution" aria-hidden="true"></i>
+                            </span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Upazila</span>
                                 <span class="info-box-number">204</span>
@@ -126,8 +30,10 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-yellow">
-                            <span class="info-box-icon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                        <div class="info-box bg-purple">
+                            <span class="info-box-icon">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                            </span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Workshops</span>
                                 <span class="info-box-number">91</span>
@@ -135,8 +41,10 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-aqua-active">
-                            <span class="info-box-icon"><i class="fa fa-list-alt" aria-hidden="true"></i></span>
+                        <div class="info-box bg-green">
+                            <span class="info-box-icon">
+                                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                            </span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Good Practice</span>
                                 <span class="info-box-number">432</span>
@@ -144,8 +52,10 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-red">
-                            <span class="info-box-icon"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
+                        <div class="info-box bg-yellow">
+                            <span class="info-box-icon">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                            </span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Best Practice</span>
                                 <span class="info-box-number">12</span>
@@ -155,8 +65,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12" style="margin-bottom: 15px;">
-                        <a href="https://hlptracker.com/" class="btn btn-info">District Map</a>
-                        <a href="https://hlptracker.com/admin/upazila_map" class="btn btn-primary">Upazila Map</a>
+                        <a href="{{ route('user.showMapTracking') }}" class="btn btn-info">District Map</a>
+                        <a href="{{ route('user.showUpazilaMapTracking') }}" class="btn btn-primary">Upazila Map</a>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="box box-primary">
@@ -312,7 +222,7 @@
                     /** Loads the state boundary polygons from a GeoJSON source. */
                     function loadMapShapes() {
                         // load US state outline polygons from a GeoJson file
-                        map.data.loadGeoJson('{{ asset('assets/frontend/map/district.txt') }}', {
+                        map.data.loadGeoJson('{{ asset("assets/frontend/map/district.txt") }}', {
                             idPropertyName: 'DISTCODE'
                         });
 
@@ -616,66 +526,13 @@
             </section>
         </div>
 
-        <footer class="main-footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="pull-right">
-                            <p style="font-size: 12px;"><a href="#">&copy; All Right Reserved.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('frontend.layouts.map_footer')
+
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    @include('frontend.layouts.map_js')
 
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-    <!-- Sparkline -->
-    <script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>
-    <!-- jvectormap -->
-    <script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('js/jquery.knob.js') }}"></script>
-    <!-- daterangepicker -->
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/daterangepicker.js') }}"></script>
-    <!-- datepicker -->
-    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
-    <!-- Slimscroll -->
-    <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
-    <!-- FastClick -->
-    <script src="{{ asset('js/fastclick.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('js/app.min.js') }}"></script>
-    <!-- DataTables -->
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('js/dashboard.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('js/demo.js') }}"></script>
-
-
-    <script>
-        $(function() {
-            $("#example1").DataTable();
-            $("#example2").DataTable();
-
-            jQuery('.datepicker').datepicker({
-                format: 'yyyy-mm-dd'
-            });
-        });
-    </script>
 </body>
 
 </html>
