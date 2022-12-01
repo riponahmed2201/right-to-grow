@@ -64,8 +64,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12" style="margin-bottom: 15px;">
-                        <a href="{{ route('user.showMapTracking') }}" class="btn btn-info">District Map</a>
-                        <a href="{{ route('user.showUpazilaMapTracking') }}" class="btn btn-primary">Upazila Map</a>
+                        <a href="{{ route('user.showMapTracking') }}" class="btn btn-success">District Map</a>
+                        <a href="{{ route('user.showUpazilaMapTracking') }}" class="btn btn-danger">Upazila Map</a>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="box box-primary">
