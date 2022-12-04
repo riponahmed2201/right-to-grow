@@ -43,9 +43,12 @@
                                                 <td class="text-center">
 
                                                     <div class="btn-group">
-                                                        <a href="{{ route('user.editFormKha', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
-                                                            class="btn"
-                                                            style="background-color: #f76300; color: white">Edit</a>
+
+                                                        @if ($user->approved_status != 5)
+                                                            <a href="{{ route('user.editFormKha', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+                                                                class="btn"
+                                                                style="background-color: #f76300; color: white">Edit</a>
+                                                        @endif
 
                                                         <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
                                                             class="btn"
