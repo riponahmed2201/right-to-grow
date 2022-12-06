@@ -113,7 +113,7 @@ Route::middleware('admin')->group(function () {
 
     //Get all form kha list
     Route::get('admin/form-kha/list', [FormStatusController::class, 'getAllFormKhaData'])->name('admin.getAllFormKhaData');
-    Route::post('admin/form-kha/approved/{user_id}/{financial_year}/{union_id}', [FormStatusController::class, 'approvedFormKhaData'])->name('admin.approvedFormKhaData');
+    Route::get('admin/form-kha/approved/{id}', [FormStatusController::class, 'approvedFormKhaData'])->name('admin.approvedFormKhaData');
 });
 
 // From Kha Data Store Routes

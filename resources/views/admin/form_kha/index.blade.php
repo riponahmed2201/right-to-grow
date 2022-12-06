@@ -56,7 +56,7 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     @if ($user->approved_status != 5)
-                                                        <a href="{{ route('admin.approvedFormKhaData', ['user_id' => $user->id, 'financial_year' => $user->financial_year, 'union_id' => $user->union_id]) }}"
+                                                        <a href="{{ route('admin.approvedFormKhaData', $user->form_kha_id) }}"
                                                             class="btn btn-sm btn-success">Approved</a>
                                                     @endif
                                                     <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
