@@ -90,8 +90,8 @@
                                                     </tr>
                                                 </thead>
 
-                                                @foreach ($part_one_data_value as $part_one_sub_key => $part_one_subcategory_value)
-                                                    @if ($part_one_sub_key != 0)
+                                                @foreach ($part_one_data_value as $part_one_subcategory_value)
+                                                    @if ($part_one_subcategory_value)
                                                         <tbody>
                                                             <tr>
                                                                 <td>
@@ -215,8 +215,8 @@
                                                             {{ $part_two_key }}</th>
                                                     </tr>
                                                 </thead>
-                                                @foreach ($part_two_data_value as $part_two_sub_key => $part_two_subcategory_value)
-                                                    @if ($part_one_sub_key != 0)
+                                                @foreach ($part_two_data_value as $part_two_subcategory_value)
+                                                    @if ($part_two_subcategory_value)
                                                         <tbody>
                                                             <tr>
                                                                 <td>
@@ -346,8 +346,8 @@
                                                             {{ $part_three_key }}</th>
                                                     </tr>
                                                 </thead>
-                                                @foreach ($part_three_data_value as $part_three_sub_key => $part_three_subcategory_value)
-                                                    @if ($part_three_sub_key != 0)
+                                                @foreach ($part_three_data_value as $part_three_subcategory_value)
+                                                    @if ($part_three_subcategory_value)
                                                         <tbody>
                                                             <tr>
                                                                 <td>
@@ -475,8 +475,8 @@
                                                     </tr>
                                                 </thead>
 
-                                                @foreach ($part_four_data_value as $part_four_sub_key => $part_four_subcategory_value)
-                                                    @if ($part_four_sub_key != 0)
+                                                @foreach ($part_four_data_value as $part_four_subcategory_value)
+                                                    @if ($part_four_subcategory_value)
                                                         <tbody>
                                                             <tr>
                                                                 <td>

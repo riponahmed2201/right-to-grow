@@ -17,6 +17,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditFormKhaController;
 use App\Http\Controllers\FormStatusController;
+use App\Http\Controllers\WashNutritionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +107,17 @@ Route::middleware('admin')->group(function () {
     Route::get('user_upazila_select_data', [UserController::class, 'userUpazilaSelectData'])->name('user_upazila_select_data');
     Route::get('user_union_select_data', [UserController::class, 'userUnionSelectData'])->name('user_union_select_data');
 
+    //Wash and nutrition budget
+    Route::group(['prefix' => 'wash-and-nutrition'], function () {
+        Route::get('/index', [WashNutritionController::class, 'index'])->name('wash_and_nutrition.index');
+        Route::get('/create', [WashNutritionController::class, 'create'])->name('wash_and_nutrition.create');
+        Route::post('/store', [WashNutritionController::class, 'store'])->name('wash_and_nutrition.store');
+        Route::get('/edit/{type_id}', [WashNutritionController::class, 'edit'])->name('wash_and_nutrition.edit');
+        Route::put('/update/{category_id}', [WashNutritionController::class, 'update'])->name('wash_and_nutrition.update');
+    });
 
+    Route::get('/health-nutrition-subcategory-select-data', [WashNutritionController::class, 'healthNutritionSubcategorySelectData'])->name('healthNutritionSubcategorySelectData');
+    
     //Report Section
     //Comparison Report
     Route::get('union-comparison-report', [ReportController::class, 'unionComparisonReport'])->name('admin.unionComparisonReport');

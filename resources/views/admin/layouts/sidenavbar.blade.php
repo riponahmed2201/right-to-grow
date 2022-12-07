@@ -128,6 +128,16 @@
                     </a>
                 </li>
 
+                <li class="nav-header">Wash And Nutrition Management</li>
+                <li class="nav-item">
+                    <a href="{{ route('wash_and_nutrition.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-list text-green"></i>
+                        <p>
+                            Wash And Nutrition List
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-header">Report Management</li>
                 <li class="nav-item">
                     <a href="{{ route('admin.unionComparisonReport') }}"

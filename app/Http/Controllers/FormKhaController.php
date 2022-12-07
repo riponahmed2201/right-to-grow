@@ -27,7 +27,6 @@ class FormKhaController extends Controller
             }
             //END PART ONE CATEGORY AND SUBCATEGORY
 
-
             //START PART TWO CATEGORY AND SUBCATEGORY
             $getPartTwoDataFromDatabase = DB::table('subcategories as b')
                 ->leftjoin('categories as a', 'a.id', '=', 'b.category_id')
