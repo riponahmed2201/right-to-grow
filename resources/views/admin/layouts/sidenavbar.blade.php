@@ -148,6 +148,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.washAndNutritionReport') }}"
+                        class="nav-link {{ request()->is('wash-and-nutrition-report') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book text-danger"></i>
+                        <p>
+                            Wash And Nutrition
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">User Management</li>
                 <li class="nav-item">

@@ -121,6 +121,9 @@ Route::middleware('admin')->group(function () {
     //Report Section
     //Comparison Report
     Route::get('union-comparison-report', [ReportController::class, 'unionComparisonReport'])->name('admin.unionComparisonReport');
+   
+    //unionComparisonReport
+    Route::get('wash-and-nutrition-report', [ReportController::class, 'washAndNutritionReport'])->name('admin.washAndNutritionReport');
 
     //Get all form kha list
     Route::get('admin/form-kha/list', [FormStatusController::class, 'getAllFormKhaData'])->name('admin.getAllFormKhaData');

@@ -12,7 +12,7 @@ class ReportController extends Controller
     public function unionComparisonReport()
     {
         try {
-            
+
             $data['financialYears'] = DB::table('financial_years')->get();
             $data['unions'] = DB::table('unions')->get();
             $data['categories'] = DB::table('categories')->get();
@@ -21,5 +21,13 @@ class ReportController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    public function washAndNutritionReport()
+    {
+        $data['financialYears'] = DB::table('financial_years')->get();
+        $data['unions'] = DB::table('unions')->get();
+
+        return view('admin.report.washAndNutritionReport', $data);
     }
 }
