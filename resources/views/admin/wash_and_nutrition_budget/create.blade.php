@@ -22,6 +22,21 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label>Select Financial Year</label> <span class="text-danger">*</span>
+                                    <select class="form-control select2bs4" name="financial_year_name">
+                                        <option selected="selected">----Please select----</option>
+                                        @foreach ($financialYears as $financialYear)
+                                            <option value="{{ $financialYear->year_name }}">{{ $financialYear->year_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('financial_year_name'))
+                                        <strong class="text-danger">{{ $errors->first('financial_year_name') }}</strong>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label>Select Union Name</label> <span class="text-danger">*</span>
                                     <select class="form-control select2bs4" name="union_name">
                                         <option selected="selected">----Please select----</option>

@@ -23,6 +23,7 @@ class WashNutritionController extends Controller
     {
         $data['categories'] = DB::table('categories')->get();
         $data['unions'] = DB::table('unions')->get();
+        $data['financialYears'] = DB::table('financial_years')->get();
 
         return view('admin.wash_and_nutrition_budget.create', $data);
     }
@@ -31,6 +32,7 @@ class WashNutritionController extends Controller
     {
         try {
             $this->validate($request, [
+                'financial_year_name' => 'required',
                 'union_name' => 'required',
                 'category_name' => 'required',
                 'subcategory_name' => 'required',
@@ -40,6 +42,7 @@ class WashNutritionController extends Controller
             $expense_budget = $request->expense_budget ? $request->expense_budget : 0;
 
             $data = DB::table('wash_nutritions')->insert([
+                'financial_year_name' => $request->financial_year_name,
                 'union_id' => $request->union_name,
                 'category_id' => $request->category_name,
                 'subcategory_id' => $request->subcategory_name,

@@ -31,6 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th>S/L</th>
+                                        <th>Financial Year</th>
                                         <th>Category Name</th>
                                         <th>Subcategory Name</th>
                                         <th>Union Name</th>
@@ -45,6 +46,7 @@
                                     @foreach ($wash_nutritions as $wash_nutrition)
                                         <tr>
                                             <td style="width: 80px">{{ $loop->iteration }}</td>
+                                            <td> {{ $wash_nutrition->financial_year_name }}</td>
                                             <td> {{ $wash_nutrition->category_name }}</td>
                                             <td> {{ $wash_nutrition->subcategory_name }}</td>
                                             <td> {{ $wash_nutrition->union_name }}</td>

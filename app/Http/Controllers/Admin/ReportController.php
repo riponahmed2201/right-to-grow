@@ -30,4 +30,22 @@ class ReportController extends Controller
 
         return view('admin.report.washAndNutritionReport', $data);
     }
+
+    public function getWashAndNutritionReportData(Request $request)
+    {
+        try {
+
+            $this->validate($request, [
+                'union_name' => 'required',
+                'financial_year_name' => 'required',
+            ]);
+
+            $wash_nutritions = DB::table('wash_nutritions')->where('union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)->get();
+
+           return view('admin.report.show_wash_nutrition_data', compact('wash_nutritions'));
+        } catch (\Throwable $th) {
+            throw $th;
+            dd($th);
+        }
+    }
 }
