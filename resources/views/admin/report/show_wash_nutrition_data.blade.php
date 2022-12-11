@@ -14,33 +14,38 @@
                             <table id="subcategoryTableId" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Wash and Nutrition Budget Head 2022-23</th>
-                                        <th>Total Budget</th>
-                                        <th>Expense Budget</th>
-                                        <th>Remaining Budget</th>
+                                        <th class="text-center">Wash and Nutrition Budget Head</th>
+                                        <th class="text-center">Total Budget</th>
+                                        <th class="text-center">Expense Budget</th>
+                                        <th class="text-center">Remaining Budget</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
 
+                                    @foreach ($wash_nutritions as $key => $wash_nutrition_data)
+                                        <tr>
+                                            <td style="background-color: #acb9ca" colspan="4">{{ $key }}</td>
+                                        </tr>
+                                    @endforeach
                                     @php
                                         $wash_and_nutrition_tota_budget = 0;
                                         $wash_and_nutrition_expense_budget = 0;
                                         $wash_and_nutrition_remaining_budget = 0;
                                     @endphp
 
-                                    @foreach ($wash_nutritions as $wash_nutrition)
+                                    @foreach ($wash_nutrition_data as $wash_nutrition)
                                         @php
-                                            $wash_and_nutrition_tota_budget += $wash_nutrition->total_budget;
-                                            $wash_and_nutrition_expense_budget += $wash_nutrition->expense_budget;
-                                            $wash_and_nutrition_remaining_budget += $wash_nutrition->remaining_budget;
+                                            $wash_and_nutrition_tota_budget += $wash_nutrition['total_budget'];
+                                            $wash_and_nutrition_expense_budget += $wash_nutrition['expense_budget'];
+                                            $wash_and_nutrition_remaining_budget += $wash_nutrition['remaining_budget'];
                                         @endphp
 
                                         <tr>
-                                            <td></td>
-                                            <td class="text-right">{{ $wash_nutrition->total_budget }}</td>
-                                            <td class="text-right">{{ $wash_nutrition->expense_budget }}</td>
-                                            <td class="text-right">{{ $wash_nutrition->remaining_budget }}</td>
+                                            <td>{{ $wash_nutrition['subcategory_name'] }}</td>
+                                            <td class="text-right">{{ $wash_nutrition['total_budget'] }}</td>
+                                            <td class="text-right">{{ $wash_nutrition['expense_budget'] }}</td>
+                                            <td class="text-right">{{ $wash_nutrition['remaining_budget'] }}</td>
                                         </tr>
                                     @endforeach
                                     <tr>
@@ -56,7 +61,7 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td class="text-right">Total Wash and Nutrition 2022-23</td>
+                                        <td class="text-right">Total Wash and Nutrition</td>
                                         <td class="text-right">{{ $wash_and_nutrition_tota_budget }}</td>
                                         <td class="text-right">{{ $wash_and_nutrition_expense_budget }}</td>
                                         <td class="text-right">{{ $wash_and_nutrition_remaining_budget }}</td>
