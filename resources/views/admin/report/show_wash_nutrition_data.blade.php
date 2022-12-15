@@ -50,22 +50,22 @@
                                         @endforeach
                                     @endforeach
                                     <tr>
-                                        <td class="text-right">Total Wash</td>
+                                        <td class="text-right text-bold">Total Wash</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td class="text-right">Total Nutrition</td>
+                                        <td class="text-right text-bold">Total Nutrition</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td class="text-right">Total Wash and Nutrition</td>
-                                        <td class="text-right">{{ $wash_and_nutrition_tota_budget }}</td>
-                                        <td class="text-right">{{ $wash_and_nutrition_expense_budget }}</td>
-                                        <td class="text-right">{{ $wash_and_nutrition_remaining_budget }}</td>
+                                        <td class="text-right text-bold">Total Wash and Nutrition</td>
+                                        <td class="text-right text-bold">{{ $wash_and_nutrition_tota_budget }}</td>
+                                        <td class="text-right text-bold">{{ $wash_and_nutrition_expense_budget }}</td>
+                                        <td class="text-right text-bold">{{ $wash_and_nutrition_remaining_budget }}</td>
                                     </tr>
                                 </tbody>
                             </table>
