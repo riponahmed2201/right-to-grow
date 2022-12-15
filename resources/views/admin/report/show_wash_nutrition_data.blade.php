@@ -51,15 +51,15 @@
                                     @endforeach
                                     <tr>
                                         <td class="text-right text-bold">Total Wash</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="text-right text-bold">0</td>
+                                        <td class="text-right text-bold">0</td>
+                                        <td class="text-right text-bold">0</td>
                                     </tr>
                                     <tr>
                                         <td class="text-right text-bold">Total Nutrition</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="text-right text-bold">0</td>
+                                        <td class="text-right text-bold">0</td>
+                                        <td class="text-right text-bold">0</td>
                                     </tr>
                                     <tr>
                                         <td class="text-right text-bold">Total Wash and Nutrition</td>
