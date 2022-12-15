@@ -47,13 +47,13 @@ class ReportController extends Controller
                 ->leftjoin('subcategories as c', 'a.subcategory_id', '=', 'c.id')
                 ->leftjoin('unions as d', 'a.union_id', '=', 'd.id')
                 ->select('a.*', 'b.name as category_name', 'c.name as subcategory_name', 'd.name as union_name')
-                ->where('union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)
+                ->where('a.union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)
                 ->get();
 
-            $partOneArray = json_decode(json_encode($wash_nutrition_data), true);
+            $washArray = json_decode(json_encode($wash_nutrition_data), true);
 
             $wash_nutritions = [];
-            foreach ($partOneArray  as $value) {
+            foreach ($washArray  as $value) {
                 $wash_nutritions[$value['category_name']][] = $value;
             }
 
