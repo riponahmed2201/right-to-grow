@@ -42,7 +42,7 @@ class EditFormKhaController extends Controller
                 $partOneDataFormat[$value['category_name']][] = $value;
             }
             // END GET PART ONE DATA FROM DATABASE
-
+      
             // START GET PART TWO DATA FROM DATABASE
             $partTwo = DB::table('part_one_revenue_expenditure_accounts as a')
                 ->leftjoin('categories as cat', 'cat.id', '=', 'a.category_id')
@@ -62,7 +62,7 @@ class EditFormKhaController extends Controller
             // END GET PART TWO DATA FROM DATABASE
 
             // START GET PART THREE DATA FROM DATABASE
-            $partThree = DB::table('part_one_revenue_income_accounts as a')
+            $partThree = DB::table('part_two_development_income_accounts as a')
                 ->leftjoin('categories as cat', 'cat.id', '=', 'a.category_id')
                 ->leftjoin('subcategories as b', 'b.id', '=', 'a.subcategory_id')
                 ->select('b.id AS subcategory_id', 'cat.name as category_name', 'b.name as subcategory_name', 'a.id', 'a.type_id',  'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
@@ -80,7 +80,7 @@ class EditFormKhaController extends Controller
             // END GET PART THREE DATA FROM DATABASE
 
             // START GET PART FOUR DATA FROM DATABASE
-            $partFour = DB::table('part_one_revenue_income_accounts as a')
+            $partFour = DB::table('part_two_development_expenditure_accounts as a')
                 ->leftjoin('categories as cat', 'cat.id', '=', 'a.category_id')
                 ->leftjoin('subcategories as b', 'b.id', '=', 'a.subcategory_id')
                 ->select('b.id AS subcategory_id', 'cat.name as category_name', 'b.name as subcategory_name', 'a.id', 'a.type_id',  'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
