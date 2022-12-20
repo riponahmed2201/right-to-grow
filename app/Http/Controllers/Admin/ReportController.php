@@ -72,7 +72,7 @@ class ReportController extends Controller
                 ->where('a.category_id', '=', 20)
                 ->get();
 
-                $data['nutrition_data'] = DB::table('wash_nutritions as a')
+            $data['nutrition_data'] = DB::table('wash_nutritions as a')
                 ->leftjoin('subcategories as c', 'a.subcategory_id', '=', 'c.id')
                 ->leftjoin('unions as d', 'a.union_id', '=', 'd.id')
                 ->select(
@@ -87,6 +87,9 @@ class ReportController extends Controller
                 ->where('a.category_id', '=', 21)
                 ->get();
 
+            $data['union_name'] = DB::table('unions')->where('id', '=', $request->union_name)->first()->name;
+
+            $data['financial_year_name'] = $request->financial_year_name;
 
             return view('admin.report.show_wash_nutrition_data', $data);
         } catch (\Throwable $th) {
