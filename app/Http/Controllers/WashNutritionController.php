@@ -23,7 +23,7 @@ class WashNutritionController extends Controller
     {
         $data['categories'] = DB::table('categories')->get();
         $data['unions'] = DB::table('unions')->get();
-        $data['financialYears'] = DB::table('financial_years')->get();
+        $data['financialYears'] = DB::table('financial_years')->orderBy('slug', 'desc')->get();
 
         return view('admin.wash_and_nutrition_budget.create', $data);
     }

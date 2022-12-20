@@ -12,9 +12,9 @@
                         </a>
                     </div>
                 </div>
-                
-                   <!-- show message -->
-                   @include('message')
+
+                <!-- show message -->
+                @include('message')
 
                 <form action="{{ route('wash_and_nutrition.store') }}" method="post">
                     @csrf
@@ -26,7 +26,8 @@
                                     <select class="form-control select2bs4" name="financial_year_name">
                                         <option selected="selected">----Please select----</option>
                                         @foreach ($financialYears as $financialYear)
-                                            <option value="{{ $financialYear->year_name }}">{{ $financialYear->year_name }}</option>
+                                            <option value="{{ $financialYear->year_name }}">{{ $financialYear->year_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('financial_year_name'))
@@ -56,7 +57,9 @@
                                     <select class="form-control select2bs4" id="category_name" name="category_name">
                                         <option selected="selected">----Please select----</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @if ($category->id == 20 || $category->id == 21)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @if ($errors->has('category_name'))

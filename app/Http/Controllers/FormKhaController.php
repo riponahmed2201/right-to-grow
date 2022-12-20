@@ -77,7 +77,7 @@ class FormKhaController extends Controller
             }
             //END PART FOUR CATEGORY AND SUBCATEGORY
 
-            $financialYearList = DB::table('financial_years')->orderBy('id', 'DESC')->get();
+            $financialYearList = DB::table('financial_years')->orderBy('slug', 'desc')->get();
 
             $dataFormat = [
                 'financialYearList' => $financialYearList,
