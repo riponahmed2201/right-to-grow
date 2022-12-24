@@ -91,10 +91,20 @@ class ReportController extends Controller
 
             $data['financial_year_name'] = $request->financial_year_name;
 
+            $get_wash_nutritions_array = DB::table('wash_nutritions')->where('union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)->get();
+
+            $data['output_array'] = "";
+
+            foreach ($get_wash_nutritions_array  as $value) {
+                $data['output_array'] .= "['".$value->total_budget."', ".$value->total_budget."],";
+            }
+
+            $data['output_array'] = rtrim($data['output_array'], ",");
+
             return view('admin.report.show_wash_nutrition_data', $data);
         } catch (\Throwable $th) {
-            throw $th;
             dd($th);
+            throw $th;
         }
     }
 }

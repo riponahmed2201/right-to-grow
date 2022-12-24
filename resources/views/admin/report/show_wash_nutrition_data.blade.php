@@ -16,8 +16,9 @@
                                 <thead>
                                     <tr>
                                         <th colspan="4">Union Name: @if ($union_name)
-                                            {{ $union_name }}
-                                        @endif</th>
+                                                {{ $union_name }}
+                                            @endif
+                                        </th>
                                     </tr>
                                     <tr>
                                         <th class="text-center">Wash and Nutrition Budget Head @if ($financial_year_name)
@@ -130,7 +131,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
 
                     <!-- PIE CHART -->
                     <div class="card card-danger">
@@ -160,6 +161,16 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+                </div> --}}
+                <div class="col-6">
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">Health Chart</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="health_piechart" style="height: 400px;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /.row -->
@@ -168,43 +179,28 @@
 @endsection
 
 @section('custom_js')
-    <!-- ChartJS -->
-    <script src="{{ asset('assets/admin/plugins/chart.js/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/admin/plugins/googleChart/loader.js') }}"></script>
 
-    <script>
-        //Chart
-        var ctx = document.getElementById("pieChart");
-        var data = {
-            datasets: [{
-                data: [67, 10, 20, 30, 40, 50],
-                backgroundColor: [
-                    "#455C73",
-                    "#9B59B6",
-                    "#007bff",
-                    "#fd7e14",
-                    "#20c997",
-                    "#dc3545",
-                ],
-                label: 'Health Chart' // for legend
-            }],
-            labels: [
-                "Project",
-                "Sell",
-                "Product",
-                "BankOrCash",
-                "Purchage",
-                "Order",
-            ]
-        };
-
-        var pieChart = new Chart(ctx, {
-            data: data,
-            type: 'pie',
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
         });
+        google.charts.setOnLoadCallback(drawChart);
 
-        $(function() {
-            // Pie chart
-            if ($('#pieChart').length) {}
-        })
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                <?php echo $output_array; ?>
+            ]);
+
+            var options = {
+                title: 'Healh Chart'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('health_piechart'));
+
+            chart.draw(data, options);
+        }
     </script>
 @endsection

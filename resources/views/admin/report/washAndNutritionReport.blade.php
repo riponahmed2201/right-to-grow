@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header text-white" style="background-color: #5314b1;">
-                            <h3 class="card-title">Filter</h3>
+                        <div class="card-header">
+                            <h3 class="card-title">Wash and Nutrition</h3>
                         </div>
                         <form action="{{ route('admin.getWashAndNutritionReportData') }}" method="GET">
 
