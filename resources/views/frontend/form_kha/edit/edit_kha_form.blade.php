@@ -529,6 +529,7 @@
                                                                 </td>
                                                                 <td style="background-color: #f4b084">
                                                                     <input type="text" name="notes[]"
+                                                                        value="{{ $part_four_subcategory_value['notes'] }}"
                                                                         class="form-control">
                                                                 </td>
                                                                 <td>

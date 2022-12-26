@@ -16,7 +16,7 @@ class EditFormKhaController extends Controller
     public function editFormKha($user_id, $financial_year)
     {
         try {
-            $financialYearList = DB::table('financial_years')->get();
+            $financialYearList = DB::table('financial_years')->orderBy('slug', 'desc')->get();
 
             $userInfo = DB::select("SELECT b.*, a.financial_year, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
             LEFT JOIN `users` AS b ON a.user_id = b.id
@@ -42,7 +42,7 @@ class EditFormKhaController extends Controller
                 $partOneDataFormat[$value['category_name']][] = $value;
             }
             // END GET PART ONE DATA FROM DATABASE
-      
+
             // START GET PART TWO DATA FROM DATABASE
             $partTwo = DB::table('part_one_revenue_expenditure_accounts as a')
                 ->leftjoin('categories as cat', 'cat.id', '=', 'a.category_id')
