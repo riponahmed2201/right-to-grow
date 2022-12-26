@@ -117,17 +117,18 @@ Route::middleware('admin')->group(function () {
     });
 
     Route::get('/health-nutrition-subcategory-select-data', [WashNutritionController::class, 'healthNutritionSubcategorySelectData'])->name('healthNutritionSubcategorySelectData');
-    
+
     //Report Section
     //Comparison Report
     Route::get('union-comparison-report', [ReportController::class, 'unionComparisonReport'])->name('admin.unionComparisonReport');
-   
+
     //unionComparisonReport
     Route::get('wash-and-nutrition-report', [ReportController::class, 'washAndNutritionReport'])->name('admin.washAndNutritionReport');
     Route::get('get-wash-and-nutrition-report-data', [ReportController::class, 'getWashAndNutritionReportData'])->name('admin.getWashAndNutritionReportData');
 
     //Get all form kha list
     Route::get('admin/form-kha/list', [FormStatusController::class, 'getAllFormKhaData'])->name('admin.getAllFormKhaData');
+    Route::get('admin/form-kha/view-details/{user_id}/{financial_year}', [FormStatusController::class, 'formKhaViewDetials'])->name('admin.formKhaViewDetials');
     Route::get('admin/form-kha/approved/{id}', [FormStatusController::class, 'approvedFormKhaData'])->name('admin.approvedFormKhaData');
 });
 
