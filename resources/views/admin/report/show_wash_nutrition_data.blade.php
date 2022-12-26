@@ -131,41 +131,10 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                {{-- <div class="col-md-6">
-
-                    <!-- PIE CHART -->
-                    <div class="card card-danger">
+                <div class="col-12">
+                    <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Health Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                        class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                        class="fas fa-times"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chartjs-size-monitor">
-                                <div class="chartjs-size-monitor-expand">
-                                    <div class=""></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink">
-                                    <div class=""></div>
-                                </div>
-                            </div>
-                            <canvas id="pieChart" style="height: 230px; min-height: 230px; display: block; width: 487px;"
-                                width="487" height="230" class="chartjs-render-monitor"></canvas>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div> --}}
-                <div class="col-6">
-                    <div class="card card-danger">
-                        <div class="card-header">
-                            <h3 class="card-title">Health Chart</h3>
+                            <h3 class="card-title">Health Budget Chart</h3>
                         </div>
                         <div class="card-body">
                             <div id="health_piechart" style="height: 400px;"></div>
@@ -190,12 +159,13 @@
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
+                ['Budget', 'Budget Amount'],
                 <?php echo $output_array; ?>
             ]);
 
             var options = {
-                title: 'Healh Chart'
+                pieSliceText: 'label',
+                pieStartAngle: 100,
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('health_piechart'));

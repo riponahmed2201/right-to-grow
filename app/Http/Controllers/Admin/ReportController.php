@@ -40,23 +40,6 @@ class ReportController extends Controller
                 'financial_year_name' => 'required',
             ]);
 
-            // $wash_nutritions = DB::table('wash_nutritions')->where('union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)->get();
-
-            // $wash_nutrition_data = DB::table('wash_nutritions as a')
-            //     ->leftjoin('categories as b', 'a.category_id', '=', 'b.id')
-            //     ->leftjoin('subcategories as c', 'a.subcategory_id', '=', 'c.id')
-            //     ->leftjoin('unions as d', 'a.union_id', '=', 'd.id')
-            //     ->select('a.*', 'b.name as category_name', 'c.name as subcategory_name', 'd.name as union_name')
-            //     ->where('a.union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)
-            //     ->get();
-
-            // $washArray = json_decode(json_encode($wash_nutrition_data), true);
-
-            // $wash_nutritions = [];
-            // foreach ($washArray  as $value) {
-            //     $wash_nutritions[$value['category_name']][] = $value;
-            // }
-
             $data['wash_data'] = DB::table('wash_nutritions as a')
                 ->leftjoin('subcategories as c', 'a.subcategory_id', '=', 'c.id')
                 ->leftjoin('unions as d', 'a.union_id', '=', 'd.id')
@@ -71,6 +54,7 @@ class ReportController extends Controller
                 ->where('a.union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)
                 ->where('a.category_id', '=', 20)
                 ->get();
+
 
             $data['nutrition_data'] = DB::table('wash_nutritions as a')
                 ->leftjoin('subcategories as c', 'a.subcategory_id', '=', 'c.id')
@@ -87,19 +71,33 @@ class ReportController extends Controller
                 ->where('a.category_id', '=', 21)
                 ->get();
 
+            //Start Total wash Budget
+            $total_wash_budget = 0;
+            foreach ($data['wash_data'] as  $wash_value) {
+                $total_wash_budget += $wash_value->total_budget;
+            }
+            //End Total wash Budget
+
+            //Start Total Nutrition Budget
+            $total_nutrition_budget = 0;
+            foreach ($data['nutrition_data'] as  $nutrition_value) {
+                $total_nutrition_budget += $nutrition_value->total_budget;
+            }
+            //End Total Nutrition Budget
+
+            //Start Chart Data 
+            $data['output_array'] = "";
+
+            $data['output_array'] .= "['Total Wash Budget', " . $total_wash_budget . "],";
+            $data['output_array'] .= "['Total Nutrition Budget', " . $total_nutrition_budget . "],";
+            $data['output_array'] .= "['Total Health Budget', " . $total_wash_budget + $total_nutrition_budget . "],";
+
+            $data['output_array'] = rtrim($data['output_array'], ",");
+            //End Chart Data
+
             $data['union_name'] = DB::table('unions')->where('id', '=', $request->union_name)->first()->name;
 
             $data['financial_year_name'] = $request->financial_year_name;
-
-            $get_wash_nutritions_array = DB::table('wash_nutritions')->where('union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)->get();
-
-            $data['output_array'] = "";
-
-            foreach ($get_wash_nutritions_array  as $value) {
-                $data['output_array'] .= "['".$value->total_budget."', ".$value->total_budget."],";
-            }
-
-            $data['output_array'] = rtrim($data['output_array'], ",");
 
             return view('admin.report.show_wash_nutrition_data', $data);
         } catch (\Throwable $th) {
