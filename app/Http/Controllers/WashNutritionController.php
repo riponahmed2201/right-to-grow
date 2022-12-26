@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Exists;
 
 class WashNutritionController extends Controller
 {
@@ -38,6 +39,14 @@ class WashNutritionController extends Controller
                 'subcategory_name' => 'required',
                 'total_budget' => 'required'
             ]);
+
+            $budget_already_is_not_exists = DB::table('wash_nutritions')->where('financial_year_name', '=', $request->financial_year_name)
+            ->where('union_id', '=', $request->union_name)
+            ->where('subcategory_id', '=', $request->subcategory_name)->first();
+
+            if ($budget_already_is_not_exists) {
+                return back()->with('error', 'Already exists');
+            }
 
             $expense_budget = $request->expense_budget ? $request->expense_budget : 0;
 
