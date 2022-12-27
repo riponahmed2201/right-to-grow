@@ -90,7 +90,7 @@ class ReportController extends Controller
 
             $data['output_array'] .= "['Total Wash Budget', " . $total_wash_budget . "],";
             $data['output_array'] .= "['Total Nutrition Budget', " . $total_nutrition_budget . "],";
-            $data['output_array'] .= "['Total Health Budget', " . $total_wash_budget + $total_nutrition_budget . "],";
+            // $data['output_array'] .= "['Total Health Budget', " . $total_wash_budget + $total_nutrition_budget . "],";
 
             $data['output_array'] = rtrim($data['output_array'], ",");
             //End Chart Data
