@@ -6,7 +6,7 @@
     src="{{ asset('assets/frontend/assets/plugins/validation/dist/jquery.validate.min.js') }}"></script>
 <script type="text/javascript"
     src="{{ asset('assets/frontend/assets/plugins/validation/dist/additional-methods.js') }}"></script>
-    
+
 <script type="text/javascript" src="{{ asset('assets/frontend/assets/js/jquery.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/frontend/ajax/libs/slick-carousel/1.6.0/slick.js') }}"></script>
 
@@ -36,6 +36,7 @@
         $(this).addClass('active');
         $('#en').addClass('btn-default');
     });
+
     $('#en').click(function() {
         $('.bn').hide();
         $('.en').show();
