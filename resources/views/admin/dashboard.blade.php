@@ -94,9 +94,53 @@
             <!-- /.row -->
             <!-- Main row -->
             <div class="row">
-
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Union Budget Bar Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="barchart_material" style="width: 900px; height: 600px;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.container-fluid -->
     </section>
+@endsection
+
+@section('custom_js')
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['bar']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Financial Year', 'Total Budget', 'Expenses', 'Remaining'],
+                ['2018', 1000, 400, 200],
+                ['2019', 1000, 400, 200],
+                ['2020', 1170, 460, 250],
+                ['2021', 660, 1120, 300],
+                ['2022', 1030, 540, 350]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Union Budget',
+                    subtitle: 'Total Budget, Expenses, and Remaining',
+                },
+                bars: 'horizontal' // Required for Material Bar Charts.
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
 @endsection
