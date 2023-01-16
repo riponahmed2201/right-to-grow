@@ -139,15 +139,15 @@
                 </li>
 
                 <li class="nav-header">Report Management</li>
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('admin.unionComparisonReport') }}"
                         class="nav-link {{ request()->is('union-comparison-report') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book text-danger"></i>
+                        <i class="nav-icon fas fa-book text-green"></i>
                         <p>
-                            Union Comaparison
+                            Health Comaparison
                         </p>
                     </a>
-                </li> --}}
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.washAndNutritionReport') }}"
                         class="nav-link {{ request()->is('wash-and-nutrition-report') ? 'active' : '' }}">
