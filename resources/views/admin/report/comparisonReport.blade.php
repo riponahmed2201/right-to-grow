@@ -81,7 +81,7 @@
                             <h4>Health Comparison Bar Chart</h4>
                         </div>
                         <div class="card-body">
-                            <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+                            <div id="barchart_material" style="height: 500px;"></div>
                         </div>
                     </div>
                 </div>
