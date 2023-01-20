@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class EditFormKhaController extends Controller
 {
 
-    public function editFormKha($user_id, $financial_year)
+    public function editFormKha($user_id, $union_id, $financial_year)
     {
         try {
             $financialYearList = DB::table('financial_years')->orderBy('slug', 'desc')->get();
@@ -23,7 +23,7 @@ class EditFormKhaController extends Controller
             LEFT JOIN `divisions` AS c ON b.division_id = c.id
             LEFT JOIN `districts` AS d ON b.district_id = d.id
             LEFT JOIN `upazilas` AS e ON b.upazila_id = e.id
-            LEFT JOIN `unions` AS f ON b.union_id = f.id WHERE a.user_id = '" . $user_id . "' AND a.financial_year = '" . $financial_year . "' ");
+            LEFT JOIN `unions` AS f ON b.union_id = f.id WHERE a.user_id = '" . $user_id . "' AND a.union_id = '" . $union_id . "' AND a.financial_year = '" . $financial_year . "' ");
 
             // START GET PART ONE DATA FROM DATABASE
             $partOne = DB::table('part_one_revenue_income_accounts as a')
@@ -32,6 +32,7 @@ class EditFormKhaController extends Controller
                 ->select('b.id AS subcategory_id', 'cat.name as category_name', 'b.name as subcategory_name', 'a.id', 'a.type_id',  'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
                 ->where('a.type_id', '=', 1)
                 ->where('a.user_id', '=', $userInfo[0]->id)
+                ->where('a.union_id', '=', $userInfo[0]->union_id)
                 ->where('a.financial_year', '=', $userInfo[0]->financial_year)
                 ->get();
 
@@ -50,6 +51,7 @@ class EditFormKhaController extends Controller
                 ->select('b.id AS subcategory_id', 'cat.name as category_name', 'b.name as subcategory_name', 'a.id', 'a.type_id',  'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
                 ->where('a.type_id', '=', 2)
                 ->where('a.user_id', '=', $userInfo[0]->id)
+                ->where('a.union_id', '=', $userInfo[0]->union_id)
                 ->where('a.financial_year', '=', $userInfo[0]->financial_year)
                 ->get();
 
@@ -68,6 +70,7 @@ class EditFormKhaController extends Controller
                 ->select('b.id AS subcategory_id', 'cat.name as category_name', 'b.name as subcategory_name', 'a.id', 'a.type_id',  'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
                 ->where('a.type_id', '=', 3)
                 ->where('a.user_id', '=', $userInfo[0]->id)
+                ->where('a.union_id', '=', $userInfo[0]->union_id)
                 ->where('a.financial_year', '=', $userInfo[0]->financial_year)
                 ->get();
 
@@ -86,6 +89,7 @@ class EditFormKhaController extends Controller
                 ->select('b.id AS subcategory_id', 'cat.name as category_name', 'b.name as subcategory_name', 'a.id', 'a.type_id',  'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
                 ->where('a.type_id', '=', 4)
                 ->where('a.user_id', '=', $userInfo[0]->id)
+                ->where('a.union_id', '=', $userInfo[0]->union_id)
                 ->where('a.financial_year', '=', $userInfo[0]->financial_year)
                 ->get();
 

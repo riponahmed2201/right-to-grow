@@ -15,8 +15,8 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="{{ route('logout') }}">
+        <li>
+            <a class="nav-link" href="{{ route('logout') }}">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </li>

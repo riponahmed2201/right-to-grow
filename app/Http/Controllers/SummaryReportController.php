@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class SummaryReportController extends Controller
 {
 
-    public function showSummaryReport($user_id, $financial_year)
+    public function showSummaryReport($user_id, $union_id, $financial_year)
     {
         try {
 
@@ -23,6 +23,7 @@ class SummaryReportController extends Controller
                 )
                 ->where('a.type_id', '=', 1)
                 ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->get();
@@ -39,6 +40,7 @@ class SummaryReportController extends Controller
                 ->where('a.type_id', '=', 1)
                 ->where('a.subcategory_id', '=', 3)
                 ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->first();
@@ -55,6 +57,7 @@ class SummaryReportController extends Controller
                 )
                 ->where('a.type_id', '=', 2)
                 ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->get();
@@ -72,6 +75,7 @@ class SummaryReportController extends Controller
                 )
                 ->where('a.type_id', '=', 3)
                 ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->get();
@@ -90,6 +94,7 @@ class SummaryReportController extends Controller
                 )
                 ->where('a.type_id', '=', 4)
                 ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->get();
@@ -106,6 +111,7 @@ class SummaryReportController extends Controller
                 ->where('a.type_id', '=', 4)
                 ->where('a.subcategory_id', '=', 288)
                 ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->get();

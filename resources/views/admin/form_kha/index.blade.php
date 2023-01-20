@@ -48,18 +48,22 @@
                                             <td>
                                                 @if ($user->approved_status == 5)
                                                     <span class="badge bg-success text-dark">Approved</span>
+                                                @elseif ($user->approved_status == 6)
+                                                    <span class="badge bg-danger text-dark">Declined</span>
                                                 @else
                                                     <span class="badge bg-warning text-dark">Pending</span>
                                                 @endif
-
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    @if ($user->approved_status != 5)
-                                                        <a href="{{ route('admin.approvedFormKhaData', $user->form_kha_id) }}"
-                                                            class="btn btn-sm btn-success">Approved</a>
-                                                    @endif
-                                                    <a href="{{ route('admin.formKhaViewDetials', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+
+                                                    <a href="{{ route('admin.declinedFormKhaData', $user->form_kha_id) }}"
+                                                        class="btn btn-sm btn-danger">Declined</a>
+
+                                                    <a href="{{ route('admin.approvedFormKhaData', $user->form_kha_id) }}"
+                                                        class="btn btn-sm btn-success">Approved</a>
+
+                                                    <a href="{{ route('admin.formKhaViewDetials', ['user_id' => $user->id, 'union_id' => $user->union_id, 'financial_year' => $user->financial_year]) }}"
                                                         class="btn btn-sm btn-info">View</a>
                                                 </div>
                                             </td>

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ReportController extends Controller
 {
     //From Financial to To Financial Year and From Union Name to To Union Name comparison report
-    public function unionComparisonReport()
+    public function healthComparisonReport()
     {
         try {
 

@@ -140,8 +140,8 @@
 
                 <li class="nav-header">Report Management</li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.unionComparisonReport') }}"
-                        class="nav-link {{ request()->is('union-comparison-report') ? 'active' : '' }}">
+                    <a href="{{ route('admin.healthComparisonReport') }}"
+                        class="nav-link {{ request()->is('health-comparison-report') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book text-green"></i>
                         <p>
                             Health Comaparison

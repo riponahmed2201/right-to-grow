@@ -38,19 +38,25 @@
                                                 <td>{{ $user->upazila_name }}</td>
                                                 <td>{{ $user->union_name }}</td>
                                                 <td>
-                                                    <span class="text-warning">Pending</span>
+                                                    @if ($user->approved_status == 5)
+                                                        <span class="badge bg-success text-dark">Approved</span>
+                                                    @elseif ($user->approved_status == 6)
+                                                        <span class="badge bg-danger text-dark">Declined</span>
+                                                    @else
+                                                        <span class="badge bg-warning text-dark">Pending</span>
+                                                    @endif
                                                 </td>
                                                 <td class="text-center">
 
                                                     <div class="btn-group">
 
                                                         @if ($user->approved_status != 5)
-                                                            <a href="{{ route('user.editFormKha', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+                                                            <a href="{{ route('user.editFormKha', ['user_id' => $user->id, 'union_id' => $user->union_id, 'financial_year' => $user->financial_year]) }}"
                                                                 class="btn"
                                                                 style="background-color: #f76300; color: white">Edit</a>
                                                         @endif
 
-                                                        <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
+                                                        <a href="{{ route('show_form_kha_data', ['user_id' => $user->id, 'union_id' => $user->union_id, 'financial_year' => $user->financial_year]) }}"
                                                             class="btn"
                                                             style="background-color: #5314b1; color: white">View</a>
                                                     </div>

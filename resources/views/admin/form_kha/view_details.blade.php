@@ -77,7 +77,7 @@
                                     <u>অর্থ বছর @if (isset($userInfo[0]->financial_year))
                                             {{ $userInfo[0]->financial_year }}:
                                         @else
-                                            2021-2022:
+                                            2022-2023:
                                         @endif
                                     </u>
                                 </h5>
@@ -149,11 +149,12 @@
 
                                             <tbody>
                                                 @foreach ($partOneRevenueIncomeAccountSubcategories as $partOneRevenueIncomeAccountSubcategory)
-                                                    @if ($partOneRevenueIncomeAccountSubcategory->last_year_budget ||
-                                                        $partOneRevenueIncomeAccountSubcategory->current_year_budget ||
-                                                        $partOneRevenueIncomeAccountSubcategory->next_year_budget ||
-                                                        $partOneRevenueIncomeAccountSubcategory->current_year_actual_income ||
-                                                        $partOneRevenueIncomeAccountSubcategory->next_year_actual_income)
+                                                    @if (
+                                                        $partOneRevenueIncomeAccountSubcategory->last_year_budget ||
+                                                            $partOneRevenueIncomeAccountSubcategory->current_year_budget ||
+                                                            $partOneRevenueIncomeAccountSubcategory->next_year_budget ||
+                                                            $partOneRevenueIncomeAccountSubcategory->current_year_actual_income ||
+                                                            $partOneRevenueIncomeAccountSubcategory->next_year_actual_income)
                                                         <tr>
 
                                                             @php
@@ -264,11 +265,12 @@
                                             @foreach ($partOneIncomeAccountSubcategoryList as $partOneIncomeAccountSubcategory)
                                                 <tbody>
 
-                                                    @if ($partOneIncomeAccountSubcategory->last_year_budget ||
-                                                        $partOneIncomeAccountSubcategory->current_year_budget ||
-                                                        $partOneIncomeAccountSubcategory->next_year_budget ||
-                                                        $partOneIncomeAccountSubcategory->current_year_actual_income ||
-                                                        $partOneIncomeAccountSubcategory->next_year_actual_income)
+                                                    @if (
+                                                        $partOneIncomeAccountSubcategory->last_year_budget ||
+                                                            $partOneIncomeAccountSubcategory->current_year_budget ||
+                                                            $partOneIncomeAccountSubcategory->next_year_budget ||
+                                                            $partOneIncomeAccountSubcategory->current_year_actual_income ||
+                                                            $partOneIncomeAccountSubcategory->next_year_actual_income)
                                                         <tr>
                                                             @php
                                                                 $p_one_exp_last_year_total_amount += $partOneIncomeAccountSubcategory->last_year_budget;
@@ -439,11 +441,12 @@
 
                                             @foreach ($partTwoDevIncomeAccountSubcategoryList as $partTwoDevIncomeAccountSubcategory)
                                                 <tbody>
-                                                    @if ($partTwoDevIncomeAccountSubcategory->last_year_budget ||
-                                                        $partTwoDevIncomeAccountSubcategory->current_year_budget ||
-                                                        $partTwoDevIncomeAccountSubcategory->next_year_budget ||
-                                                        $partTwoDevIncomeAccountSubcategory->current_year_actual_income ||
-                                                        $partTwoDevIncomeAccountSubcategory->next_year_actual_income)
+                                                    @if (
+                                                        $partTwoDevIncomeAccountSubcategory->last_year_budget ||
+                                                            $partTwoDevIncomeAccountSubcategory->current_year_budget ||
+                                                            $partTwoDevIncomeAccountSubcategory->next_year_budget ||
+                                                            $partTwoDevIncomeAccountSubcategory->current_year_actual_income ||
+                                                            $partTwoDevIncomeAccountSubcategory->next_year_actual_income)
                                                         <tr>
                                                             @php
                                                                 $p_two_exp_last_year_total_amount += $partTwoDevIncomeAccountSubcategory->last_year_budget;
@@ -631,11 +634,12 @@
 
                                             <tbody>
                                                 @foreach ($partTwoDevExpAccountSubcategoryList as $partTwoDevExpAccountSubcategory)
-                                                    @if ($partTwoDevExpAccountSubcategory->last_year_budget ||
-                                                        $partTwoDevExpAccountSubcategory->current_year_budget ||
-                                                        $partTwoDevExpAccountSubcategory->next_year_budget ||
-                                                        $partTwoDevExpAccountSubcategory->current_year_actual_income ||
-                                                        $partTwoDevExpAccountSubcategory->next_year_actual_income)
+                                                    @if (
+                                                        $partTwoDevExpAccountSubcategory->last_year_budget ||
+                                                            $partTwoDevExpAccountSubcategory->current_year_budget ||
+                                                            $partTwoDevExpAccountSubcategory->next_year_budget ||
+                                                            $partTwoDevExpAccountSubcategory->current_year_actual_income ||
+                                                            $partTwoDevExpAccountSubcategory->next_year_actual_income)
                                                         <tr>
                                                             @php
                                                                 $p_two_dev_exp_last_year_total_amount += $partTwoDevExpAccountSubcategory->last_year_budget;
@@ -878,19 +882,19 @@
                                             <td style="width: 25%">উপমোট উন্নয়ন ব্যয় </td>
                                             <td style="width: 15%"></td>
                                             <td style="width: 12%; text-align: end">
-                                                {{ $p_two_dev_exp_last_year_total_amount }}
+                                                {{ $p_two_dev_exp_last_year_total_amount - $p_two_dev_exp_last_year_closing_balance }}
                                             </td>
                                             <td style="width: 12%; text-align: end">
-                                                {{ $p_two_dev_exp_current_year_total_amount }}
+                                                {{ $p_two_dev_exp_current_year_total_amount - $p_two_dev_exp_current_year_closing_balance }}
                                             </td>
                                             <td style="width: 12%; text-align: end">
-                                                {{ $p_two_dev_exp_current_year_actual_income_total_amount }}
+                                                {{ $p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_next_year_closing_balance }}
                                             </td>
                                             <td style="width: 12%; text-align: end">
-                                                {{ $p_two_dev_exp_next_year_total_amount }}
+                                                {{ $p_two_dev_exp_next_year_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance }}
                                             </td>
                                             <td style="width: 12%; text-align: end">
-                                                {{ $p_two_dev_exp_next_year_actual_income_total_amount }}
+                                                {{ $p_two_dev_exp_next_year_actual_income_total_amount - $p_two_dev_exp_next_year_actual_income_closing_balance }}
                                             </td>
                                         </tr>
 

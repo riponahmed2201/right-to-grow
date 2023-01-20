@@ -40,9 +40,9 @@
 
         <br><br>
         <div class="card">
-            <div class="card-header" style="background-color: #222222; color: white">
+            <div class="card-header">
                 <div style="display: flex; justify-content: space-between;">
-                    <h2 class="card-title">অর্থ বছর: {{ $makeFinancialYear['currentYear'] }}</h2>
+                    <h4 class="card-title">অর্থ বছর: {{ $makeFinancialYear['currentYear'] }}</h4>
                     <button style="margin-bottom: 5px" type="button" id="myPrint"
                         onclick="printDiv('printSummaryDetails')" class="btn btn-primary">Print
                     </button>

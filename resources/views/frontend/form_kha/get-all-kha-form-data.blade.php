@@ -37,8 +37,9 @@
                                                 <td>{{ $user->upazila_name }}</td>
                                                 <td>{{ $user->union_name }}</td>
                                                 <td style="width: 60px">
-                                                    <a href="{{ route('getKhaFormDataDetails', ['user_id' => $user->id, 'financial_year' => $user->financial_year]) }}"
-                                                        class="btn" style="background-color: #5314b1; color: white">View</a>
+                                                    <a href="{{ route('getKhaFormDataDetails', ['user_id' => $user->id, 'union_id' => $user->union_id, 'financial_year' => $user->financial_year]) }}"
+                                                        class="btn"
+                                                        style="background-color: #5314b1; color: white">View</a>
                                                 </td>
                                             </tr>
                                         @endforeach

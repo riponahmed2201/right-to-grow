@@ -28,22 +28,22 @@ Route::middleware('user')->group(function () {
 
     // FORM KHA ROUTES
     Route::get('form-kha', [FormKhaController::class, 'showFormKha'])->name('show.form.kha');
-    Route::get('show-form-kha/{user_id}/{financial_year}', [FormKhaController::class, 'showKhaFormData'])->name('show_form_kha_data');
+    Route::get('show-form-kha/{user_id}/{union_id}/{financial_year}', [FormKhaController::class, 'showKhaFormData'])->name('show_form_kha_data');
     Route::get('list-form-kha', [FormKhaController::class, 'getKhaFormList'])->name('user.getKhaFormList');
 
     // FORM KHA EDIT DATA SHOW
-    Route::get('edit-form-kha/{user_id}/{financial_year}', [EditFormKhaController::class, 'editFormKha'])->name('user.editFormKha');
+    Route::get('edit-form-kha/{user_id}/{union_id}/{financial_year}', [EditFormKhaController::class, 'editFormKha'])->name('user.editFormKha');
 
     //Form Ka
     Route::get('form-ka-list', [FormKaController::class, 'getKaFormList'])->name('show.getKaFormList');
 
     //Summary Report
-    Route::get('show-summary-report/{user_id}/{financial_year}', [SummaryReportController::class, 'showSummaryReport'])->name('user.summary_report');
+    Route::get('show-summary-report/{user_id}/{union_id}/{financial_year}', [SummaryReportController::class, 'showSummaryReport'])->name('user.summary_report');
 });
 
 //Public Kha Form Data show
 Route::get('all-form-kha-data', [FormKhaController::class, 'getAllKhaFormData'])->name('user.getAllKhaFormData');
-Route::get('form-kha/details/{user_id}/{financial_year}', [FormKhaController::class, 'getKhaFormDataDetails'])->name('getKhaFormDataDetails');
+Route::get('form-kha/details/{user_id}/{union_id}/{financial_year}', [FormKhaController::class, 'getKhaFormDataDetails'])->name('getKhaFormDataDetails');
 
 // User Authentication Process
 Route::get('user-login', [AuthController::class, 'userShowLoginForm'])->name('user.showLoginForm');
