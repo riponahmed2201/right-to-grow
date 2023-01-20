@@ -63,7 +63,7 @@
                                                     <a href="{{ route('admin.approvedFormKhaData', $user->form_kha_id) }}"
                                                         class="btn btn-sm btn-success">Approved</a>
 
-                                                    <a href="{{ route('admin.formKhaViewDetials', ['user_id' => $user->id, 'union_id' => $user->union_id, 'financial_year' => $user->financial_year]) }}"
+                                                    <a href="{{ route('admin.formKhaViewDetials', ['user_id' => $user->user_id, 'union_id' => $user->union_id, 'financial_year' => $user->financial_year]) }}"
                                                         class="btn btn-sm btn-info">View</a>
                                                 </div>
                                             </td>

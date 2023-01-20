@@ -26,7 +26,6 @@ class FormStatusController extends Controller
 
     public function formKhaViewDetials($user_id, $union_id, $financial_year)
     {
-
         try {
 
             $data['userInfo'] = DB::select("SELECT b.*, a.financial_year, a.union_id,  c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a

@@ -157,7 +157,6 @@ class FormKhaController extends Controller
                                             LEFT JOIN `upazilas` AS e ON b.upazila_id = e.id
                                             LEFT JOIN `unions` AS f ON b.union_id = f.id');
 
-
             return view('frontend.form_kha.get-all-kha-form-data', compact('userInfo'));
         } catch (\Exception $exception) {
             throw $exception;
