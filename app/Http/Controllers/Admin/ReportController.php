@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
-    //From Financial to To Financial Year and From Union Name to To Union Name comparison report
-    public function healthComparisonReport()
+    //From Financial to To Financial Year and From Union Name to To Union Name health comparison report
+    public function healthComparisonReport(Request $request)
     {
         try {
 
@@ -17,7 +17,24 @@ class ReportController extends Controller
             $data['unions'] = DB::table('unions')->get();
             $data['categories'] = DB::table('categories')->get();
 
-            return view('admin.report.comparisonReport', $data);
+            $wash_nutritions = DB::table('wash_nutritions')->take(4)->get();
+            // $wash_nutritions = DB::table('wash_nutritions')->orderBy('financial_year_name', 'desc')->take(4)->get();
+
+            //Start Chart Data 
+            $data['output_array'] = "";
+
+            foreach ($wash_nutritions as $value) {
+                if ($value) {
+                    $data['output_array'] .= "['$value->financial_year_name', $value->total_budget, $value->expense_budget, $value->remaining_budget],";
+                } else {
+                    $data['output_array'] .=  "['2014', 1000, 400, 200]";
+                }
+            }
+
+            $data['output_array'] = rtrim($data['output_array'], ",");
+            //End Chart Data
+
+            return view('admin.report.healthComparisonReport', $data);
         } catch (\Throwable $th) {
             throw $th;
         }

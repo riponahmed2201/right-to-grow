@@ -9,7 +9,8 @@
                         <div class="card-header text-white" style="background-color: #5314b1;">
                             <h3 class="card-title">Filter</h3>
                         </div>
-                        <form action="">
+                        <form action="{{ route('admin.healthComparisonReport') }}" method="get">
+                            @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -109,11 +110,7 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Financial Year', 'Total Budget', 'Expense', 'Remaining'],
-                ['2018', 1000, 400, 200],
-                ['2019', 1000, 400, 200],
-                ['2020', 1170, 460, 250],
-                ['2021', 660, 1120, 300],
-                ['2022', 1030, 540, 350]
+                <?php echo $output_array; ?>
             ]);
 
             var options = {
@@ -121,7 +118,11 @@
                     title: 'Union Health Budget',
                     subtitle: 'Total Budget, Expense, and Remaining',
                 },
-                bars: 'verticle' // Required for Material Bar Charts.
+                bars: 'verticle', // Required for Material Bar Charts.
+                hAxis: {
+                    format: 'decimal'
+                },
+                // colors: ['#1b9e77', '#d95f02', '#7570b3']
             };
 
             var chart = new google.charts.Bar(document.getElementById('barchart_material'));
