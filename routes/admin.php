@@ -121,6 +121,7 @@ Route::middleware('admin')->group(function () {
     //Report Section
     //Health Comparison Report
     Route::get('health-comparison-report', [ReportController::class, 'healthComparisonReport'])->name('admin.healthComparisonReport');
+    Route::get('get-health-comparison-report', [ReportController::class, 'getHealthComparisonReport'])->name('admin.getHealthComparisonReport');
 
     //unionComparisonReport
     Route::get('wash-and-nutrition-report', [ReportController::class, 'washAndNutritionReport'])->name('admin.washAndNutritionReport');

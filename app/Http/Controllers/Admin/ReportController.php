@@ -13,28 +13,43 @@ class ReportController extends Controller
     {
         try {
 
-            $data['financialYears'] = DB::table('financial_years')->orderBy('slug', 'desc')->get();
+            $data['financialYears'] = DB::select("SELECT DISTINCT `financial_year_name` FROM `wash_nutritions`");
+
             $data['unions'] = DB::table('unions')->get();
             $data['categories'] = DB::table('categories')->get();
 
-            $wash_nutritions = DB::table('wash_nutritions')->take(4)->get();
-            // $wash_nutritions = DB::table('wash_nutritions')->orderBy('financial_year_name', 'desc')->take(4)->get();
+            return view('admin.report.filterHealthComparison', $data);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    //From Financial to To Financial Year and From Union Name to To Union Name health comparison report
+    public function getHealthComparisonReport(Request $request)
+    {
+        try {
+
+            $from = $request->from_financial_year;
+            $to = $request->to_financial_year;
+            $union_id = $request->union_name;
+
+            $wash_nutritions = DB::select("SELECT * FROM `wash_nutritions` WHERE `financial_year_name` BETWEEN '" . $from . "' AND '" . $to . "' AND `union_id` = " . $union_id);
 
             //Start Chart Data 
-            $data['output_array'] = "";
+            $output_array = "";
 
             foreach ($wash_nutritions as $value) {
                 if ($value) {
-                    $data['output_array'] .= "['$value->financial_year_name', $value->total_budget, $value->expense_budget, $value->remaining_budget],";
+                    $output_array .= "['$value->financial_year_name', $value->total_budget, $value->expense_budget, $value->remaining_budget],";
                 } else {
-                    $data['output_array'] .=  "['2014', 1000, 400, 200]";
+                    $output_array .=  "['2014', 1000, 400, 200]";
                 }
             }
 
-            $data['output_array'] = rtrim($data['output_array'], ",");
+            $output_array = rtrim($output_array, ",");
             //End Chart Data
 
-            return view('admin.report.healthComparisonReport', $data);
+            return view('admin.report.healthComparisonReport', compact('output_array'));
         } catch (\Throwable $th) {
             throw $th;
         }
