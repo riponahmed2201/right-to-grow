@@ -150,7 +150,7 @@ class FormKhaController extends Controller
     {
         try {
 
-            $userInfo = DB::select('SELECT b.*, a.financial_year, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
+            $userInfo = DB::select('SELECT b.*, a.financial_year, a.user_id as user_id, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
                                             LEFT JOIN `users` AS b ON a.user_id = b.id
                                             LEFT JOIN `divisions` AS c ON b.division_id = c.id
                                             LEFT JOIN `districts` AS d ON b.district_id = d.id
@@ -163,8 +163,12 @@ class FormKhaController extends Controller
         }
     }
 
-    public function getKhaFormDataDetails($user_id, $union_id, $financial_year)
+    public function getKhaFormDataDetails(Request $request)
     {
+        $user_id = $request->user_id;
+        $union_id = $request->union_id;
+        $financial_year = $request->financial_year;
+
         try {
             $data['userInfo'] = DB::select("SELECT b.*, a.financial_year, a.union_id, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
             LEFT JOIN `users` AS b ON a.user_id = b.id

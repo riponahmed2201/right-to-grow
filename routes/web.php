@@ -43,7 +43,7 @@ Route::middleware('user')->group(function () {
 
 //Public Kha Form Data show
 Route::get('all-form-kha-data', [FormKhaController::class, 'getAllKhaFormData'])->name('user.getAllKhaFormData');
-Route::get('form-kha/details/{user_id}/{union_id}/{financial_year}', [FormKhaController::class, 'getKhaFormDataDetails'])->name('getKhaFormDataDetails');
+Route::get('form-kha/details', [FormKhaController::class, 'getKhaFormDataDetails'])->name('getKhaFormDataDetails');
 
 // User Authentication Process
 Route::get('user-login', [AuthController::class, 'userShowLoginForm'])->name('user.showLoginForm');

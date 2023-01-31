@@ -37,9 +37,16 @@
                                                 <td>{{ $user->upazila_name }}</td>
                                                 <td>{{ $user->union_name }}</td>
                                                 <td style="width: 60px">
-                                                    <a href="{{ route('getKhaFormDataDetails', ['user_id' => $user->id, 'union_id' => $user->union_id, 'financial_year' => $user->financial_year]) }}"
-                                                        class="btn"
-                                                        style="background-color: #5314b1; color: white">View</a>
+
+                                                    <form action="{{ route('getKhaFormDataDetails') }}" method="GET">
+                                                        @csrf
+                                                        <input type="hidden" name="user_id" value="{{ $user->user_id }}">
+                                                        <input type="hidden" name="union_id" value="{{ $user->union_id }}">
+                                                        <input type="hidden" name="financial_year"
+                                                            value="{{ $user->financial_year }}">
+                                                        <button type="submit" class="btn"
+                                                            style="background-color: #5314b1; color: white">View</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -51,7 +58,6 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
