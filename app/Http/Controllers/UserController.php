@@ -45,6 +45,14 @@ class UserController extends Controller
             'union_name' => 'required',
         ]);
 
+        $alreadyExists =  DB::table('users')
+            ->where('union_id', '=', $request->union_name)
+            ->first();
+
+        if ($alreadyExists) {
+            return back()->with('error', 'User already existed for this union!');
+        }
+
         $photo = $request->file('photo');
         $userPhoto = null;
 
@@ -79,10 +87,9 @@ class UserController extends Controller
     {
         $districtLists = DB::table('districts')->where('division_id', $request->division_id)->select('id', 'name')->get();
 
-        if (sizeof($districtLists) > 0){
+        if (sizeof($districtLists) > 0) {
             return response()->json($districtLists);
-        }
-        else{
+        } else {
             return response()->json('empty');
         }
     }
@@ -91,10 +98,9 @@ class UserController extends Controller
     {
         $upazilaLists = DB::table('upazilas')->where('district_id', $request->district_id)->select('id', 'name')->get();
 
-        if (sizeof($upazilaLists) > 0){
+        if (sizeof($upazilaLists) > 0) {
             return response()->json($upazilaLists);
-        }
-        else{
+        } else {
             return response()->json('empty');
         }
     }
@@ -103,10 +109,9 @@ class UserController extends Controller
     {
         $unionLists = DB::table('unions')->where('upazila_id', $request->upazila_id)->select('id', 'name')->get();
 
-        if (sizeof($unionLists) > 0){
+        if (sizeof($unionLists) > 0) {
             return response()->json($unionLists);
-        }
-        else{
+        } else {
             return response()->json('empty');
         }
     }

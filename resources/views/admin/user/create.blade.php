@@ -13,6 +13,9 @@
                         </a>
                     </div>
                 </div>
+
+                @include('message')
+
                 <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
@@ -21,7 +24,7 @@
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter name"
-                                           value="{{old('name')}}">
+                                           value="{{old('name')}}" value="{{ old('name') }}">
                                     @if ($errors->has('name'))
                                         <p class="text-danger mt-1">{{ $errors->first('name') }}</p>
                                     @endif
@@ -31,7 +34,7 @@
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" name="email" class="form-control" placeholder="Enter email"
-                                           value="{{old('email')}}">
+                                           value="{{old('email')}}" value="{{ old('email') }}">
                                     @if ($errors->has('email'))
                                         <p class="text-danger mt-1">{{ $errors->first('email') }}</p>
                                     @endif
@@ -41,7 +44,7 @@
                                 <div class="form-group">
                                     <label>Phone</label>
                                     <input type="text" name="phone" class="form-control" placeholder="Enter phone"
-                                           value="{{old('phone')}}">
+                                           value="{{old('phone')}}" value="{{ old('phone') }}">
                                     @if ($errors->has('phone'))
                                         <p class="text-danger mt-1">{{ $errors->first('phone') }}</p>
                                     @endif
