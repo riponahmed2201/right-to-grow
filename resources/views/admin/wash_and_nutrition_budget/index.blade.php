@@ -54,8 +54,8 @@
                                             <td>{{ $wash_nutrition->expense_budget }}</td>
                                             <td>{{ $wash_nutrition->remaining_budget }}</td>
                                             <td class="text-center">
-                                                <a href="#" title="Edit Category Title"
-                                                    class="btn btn-sm btn-warning">Edit</a>
+                                                <a href="{{ route('wash_and_nutrition.edit', $wash_nutrition->wash_nutrition_id) }}"
+                                                    title="Edit Category Title" class="btn btn-sm btn-warning">Edit</a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -112,8 +112,8 @@ Route::middleware('admin')->group(function () {
         Route::get('/index', [WashNutritionController::class, 'index'])->name('wash_and_nutrition.index');
         Route::get('/create', [WashNutritionController::class, 'create'])->name('wash_and_nutrition.create');
         Route::post('/store', [WashNutritionController::class, 'store'])->name('wash_and_nutrition.store');
-        Route::get('/edit/{type_id}', [WashNutritionController::class, 'edit'])->name('wash_and_nutrition.edit');
-        Route::put('/update/{category_id}', [WashNutritionController::class, 'update'])->name('wash_and_nutrition.update');
+        Route::get('/edit/{id}', [WashNutritionController::class, 'edit'])->name('wash_and_nutrition.edit');
+        Route::post('/update/{id}', [WashNutritionController::class, 'update'])->name('wash_and_nutrition.update');
     });
 
     Route::get('/health-nutrition-subcategory-select-data', [WashNutritionController::class, 'healthNutritionSubcategorySelectData'])->name('healthNutritionSubcategorySelectData');
