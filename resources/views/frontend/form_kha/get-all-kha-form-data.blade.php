@@ -9,6 +9,41 @@
         </div>
 
         <br><br>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Filter</h4>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="">Financial Year</label>
+                                    <select class="form-control mt-2" name="" id="">
+                                        <option value="">--select financial year--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="">Union Name</label>
+                                    <select class="form-control mt-2" name="" id="">
+                                        <option value="">--select union name--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group" style="margin-top: 32px;">
+                                    <button class="btn btn-success">Filter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -18,7 +53,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 80px">ক্রমিক নং</th>
-                                        <th>অর্থ বছর</th>
+                                        {{-- <th>অর্থ বছর</th> --}}
                                         <th>বিভাগ</th>
                                         <th>জেলা</th>
                                         <th>উপজেলা</th>
@@ -31,7 +66,7 @@
                                         @foreach ($userInfo as $user)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $user->financial_year }}</td>
+                                                {{-- <td>{{ $user->financial_year }}</td> --}}
                                                 <td>{{ $user->division_name }}</td>
                                                 <td>{{ $user->district_name }}</td>
                                                 <td>{{ $user->upazila_name }}</td>

@@ -137,4 +137,10 @@ class ReportController extends Controller
             throw $th;
         }
     }
+
+    //Category Wise Report
+    public function categoryWiseBudgetReport()
+    {
+        return view('admin.report.categoryWiseBudgetReport');
+    }
 }

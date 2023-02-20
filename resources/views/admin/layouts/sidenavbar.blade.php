@@ -120,7 +120,8 @@
 
                 <li class="nav-header">Form Kha Management</li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.getAllFormKhaData') }}" class="nav-link {{ request()->is('admin/form-kha/list') ? 'active' : '' }}">
+                    <a href="{{ route('admin.getAllFormKhaData') }}"
+                        class="nav-link {{ request()->is('admin/form-kha/list') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list text-warning"></i>
                         <p>
                             Form Kha List
@@ -130,7 +131,8 @@
 
                 <li class="nav-header">Wash And Nutrition Management</li>
                 <li class="nav-item">
-                    <a href="{{ route('wash_and_nutrition.index') }}" class="nav-link {{ request()->is('wash-and-nutrition/index') ? 'active' : '' }}">
+                    <a href="{{ route('wash_and_nutrition.index') }}"
+                        class="nav-link {{ request()->is('wash-and-nutrition/index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list text-green"></i>
                         <p>
                             Wash And Nutrition List
@@ -154,6 +156,15 @@
                         <i class="nav-icon fas fa-book text-danger"></i>
                         <p>
                             Wash And Nutrition
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.categoryWiseBudgetReport') }}"
+                        class="nav-link {{ request()->is('category-wise-budget-report') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book text-green"></i>
+                        <p>
+                            Category Wise Budget Report
                         </p>
                     </a>
                 </li>

@@ -126,6 +126,9 @@ Route::middleware('admin')->group(function () {
     //unionComparisonReport
     Route::get('wash-and-nutrition-report', [ReportController::class, 'washAndNutritionReport'])->name('admin.washAndNutritionReport');
     Route::get('get-wash-and-nutrition-report-data', [ReportController::class, 'getWashAndNutritionReportData'])->name('admin.getWashAndNutritionReportData');
+    
+    //categoryWiseBudgetReport
+    Route::get('category-wise-budget-report', [ReportController::class, 'categoryWiseBudgetReport'])->name('admin.categoryWiseBudgetReport');
 
     //Get all form kha list
     Route::get('admin/form-kha/list', [FormStatusController::class, 'getAllFormKhaData'])->name('admin.getAllFormKhaData');
