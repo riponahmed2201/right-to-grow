@@ -10,33 +10,43 @@
 
         <br><br>
 
+        @include('message')
+
         <div class="card">
             <div class="card-header">
                 <h4>Filter</h4>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
-                    <form action="">
+                    <form action="{{ route('user.getAllKhaFormData') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="">Financial Year</label>
-                                    <select class="form-control mt-2" name="" id="">
-                                        <option value="">--select financial year--</option>
+                                    <select class="form-control mt-2" name="financial_year" id="financial_year" required>
+                                        <option value="-1">--select financial year--</option>
+                                        @foreach ($financialYears as $financialYear)
+                                            <option value="{{ $financialYear->year_name }}">{{ $financialYear->year_name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="">Union Name</label>
-                                    <select class="form-control mt-2" name="" id="">
-                                        <option value="">--select union name--</option>
+                                    <select class="form-control mt-2" name="union_name" id="union_name" required>
+                                        <option value="-1">--select union name--</option>
+                                        @foreach ($unions as $union)
+                                            <option value="{{ $union->id }}">{{ $union->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group" style="margin-top: 32px;">
-                                    <button class="btn btn-success">Filter</button>
+                                    <button type="submit" class="btn btn-success">Filter</button>
                                 </div>
                             </div>
                         </div>
@@ -44,12 +54,16 @@
                 </div>
             </div>
         </div>
+        <br>
         <div class="card">
+            <div class="card-header">
+                <h4>ইউনিয়ন ভিত্তিক ডাটা</h4>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover" id="frontendDatatable">
+                            <table class="table table-bordered table-hover" id="frontendDatatable1">
                                 <thead>
                                     <tr>
                                         <th style="width: 80px">ক্রমিক নং</th>
@@ -76,7 +90,8 @@
                                                     <form action="{{ route('getKhaFormDataDetails') }}" method="GET">
                                                         @csrf
                                                         <input type="hidden" name="user_id" value="{{ $user->user_id }}">
-                                                        <input type="hidden" name="union_id" value="{{ $user->union_id }}">
+                                                        <input type="hidden" name="union_id"
+                                                            value="{{ $user->union_id }}">
                                                         <input type="hidden" name="financial_year"
                                                             value="{{ $user->financial_year }}">
                                                         <button type="submit" class="btn"

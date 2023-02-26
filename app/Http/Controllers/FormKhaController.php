@@ -146,18 +146,48 @@ class FormKhaController extends Controller
     }
 
     // Get All Data Show public
-    public function getAllKhaFormData()
+    public function getAllKhaFormData(Request $request)
     {
         try {
 
-            $userInfo = DB::select('SELECT b.*, a.financial_year, a.user_id as user_id, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
-                                            LEFT JOIN `users` AS b ON a.user_id = b.id
-                                            LEFT JOIN `divisions` AS c ON b.division_id = c.id
-                                            LEFT JOIN `districts` AS d ON b.district_id = d.id
-                                            LEFT JOIN `upazilas` AS e ON b.upazila_id = e.id
-                                            LEFT JOIN `unions` AS f ON b.union_id = f.id');
+            $data['financialYears'] = DB::table('financial_years')->get();
+            $data['unions'] = DB::table('unions')->get();
 
-            return view('frontend.form_kha.get-all-kha-form-data', compact('userInfo'));
+            $query = "SELECT b.*, a.financial_year, a.union_id, a.user_id as user_id, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
+                    LEFT JOIN `users` AS b ON a.user_id = b.id
+                    LEFT JOIN `divisions` AS c ON b.division_id = c.id
+                    LEFT JOIN `districts` AS d ON b.district_id = d.id
+                    LEFT JOIN `upazilas` AS e ON b.upazila_id = e.id
+                    LEFT JOIN `unions` AS f ON b.union_id = f.id";
+
+            if ($request->isMethod('post')) {
+
+                $unionName = $request->union_name;
+                $financialYear = $request->financial_year;
+
+                if ($unionName == '-1' && $financialYear == '-1') {
+                    return back()->with('error', 'Please select union name or financial year!');
+                } else {
+                    $query = $query . " where 1=1 ";
+
+                    if ($unionName != '-1') {
+                        $query = $query . " AND a.`union_id` = '" . $unionName . "'";
+                    }
+
+                    if ($financialYear != '-1') {
+                        $query = $query . " AND a.`financial_year`= '" . $financialYear . "'";
+                    }
+
+                    $data['userInfo'] = DB::select($query);
+
+                    return view('frontend.form_kha.get-all-kha-form-data', $data);
+                }
+            } else {
+
+                $data['userInfo'] = DB::select($query);
+
+                return view('frontend.form_kha.get-all-kha-form-data', $data);
+            }
         } catch (\Exception $exception) {
             throw $exception;
         }

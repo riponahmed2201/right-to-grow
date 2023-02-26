@@ -42,7 +42,7 @@ Route::middleware('user')->group(function () {
 });
 
 //Public Kha Form Data show
-Route::get('all-form-kha-data', [FormKhaController::class, 'getAllKhaFormData'])->name('user.getAllKhaFormData');
+Route::match(['get', 'post'], 'all-form-kha-data', [FormKhaController::class, 'getAllKhaFormData'])->name('user.getAllKhaFormData');
 Route::get('form-kha/details', [FormKhaController::class, 'getKhaFormDataDetails'])->name('getKhaFormDataDetails');
 
 // User Authentication Process
