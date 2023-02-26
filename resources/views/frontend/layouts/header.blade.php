@@ -24,11 +24,13 @@
                         href="{{ route('user.getKhaFormList') }}">ফরম "খ" ডাটা</a>
                 </li>
                 <li class="nav-item">
-                    <a style="color: white" class="nav-link {{ request()->is('all-form-kha-data') ? 'active-color' : '' }}"
-                        href="{{ route('user.getAllKhaFormData') }}">ইউনিয়ন ভিত্তিক ডাটা</a>
+                    <a style="color: white"
+                        class="nav-link {{ request()->is('all-union-vittik-data') ? 'active-color' : '' }}"
+                        href="{{ route('user.getAllUnionVittikData') }}">ইউনিয়ন ভিত্তিক ডাটা</a>
                 </li>
                 <li class="nav-item">
-                    <a style="color: white" class="nav-link {{ request()->is('all-form-kha-data') ? 'active-color' : '' }}"
+                    <a style="color: white"
+                        class="nav-link {{ request()->is('show-map-tracking') ? 'active-color' : '' }}"
                         href="{{ route('user.showMapTracking') }}">ট্র্যাকিং</a>
                 </li>
                 <li class="nav-item">
@@ -36,7 +38,8 @@
                     @if (session('user_role') !== null)
                         <a style="color: white" class="nav-link" href="{{ route('logout') }}">লগ আউট</a>
                     @else
-                        <a style="color: white" class="nav-link {{ request()->is('user-login') ? 'active-color' : '' }}"
+                        <a style="color: white"
+                            class="nav-link {{ request()->is('user-login') ? 'active-color' : '' }}"
                             href="{{ route('user.showLoginForm') }}">লগইন</a>
                     @endif
 

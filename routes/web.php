@@ -42,8 +42,11 @@ Route::middleware('user')->group(function () {
 });
 
 //Public Kha Form Data show
-Route::match(['get', 'post'], 'all-form-kha-data', [FormKhaController::class, 'getAllKhaFormData'])->name('user.getAllKhaFormData');
+Route::get('all-form-kha-data/{union_id}', [FormKhaController::class, 'getAllKhaFormData'])->name('user.getAllKhaFormData');
 Route::get('form-kha/details', [FormKhaController::class, 'getKhaFormDataDetails'])->name('getKhaFormDataDetails');
+
+//Union vittik data show
+Route::match(['get', 'post'], 'all-union-vittik-data', [FormKhaController::class, 'getAllUnionVittikData'])->name('user.getAllUnionVittikData');
 
 // User Authentication Process
 Route::get('user-login', [AuthController::class, 'userShowLoginForm'])->name('user.showLoginForm');

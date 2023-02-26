@@ -20,11 +20,11 @@
                         href="{{ route('user.getKhaFormList') }}">ফরম "খ" ডাটা</a>
                 </li>
                 <li>
-                    <a class="{{ request()->is('all-form-kha-data') ? 'active-color' : '' }}"
-                        href="{{ route('user.getAllKhaFormData') }}">ইউনিয়ন ভিত্তিক ডাটা</a>
+                    <a class="{{ request()->is('all-union-vittik-data') ? 'active-color' : '' }}"
+                        href="{{ route('user.getAllUnionVittikData') }}">ইউনিয়ন ভিত্তিক ডাটা</a>
                 </li>
                 <li>
-                    <a class="{{ request()->is('all-form-kha-data') ? 'active' : '' }}"
+                    <a class="{{ request()->is('show-map-tracking') ? 'active' : '' }}"
                         href="{{ route('user.showMapTracking') }}">ট্র্যাকিং</a>
                 </li>
                 <li>

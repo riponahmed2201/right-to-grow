@@ -146,48 +146,66 @@ class FormKhaController extends Controller
     }
 
     // Get All Data Show public
-    public function getAllKhaFormData(Request $request)
+    public function getAllKhaFormData($union_id)
     {
         try {
-
-            $data['financialYears'] = DB::table('financial_years')->get();
-            $data['unions'] = DB::table('unions')->get();
-
             $query = "SELECT b.*, a.financial_year, a.union_id, a.user_id as user_id, c.name AS division_name, d.name AS district_name, e.name AS upazila_name, f.name AS union_name FROM `form_kha_data_users_info` AS a
                     LEFT JOIN `users` AS b ON a.user_id = b.id
                     LEFT JOIN `divisions` AS c ON b.division_id = c.id
                     LEFT JOIN `districts` AS d ON b.district_id = d.id
                     LEFT JOIN `upazilas` AS e ON b.upazila_id = e.id
-                    LEFT JOIN `unions` AS f ON b.union_id = f.id";
+                    LEFT JOIN `unions` AS f ON b.union_id = f.id WHERE a.union_id=" . $union_id;
 
-            if ($request->isMethod('post')) {
+            $userInfo = DB::select($query);
 
-                $unionName = $request->union_name;
-                $financialYear = $request->financial_year;
+            return view('frontend.form_kha.get-all-kha-form-data', compact('userInfo'));
+        } catch (\Exception $exception) {
+            throw $exception;
+        }
+    }
 
-                if ($unionName == '-1' && $financialYear == '-1') {
-                    return back()->with('error', 'Please select union name or financial year!');
-                } else {
-                    $query = $query . " where 1=1 ";
+    //Union vittik data show
+    public function getAllUnionVittikData(Request $request)
+    {
+        try {
 
-                    if ($unionName != '-1') {
-                        $query = $query . " AND a.`union_id` = '" . $unionName . "'";
-                    }
+            $unions = DB::table('unions')
+                ->join('upazilas', 'unions.upazila_id', '=', 'upazilas.id')
+                ->join('districts', 'upazilas.district_id', '=', 'districts.id')
+                ->join('divisions', 'districts.division_id', '=', 'divisions.id')
+                ->select('unions.id as union_id', 'unions.name', 'upazilas.name as upazila_name', 'districts.name as district_name', 'divisions.name as division_name')
+                ->get();
 
-                    if ($financialYear != '-1') {
-                        $query = $query . " AND a.`financial_year`= '" . $financialYear . "'";
-                    }
+            // if ($request->isMethod('post')) {
 
-                    $data['userInfo'] = DB::select($query);
+            //     $unionName = $request->union_name;
+            //     $financialYear = $request->financial_year;
 
-                    return view('frontend.form_kha.get-all-kha-form-data', $data);
-                }
-            } else {
+            //     if ($unionName == '-1' && $financialYear == '-1') {
+            //         return back()->with('error', 'Please select union name or financial year!');
+            //     } else {
+            //         $query = $query . " where 1=1 ";
 
-                $data['userInfo'] = DB::select($query);
+            //         if ($unionName != '-1') {
+            //             $query = $query . " AND a.`union_id` = '" . $unionName . "'";
+            //         }
 
-                return view('frontend.form_kha.get-all-kha-form-data', $data);
-            }
+            //         if ($financialYear != '-1') {
+            //             $query = $query . " AND a.`financial_year`= '" . $financialYear . "'";
+            //         }
+
+            //         $data['userInfo'] = DB::select($query);
+
+            //         return view('frontend.form_kha.union-vittik-data', compact('unions'));
+            //     }
+            // } else {
+
+            //     $data['userInfo'] = DB::select($query);
+
+            //     return view('frontend.form_kha.union-vittik-data', compact('unions'));
+            // }
+
+            return view('frontend.form_kha.union-vittik-data', compact('unions'));
         } catch (\Exception $exception) {
             throw $exception;
         }

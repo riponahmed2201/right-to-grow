@@ -158,23 +158,23 @@
                                                             $next_year_actual_income_total_amount += $partOneRevenueIncomeAccountSubcategory->next_year_actual_income;
                                                         @endphp
 
-                                                        <td>{{ $partOneRevenueIncomeAccountSubcategory->subcategory_name }}
+                                                        <td style="width: 25%">{{ $partOneRevenueIncomeAccountSubcategory->subcategory_name }}
                                                         </td>
-                                                        <td>{{ $partOneRevenueIncomeAccountSubcategory->notes }}
+                                                        <td style="width: 15%">{{ $partOneRevenueIncomeAccountSubcategory->notes }}
                                                         </td>
-                                                        <td style="text-align: end">
+                                                        <td style="text-align: end; width: 12%">
                                                             {{ $partOneRevenueIncomeAccountSubcategory->last_year_budget }}
                                                         </td>
-                                                        <td style="text-align: end">
+                                                        <td style="text-align: end; width: 12%">
                                                             {{ $partOneRevenueIncomeAccountSubcategory->current_year_budget }}
                                                         </td>
-                                                        <td style="text-align: end">
+                                                        <td style="text-align: end; width: 12%">
                                                             {{ $partOneRevenueIncomeAccountSubcategory->current_year_actual_income }}
                                                         </td>
-                                                        <td style="text-align: end">
+                                                        <td style="text-align: end; width: 12%">
                                                             {{ $partOneRevenueIncomeAccountSubcategory->current_year_budget }}
                                                         </td>
-                                                        <td style="text-align: end">
+                                                        <td style="text-align: end; width: 12%">
                                                             {{ $partOneRevenueIncomeAccountSubcategory->next_year_actual_income }}
                                                         </td>
                                                     </tr>
@@ -184,29 +184,29 @@
                                     @endforeach
                                     <tbody>
                                         <tr style="font-weight: bold">
-                                            <td>মোট রাজস্ব হিসাব আয়</td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style="width: 25%">মোট রাজস্ব হিসাব আয়</td>
+                                            <td style="width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($last_year_total_amount)
                                                     {{ $last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($current_year_total_amount)
                                                     {{ $current_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($current_year_actual_income_total_amount)
                                                     {{ $current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($next_year_total_amount)
                                                     {{ $next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($next_year_actual_income_total_amount)
                                                     {{ $next_year_actual_income_total_amount }}
                                                 @endisset
@@ -296,88 +296,88 @@
                                     @endforeach
                                     <tbody>
                                         <tr style="font-weight: bold">
-                                            <td>উপমোট</td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style="width: 25%">উপমোট</td>
+                                            <td style="width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_last_year_total_amount)
                                                     {{ $p_one_exp_last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_total_amount)
                                                     {{ $p_one_exp_current_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_total_amount)
                                                     {{ $p_one_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_actual_income_total_amount)
                                                     {{ $p_one_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_actual_income_total_amount)
                                                     {{ $p_one_exp_next_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>১০। রাজস্ব উদ্বৃত্ত উন্নয়ন হিসাবে স্থানান্তর</td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style="width: 25%">১০। রাজস্ব উদ্বৃত্ত উন্নয়ন হিসাবে স্থানান্তর</td>
+                                            <td style="width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_last_year_total_amount)
                                                     {{ $last_year_total_amount - $p_one_exp_last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_total_amount)
                                                     {{ $current_year_total_amount - $p_one_exp_current_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_actual_income_total_amount)
                                                     {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_total_amount)
                                                     {{ $next_year_total_amount - $p_one_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_actual_income_total_amount)
                                                     {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
                                         </tr>
                                         <tr style="font-weight: bold">
-                                            <td>মোট ব্যয় (রাজস্ব হিসাব)</td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style="width: 25%">মোট ব্যয় (রাজস্ব হিসাব)</td>
+                                            <td style="width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_last_year_total_amount)
                                                     {{ $last_year_total_amount - $p_one_exp_last_year_total_amount + $p_one_exp_last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_total_amount)
                                                     {{ $current_year_total_amount - $p_one_exp_current_year_total_amount + $p_one_exp_current_year_total_amount }}
                                                 @endisset
                                             </td>
 
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_actual_income_total_amount)
                                                     {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount + $p_one_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_total_amount)
                                                     {{ $next_year_total_amount - $p_one_exp_next_year_total_amount + $p_one_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_actual_income_total_amount)
                                                     {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount + $p_one_exp_next_year_actual_income_total_amount }}
                                                 @endisset
@@ -471,87 +471,87 @@
                                     @endforeach
                                     <tbody>
                                         <tr style="font-weight: bold">
-                                            <td>উপমোট</td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style="width: 25%">উপমোট</td>
+                                            <td style="width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_last_year_total_amount)
                                                     {{ $p_two_exp_last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_current_year_total_amount)
                                                     {{ $p_two_exp_current_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_current_year_actual_income_total_amount)
                                                     {{ $p_two_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_next_year_total_amount)
                                                     {{ $p_two_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_next_year_actual_income_total_amount)
                                                     {{ $p_two_exp_next_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>রাজস্ব উদ্বৃত্ত উন্নয়ন হিসাবে স্থানান্তর</td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style=" width: 25%">রাজস্ব উদ্বৃত্ত উন্নয়ন হিসাবে স্থানান্তর</td>
+                                            <td style=" width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_last_year_total_amount)
                                                     {{ $last_year_total_amount - $p_one_exp_last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_total_amount)
                                                     {{ $current_year_total_amount - $p_one_exp_current_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_current_year_actual_income_total_amount)
                                                     {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_total_amount)
                                                     {{ $next_year_total_amount - $p_one_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_next_year_actual_income_total_amount)
                                                     {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
                                         </tr>
                                         <tr style="font-weight: bold">
-                                            <td>মোট প্রাপ্তি (উন্নয়ন হিসাব ) </td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style="width: 25%">মোট প্রাপ্তি (উন্নয়ন হিসাব ) </td>
+                                            <td style="width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_last_year_total_amount)
                                                     {{ $last_year_total_amount - $p_one_exp_last_year_total_amount + $p_two_exp_last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_current_year_total_amount)
                                                     {{ $current_year_total_amount - $p_one_exp_current_year_total_amount + $p_two_exp_current_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_current_year_actual_income_total_amount)
                                                     {{ $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount + $p_two_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_next_year_total_amount)
                                                     {{ $next_year_total_amount - $p_one_exp_next_year_total_amount + $p_two_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_exp_next_year_actual_income_total_amount)
                                                     {{ $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount + $p_two_exp_next_year_actual_income_total_amount }}
                                                 @endisset
@@ -681,29 +681,29 @@
                                         </tr>
 
                                         <tr style="font-weight: bold">
-                                            <td>মোট উন্নয়ন ব্যয় </td>
-                                            <td></td>
-                                            <td style="text-align: end">
+                                            <td style="width: 25%">মোট উন্নয়ন ব্যয় </td>
+                                            <td style="width: 15%"></td>
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_dev_exp_last_year_total_amount)
                                                     {{ $p_two_dev_exp_last_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_dev_exp_current_year_total_amount)
                                                     {{ $p_two_dev_exp_current_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_dev_exp_current_year_actual_income_total_amount)
                                                     {{ $p_two_dev_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_dev_exp_next_year_total_amount)
                                                     {{ $p_two_dev_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
-                                            <td style="text-align: end">
+                                            <td style="text-align: end; width: 12%">
                                                 @isset($p_two_dev_exp_next_year_actual_income_total_amount)
                                                     {{ $p_two_dev_exp_next_year_actual_income_total_amount }}
                                                 @endisset
