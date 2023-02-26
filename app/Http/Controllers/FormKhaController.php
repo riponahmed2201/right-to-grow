@@ -169,13 +169,6 @@ class FormKhaController extends Controller
     {
         try {
 
-            // $unions = DB::table('unions')
-            //     ->join('upazilas', 'unions.upazila_id', '=', 'upazilas.id')
-            //     ->join('districts', 'upazilas.district_id', '=', 'districts.id')
-            //     ->join('divisions', 'districts.division_id', '=', 'divisions.id')
-            //     ->select('unions.id as union_id', 'unions.name', 'upazilas.name as upazila_name', 'districts.name as district_name', 'divisions.name as division_name')
-            //     ->get();
-
             $query = "SELECT a.id AS union_id, a.name AS union_name, b.name AS upazila_name, c.name AS district_name, d.name AS division_name 
                 FROM unions AS a
                 LEFT JOIN upazilas AS b ON a.upazila_id = b.id
