@@ -27,7 +27,7 @@
                                     <select class="form-control mt-2" name="union_name" id="union_name" required>
                                         <option value="-1">--select union name--</option>
                                         @foreach ($unions as $union)
-                                            <option value="{{ $union->union_id }}">{{ $union->name }}</option>
+                                            <option value="{{ $union->union_id }}">{{ $union->union_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -71,7 +71,7 @@
                                                 <td class="text-center"> {{ $union->upazila_name }}</td>
                                                 <td class="text-center">
                                                     <a
-                                                        href="{{ route('user.getAllKhaFormData', $union->union_id) }}">{{ $union->name }}</a>
+                                                        href="{{ route('user.getAllKhaFormData', $union->union_id) }}">{{ $union->union_name }}</a>
                                                 </td>
                                             </tr>
                                         @endforeach

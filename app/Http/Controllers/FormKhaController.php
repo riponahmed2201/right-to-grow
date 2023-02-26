@@ -169,43 +169,42 @@ class FormKhaController extends Controller
     {
         try {
 
-            $unions = DB::table('unions')
-                ->join('upazilas', 'unions.upazila_id', '=', 'upazilas.id')
-                ->join('districts', 'upazilas.district_id', '=', 'districts.id')
-                ->join('divisions', 'districts.division_id', '=', 'divisions.id')
-                ->select('unions.id as union_id', 'unions.name', 'upazilas.name as upazila_name', 'districts.name as district_name', 'divisions.name as division_name')
-                ->get();
+            // $unions = DB::table('unions')
+            //     ->join('upazilas', 'unions.upazila_id', '=', 'upazilas.id')
+            //     ->join('districts', 'upazilas.district_id', '=', 'districts.id')
+            //     ->join('divisions', 'districts.division_id', '=', 'divisions.id')
+            //     ->select('unions.id as union_id', 'unions.name', 'upazilas.name as upazila_name', 'districts.name as district_name', 'divisions.name as division_name')
+            //     ->get();
 
-            // if ($request->isMethod('post')) {
+            $query = "SELECT a.id AS union_id, a.name AS union_name, b.name AS upazila_name, c.name AS district_name, d.name AS division_name 
+                FROM unions AS a
+                LEFT JOIN upazilas AS b ON a.upazila_id = b.id
+                LEFT JOIN districts AS c ON b.district_id = c.id
+                LEFT JOIN divisions AS d ON c.division_id = d.id";
 
-            //     $unionName = $request->union_name;
-            //     $financialYear = $request->financial_year;
+            if ($request->isMethod('post')) {
 
-            //     if ($unionName == '-1' && $financialYear == '-1') {
-            //         return back()->with('error', 'Please select union name or financial year!');
-            //     } else {
-            //         $query = $query . " where 1=1 ";
+                $unionName = $request->union_name;
 
-            //         if ($unionName != '-1') {
-            //             $query = $query . " AND a.`union_id` = '" . $unionName . "'";
-            //         }
+                if ($unionName == '-1') {
+                    return back()->with('error', 'Please select union name!');
+                } else {
+                    $query = $query . " where 1=1 ";
 
-            //         if ($financialYear != '-1') {
-            //             $query = $query . " AND a.`financial_year`= '" . $financialYear . "'";
-            //         }
+                    if ($unionName != '-1') {
+                        $query = $query . " AND a.`id` = '" . $unionName . "'";
+                    }
 
-            //         $data['userInfo'] = DB::select($query);
+                    $unions = DB::select($query);
 
-            //         return view('frontend.form_kha.union-vittik-data', compact('unions'));
-            //     }
-            // } else {
+                    return view('frontend.form_kha.union-vittik-data', compact('unions'));
+                }
+            } else {
 
-            //     $data['userInfo'] = DB::select($query);
+                $unions = DB::select($query);
 
-            //     return view('frontend.form_kha.union-vittik-data', compact('unions'));
-            // }
-
-            return view('frontend.form_kha.union-vittik-data', compact('unions'));
+                return view('frontend.form_kha.union-vittik-data', compact('unions'));
+            }
         } catch (\Exception $exception) {
             throw $exception;
         }
