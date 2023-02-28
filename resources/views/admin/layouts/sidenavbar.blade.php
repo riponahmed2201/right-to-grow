@@ -139,6 +139,26 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-header">Development Expense Category</li>
+                <li class="nav-item">
+                    <a href="{{ route('development.expense.category.index') }}"
+                        class="nav-link {{ request()->is('development-expense-category/index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list text-danger"></i>
+                        <p>
+                            Expense Category List
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">Development Expense Budget</li>
+                <li class="nav-item">
+                    <a href="{{ route('development.expense.budget.index') }}"
+                        class="nav-link {{ request()->is('development-expense-budget/index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list text-warning"></i>
+                        <p>
+                            Expense Budget List
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">Report Management</li>
                 <li class="nav-item">

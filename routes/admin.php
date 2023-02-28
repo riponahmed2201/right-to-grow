@@ -15,6 +15,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DevelopmentExpenseBudgetController;
+use App\Http\Controllers\DevelopmentExpenseCategoryController;
 use App\Http\Controllers\EditFormKhaController;
 use App\Http\Controllers\FormStatusController;
 use App\Http\Controllers\WashNutritionController;
@@ -65,6 +67,24 @@ Route::middleware('admin')->group(function () {
         Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
         Route::get('/edit/{type_id}', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('/update/{category_id}', [CategoryController::class, 'update'])->name('category.update');
+    });
+
+    //Development expense category routes
+    Route::group(['prefix' => 'development-expense-category'], function () {
+        Route::get('/index', [DevelopmentExpenseCategoryController::class, 'index'])->name('development.expense.category.index');
+        Route::get('/create', [DevelopmentExpenseCategoryController::class, 'create'])->name('development.expense.category.create');
+        Route::post('/store', [DevelopmentExpenseCategoryController::class, 'store'])->name('development.expense.category.store');
+        Route::get('/edit/{type_id}', [DevelopmentExpenseCategoryController::class, 'edit'])->name('development.expense.category.edit');
+        Route::put('/update/{category_id}', [DevelopmentExpenseCategoryController::class, 'update'])->name('development.expense.category.update');
+    });
+
+    //Development expense budget routes
+    Route::group(['prefix' => 'development-expense-budget'], function () {
+        Route::get('/index', [DevelopmentExpenseBudgetController::class, 'index'])->name('development.expense.budget.index');
+        Route::get('/create', [DevelopmentExpenseBudgetController::class, 'create'])->name('development.expense.budget.create');
+        Route::post('/store', [DevelopmentExpenseBudgetController::class, 'store'])->name('development.expense.budget.store');
+        Route::get('/edit/{type_id}', [DevelopmentExpenseBudgetController::class, 'edit'])->name('development.expense.budget.edit');
+        Route::put('/update/{budget_id}', [DevelopmentExpenseBudgetController::class, 'update'])->name('development.expense.budget.update');
     });
 
     //Subcategory Routes
@@ -126,7 +146,7 @@ Route::middleware('admin')->group(function () {
     //unionComparisonReport
     Route::get('wash-and-nutrition-report', [ReportController::class, 'washAndNutritionReport'])->name('admin.washAndNutritionReport');
     Route::get('get-wash-and-nutrition-report-data', [ReportController::class, 'getWashAndNutritionReportData'])->name('admin.getWashAndNutritionReportData');
-    
+
     //categoryWiseBudgetReport
     Route::get('category-wise-budget-report', [ReportController::class, 'categoryWiseBudgetReport'])->name('admin.categoryWiseBudgetReport');
 
