@@ -172,7 +172,7 @@
                                                             {{ $partOneRevenueIncomeAccountSubcategory->current_year_actual_income }}
                                                         </td>
                                                         <td style="text-align: end; width: 12%">
-                                                            {{ $partOneRevenueIncomeAccountSubcategory->current_year_budget }}
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->next_year_budget }}
                                                         </td>
                                                         <td style="text-align: end; width: 12%">
                                                             {{ $partOneRevenueIncomeAccountSubcategory->next_year_actual_income }}
