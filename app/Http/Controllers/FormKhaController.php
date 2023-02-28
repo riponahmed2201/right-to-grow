@@ -169,34 +169,50 @@ class FormKhaController extends Controller
     {
         try {
 
-            $query = "SELECT a.id AS union_id, a.name AS union_name, b.name AS upazila_name, c.name AS district_name, d.name AS division_name 
+            $query = "SELECT a.id AS union_id, b.id as upazila_id, c.id as district_id, d.id as division_id, a.name AS union_name, b.name AS upazila_name, c.name AS district_name, d.name AS division_name 
                 FROM unions AS a
                 LEFT JOIN upazilas AS b ON a.upazila_id = b.id
                 LEFT JOIN districts AS c ON b.district_id = c.id
                 LEFT JOIN divisions AS d ON c.division_id = d.id";
 
+            $data['divisions'] = DB::table('divisions')->get();
+            $data['districts'] = DB::table('districts')->get();
+            $data['upazilas'] = DB::table('upazilas')->get();
+
             if ($request->isMethod('post')) {
 
+                $divisionName = $request->division_name;
+                $districtName = $request->district_name;
+                $upazilaName = $request->upazila_name;
                 $unionName = $request->union_name;
 
-                if ($unionName == '-1') {
-                    return back()->with('error', 'Please select union name!');
+                if ($divisionName == '-1' && $districtName == '-1' && $upazilaName == '-1' && $unionName == '-1') {
+                    return back()->with('error', 'Please select division or district or upazial or union name!');
                 } else {
                     $query = $query . " where 1=1 ";
 
+                    if ($divisionName != '-1') {
+                        $query = $query . " AND d.`id` = '" . $divisionName . "'";
+                    }
+                    if ($districtName != '-1') {
+                        $query = $query . " AND c.`id` = '" . $districtName . "'";
+                    }
+                    if ($upazilaName != '-1') {
+                        $query = $query . " AND b.`id` = '" . $upazilaName . "'";
+                    }
                     if ($unionName != '-1') {
                         $query = $query . " AND a.`id` = '" . $unionName . "'";
                     }
 
-                    $unions = DB::select($query);
+                    $data['unions'] = DB::select($query);
 
-                    return view('frontend.form_kha.union-vittik-data', compact('unions'));
+                    return view('frontend.form_kha.union-vittik-data', $data);
                 }
             } else {
 
-                $unions = DB::select($query);
+                $data['unions'] = DB::select($query);
 
-                return view('frontend.form_kha.union-vittik-data', compact('unions'));
+                return view('frontend.form_kha.union-vittik-data', $data);
             }
         } catch (\Exception $exception) {
             throw $exception;

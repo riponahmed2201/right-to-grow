@@ -21,7 +21,40 @@
                     <form action="{{ route('user.getAllUnionVittikData') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">Division Name</label>
+                                    <select class="form-control mt-2" name="division_name" id="division_name" required>
+                                        <option value="-1">--select division name--</option>
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">District Name</label>
+                                    <select class="form-control mt-2" name="district_name" id="district_name" required>
+                                        <option value="-1">--select district name--</option>
+                                        @foreach ($districts as $district)
+                                            <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">Upazila Name</label>
+                                    <select class="form-control mt-2" name="upazila_name" id="upazila_name" required>
+                                        <option value="-1">--select upazila name--</option>
+                                        @foreach ($upazilas as $upazila)
+                                            <option value="{{ $upazila->id }}">{{ $upazila->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="">Union Name</label>
                                     <select class="form-control mt-2" name="union_name" id="union_name" required>
