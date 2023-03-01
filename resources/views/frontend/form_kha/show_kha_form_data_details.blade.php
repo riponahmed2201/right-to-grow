@@ -92,7 +92,7 @@
                             @endphp
 
                             @if (!empty($partOneRevenueIncomeAccountList))
-                                <table class="table table-bordered">
+                                <table class="table table-bordered table-responsive1">
                                     <thead>
                                         <tr>
                                             <th colspan="7">অংশ-১- রাজস্ব হিসাব আয়ঃ</th>
@@ -158,9 +158,11 @@
                                                             $next_year_actual_income_total_amount += $partOneRevenueIncomeAccountSubcategory->next_year_actual_income;
                                                         @endphp
 
-                                                        <td style="width: 25%">{{ $partOneRevenueIncomeAccountSubcategory->subcategory_name }}
+                                                        <td style="width: 25%">
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->subcategory_name }}
                                                         </td>
-                                                        <td style="width: 15%">{{ $partOneRevenueIncomeAccountSubcategory->notes }}
+                                                        <td style="width: 15%">
+                                                            {{ $partOneRevenueIncomeAccountSubcategory->notes }}
                                                         </td>
                                                         <td style="text-align: end; width: 12%">
                                                             {{ $partOneRevenueIncomeAccountSubcategory->last_year_budget }}
@@ -251,7 +253,6 @@
                                                 ->where('a.financial_year', '=', $userInfo[0]->financial_year)
                                                 ->distinct()
                                                 ->get();
-                                            
                                         @endphp
 
                                         @foreach ($partOneIncomeAccountSubcategoryList as $partOneIncomeAccountSubcategory)
@@ -270,6 +271,7 @@
                                                             $p_one_exp_next_year_total_amount += $partOneIncomeAccountSubcategory->next_year_budget;
                                                             $p_one_exp_current_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->current_year_actual_income;
                                                             $p_one_exp_next_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->next_year_actual_income;
+                                                            
                                                         @endphp
 
                                                         <td style="width: 25%">
@@ -297,7 +299,9 @@
                                     <tbody>
                                         <tr style="font-weight: bold">
                                             <td style="width: 25%">উপমোট</td>
+                                            {{-- FOR NOTES --}}
                                             <td style="width: 15%"></td>
+
                                             <td style="text-align: end; width: 12%">
                                                 @isset($p_one_exp_last_year_total_amount)
                                                     {{ $p_one_exp_last_year_total_amount }}
@@ -309,13 +313,13 @@
                                                 @endisset
                                             </td>
                                             <td style="text-align: end; width: 12%">
-                                                @isset($p_one_exp_next_year_total_amount)
-                                                    {{ $p_one_exp_next_year_total_amount }}
+                                                @isset($p_one_exp_current_year_actual_income_total_amount)
+                                                    {{ $p_one_exp_current_year_actual_income_total_amount }}
                                                 @endisset
                                             </td>
                                             <td style="text-align: end; width: 12%">
-                                                @isset($p_one_exp_current_year_actual_income_total_amount)
-                                                    {{ $p_one_exp_current_year_actual_income_total_amount }}
+                                                @isset($p_one_exp_next_year_total_amount)
+                                                    {{ $p_one_exp_next_year_total_amount }}
                                                 @endisset
                                             </td>
                                             <td style="text-align: end; width: 12%">
@@ -469,6 +473,7 @@
                                             </tbody>
                                         @endforeach
                                     @endforeach
+
                                     <tbody>
                                         <tr style="font-weight: bold">
                                             <td style="width: 25%">উপমোট</td>
@@ -484,6 +489,7 @@
                                                 @endisset
                                             </td>
                                             <td style="text-align: end; width: 12%">
+
                                                 @isset($p_two_exp_current_year_actual_income_total_amount)
                                                     {{ $p_two_exp_current_year_actual_income_total_amount }}
                                                 @endisset
@@ -670,10 +676,10 @@
                                                 {{ $p_two_dev_exp_current_year_total_amount - $p_two_dev_exp_current_year_closing_balance }}
                                             </td>
                                             <td style="width: 12%; text-align: end">
-                                                {{ $p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_next_year_closing_balance }}
+                                                {{ $p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance }}
                                             </td>
                                             <td style="width: 12%; text-align: end">
-                                                {{ $p_two_dev_exp_next_year_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance }}
+                                                {{ $p_two_dev_exp_next_year_total_amount - $p_two_dev_exp_next_year_closing_balance }}
                                             </td>
                                             <td style="width: 12%; text-align: end">
                                                 {{ $p_two_dev_exp_next_year_actual_income_total_amount - $p_two_dev_exp_next_year_actual_income_closing_balance }}
@@ -850,10 +856,10 @@
                                             {{ $p_two_dev_exp_current_year_total_amount - $p_two_dev_exp_current_year_closing_balance }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ $p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_next_year_closing_balance }}
+                                            {{ $p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ $p_two_dev_exp_next_year_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance }}
+                                            {{ $p_two_dev_exp_next_year_total_amount - $p_two_dev_exp_next_year_closing_balance }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
                                             {{ $p_two_dev_exp_next_year_actual_income_total_amount - $p_two_dev_exp_next_year_actual_income_closing_balance }}
@@ -872,19 +878,19 @@
                                         <td style="width: 25%">সমাপ্তি জের = (মোট উন্নয়ন আয়-উপমোট উন্নয়ন ব্যয়)</td>
                                         <td style="width: 15%"></td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ $last_year_total_development_income - $p_two_dev_exp_last_year_total_amount }}
+                                            {{ $p_two_exp_last_year_total_amount + $last_year_total_amount - $p_one_exp_last_year_total_amount - ($p_two_dev_exp_last_year_total_amount - $p_two_dev_exp_last_year_closing_balance) }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ $current_year_total_development_income - $p_two_dev_exp_current_year_total_amount }}
+                                            {{ $p_two_exp_current_year_total_amount + $current_year_total_amount - $p_one_exp_current_year_total_amount - ($p_two_dev_exp_current_year_total_amount - $p_two_dev_exp_current_year_closing_balance) }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ $current_year_actual_income_total_development_income - $p_two_dev_exp_current_year_actual_income_total_amount }}
+                                            {{ ($p_two_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount) - ($p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance) }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ $next_year_total_development_income - $p_two_dev_exp_next_year_total_amount }}
+                                            {{ $p_two_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount - ($p_two_dev_exp_next_year_total_amount - $p_two_dev_exp_next_year_closing_balance) }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ $next_year_actual_income_total_development_income - $p_two_dev_exp_next_year_actual_income_total_amount }}
+                                            {{ $p_two_exp_next_year_actual_income_total_amount + $next_year_actual_income_total_amount - $p_one_exp_next_year_actual_income_total_amount - ($p_two_dev_exp_next_year_actual_income_total_amount - $p_two_dev_exp_next_year_actual_income_closing_balance) }}
                                         </td>
                                     </tr>
                                     <tr>

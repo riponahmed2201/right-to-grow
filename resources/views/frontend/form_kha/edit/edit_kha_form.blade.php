@@ -315,9 +315,9 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>অর্থ বছর:</label>
-                                            <select name="part_two_financial_year"
+                                            <select name="part_three_financial_year"
                                                 onchange="partTwoDevelopmentRevenueFinancialYearFunc(this.value)" required
-                                                class="form-control mt-2" id="part_two_financial_year">
+                                                class="form-control mt-2" id="part_three_financial_year">
                                                 <option value="">--নির্বাচন করুন--</option>
                                                 @foreach ($financialYearList as $financialYear)
                                                     <option
