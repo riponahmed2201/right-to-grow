@@ -179,7 +179,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('admin.categoryWiseBudgetReport') }}"
                         class="nav-link {{ request()->is('category-wise-budget-report') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book text-green"></i>
@@ -187,7 +187,7 @@
                             Category Wise Budget Report
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-header">User Management</li>
                 <li class="nav-item">

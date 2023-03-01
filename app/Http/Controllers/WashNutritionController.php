@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\WashAndNutrition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rules\Exists;
 
 class WashNutritionController extends Controller
 {

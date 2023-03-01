@@ -28,10 +28,21 @@
                         class="nav-link {{ request()->is('all-union-vittik-data') ? 'active-color' : '' }}"
                         href="{{ route('user.getAllUnionVittikData') }}">ইউনিয়ন ভিত্তিক ডাটা</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a style="color: white" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        ট্র্যাকিং
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a style="color: black" class="dropdown-item" href="#">Health Comparison</a></li>
+                        <li><a style="color: black" class="dropdown-item" href="#">Health & Nutrition</a></li>
+                        <li><a style="color: black" class="dropdown-item" href="{{ route('user.viewDevelopmentExpenseBudgetTracking') }}">Development Expense Budget</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a style="color: white"
                         class="nav-link {{ request()->is('show-map-tracking') ? 'active-color' : '' }}"
-                        href="{{ route('user.showMapTracking') }}">ট্র্যাকিং</a>
+                        href="{{ route('user.showMapTracking') }}">ম্যাপ</a>
                 </li>
                 <li class="nav-item">
 
