@@ -34,9 +34,13 @@
                         ট্র্যাকিং
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a style="color: black" class="dropdown-item" href="#">Health Comparison</a></li>
-                        <li><a style="color: black" class="dropdown-item" href="#">Health & Nutrition</a></li>
-                        <li><a style="color: black" class="dropdown-item" href="{{ route('user.viewDevelopmentExpenseBudgetTracking') }}">Development Expense Budget</a></li>
+                        <li><a style="color: black" class="dropdown-item"
+                                href="{{ route('user.viewHealthComparisonTracking') }}">Health Comparison</a></li>
+                        <li><a style="color: black" class="dropdown-item"
+                                href="{{ route('user.viewWashAndNutritionTracking') }}">Health & Nutrition</a></li>
+                        <li><a style="color: black" class="dropdown-item"
+                                href="{{ route('user.viewDevelopmentExpenseBudgetTracking') }}">Development Expense
+                                Budget</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

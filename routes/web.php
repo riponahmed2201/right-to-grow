@@ -61,3 +61,12 @@ Route::get('upazila-map-tracking', [MapTrackingController::class, 'showUpazilaMa
 //Report Tracking
 Route::get('view-development-expense-budget-tracking', [TrackingReportController::class, 'viewDevelopmentExpenseBudgetTracking'])->name('user.viewDevelopmentExpenseBudgetTracking');
 Route::get('get-development-expense-budget-tracking', [TrackingReportController::class, 'getDevelopmentExpenseBudgetTracking'])->name('user.getDevelopmentExpenseBudgetTracking');
+
+//Report Section
+//Health Comparison Report
+Route::get('view-health-comparison-tracking', [TrackingReportController::class, 'viewHealthComparisonTracking'])->name('user.viewHealthComparisonTracking');
+Route::get('get-health-comparison-tracking', [TrackingReportController::class, 'getHealthComparisonTracking'])->name('user.getHealthComparisonTracking');
+
+//unionComparisonReport
+Route::get('view-wash-and-nutrition-tracking', [TrackingReportController::class, 'viewWashAndNutritionTracking'])->name('user.viewWashAndNutritionTracking');
+Route::get('get-wash-and-nutrition-tracking', [TrackingReportController::class, 'getWashAndNutritionTracking'])->name('user.getWashAndNutritionTracking');
