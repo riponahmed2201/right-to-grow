@@ -27,7 +27,9 @@
         </div>
     </div>
     <br><br><br><br>
+@endsection
 
+@section('custom_js')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
@@ -44,7 +46,8 @@
             ]);
 
             var options = {
-                title: 'Development Expense Budget Tracking Report Chart'
+                title: 'Development Expense Budget Tracking Report Chart',
+                is3D: true,
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -52,7 +55,4 @@
             chart.draw(data, options);
         }
     </script>
-@endsection
-
-@section('custom_js')
 @endsection
