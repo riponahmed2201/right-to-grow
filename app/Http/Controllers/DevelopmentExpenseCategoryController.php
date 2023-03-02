@@ -45,6 +45,7 @@ class DevelopmentExpenseCategoryController extends Controller
                 return back()->with('error', 'Something Error Found! Please try again.');
             }
         } catch (\Exception $exception) {
+            dd($exception);
             return back()->with('error', 'Something Error Found! Please try again.');
         }
     }
@@ -67,6 +68,7 @@ class DevelopmentExpenseCategoryController extends Controller
                 return back()->with('error', 'Something Error Found! Please try again.');
             }
         } catch (\Exception $exception) {
+            dd($exception);
             return back()->with('error', 'Something Error Found! Please try again.');
         }
     }
