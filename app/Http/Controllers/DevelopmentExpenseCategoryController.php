@@ -38,6 +38,8 @@ class DevelopmentExpenseCategoryController extends Controller
 
             $category = new DevelopmentExpenseCategory();
             $category->name = $request->name;
+            $category->created_at = date('Y-m-d');
+            $category->updated_at = date('Y-m-d');
 
             if ($category->save()) {
                 return redirect()->route('development.expense.category.index')->with('success', 'Development expense category created successfully!');
@@ -61,6 +63,7 @@ class DevelopmentExpenseCategoryController extends Controller
 
             $category = DevelopmentExpenseCategory::findOrFail($category_id);
             $category->name = $request->name;
+            $category->updated_at = date('Y-m-d');
 
             if ($category->save()) {
                 return redirect()->route('development.expense.category.index')->with('success', 'Development expense category updated successfully!');

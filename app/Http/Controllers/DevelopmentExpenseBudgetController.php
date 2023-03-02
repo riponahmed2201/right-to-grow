@@ -55,6 +55,8 @@ class DevelopmentExpenseBudgetController extends Controller
             $budget->expense_category_id = $request->expense_category;
             $budget->current_year_budget = $request->current_year_budget;
             $budget->union_id = $request->union_name;
+            $budget->created_at = date('Y-m-d');
+            $budget->updated_at = date('Y-m-d');
 
             if ($budget->save()) {
                 return redirect()->route('development.expense.budget.index')->with('success', 'Development expense budget created successfully!');
@@ -85,7 +87,8 @@ class DevelopmentExpenseBudgetController extends Controller
             $budget->financial_year = $request->financial_year;
             $budget->expense_category_id = $request->expense_category;
             $budget->current_year_budget = $request->current_year_budget;
-            $budget->union_id = $request->union_name;
+            $budget->union_id = $request->union_name;  
+            $budget->updated_at = date('Y-m-d');
 
             if ($budget->save()) {
                 return redirect()->route('development.expense.budget.index')->with('success', 'Development expense budget updated successfully!');
