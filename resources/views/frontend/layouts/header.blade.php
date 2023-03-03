@@ -37,7 +37,7 @@
                         <li><a style="color: black" class="dropdown-item"
                                 href="{{ route('user.viewHealthComparisonTracking') }}">Health Comparison</a></li>
                         <li><a style="color: black" class="dropdown-item"
-                                href="{{ route('user.viewWashAndNutritionTracking') }}">Health & Nutrition</a></li>
+                                href="{{ route('user.viewWashAndNutritionTracking') }}">Wash and Nutrition</a></li>
                         <li><a style="color: black" class="dropdown-item"
                                 href="{{ route('user.viewDevelopmentExpenseBudgetTracking') }}">Development Expense
                                 Budget</a></li>

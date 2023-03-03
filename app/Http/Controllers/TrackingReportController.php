@@ -36,10 +36,15 @@ class TrackingReportController extends Controller
                 $output_array .= "['$value->expense_category_name', " . $value->current_year_budget . "],";
             }
 
-            $output_array = rtrim($output_array, ",");
+            $data['output_array'] = rtrim($output_array, ",");
             // //End Chart Data
 
-            return view('frontend.trackingReport.get_development_expense_budget_report', compact('output_array'));
+            $unionName = DB::table('unions')->where('id', '=', $union_id)->first()->name;
+
+            $data['financial_year'] = $financial_year;
+            $data['unionName'] = $unionName;
+
+            return view('frontend.trackingReport.get_development_expense_budget_report', $data);
         } catch (\Throwable $th) {
             throw $th;
         }

@@ -17,7 +17,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Wash and Nutrition Budget Report</h3>
+                            <h5 class="card-title">Wash and Nutrition Budget Report</h5>
                         </div>
 
                         <!-- /.card-header -->
@@ -71,9 +71,9 @@
 
                                         <tr>
                                             <td>{{ $wash_value->subcategory_name }}</td>
-                                            <td class="text-right">{{ $wash_value->total_budget }}</td>
-                                            <td class="text-right">{{ $wash_value->expense_budget }}</td>
-                                            <td class="text-right">{{ $wash_value->remaining_budget }}</td>
+                                            <td style="text-align: end;">{{ $wash_value->total_budget }}</td>
+                                            <td style="text-align: end;">{{ $wash_value->expense_budget }}</td>
+                                            <td style="text-align: end;">{{ $wash_value->remaining_budget }}</td>
                                         </tr>
                                     @endforeach
 
@@ -90,39 +90,39 @@
 
                                         <tr>
                                             <td>{{ $nutrition_value->subcategory_name }}</td>
-                                            <td class="text-right">{{ $nutrition_value->total_budget }}</td>
-                                            <td class="text-right">{{ $nutrition_value->expense_budget }}</td>
-                                            <td class="text-right">{{ $nutrition_value->remaining_budget }}</td>
+                                            <td style="text-align: end;">{{ $nutrition_value->total_budget }}</td>
+                                            <td style="text-align: end;">{{ $nutrition_value->expense_budget }}</td>
+                                            <td style="text-align: end;">{{ $nutrition_value->remaining_budget }}</td>
                                         </tr>
                                     @endforeach
                                     <tr>
-                                        <td class="text-right text-bold">Total Wash @if ($financial_year_name)
+                                        <td style="text-align: end; font-weight: bold">Total Wash @if ($financial_year_name)
                                                 {{ $financial_year_name }}
                                             @endif
                                         </td>
-                                        <td class="text-right text-bold">{{ $wash_total_budget }}</td>
-                                        <td class="text-right text-bold">{{ $wash_expense_budget }}</td>
-                                        <td class="text-right text-bold">{{ $wash_remaining_budget }}</td>
+                                        <td style="text-align: end; font-weight: bold">{{ $wash_total_budget }}</td>
+                                        <td style="text-align: end; font-weight: bold">{{ $wash_expense_budget }}</td>
+                                        <td style="text-align: end; font-weight: bold">{{ $wash_remaining_budget }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-right text-bold">Total Nutrition @if ($financial_year_name)
+                                        <td style="text-align: end; font-weight: bold">Total Nutrition @if ($financial_year_name)
                                                 {{ $financial_year_name }}
                                             @endif
                                         </td>
-                                        <td class="text-right text-bold">{{ $nutrition_total_budget }}</td>
-                                        <td class="text-right text-bold">{{ $nutrition_expense_budget }}</td>
-                                        <td class="text-right text-bold">{{ $nutrition_remaining_budget }}</td>
+                                        <td style="text-align: end; font-weight: bold">{{ $nutrition_total_budget }}</td>
+                                        <td style="text-align: end; font-weight: bold">{{ $nutrition_expense_budget }}</td>
+                                        <td style="text-align: end; font-weight: bold">{{ $nutrition_remaining_budget }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-right text-bold">Total Wash and Nutrition @if ($financial_year_name)
+                                        <td style="text-align: end; font-weight: bold">Total Wash and Nutrition @if ($financial_year_name)
                                                 {{ $financial_year_name }}
                                             @endif
                                         </td>
-                                        <td class="text-right text-bold">{{ $wash_total_budget + $nutrition_total_budget }}
+                                        <td style="text-align: end; font-weight: bold">{{ $wash_total_budget + $nutrition_total_budget }}
                                         </td>
-                                        <td class="text-right text-bold">
+                                        <td style="text-align: end; font-weight: bold">
                                             {{ $wash_expense_budget + $nutrition_expense_budget }}</td>
-                                        <td class="text-right text-bold">
+                                        <td style="text-align: end; font-weight: bold">
                                             {{ $wash_remaining_budget + $nutrition_remaining_budget }}</td>
                                     </tr>
                                 </tbody>
@@ -144,7 +144,7 @@
                 <div class="col-12">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Health Budget Chart</h3>
+                            <h5 class="card-title">Health Budget Chart</h5>
                         </div>
 
                         @if (!$output_array)

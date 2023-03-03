@@ -6,13 +6,26 @@
             <div class="card-header">
                 <a href="{{ route('user.viewDevelopmentExpenseBudgetTracking') }}" class="btn btn-success">Reset</a>
             </div>
+            <div class="card-body">
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <tr>
+                            <td style="font-weight: bold;">Financial Year</td>
+                            <td>{{ $financial_year }}</td>
+
+                            <td style="font-weight: bold;">Union Name</td>
+                            <td>{{ $unionName }}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
         <br>
         <div class="row" id="bar_chart_data">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Development Expense Budget Tracking Report Chart</h4>
+                        <h5>Development Expense Budget Tracking Report Chart</h5>
                     </div>
                     @if (!$output_array)
                         <strong class="text-danger" style="text-align: center; margin-top: 20px; margin-bottom: 20px;">No
