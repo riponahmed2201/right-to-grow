@@ -121,6 +121,12 @@ class FormKhaController extends Controller
                                                         `part_two_development_expenditure_accounts` AS a
                                                         LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 4 AND a.user_id='" . $user_id . "' AND a.union_id = '" . $union_id . "' AND a.financial_year = '" . $financial_year . "' ");
 
+            $generateFinancialYear = $this->generateFinancialYearToOtherYears($financial_year);
+
+            $data['currentYear'] = $generateFinancialYear['currentYear'];
+            $data['previousYear'] = $generateFinancialYear['previousYear'];
+            $data['nextYear'] = $generateFinancialYear['nextYear'];
+
             return view('frontend.form_kha.show_kha_form_data', $data);
         } catch (\Throwable $th) {
             throw $th;
@@ -250,9 +256,40 @@ class FormKhaController extends Controller
                                                         `part_two_development_expenditure_accounts` AS a
                                                         LEFT JOIN `categories` AS b ON a.category_id = b.id WHERE a.type_id = 4 AND a.user_id='" . $user_id . "' AND a.union_id='" . $union_id . "' AND a.financial_year = '" . $financial_year . "' ");
 
+            $generateFinancialYear = $this->generateFinancialYearToOtherYears($financial_year);
+
+            $data['currentYear'] = $generateFinancialYear['currentYear'];
+            $data['previousYear'] = $generateFinancialYear['previousYear'];
+            $data['nextYear'] = $generateFinancialYear['nextYear'];
+
             return view('frontend.form_kha.show_kha_form_data_details', $data);
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+    public function generateFinancialYearToOtherYears($financial_year)
+    {
+        $split = explode("-", $financial_year);
+        $zeroIndex = $split[0];
+        $oneIndex = $split[1];
+
+        //Make last/previous year
+        $lastYearZeroIndex = $zeroIndex - 1;
+        $lastYearOneIndex = $oneIndex - 1;
+        $previousYear =  $lastYearZeroIndex . '-' . $lastYearOneIndex;
+
+        //Make next year
+        $nextYearZeroIndex = $zeroIndex + 1;
+        $nextYearOneIndex = $oneIndex + 1;
+        $nextYear = $nextYearZeroIndex . '-' . $nextYearOneIndex;
+
+        $data = [
+            'currentYear' => $financial_year,
+            'previousYear' => $previousYear,
+            'nextYear' => $nextYear,
+        ];
+
+        return $data;
     }
 }

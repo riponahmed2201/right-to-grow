@@ -102,16 +102,26 @@
                                             <th style="width: 15%;" class="text-center">
                                                 নোট</th>
                                             <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
-                                                (২০২০-২০২১)</th>
+                                                (@if ($previousYear)
+                                                    {{ $previousYear }}
+                                                @endif)</th>
                                             <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
                                                 সংশোধিত
-                                                বাজেট (২০২১-২০২২)
+                                                বাজেট (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
                                             </th>
-                                            <th style="width: 12%" class="text-center">প্রকৃত আয় (২০২০-২০২১)
+                                            <th style="width: 12%" class="text-center">প্রকৃত আয় (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
                                             </th>
                                             <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
-                                                (২০২২-২০২৩)</th>
-                                            <th style="width: 12%" class="text-center">প্রকৃত আয় (২০২২-২০২৩)</th>
+                                                (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
+                                            <th style="width: 12%" class="text-center">প্রকৃত আয় (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
                                         </tr>
                                         <tr>
                                             <th colspan="7" style="background-color: #e7e6e6">রাজস্ব আয়</th>
@@ -884,7 +894,7 @@
                                             {{ $p_two_exp_current_year_total_amount + $current_year_total_amount - $p_one_exp_current_year_total_amount - ($p_two_dev_exp_current_year_total_amount - $p_two_dev_exp_current_year_closing_balance) }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
-                                            {{ ($p_two_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount) - ($p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance) }}
+                                            {{ $p_two_exp_current_year_actual_income_total_amount + $current_year_actual_income_total_amount - $p_one_exp_current_year_actual_income_total_amount - ($p_two_dev_exp_current_year_actual_income_total_amount - $p_two_dev_exp_current_year_actual_income_closing_balance) }}
                                         </td>
                                         <td style="width: 12%; text-align: end">
                                             {{ $p_two_exp_next_year_total_amount + $next_year_total_amount - $p_one_exp_next_year_total_amount - ($p_two_dev_exp_next_year_total_amount - $p_two_dev_exp_next_year_closing_balance) }}

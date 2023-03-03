@@ -33,8 +33,14 @@ class ReportController extends Controller
             $to = $request->to_financial_year;
             $union_id = $request->union_name;
 
-            $wash_nutritions = DB::select("SELECT * FROM `wash_nutritions` WHERE `financial_year_name` BETWEEN '" . $from . "' AND '" . $to . "' AND `union_id` = " . $union_id);
+            // $wash_nutritions = DB::select("SELECT * FROM `wash_nutritions` WHERE `financial_year_name` BETWEEN '" . $from . "' AND '" . $to . "' AND `union_id` = " . $union_id);
 
+            $wash_nutritions = DB::select("select financial_year_name, sum(t.total_budget) as total_budget, sum(t.expense_budget) as expense_budget, sum(t.remaining_budget) as remaining_budget
+            from(
+            SELECT * FROM `wash_nutritions` AS wn
+                        WHERE (wn.financial_year_name BETWEEN '" . $from . "' AND '" . $to . "') AND union_id = " . $union_id . ") as t
+                            group by t.financial_year_name");
+                            
             //Start Chart Data 
             $output_array = "";
 

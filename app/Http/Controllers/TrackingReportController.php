@@ -50,7 +50,7 @@ class TrackingReportController extends Controller
     {
         try {
 
-            $data['financialYears'] = DB::select("SELECT DISTINCT `financial_year_name` FROM `wash_nutritions`");
+            $data['financialYears'] = DB::table('financial_years')->orderBy('slug', 'desc')->get();
 
             $data['unions'] = DB::table('unions')->get();
             $data['categories'] = DB::table('categories')->get();
@@ -70,7 +70,13 @@ class TrackingReportController extends Controller
             $to = $request->to_financial_year;
             $union_id = $request->union_name;
 
-            $wash_nutritions = DB::select("SELECT * FROM `wash_nutritions` WHERE `financial_year_name` BETWEEN '" . $from . "' AND '" . $to . "' AND `union_id` = " . $union_id);
+            // $wash_nutritions = DB::select("SELECT * FROM `wash_nutritions` WHERE `financial_year_name` BETWEEN '" . $from . "' AND '" . $to . "' AND `union_id` = " . $union_id);
+
+            $wash_nutritions = DB::select("select financial_year_name, sum(t.total_budget) as total_budget, sum(t.expense_budget) as expense_budget, sum(t.remaining_budget) as remaining_budget
+            from(
+            SELECT * FROM `wash_nutritions` AS wn
+                        WHERE (wn.financial_year_name BETWEEN '" . $from . "' AND '" . $to . "') AND union_id = " . $union_id . ") as t
+                            group by t.financial_year_name");
 
             //Start Chart Data 
             $output_array = "";
@@ -123,7 +129,6 @@ class TrackingReportController extends Controller
                 ->where('a.union_id', '=', $request->union_name)->where('financial_year_name', '=', $request->financial_year_name)
                 ->where('a.category_id', '=', 20)
                 ->get();
-
 
             $data['nutrition_data'] = DB::table('wash_nutritions as a')
                 ->leftjoin('subcategories as c', 'a.subcategory_id', '=', 'c.id')

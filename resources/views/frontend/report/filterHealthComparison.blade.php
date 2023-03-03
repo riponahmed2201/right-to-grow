@@ -38,8 +38,8 @@
                                                 name="from_financial_year">
                                                 <option selected="selected" value="">----Please select----</option>
                                                 @foreach ($financialYears as $financialYear)
-                                                    <option value="{{ $financialYear->financial_year_name }}">
-                                                        {{ $financialYear->financial_year_name }}</option>
+                                                    <option value="{{ $financialYear->year_name }}">
+                                                        {{ $financialYear->year_name }}</option>
                                                 @endforeach
                                             </select>
                                             @if ($errors->has('from_financial_year'))
@@ -55,8 +55,8 @@
                                                 name="to_financial_year">
                                                 <option selected="selected" value="">----Please select----</option>
                                                 @foreach ($financialYears as $financialYear)
-                                                    <option value="{{ $financialYear->financial_year_name }}">
-                                                        {{ $financialYear->financial_year_name }}</option>
+                                                    <option value="{{ $financialYear->year_name }}">
+                                                        {{ $financialYear->year_name }}</option>
                                                 @endforeach
                                             </select>
                                             @if ($errors->has('to_financial_year'))

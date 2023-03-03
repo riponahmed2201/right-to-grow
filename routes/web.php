@@ -53,7 +53,6 @@ Route::match(['get', 'post'], 'all-union-vittik-data', [FormKhaController::class
 Route::get('user-login', [AuthController::class, 'userShowLoginForm'])->name('user.showLoginForm');
 Route::post('user-login-check', [AuthController::class, 'userLoginCheck'])->name('user.userLoginCheck');
 
-
 // show_map_tracking
 Route::get('show-map-tracking', [MapTrackingController::class, 'showMapTracking'])->name('user.showMapTracking');
 Route::get('upazila-map-tracking', [MapTrackingController::class, 'showUpazilaMapTracking'])->name('user.showUpazilaMapTracking');
