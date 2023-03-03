@@ -202,8 +202,8 @@
                                     </div>
                                     <div id="map"></div>
                                     <div id="legend_color" class="legend_color">
-                                        <p><span class="bg-red"></span> HLP Upazila, activity yet to start</p>
-                                        <p><span class="bg-yellow"></span> HLP Upazila and activities strated</p>
+                                        <p><span class="bg-red"></span> R2G Upazila, activity yet to start</p>
+                                        <p><span class="bg-yellow"></span> R2G Upazila and activities strated</p>
                                         <p><span class="bg-blue"></span> Workshop and good practice</p>
                                         <p><span class="bg-green"></span> Good Practice replicated in these Upazila</p>
                                         <p><span class="bg-best-practice"></span> Best practice</p>
