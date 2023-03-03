@@ -87,10 +87,11 @@
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_current_year_budget }}
                                         </td>
-                                        <td class="text-end">{{ $getPartOneRevenueIncomeData[0]->total_next_year_budget }}
-                                        </td>
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_current_year_actual_income }}
+                                        </td>
+                                        <td class="text-end">
+                                            {{ $getPartOneRevenueIncomeData[0]->total_next_year_budget }}
                                         </td>
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_next_year_actual_income }}
@@ -111,10 +112,11 @@
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_current_year_budget }}
                                         </td>
-                                        <td class="text-end">{{ $getPartOneRevenueIncomeData[0]->total_next_year_budget }}
-                                        </td>
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_current_year_actual_income }}
+                                        </td>
+                                        <td class="text-end">
+                                            {{ $getPartOneRevenueIncomeData[0]->total_next_year_budget }}
                                         </td>
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_next_year_actual_income }}
@@ -129,10 +131,10 @@
                                             {{ $getPartOneRevenueExpenditureData[0]->total_current_year_budget }}
                                         </td>
                                         <td class="text-end">
-                                            {{ $getPartOneRevenueExpenditureData[0]->total_next_year_budget }}
+                                            {{ $getPartOneRevenueExpenditureData[0]->total_current_year_actual_income }}
                                         </td>
                                         <td class="text-end">
-                                            {{ $getPartOneRevenueExpenditureData[0]->total_current_year_actual_income }}
+                                            {{ $getPartOneRevenueExpenditureData[0]->total_next_year_budget }}
                                         </td>
                                         <td class="text-end">
                                             {{ $getPartOneRevenueExpenditureData[0]->total_next_year_actual_income }}
@@ -147,10 +149,10 @@
                                             {{ $getPartOneRevenueIncomeData[0]->total_current_year_budget - $getPartOneRevenueExpenditureData[0]->total_current_year_budget }}
                                         </td>
                                         <td class="text-end">
-                                            {{ $getPartOneRevenueIncomeData[0]->total_next_year_budget - $getPartOneRevenueExpenditureData[0]->total_next_year_budget }}
+                                            {{ $getPartOneRevenueIncomeData[0]->total_current_year_actual_income - $getPartOneRevenueExpenditureData[0]->total_current_year_actual_income }}
                                         </td>
                                         <td class="text-end">
-                                            {{ $getPartOneRevenueIncomeData[0]->total_current_year_actual_income - $getPartOneRevenueExpenditureData[0]->total_current_year_actual_income }}
+                                            {{ $getPartOneRevenueIncomeData[0]->total_next_year_budget - $getPartOneRevenueExpenditureData[0]->total_next_year_budget }}
                                         </td>
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_next_year_actual_income - $getPartOneRevenueExpenditureData[0]->total_next_year_actual_income }}
@@ -185,19 +187,19 @@
 
                                         </td>
                                         <td class="text-end">
+                                            @if ($getPartTwoDevelopmentIncome[0]->total_current_year_actual_income)
+                                                {{ $getPartTwoDevelopmentIncome[0]->total_current_year_actual_income }}
+                                            @else
+                                                0
+                                            @endif
+                                        </td>
+                                        <td class="text-end">
                                             @if ($getPartTwoDevelopmentIncome[0]->total_next_year_budget)
                                                 {{ $getPartTwoDevelopmentIncome[0]->total_next_year_budget }}
                                             @else
                                                 0
                                             @endif
 
-                                        </td>
-                                        <td class="text-end">
-                                            @if ($getPartTwoDevelopmentIncome[0]->total_current_year_actual_income)
-                                                {{ $getPartTwoDevelopmentIncome[0]->total_current_year_actual_income }}
-                                            @else
-                                                0
-                                            @endif
                                         </td>
                                         <td class="text-end">
                                             @if ($getPartTwoDevelopmentIncome[0]->total_next_year_actual_income)
@@ -233,19 +235,19 @@
 
                                         </td>
                                         <td class="text-end">
+                                            @if ($getPartTwoDevelopmentIncome[0]->total_current_year_actual_income)
+                                                {{ $getPartTwoDevelopmentIncome[0]->total_current_year_actual_income }}
+                                            @else
+                                                0
+                                            @endif
+                                        </td>
+                                        <td class="text-end">
                                             @if ($getPartTwoDevelopmentIncome[0]->total_next_year_budget)
                                                 {{ $getPartTwoDevelopmentIncome[0]->total_next_year_budget }}
                                             @else
                                                 0
                                             @endif
 
-                                        </td>
-                                        <td class="text-end">
-                                            @if ($getPartTwoDevelopmentIncome[0]->total_current_year_actual_income)
-                                                {{ $getPartTwoDevelopmentIncome[0]->total_current_year_actual_income }}
-                                            @else
-                                                0
-                                            @endif
                                         </td>
                                         <td class="text-end">
                                             @if ($getPartTwoDevelopmentIncome[0]->total_next_year_actual_income)
@@ -264,11 +266,12 @@
                                             {{ $getPartOneRevenueIncomeData[0]->total_current_year_budget - $getPartOneRevenueExpenditureData[0]->total_current_year_budget + $getPartTwoDevelopmentIncome[0]->total_current_year_budget }}
                                         </td>
                                         <td class="text-end">
-                                            {{ $getPartOneRevenueIncomeData[0]->total_next_year_budget - $getPartOneRevenueExpenditureData[0]->total_next_year_budget + $getPartTwoDevelopmentIncome[0]->total_next_year_budget }}
-                                        </td>
-                                        <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_current_year_actual_income - $getPartOneRevenueExpenditureData[0]->total_current_year_actual_income + $getPartTwoDevelopmentIncome[0]->total_current_year_actual_income }}
                                         </td>
+                                        <td class="text-end">
+                                            {{ $getPartOneRevenueIncomeData[0]->total_next_year_budget - $getPartOneRevenueExpenditureData[0]->total_next_year_budget + $getPartTwoDevelopmentIncome[0]->total_next_year_budget }}
+                                        </td>
+
                                         <td class="text-end">
                                             {{ $getPartOneRevenueIncomeData[0]->total_next_year_actual_income - $getPartOneRevenueExpenditureData[0]->total_next_year_actual_income + $getPartTwoDevelopmentIncome[0]->total_next_year_actual_income }}
                                         </td>
@@ -291,6 +294,13 @@
 
                                         </td>
                                         <td class="text-end">
+                                            @if ($getPartTwoDevelopmentExpenditure[0]->total_current_year_actual_income)
+                                                {{ $getPartTwoDevelopmentExpenditure[0]->total_current_year_actual_income }}
+                                            @else
+                                                0
+                                            @endif
+                                        </td>
+                                        <td class="text-end">
                                             @if ($getPartTwoDevelopmentExpenditure[0]->total_next_year_budget)
                                                 {{ $getPartTwoDevelopmentExpenditure[0]->total_next_year_budget }}
                                             @else
@@ -298,13 +308,7 @@
                                             @endif
 
                                         </td>
-                                        <td class="text-end">
-                                            @if ($getPartTwoDevelopmentExpenditure[0]->total_current_year_actual_income)
-                                                {{ $getPartTwoDevelopmentExpenditure[0]->total_current_year_actual_income }}
-                                            @else
-                                                0
-                                            @endif
-                                        </td>
+
                                         <td class="text-end">
                                             @if ($getPartTwoDevelopmentExpenditure[0]->total_next_year_actual_income)
                                                 {{ $getPartTwoDevelopmentExpenditure[0]->total_next_year_actual_income }}
@@ -331,6 +335,13 @@
 
                                         </td>
                                         <td class="text-end">
+                                            @if ($getPartTwoClosingBalance[0]->total_current_year_actual_income)
+                                                {{ $getPartTwoClosingBalance[0]->total_current_year_actual_income }}
+                                            @else
+                                                0
+                                            @endif
+                                        </td>
+                                        <td class="text-end">
                                             @if ($getPartTwoClosingBalance[0]->total_next_year_budget)
                                                 {{ $getPartTwoClosingBalance[0]->total_next_year_budget }}
                                             @else
@@ -338,13 +349,7 @@
                                             @endif
 
                                         </td>
-                                        <td class="text-end">
-                                            @if ($getPartTwoClosingBalance[0]->total_current_year_actual_income)
-                                                {{ $getPartTwoClosingBalance[0]->total_current_year_actual_income }}
-                                            @else
-                                                0
-                                            @endif
-                                        </td>
+
                                         <td class="text-end">
                                             @if ($getPartTwoClosingBalance[0]->total_next_year_actual_income)
                                                 {{ $getPartTwoClosingBalance[0]->total_next_year_actual_income }}
@@ -371,6 +376,13 @@
 
                                         </td>
                                         <td class="text-end">
+                                            @if ($getPartOneTotalEarlyBalaceFirstJulay->total_current_year_actual_income)
+                                                {{ $getPartOneTotalEarlyBalaceFirstJulay->total_current_year_actual_income }}
+                                            @else
+                                                0
+                                            @endif
+                                        </td>
+                                        <td class="text-end">
                                             @if ($getPartOneTotalEarlyBalaceFirstJulay->total_next_year_budget)
                                                 {{ $getPartOneTotalEarlyBalaceFirstJulay->total_next_year_budget }}
                                             @else
@@ -378,13 +390,7 @@
                                             @endif
 
                                         </td>
-                                        <td class="text-end">
-                                            @if ($getPartOneTotalEarlyBalaceFirstJulay->total_current_year_actual_income)
-                                                {{ $getPartOneTotalEarlyBalaceFirstJulay->total_current_year_actual_income }}
-                                            @else
-                                                0
-                                            @endif
-                                        </td>
+
                                         <td class="text-end">
                                             @if ($getPartOneTotalEarlyBalaceFirstJulay->total_next_year_actual_income)
                                                 {{ $getPartOneTotalEarlyBalaceFirstJulay->total_next_year_actual_income }}
@@ -411,6 +417,13 @@
 
                                         </td>
                                         <td style="background-color: #c0c0c0" class="text-end">
+                                            @if ($getPartTwoClosingBalance[0]->total_current_year_actual_income)
+                                                {{ $getPartTwoClosingBalance[0]->total_current_year_actual_income }}
+                                            @else
+                                                0
+                                            @endif
+                                        </td>
+                                        <td style="background-color: #c0c0c0" class="text-end">
                                             @if ($getPartTwoClosingBalance[0]->total_next_year_budget)
                                                 {{ $getPartTwoClosingBalance[0]->total_next_year_budget }}
                                             @else
@@ -418,13 +431,7 @@
                                             @endif
 
                                         </td>
-                                        <td style="background-color: #c0c0c0" class="text-end">
-                                            @if ($getPartTwoClosingBalance[0]->total_current_year_actual_income)
-                                                {{ $getPartTwoClosingBalance[0]->total_current_year_actual_income }}
-                                            @else
-                                                0
-                                            @endif
-                                        </td>
+
                                         <td style="background-color: #c0c0c0" class="text-end">
                                             @if ($getPartTwoClosingBalance[0]->total_next_year_actual_income)
                                                 {{ $getPartTwoClosingBalance[0]->total_next_year_actual_income }}

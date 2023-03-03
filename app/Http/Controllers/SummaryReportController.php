@@ -28,7 +28,7 @@ class SummaryReportController extends Controller
                 ->distinct()
                 ->get();
 
-            //মোট প্রারম্ভিক জের (১ লা জুলাই)
+            //মোট প্রারম্ভিক জের (১ লা জুলাই) // $data['getPartOneTotalEarlyBalaceFirstJulay']
             $data['getPartOneTotalEarlyBalaceFirstJulay'] = DB::table('part_one_revenue_income_accounts as a')
                 ->select(
                     'a.last_year_budget as total_last_year_budget',
@@ -44,6 +44,57 @@ class SummaryReportController extends Controller
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->first();
+
+            // মোট প্রারম্ভিক জের (১ লা জুলাই) // cash in hand //getPartOneTotalEarlyBalaceFirstJulayCashInHand
+            $getCashInHand = DB::table('part_one_revenue_income_accounts as a')
+                ->select(
+                    'a.last_year_budget as total_last_year_budget',
+                    'a.current_year_budget as total_current_year_budget',
+                    'a.next_year_budget as total_next_year_budget',
+                    'a.current_year_actual_income as total_current_year_actual_income',
+                    'a.next_year_actual_income as total_next_year_actual_income'
+                )
+                ->where('a.type_id', '=', 1)
+                ->where('a.subcategory_id', '=', 1)
+                ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
+                ->where('a.financial_year', '=', $financial_year)
+                ->distinct()
+                ->first();
+
+            // মোট প্রারম্ভিক জের (১ লা জুলাই) // cash at bank //getPartOneTotalEarlyBalaceFirstJulayCashAtBank
+            $getCashAtBank = DB::table('part_one_revenue_income_accounts as a')
+                ->select(
+                    'a.last_year_budget as total_last_year_budget',
+                    'a.current_year_budget as total_current_year_budget',
+                    'a.next_year_budget as total_next_year_budget',
+                    'a.current_year_actual_income as total_current_year_actual_income',
+                    'a.next_year_actual_income as total_next_year_actual_income'
+                )
+                ->where('a.type_id', '=', 1)
+                ->where('a.subcategory_id', '=', 2)
+                ->where('a.user_id', '=', $user_id)
+                ->where('a.union_id', '=', $union_id)
+                ->where('a.financial_year', '=', $financial_year)
+                ->distinct()
+                ->first();
+
+            if (empty($data['getPartOneTotalEarlyBalaceFirstJulay']->total_last_year_budget)) {
+                $data['getPartOneTotalEarlyBalaceFirstJulay']->total_last_year_budget = $getCashInHand->total_last_year_budget + $getCashAtBank->total_last_year_budget;
+            }
+            if (empty($data['getPartOneTotalEarlyBalaceFirstJulay']->total_current_year_budget)) {
+                $data['getPartOneTotalEarlyBalaceFirstJulay']->total_current_year_budget = $getCashInHand->total_current_year_budget + $getCashAtBank->total_current_year_budget;
+            }
+            if (empty($data['getPartOneTotalEarlyBalaceFirstJulay']->total_next_year_budget)) {
+                $data['getPartOneTotalEarlyBalaceFirstJulay']->total_next_year_budget = $getCashInHand->total_next_year_budget + $getCashAtBank->total_next_year_budget;
+            }
+            if (empty($data['getPartOneTotalEarlyBalaceFirstJulay']->total_current_year_actual_income)) {
+                $data['getPartOneTotalEarlyBalaceFirstJulay']->total_current_year_actual_income = $getCashInHand->total_current_year_actual_income + $getCashAtBank->total_current_year_actual_income;
+            }
+            if (empty($data['getPartOneTotalEarlyBalaceFirstJulay']->total_next_year_actual_income)) {
+                $data['getPartOneTotalEarlyBalaceFirstJulay']->total_next_year_actual_income = $getCashInHand->total_next_year_actual_income + $getCashAtBank->total_next_year_actual_income;
+            }
+
             //End part one revenue income account
 
             //Start part one revenue expenditure income account
@@ -65,7 +116,7 @@ class SummaryReportController extends Controller
             //End part one revenue expenditure account
 
             //Start part two revenue development income account
-            $data['getPartTwoDevelopmentIncome'] = DB::table('part_one_revenue_expenditure_accounts as a')
+            $data['getPartTwoDevelopmentIncome'] = DB::table('part_two_development_income_accounts as a')
                 ->select(
                     DB::raw('SUM(a.last_year_budget) as total_last_year_budget'),
                     DB::raw('SUM(a.current_year_budget) as total_current_year_budget'),
@@ -79,7 +130,6 @@ class SummaryReportController extends Controller
                 ->where('a.financial_year', '=', $financial_year)
                 ->distinct()
                 ->get();
-
             //End part two development income account
 
 
