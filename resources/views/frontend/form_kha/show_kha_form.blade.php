@@ -183,10 +183,11 @@
                                                     <th colspan="7">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 25%" class="text-center">বিবরণ</th>
                                                     <th style="width: 15%; background-color: #f4b084" class="text-center">
                                                         নোট</th>
-                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত
+                                                        ব্যয়
                                                         <p id="part_one_expenditure_pre_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
@@ -194,14 +195,14 @@
                                                         বাজেট <p id="part_one_expenditure_current_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত ব্যয় <p
                                                             id="part_one_expenditure_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         <p id="part_one_expenditure_next_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত ব্যয় <p
                                                             id="part_one_expenditure_next_year_actual_budget_id"></p>
                                                     </th>
                                                 </tr>
@@ -439,10 +440,12 @@
                                                     <th colspan="7"> অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ</th>
                                                 </tr>
                                                 <tr>
-                                                    <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                                    <th style="width: 25%;  align-items: center; justify-content: center;"
+                                                        class="text-center">বিবরণ</th>
                                                     <th style="width: 15%; background-color: #f4b084" class="text-center">
                                                         নোট</th>
-                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                    <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত
+                                                        ব্যয়
                                                         <p id="part_two_development_expenditure_pre_year_budget_id"></p>
                                                     </th>
                                                     <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
@@ -451,14 +454,14 @@
                                                             id="part_two_development_expenditure_current_year_budget_id">
                                                         </p>
                                                     </th>
-                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত ব্যয় <p
                                                             id="part_two_development_expenditure_actual_income_year_budget_id">
                                                         </p>
                                                     </th>
                                                     <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
                                                         <p id="part_two_development_expenditure_next_year_budget_id"></p>
                                                     </th>
-                                                    <th style="width: 12%" class="text-center">প্রকৃত আয় <p
+                                                    <th style="width: 12%" class="text-center">প্রকৃত ব্যয় <p
                                                             id="part_two_development_expenditure_next_year_actual_budget_id">
                                                         </p>
                                                     </th>
@@ -576,7 +579,7 @@
                     const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
                         1);
 
-                    //Current Financial Year 
+                    //Current Financial Year
                     document.getElementById("part_one_revenue_current_year_budget_id").innerHTML = '(' +
                         current_financial_year + ')';
                     document.getElementById("part_one_revenue_actual_income_year_budget_id").innerHTML = '(' +
@@ -610,7 +613,7 @@
                     const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
                         1);
 
-                    //Current Financial Year 
+                    //Current Financial Year
                     document.getElementById("part_one_expenditure_current_year_budget_id").innerHTML = '(' +
                         current_financial_year + ')';
                     document.getElementById("part_one_expenditure_actual_income_year_budget_id").innerHTML = '(' +
@@ -644,7 +647,7 @@
                     const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
                         1);
 
-                    //Current Financial Year 
+                    //Current Financial Year
                     document.getElementById("part_two_development_revenue_current_year_budget_id").innerHTML = '(' +
                         current_financial_year + ')';
                     document.getElementById("part_two_development_revenue_actual_income_year_budget_id").innerHTML = '(' +
@@ -681,7 +684,7 @@
                     const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
                         1);
 
-                    //Current Financial Year 
+                    //Current Financial Year
                     document.getElementById("part_two_development_expenditure_current_year_budget_id").innerHTML = '(' +
                         current_financial_year + ')';
                     document.getElementById("part_two_development_expenditure_actual_income_year_budget_id").innerHTML =

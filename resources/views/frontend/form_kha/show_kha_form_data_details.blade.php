@@ -137,7 +137,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $partOneRevenueIncomeAccountSubcategories = \Illuminate\Support\Facades\DB::table('part_one_revenue_income_accounts as a')
                                                 ->leftjoin('subcategories as b', 'b.id', '=', 'a.subcategory_id')
                                                 ->select('b.id AS subcategory_id', 'b.name as subcategory_name', 'a.id', 'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
@@ -147,7 +147,7 @@
                                                 ->where('a.financial_year', '=', $userInfo[0]->financial_year)
                                                 ->distinct()
                                                 ->get();
-                                            
+
                                         @endphp
 
                                         <tbody>
@@ -242,6 +242,32 @@
                                         <tr>
                                             <th colspan="7">অংশ-১- রাজস্ব হিসাব ব্যয়ঃ </th>
                                         </tr>
+                                        <tr>
+                                            <th style="width: 25%" class="text-center">বিবরণ</th>
+                                            <th style="width: 15%;" class="text-center">
+                                                নোট</th>
+                                            <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত ব্যয়
+                                                (@if ($previousYear)
+                                                    {{ $previousYear }}
+                                                @endif)</th>
+                                            <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                সংশোধিত
+                                                বাজেট (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
+                                            </th>
+                                            <th style="width: 12%" class="text-center">প্রকৃত ব্যয় (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
+                                            </th>
+                                            <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
+                                            <th style="width: 12%" class="text-center">প্রকৃত ব্যয় (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
+                                        </tr>
                                     </thead>
 
                                     @foreach ($partOneRevenueExpenditureAccountList as $partOneRevenueExpenditureAccount)
@@ -253,7 +279,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $partOneIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::table('part_one_revenue_expenditure_accounts as a')
                                                 ->leftjoin('subcategories as b', 'b.id', '=', 'a.subcategory_id')
                                                 ->select('b.id AS subcategory_id', 'b.name as subcategory_name', 'a.id', 'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
@@ -281,7 +307,7 @@
                                                             $p_one_exp_next_year_total_amount += $partOneIncomeAccountSubcategory->next_year_budget;
                                                             $p_one_exp_current_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->current_year_actual_income;
                                                             $p_one_exp_next_year_actual_income_total_amount += $partOneIncomeAccountSubcategory->next_year_actual_income;
-                                                            
+
                                                         @endphp
 
                                                         <td style="width: 25%">
@@ -416,6 +442,32 @@
                                         <tr>
                                             <th colspan="7">অংশ-২- উন্নয়ন হিসাব আয়ঃ </th>
                                         </tr>
+                                        <tr>
+                                            <th style="width: 25%" class="text-center">প্রাপ্তির বিবরণ</th>
+                                            <th style="width: 15%;" class="text-center">
+                                                নোট</th>
+                                            <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত আয়
+                                                (@if ($previousYear)
+                                                    {{ $previousYear }}
+                                                @endif)</th>
+                                            <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                সংশোধিত
+                                                বাজেট (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
+                                            </th>
+                                            <th style="width: 12%" class="text-center">প্রকৃত আয় (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
+                                            </th>
+                                            <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
+                                            <th style="width: 12%" class="text-center">প্রকৃত আয় (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
+                                        </tr>
                                     </thead>
 
                                     @foreach ($partTwoDevRevenueIncomeAccountList as $partTwoDevRevenueIncomeAccount)
@@ -427,7 +479,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $partTwoDevIncomeAccountSubcategoryList = \Illuminate\Support\Facades\DB::table('part_two_development_income_accounts as a')
                                                 ->leftjoin('subcategories as b', 'b.id', '=', 'a.subcategory_id')
                                                 ->select('b.id AS subcategory_id', 'b.name as subcategory_name', 'a.id', 'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
@@ -437,7 +489,7 @@
                                                 ->where('a.financial_year', '=', $userInfo[0]->financial_year)
                                                 ->distinct()
                                                 ->get();
-                                            
+
                                         @endphp
 
                                         @foreach ($partTwoDevIncomeAccountSubcategoryList as $partTwoDevIncomeAccountSubcategory)
@@ -583,14 +635,14 @@
                                 $p_two_dev_exp_next_year_total_amount = 0;
                                 $p_two_dev_exp_current_year_actual_income_total_amount = 0;
                                 $p_two_dev_exp_next_year_actual_income_total_amount = 0;
-                                
+
                                 //Closing Balance
                                 $p_two_dev_exp_last_year_closing_balance = 0;
                                 $p_two_dev_exp_current_year_closing_balance = 0;
                                 $p_two_dev_exp_next_year_closing_balance = 0;
                                 $p_two_dev_exp_current_year_actual_income_closing_balance = 0;
                                 $p_two_dev_exp_next_year_actual_income_closing_balance = 0;
-                                
+
                             @endphp
 
                             @if (!empty($partTwoDevRevenueExpenditureAccountList))
@@ -598,6 +650,32 @@
                                     <thead>
                                         <tr>
                                             <th colspan="7">অংশ-২- উন্নয়ন হিসাব ব্যয়ঃ </th>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 25%" class="text-center">বিবরণ</th>
+                                            <th style="width: 15%;" class="text-center">
+                                                নোট</th>
+                                            <th style="width: 12%" class="text-center">পূর্ববর্তী বৎসরের প্রকৃত ব্যয়
+                                                (@if ($previousYear)
+                                                    {{ $previousYear }}
+                                                @endif)</th>
+                                            <th style="width: 12%" class="text-center">চলতি বৎসরের বাজেট বা
+                                                সংশোধিত
+                                                বাজেট (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
+                                            </th>
+                                            <th style="width: 12%" class="text-center">প্রকৃত ব্যয় (@if ($currentYear)
+                                                    {{ $currentYear }}
+                                                @endif)
+                                            </th>
+                                            <th style="width: 12%" class="text-center">পরবর্তী বৎসরের বাজেট
+                                                (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
+                                            <th style="width: 12%" class="text-center">প্রকৃত ব্যয় (@if ($nextYear)
+                                                    {{ $nextYear }}
+                                                @endif)</th>
                                         </tr>
                                     </thead>
 
@@ -616,7 +694,7 @@
                                         </thead>
 
                                         @php
-                                            
+
                                             $partTwoDevExpAccountSubcategoryList = \Illuminate\Support\Facades\DB::table('part_two_development_expenditure_accounts as a')
                                                 ->leftjoin('subcategories as b', 'b.id', '=', 'a.subcategory_id')
                                                 ->select('b.id AS subcategory_id', 'b.name as subcategory_name', 'a.id', 'a.category_id', 'a.subcategory_id', 'a.notes', 'a.last_year_budget', 'a.current_year_budget', 'a.next_year_budget', 'a.current_year_actual_income', 'a.next_year_actual_income')
@@ -643,7 +721,7 @@
                                                             $p_two_dev_exp_next_year_total_amount += $partTwoDevExpAccountSubcategory->next_year_budget;
                                                             $p_two_dev_exp_current_year_actual_income_total_amount += $partTwoDevExpAccountSubcategory->current_year_actual_income;
                                                             $p_two_dev_exp_next_year_actual_income_total_amount += $partTwoDevExpAccountSubcategory->next_year_actual_income;
-                                                            
+
                                                             if ($partTwoDevExpAccountSubcategory->subcategory_id == 288) {
                                                                 $p_two_dev_exp_last_year_closing_balance += $partTwoDevExpAccountSubcategory->last_year_budget;
                                                                 $p_two_dev_exp_current_year_closing_balance += $partTwoDevExpAccountSubcategory->current_year_budget;
@@ -651,7 +729,7 @@
                                                                 $p_two_dev_exp_current_year_actual_income_closing_balance += $partTwoDevExpAccountSubcategory->current_year_actual_income;
                                                                 $p_two_dev_exp_next_year_actual_income_closing_balance += $partTwoDevExpAccountSubcategory->next_year_actual_income;
                                                             }
-                                                            
+
                                                         @endphp
                                                         <td style="width: 25%">
                                                             {{ $partTwoDevExpAccountSubcategory->subcategory_name }}</td>
