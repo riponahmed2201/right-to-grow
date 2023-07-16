@@ -175,7 +175,7 @@ class FormKhaController extends Controller
     {
         try {
 
-            $query = "SELECT a.id AS union_id, b.id as upazila_id, c.id as district_id, d.id as division_id, a.name AS union_name, b.name AS upazila_name, c.name AS district_name, d.name AS division_name 
+            $query = "SELECT a.id AS union_id, b.id as upazila_id, c.id as district_id, d.id as division_id, a.name AS union_name, b.name AS upazila_name, c.name AS district_name, d.name AS division_name
                 FROM unions AS a
                 LEFT JOIN upazilas AS b ON a.upazila_id = b.id
                 LEFT JOIN districts AS c ON b.district_id = c.id
@@ -275,19 +275,21 @@ class FormKhaController extends Controller
         $oneIndex = $split[1];
 
         //Make last/previous year
-        $lastYearZeroIndex = $zeroIndex - 1;
-        $lastYearOneIndex = $oneIndex - 1;
+        $lastYearZeroIndex = $zeroIndex - 2;
+        $lastYearOneIndex = $oneIndex - 2;
+
         $previousYear =  $lastYearZeroIndex . '-' . $lastYearOneIndex;
 
-        //Make next year
-        $nextYearZeroIndex = $zeroIndex + 1;
-        $nextYearOneIndex = $oneIndex + 1;
-        $nextYear = $nextYearZeroIndex . '-' . $nextYearOneIndex;
+        //Make current year
+        $currentYearZeroIndex = $zeroIndex - 1;
+        $currentYearOneIndex = $oneIndex - 1;
+
+        $currentYear =  $currentYearZeroIndex . '-' . $currentYearOneIndex;
 
         $data = [
-            'currentYear' => $financial_year,
+            'currentYear' => $currentYear,
             'previousYear' => $previousYear,
-            'nextYear' => $nextYear,
+            'nextYear' => $financial_year,
         ];
 
         return $data;

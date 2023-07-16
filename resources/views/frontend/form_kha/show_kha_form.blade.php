@@ -572,18 +572,19 @@
 
                 if (financial_year_array.length === 2) {
 
-                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
-                            1]) -
-                        1);
+                    const previous_year = (parseInt(financial_year_array[0]) - 2) + "-" + (parseInt(financial_year_array[
+                        1]) - 2);
 
-                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
-                        1);
+                    const make_current_financial_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(
+                        financial_year_array[1]) - 1);
+
+                    const next_year = current_financial_year;
 
                     //Current Financial Year
                     document.getElementById("part_one_revenue_current_year_budget_id").innerHTML = '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
                     document.getElementById("part_one_revenue_actual_income_year_budget_id").innerHTML = '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
 
                     //Previous Financial Year
                     document.getElementById("part_one_revenue_pre_year_budget_id").innerHTML = '(' + previous_year + ')';
@@ -606,18 +607,22 @@
 
                 if (financial_year_array.length === 2) {
 
-                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
+                    const previous_year = (parseInt(financial_year_array[0]) - 2) + "-" + (parseInt(financial_year_array[
                             1]) -
+                        2);
+
+                    const make_current_financial_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(
+                            financial_year_array[
+                                1]) -
                         1);
 
-                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
-                        1);
+                    const next_year = current_financial_year;
 
                     //Current Financial Year
                     document.getElementById("part_one_expenditure_current_year_budget_id").innerHTML = '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
                     document.getElementById("part_one_expenditure_actual_income_year_budget_id").innerHTML = '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
 
                     //Previous Financial Year
                     document.getElementById("part_one_expenditure_pre_year_budget_id").innerHTML = '(' + previous_year +
@@ -640,18 +645,21 @@
 
                 if (financial_year_array.length === 2) {
 
-                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
+                    const previous_year = (parseInt(financial_year_array[0]) - 2) + "-" + (parseInt(financial_year_array[
+                            1]) -
+                        2);
+
+                    const make_current_financial_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
                             1]) -
                         1);
 
-                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
-                        1);
+                    const next_year = current_financial_year;
 
                     //Current Financial Year
                     document.getElementById("part_two_development_revenue_current_year_budget_id").innerHTML = '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
                     document.getElementById("part_two_development_revenue_actual_income_year_budget_id").innerHTML = '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
 
                     //Previous Financial Year
                     document.getElementById("part_two_development_revenue_pre_year_budget_id").innerHTML = '(' +
@@ -677,19 +685,22 @@
 
                 if (financial_year_array.length === 2) {
 
-                    const previous_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
+                    const previous_year = (parseInt(financial_year_array[0]) - 2) + "-" + (parseInt(financial_year_array[
+                            1]) -
+                        2);
+
+                    const make_current_financial_year = (parseInt(financial_year_array[0]) - 1) + "-" + (parseInt(financial_year_array[
                             1]) -
                         1);
 
-                    const next_year = (parseInt(financial_year_array[0]) + 1) + "-" + (parseInt(financial_year_array[1]) +
-                        1);
+                    const next_year = current_financial_year;
 
                     //Current Financial Year
                     document.getElementById("part_two_development_expenditure_current_year_budget_id").innerHTML = '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
                     document.getElementById("part_two_development_expenditure_actual_income_year_budget_id").innerHTML =
                         '(' +
-                        current_financial_year + ')';
+                        make_current_financial_year + ')';
 
                     //Previous Financial Year
                     document.getElementById("part_two_development_expenditure_pre_year_budget_id").innerHTML = '(' +
